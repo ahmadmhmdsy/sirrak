@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Debug-only network policy: the M11 device tests exercise the real downloader against a loopback
+  HTTP/1.1 server inside the emulator, and Android blocks cleartext HTTP for targetSdk >= 28. This
+  overlay applies to the debug variant only; the release manifest keeps HTTPS-only traffic.
+-->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <application android:usesCleartextTraffic="true" />
+</manifest>

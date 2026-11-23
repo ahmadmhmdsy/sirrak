@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>سياسة الأمان</title>
+<meta name="description" content="كيف تبلّغ عن ثغرة في سِرِّك، وما داخل النطاق، والالتزامات التصميمية التي تقلّص سطح الهجوم إلى هاتف بلا خادم وبلا تتبّع.">
+<meta name="author" content="Sirrak contributors">
+<meta name="theme-color" content="#F7F3EA">
+<meta name="color-scheme" content="light">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<link rel="canonical" href="https://alshahia.github.io/sirrak/ar/security/">
+<link rel="alternate" hreflang="en" href="https://alshahia.github.io/sirrak/security/">
+<link rel="alternate" hreflang="ar" href="https://alshahia.github.io/sirrak/ar/security/">
+<link rel="alternate" hreflang="x-default" href="https://alshahia.github.io/sirrak/security/">
+<link rel="icon" href="../../assets/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="icon" href="../../assets/icon-192.png" sizes="192x192" type="image/png">
+<link rel="apple-touch-icon" href="../../assets/apple-touch-icon.png">
+<link rel="manifest" href="../../manifest.webmanifest">
+<link rel="preload" href="../../assets/fonts/amiri-bold.ttf" as="font" type="font/ttf" crossorigin>
+<link rel="preload" href="../../assets/fonts/plex-arabic-regular.ttf" as="font" type="font/ttf" crossorigin>
+<link rel="stylesheet" href="../../assets/site.css">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Sirrak · سِرِّك">
+<meta property="og:title" content="سياسة الأمان">
+<meta property="og:description" content="كيف تبلّغ عن ثغرة في سِرِّك، وما داخل النطاق، والالتزامات التصميمية التي تقلّص سطح الهجوم إلى هاتف بلا خادم وبلا تتبّع.">
+<meta property="og:url" content="https://alshahia.github.io/sirrak/ar/security/">
+<meta property="og:image" content="https://alshahia.github.io/sirrak/assets/og-image.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="سِرِّك — مساعدك الخاص يعمل على جهازك">
+<meta property="og:locale" content="ar_IQ">
+<meta property="og:locale:alternate" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="سياسة الأمان">
+<meta name="twitter:description" content="كيف تبلّغ عن ثغرة في سِرِّك، وما داخل النطاق، والالتزامات التصميمية التي تقلّص سطح الهجوم إلى هاتف بلا خادم وبلا تتبّع.">
+<meta name="twitter:image" content="https://alshahia.github.io/sirrak/assets/og-image.png">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","name":"سياسة الأمان","description":"كيف تبلّغ عن ثغرة في سِرِّك، وما داخل النطاق، والالتزامات التصميمية التي تقلّص سطح الهجوم إلى هاتف بلا خادم وبلا تتبّع.","url":"https://alshahia.github.io/sirrak/ar/security/","inLanguage":"ar","datePublished":"2026-11-23","dateModified":"2026-11-23","isPartOf":{"@type":"WebSite","name":"Sirrak · سِرِّك","url":"https://alshahia.github.io/sirrak/","inLanguage":["ar","en"],"publisher":{"@type":"Organization","name":"Sirrak","url":"https://alshahia.github.io/sirrak/","logo":"https://alshahia.github.io/sirrak/assets/icon-512.png","sameAs":["https://github.com/alshahia/sirrak"]}},"publisher":{"@type":"Organization","name":"Sirrak","url":"https://alshahia.github.io/sirrak/","logo":"https://alshahia.github.io/sirrak/assets/icon-512.png","sameAs":["https://github.com/alshahia/sirrak"]}}]}</script>
+</head>
+<body class="policy">
+<a class="skip" href="#main">تخطَّ إلى المحتوى</a>
+<header class="site-header">
+<div class="wrap header-inner">
+<a class="brand" href="../../ar/" aria-label="Sirrak — سِرِّك"><svg class="brand-mark" viewBox="0 0 108 108" fill="none" stroke="currentColor" stroke-width="4.5" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M54,26 L62.8,37.6 L77.4,40.2 L67.2,51.4 L69.8,66 L54,59.6 L38.2,66 L40.8,51.4 L30.6,40.2 L45.2,37.6 Z" /><path d="M41,82 L41,74 A13,13 0 0 1 67,74 L67,82 Z" /></svg><span class="brand-name" lang="ar">سِرِّك</span><span class="brand-latin" aria-hidden="true">SIRRAK</span></a>
+<nav class="site-nav" aria-label="سِرِّك"><ul>
+<li><a href="../#steps">كيف يعمل</a></li>
+<li><a href="../#privacy">الخصوصية</a></li>
+<li><a href="../#download">التنزيل</a></li>
+<li><a href="../#docs">الوثائق</a></li>
+</ul></nav>
+<a class="lang-switch" href="../../security/" hreflang="en" lang="en">English</a>
+</div>
+</header>
+<main id="main">
+<div class="wrap policy-wrap">
+<header class="policy-head">
+<a class="policy-back" href="../../ar/">العودة إلى سِرِّك</a>
+<p class="policy-dateline">آخر تحديث: 23 نوفمبر 2026 · ينطبق على 1.0.0-rc1</p>
+<h1>سياسة الأمان</h1>
+<ul class="policy-summary">
+<li>أبلغ عن الثغرات بخصوصية عبر نماذج أمان GitHub — لا تفتح مشكلة عامة.</li>
+<li>لا خادم لسِرِّك ولا نقطة تتبّع لمهاجمتها؛ ونسخ الإصدار مصغَّرة وتخزّن البيانات في تخزين التطبيق الخاص.</li>
+<li>الإقرار المتوقع خلال 7 أيام؛ ولا مكافأة مالية للثغرات.</li>
+</ul>
+</header>
+<article class="policy">
+<section class="policy-section">
+<h2>الإصدارات المدعومة</h2>
+<p>سِرِّك قبل 1.0. تُطبَّق إصلاحات الأمان على أحدث إصدار فقط، ولا تُرقَّع النسخ الأقدم.</p>
+</section>
+<section class="policy-section">
+<h2>الإبلاغ عن ثغرة</h2>
+<p>لا تفتح مشكلة عامة لمشكلة أمنية. استخدم نموذج الإبلاغ الخاص على github.com/alshahia/sirrak/security/advisories/new وأدرج:</p>
+<ul>
+<li>إصدار التطبيق (الإعدادات ← حول) وإصدار أندرويد،</li>
+<li>طراز الجهاز أو المحاكي،</li>
+<li>ما فعلته وما توقعته وما حدث،</li>
+<li>إثبات مفهوم إن وُجد.</li>
+</ul>
+<p>يمكنك توقع إقرار خلال 7 أيام وتحديث للحالة خلال 30 يومًا. ولا نقدّم مكافأة مالية للثغرات.</p>
+</section>
+<section class="policy-section">
+<h2>النطاق</h2>
+<p>داخل النطاق: التطبيق نفسه (المحادثة والمكتبة/الاسترجاع والإملاء وتنزيل/استيراد الطرازات وأسطح الخصوصية) وطريقة تخزينه للبيانات على الجهاز.</p>
+<ul>
+<li>خارج النطاق: الثغرات في أندرويد نفسه، وفي أوزان الطرازات الخارجية، وفي شيفرة llama.cpp / sherpa-onnx / LiteRT-LM الأصلية — أبلغ عنها في مستودعاتها.</li>
+<li>خارج النطاق: الهجمات التي تتطلب جهازًا مروّتًا أو وصولًا ماديًا مع أداة تحميل مفتوحة.</li>
+</ul>
+</section>
+<section class="policy-section">
+<h2>التزامات تصميمية متعلقة بالأمان</h2>
+<ul>
+<li>لا مكوّن خادم ولا نقطة تتبّع لمهاجمتها.</li>
+<li>المحادثات والمستندات والتضمينات والطرازات وسجل الشبكة والبلاغات في تخزين التطبيق الخاص.</li>
+<li>سجل الشبكة هو المكان الوحيد الذي يسجّل الطلبات الصادرة؛ وهو محدود ومحلي.</li>
+<li>نسخ الإصدار مصغَّرة بـR8 ولا تحمل إذن النص الصريح الخاص بالتنقيح (HTTP الصريح للتنقيح فقط في اختبارات الحلقة المحلية).</li>
+<li>تنزيلات الطرازات تُتحقَّق مقابل بصمة SHA-256 في الكتالوج قبل التثبيت.</li>
+</ul>
+</section>
+<section class="policy-section">
+<h2>الإفصاح</h2>
+<p>سنذكر المُبلّغين الذين يطلبون الذكر، وننشر إشعارًا قصيرًا بعد توفر الإصلاح. يُرجى منحنا مهلة معقولة قبل الإفصاح العام.</p>
+</section>
+</article>
+<p class="policy-footnote">آخر تحديث: 23 نوفمبر 2026 · ينطبق على 1.0.0-rc1 · <a href="https://github.com/alshahia/sirrak">مساعد عربي أولًا يعمل على هاتفك ولا يتصل بالخارج.</a></p>
+</div>
+</main>
+<footer class="site-footer">
+<div class="wrap">
+<div class="footer-top">
+<div>
+<p class="footer-mark" lang="ar">سِرِّك</p>
+<p class="footer-tagline">مساعد عربي أولًا يعمل على هاتفك ولا يتصل بالخارج.</p>
+</div>
+<div class="footer-columns">
+<div>
+<h3>المنتج</h3>
+<ul>
+<li><a href="https://github.com/alshahia/sirrak/releases/latest">التنزيل</a></li>
+<li><a href="https://github.com/alshahia/sirrak/tree/main/docs">الوثائق</a></li>
+<li><a href="https://github.com/alshahia/sirrak/blob/main/DESIGN.md">التصميم</a></li>
+<li><a href="https://github.com/alshahia/sirrak/blob/main/PRODUCT.md">نطاق المنتج</a></li>
+</ul>
+</div>
+<div>
+<h3>المشروع</h3>
+<ul>
+<li><a href="https://github.com/alshahia/sirrak">GitHub</a></li>
+<li><a href="https://github.com/alshahia/sirrak/releases">الإصدارات</a></li>
+<li><a href="https://github.com/alshahia/sirrak/issues">المشكلات</a></li>
+<li><a href="https://github.com/alshahia/sirrak/blob/main/CONTRIBUTING.md">المساهمة</a></li>
+</ul>
+</div>
+<div>
+<h3>القانوني والأمان</h3>
+<ul>
+<li><a href="../privacy/">الخصوصية</a></li>
+<li><a href="../security/">الأمان</a></li>
+<li><a href="https://github.com/alshahia/sirrak/blob/main/LICENSE">الترخيص</a></li>
+<li><a href="https://github.com/alshahia/sirrak/blob/main/NOTICE">الاعتمادات (NOTICE)</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="footer-legal">
+<span>Apache-2.0 · بلا تتبّع · غير تابع لأي مزوّد طرازات.</span>
+<span>© 2026 Sirrak contributors · <a href="https://github.com/alshahia/sirrak/blob/main/LICENSE">Apache-2.0</a></span>
+</div>
+</div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Theme packs (M4). Adding a pack = add its name/description here in both locales + one ThemePack. -->
+    <string name="theme_pack_girih_ink">Girih &amp; Ink</string>
+    <string name="theme_pack_girih_ink_desc">The original: ivory and ink, lapis and brass.</string>
+    <string name="theme_pack_lapis_night">Lapis Night</string>
+    <string name="theme_pack_lapis_night_desc">Deep lapis grounds for night reading.</string>
+    <string name="theme_pack_turquoise_dawn">Turquoise Dawn</string>
+    <string name="theme_pack_turquoise_dawn_desc">Warm paper and deep teal, like dawn on the Tigris.</string>
+    <string name="theme_pack_madder_dusk">Madder Dusk</string>
+    <string name="theme_pack_madder_dusk_desc">Bazaar warmth: rose ivory, madder and brass.</string>
+    <string name="theme_pack_paper_contrast">Paper</string>
+    <string name="theme_pack_paper_contrast_desc">Maximum clarity: ink on paper, no colour decoration.</string>
+
+    <!-- Font scale (M6 THM-6). Adding a preset = one FontScales entry + its label here in both locales. -->
+    <string name="font_scale_small">Small</string>
+    <string name="font_scale_default">Default</string>
+    <string name="font_scale_large">Large</string>
+    <string name="font_scale_largest">Largest</string>
+</resources>

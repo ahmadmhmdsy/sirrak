@@ -1,0 +1,418 @@
+{
+  "code": "en",
+  "meta": {
+    "title": "Sirrak — private, offline Arabic AI assistant for Android",
+    "description": "Sirrak runs a real Arabic-English language model on your Android phone: offline chat, dictation, document answers and model control. No account, no cloud, no telemetry. Apache-2.0.",
+    "keywords": [
+      "offline AI assistant Android",
+      "Arabic AI assistant",
+      "private on-device LLM",
+      "llama.cpp Android",
+      "Arabic dictation offline",
+      "document RAG Android",
+      "F-Droid AI assistant",
+      "no telemetry AI app"
+    ]
+  },
+  "nav": {
+    "skip": "Skip to content",
+    "brand": "Sirrak",
+    "links": [
+      {
+        "label": "How it works",
+        "href": "#steps"
+      },
+      {
+        "label": "Privacy",
+        "href": "#privacy"
+      },
+      {
+        "label": "Download",
+        "href": "#download"
+      },
+      {
+        "label": "Docs",
+        "href": "#docs"
+      }
+    ],
+    "switch": {
+      "label": "العربية",
+      "href": "/ar/"
+    }
+  },
+  "hero": {
+    "wordmark": "سِرِّك",
+    "latin": "SIRRAK",
+    "headline": "Your own assistant.\nIt never leaves your phone.",
+    "lead": "Sirrak runs a real language model, Arabic dictation and document search on your Android phone. No account, no cloud, no telemetry — the only request it can make is a model download you start yourself.",
+    "primary": {
+      "label": "Download the signed APK",
+      "href": "https://github.com/alshahia/sirrak/releases/latest"
+    },
+    "secondary": {
+      "label": "See the network log",
+      "href": "#privacy"
+    },
+    "meta": [
+      "Version 1.0.0-rc1",
+      "139 MiB · Android 9+",
+      "libre flavour · SHA-256 in release notes"
+    ],
+    "screenshot": {
+      "src": "assets/screenshots/01-home-ar.png",
+      "alt": "Sirrak home screen in Arabic with a model ready and the composer at the bottom",
+      "callouts": [
+        {
+          "n": 1,
+          "label": "Offline switch",
+          "position": "top-right"
+        },
+        {
+          "n": 2,
+          "label": "Model on device",
+          "position": "mid-left"
+        },
+        {
+          "n": 3,
+          "label": "Arabic-first layout",
+          "position": "bottom-right"
+        }
+      ]
+    }
+  },
+  "steps": {
+    "title": "The first ten minutes",
+    "lead": "Four numbered moves take you from a fresh install to an assistant that answers without a network. Every screenshot below is the shipping build on a real emulator, not a mockup.",
+    "items": [
+      {
+        "n": "01",
+        "title": "Bring a model — or start with the demo",
+        "body": "Onboarding recommends a model that fits your phone and downloads it with resume and a checksum. No model is bundled: every catalogue entry shows its licence before you download it.",
+        "screenshot": {
+          "src": "assets/screenshots/03-model-manager-ar.png",
+          "alt": "Model manager with a recommended model and storage details"
+        },
+        "callout": "Recommended for your device, with licence shown up front"
+      },
+      {
+        "n": "02",
+        "title": "Ask in Arabic and watch the answer stream",
+        "body": "Chat runs on-device through llama.cpp. Stop mid-answer, regenerate, or start a clean conversation; the transcript survives process death and can be exported as Markdown.",
+        "screenshot": {
+          "src": "assets/screenshots/02-chat-answer-ar.png",
+          "alt": "Arabic chat answer streaming with copy and regenerate actions"
+        },
+        "callout": "Tokens per second are measured, not estimated"
+      },
+      {
+        "n": "03",
+        "title": "Dictate instead of typing",
+        "body": "On-device Whisper transcribes Arabic or English with a live level meter. The transcript is appended to the composer — never sent on its own — and the audio never leaves the phone.",
+        "screenshot": {
+          "src": "assets/screenshots/07-dictation-ar.png",
+          "alt": "Dictation control with a live audio level meter above the composer"
+        },
+        "callout": "The compose bridge: speech lands as text you can edit"
+      },
+      {
+        "n": "04",
+        "title": "Own the network",
+        "body": "Turn on offline-only and the app cannot open a socket, including model downloads. The network log lists the calls that actually happened on this device, bounded to 50 entries and never uploaded.",
+        "screenshot": {
+          "src": "assets/screenshots/05-privacy-ar.png",
+          "alt": "Privacy settings with the offline-only switch and network log"
+        },
+        "callout": "The only endpoint is a download you start yourself"
+      }
+    ]
+  },
+  "inventory": {
+    "title": "What is in the box",
+    "lead": "Everything below ships in the same Apache-2.0 app. Nothing needs an account, and nothing phones home.",
+    "items": [
+      {
+        "icon": "chat",
+        "title": "Local chat",
+        "body": "Streaming answers from a GGUF model, multiple conversations with search and rename, Markdown rendering, per-conversation prompts and stop sequences."
+      },
+      {
+        "icon": "mic",
+        "title": "Arabic & English dictation",
+        "body": "sherpa-onnx Whisper on the device, a live volume meter, and a transcript that waits in the composer until you send it."
+      },
+      {
+        "icon": "document",
+        "title": "Answers from your documents",
+        "body": "Import PDF, DOCX, EPUB, Markdown or text, index locally, and ask with citations you can open — retrieval is embeddings plus Arabic BM25."
+      },
+      {
+        "icon": "models",
+        "title": "Model control",
+        "body": "A curated catalogue with device-aware recommendations, resumable checksum-verified downloads, a storage manager and Hugging Face import."
+      },
+      {
+        "icon": "sliders",
+        "title": "Engine control",
+        "body": "Temperature, top-p, top-k, repeat penalty, context size, chat templates and prompts — data layers whose effective values are provable in one log line."
+      },
+      {
+        "icon": "shield",
+        "title": "Privacy surfaces",
+        "body": "Offline-only enforcement, a per-call network audit, local AI-output reports with an explicit share step, and honest status instead of dead links."
+      }
+    ]
+  },
+  "evidence": {
+    "title": "Verified, not claimed",
+    "lead": "The release candidate is covered by committed tests and reproducible gates. These are the numbers the repository can defend.",
+    "rows": [
+      {
+        "label": "JVM unit tests",
+        "value": "560",
+        "note": "0 failures across 9 modules, the same selection CI runs"
+      },
+      {
+        "label": "Arabic evaluation",
+        "value": "24/24",
+        "note": "normalisation, sentence splitting, BM25 and negative controls"
+      },
+      {
+        "label": "Android lint",
+        "value": "0 errors",
+        "note": "33 reviewed warnings, no suppressions for this surface"
+      },
+      {
+        "label": "Network calls when idle",
+        "value": "none",
+        "note": "the audit shows only user-started downloads"
+      },
+      {
+        "label": "APK signature",
+        "value": "v2",
+        "note": "certificate SHA-256 4537 ECEB 9952 AC90 … verified with apksigner"
+      },
+      {
+        "label": "Dependencies",
+        "value": "22",
+        "note": "CycloneDX 1.5 SBOM generated from the shipped licence registry"
+      }
+    ]
+  },
+  "privacy": {
+    "title": "Privacy you can check, not just read",
+    "lead": "A privacy promise is worth what its evidence is worth. Sirrak declares its endpoints in configuration, audits the calls that actually happen, and gives you a switch that stops the app at the socket.",
+    "points": [
+      {
+        "title": "No telemetry, ever",
+        "body": "No analytics, no crash service, no ads, no account. There is no server to receive your conversations, documents or reports."
+      },
+      {
+        "title": "A network log on the device",
+        "body": "Every call that actually happened appears in a bounded local log — written for you, never uploaded, cleared with the app's data."
+      },
+      {
+        "title": "Offline-only is enforced first",
+        "body": "The switch is checked before a socket opens and cancels a running download instead of queuing it."
+      },
+      {
+        "title": "Storage stays app-private",
+        "body": "Chats, documents, embeddings, models and settings live in app-private storage; sharing only happens through the Android chooser you invoke."
+      }
+    ],
+    "link": {
+      "label": "Read the full privacy policy",
+      "href": "privacy/"
+    }
+  },
+  "download": {
+    "title": "Download and verify",
+    "lead": "The libre APK is signed with the project certificate and built from the tagged release. You can verify both before installing.",
+    "steps": [
+      {
+        "n": "01",
+        "title": "Get the signed APK",
+        "body": "Open the latest release on GitHub and download the libre APK (~139 MiB, universal arm64-v8a + x86_64)."
+      },
+      {
+        "n": "02",
+        "title": "Verify the certificate",
+        "body": "Run apksigner verify --print-certs and compare SHA-256 with the fingerprint below. SHA-256 checksums are in the release notes."
+      },
+      {
+        "n": "03",
+        "title": "Install, pick a model, go offline",
+        "body": "Android 9+ is required. Choose a model in onboarding or start with the demo engine, then switch offline-only when you are ready."
+      }
+    ],
+    "primary": {
+      "label": "Open GitHub Releases",
+      "href": "https://github.com/alshahia/sirrak/releases/latest"
+    },
+    "secondary": {
+      "label": "Build from source",
+      "href": "https://github.com/alshahia/sirrak/blob/main/README.md#build-from-source"
+    },
+    "checks": [
+      {
+        "label": "Certificate SHA-256",
+        "value": "4537ECEB9952AC9020EFFCEB8B50CB10AEB795772792D632CFC3D0B9F7106806",
+        "ltr": true
+      },
+      {
+        "label": "Release tag",
+        "value": "v1.0.0-rc1 · versionCode 12",
+        "ltr": true
+      },
+      {
+        "label": "Licence",
+        "value": "Apache-2.0 · NOTICE included"
+      }
+    ],
+    "checksTitle": "Verify before installing"
+  },
+  "status": {
+    "title": "Where it is published",
+    "lead": "Honest status beats a badge that is not true yet.",
+    "items": [
+      {
+        "label": "GitHub Releases",
+        "state": "available",
+        "note": "signed libre APK for sideloading, built from this repository"
+      },
+      {
+        "label": "F-Droid",
+        "state": "planned",
+        "note": "the pinned prebuilt sherpa-onnx runtime still needs a source build in the F-Droid recipe"
+      },
+      {
+        "label": "Google Play",
+        "state": "closed testing next",
+        "note": "the Play bundle exists and is signed; the listing waits for closed testing"
+      }
+    ]
+  },
+  "faq": {
+    "title": "Questions people actually ask",
+    "items": [
+      {
+        "q": "Does it really work offline?",
+        "a": "Yes. After you import or download a model, the chat, dictation, document search and settings run without a network. Offline-only mode blocks every request and cancels a running download."
+      },
+      {
+        "q": "Is it free? What is the catch?",
+        "a": "Sirrak is free software under Apache-2.0, with no accounts, ads or telemetry. Models are not bundled and may carry their own licences; gated models need your own Hugging Face token, kept in memory only."
+      },
+      {
+        "q": "Which phones are supported?",
+        "a": "Android 9 (API 28) or newer on arm64. The x86_64 build is for emulators and development. The app warns before a download that would leave too little storage."
+      },
+      {
+        "q": "Where do the models come from?",
+        "a": "A curated catalogue with recommendations (Qwen2.5 and other GGUF models), a local GGUF import, or a Hugging Face repository import. Every model's licence is shown before download; nothing is bundled."
+      },
+      {
+        "q": "Why is the APK 139 MiB?",
+        "a": "The native llama.cpp and sherpa-onnx runtimes are compiled into the app, so it works without extra downloads. Model weights are separate and can be several hundred MiB."
+      },
+      {
+        "q": "How do I know the claims are true?",
+        "a": "The source, build records, tests, screenshots and release signatures are public in this repository. The website itself is generated from committed data and has no third-party scripts."
+      }
+    ]
+  },
+  "docs": {
+    "title": "Read the record",
+    "lead": "The project keeps public build records: what was built, how it was verified, and what is still limited.",
+    "items": [
+      {
+        "label": "Build records",
+        "href": "https://github.com/alshahia/sirrak/tree/main/docs",
+        "note": "20 documents, from the M1 shell to the launch checklist"
+      },
+      {
+        "label": "Architecture",
+        "href": "https://github.com/alshahia/sirrak/blob/main/docs/05-architecture.md",
+        "note": "modules, the plugin runtime and typed slots"
+      },
+      {
+        "label": "Launch checklist",
+        "href": "https://github.com/alshahia/sirrak/blob/main/docs/27-sirrak-launch-checklist.md",
+        "note": "what is done and what is blocked on accounts"
+      },
+      {
+        "label": "Design system",
+        "href": "https://github.com/alshahia/sirrak/blob/main/DESIGN.md",
+        "note": "Girih & Ink: palette, type, RTL and motion"
+      }
+    ]
+  },
+  "footer": {
+    "tagline": "An Arabic-first assistant that runs on your phone and never phones home.",
+    "columns": [
+      {
+        "title": "Product",
+        "links": [
+          {
+            "label": "Download",
+            "href": "https://github.com/alshahia/sirrak/releases/latest"
+          },
+          {
+            "label": "Docs",
+            "href": "https://github.com/alshahia/sirrak/tree/main/docs"
+          },
+          {
+            "label": "Design",
+            "href": "https://github.com/alshahia/sirrak/blob/main/DESIGN.md"
+          },
+          {
+            "label": "Product scope",
+            "href": "https://github.com/alshahia/sirrak/blob/main/PRODUCT.md"
+          }
+        ]
+      },
+      {
+        "title": "Project",
+        "links": [
+          {
+            "label": "GitHub",
+            "href": "https://github.com/alshahia/sirrak"
+          },
+          {
+            "label": "Releases",
+            "href": "https://github.com/alshahia/sirrak/releases"
+          },
+          {
+            "label": "Issues",
+            "href": "https://github.com/alshahia/sirrak/issues"
+          },
+          {
+            "label": "Contributing",
+            "href": "https://github.com/alshahia/sirrak/blob/main/CONTRIBUTING.md"
+          }
+        ]
+      },
+      {
+        "title": "Legal & safety",
+        "links": [
+          {
+            "label": "Privacy",
+            "href": "privacy/"
+          },
+          {
+            "label": "Security",
+            "href": "security/"
+          },
+          {
+            "label": "Licence",
+            "href": "https://github.com/alshahia/sirrak/blob/main/LICENSE"
+          },
+          {
+            "label": "Credits (NOTICE)",
+            "href": "https://github.com/alshahia/sirrak/blob/main/NOTICE"
+          }
+        ]
+      }
+    ],
+    "legal": "Apache-2.0 · no telemetry · not affiliated with any model provider."
+  }
+}

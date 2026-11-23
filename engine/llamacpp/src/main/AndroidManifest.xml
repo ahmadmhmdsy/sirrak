@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!--
+        ADR-4 process-isolation spike (M8.8): the llama.cpp engine runs in its own process so a
+        native abort cannot take the UI process down. The service is app-internal (exported=false) and
+        not yet wired into the production composition; see IsolatedEngineService and
+        docs/22-sirrak-m8-document-rag.md (ADR-4).
+    -->
+    <application>
+        <service
+            android:name="app.sirrak.engine.llamacpp.isolated.IsolatedEngineService"
+            android:exported="false"
+            android:process=":engine"
+            android:stopWithTask="true" />
+    </application>
+
+</manifest>

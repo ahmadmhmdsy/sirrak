@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Dictation, M10. -->
+    <string name="dictation_section_title">Dictation</string>
+    <string name="dictation_status">Status</string>
+    <string name="dictation_status_ready">Ready</string>
+    <string name="dictation_status_loading">Loading…</string>
+    <string name="dictation_status_failed">Could not load</string>
+    <string name="dictation_status_unloaded">Not loaded</string>
+    <string name="dictation_status_working">Working…</string>
+    <string name="dictation_model">Model</string>
+    <string name="dictation_no_model">No model</string>
+    <string name="dictation_size">Size</string>
+    <string name="dictation_import">Import a Whisper model</string>
+    <string name="dictation_selected">Selected</string>
+    <string name="dictation_remove">Remove</string>
+    <string name="dictation_remove_title">Remove model</string>
+    <string name="dictation_remove_message">"%1$s" will be deleted from this device. You can import it again later.</string>
+    <string name="dictation_language">Dictation language</string>
+    <string name="dictation_language_auto">Auto</string>
+    <string name="dictation_language_arabic">Arabic</string>
+    <string name="dictation_language_english">English</string>
+    <string name="dictation_mode">Dictation mode</string>
+    <string name="dictation_mode_toggle">Tap</string>
+    <string name="dictation_mode_hold">Hold</string>
+    <string name="dictation_note">Transcription runs on your device: audio and text are never sent to a server. Import the three Whisper files (encoder, decoder, tokens) from your file manager; they stay in app-private storage. Arabic and English are supported, and Auto lets the model detect the language.</string>
+    <string name="dictation_working">Importing…</string>
+    <string name="dictation_action_cancel">Cancel</string>
+
+    <string name="dictation_mic_start">Start dictation</string>
+    <string name="dictation_mic_stop">Stop dictation</string>
+    <string name="dictation_listening">Listening…</string>
+    <string name="dictation_transcribing">Transcribing…</string>
+    <string name="dictation_stop">Stop</string>
+    <string name="dictation_cancel">Cancel recording</string>
+    <string name="dictation_dismiss">Dismiss</string>
+
+    <string name="dictation_permission_title">Microphone permission</string>
+    <string name="dictation_permission_message">Dictation needs the microphone to turn your speech into text. Audio stays on your device and is never sent to a server.</string>
+    <string name="dictation_permission_allow">Allow</string>
+    <string name="dictation_permission_not_now">Not now</string>
+
+    <string name="dictation_reason_no_model">Import a dictation model first in Settings.</string>
+    <string name="dictation_reason_engine_load">The speech engine could not load. Check the model files.</string>
+    <string name="dictation_reason_no_permission">Dictation needs microphone permission.</string>
+    <string name="dictation_reason_recorder_unavailable">The microphone is not available on this device.</string>
+    <string name="dictation_reason_recording_failed">Audio capture failed.</string>
+    <string name="dictation_reason_too_short">The recording is too short; speak, then stop.</string>
+    <string name="dictation_reason_no_speech">No speech was heard in the recording.</string>
+    <string name="dictation_reason_transcription_failed">Could not transcribe the audio.</string>
+    <string name="dictation_reason_import_empty">No files were selected.</string>
+    <string name="dictation_reason_unsupported">Select the encoder, decoder and tokens files of a Whisper model.</string>
+    <string name="dictation_reason_missing_encoder">The encoder file is missing from the selection.</string>
+    <string name="dictation_reason_missing_decoder">The decoder file is missing from the selection.</string>
+    <string name="dictation_reason_missing_tokens">The tokens file is missing from the selection.</string>
+    <string name="dictation_reason_duplicate_role">The selection contains two files for the same role.</string>
+    <string name="dictation_reason_too_large">The model is larger than the allowed limit.</string>
+    <string name="dictation_reason_generic">The model could not be imported.</string>
+</resources>

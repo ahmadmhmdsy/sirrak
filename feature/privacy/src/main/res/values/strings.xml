@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- P3 privacy surfaces (PRV-2/PRV-5/PRV-6). Arabic is the default locale. -->
+    <string name="privacy_section_title">الخصوصية والبيانات</string>
+    <string name="privacy_offline_label">وضع عدم الاتصال فقط</string>
+    <string name="privacy_offline_description">يمنع كل طلب شبكة جديد، ويوقف أي تنزيل جارٍ. التطبيق يعمل كاملاً دون إنترنت.</string>
+    <string name="privacy_network_audit">سجل الشبكة</string>
+    <string name="privacy_network_audit_value">%1$d طلب</string>
+    <string name="privacy_reports">بلاغات مخرجات الذكاء</string>
+    <string name="privacy_reports_value">%1$d بلاغ</string>
+    <string name="privacy_policy">سياسة الخصوصية</string>
+    <string name="privacy_security">الإفصاح الأمني</string>
+    <string name="privacy_not_published">غير منشورة بعد</string>
+    <string name="privacy_open">فتح</string>
+    <string name="privacy_note">لا قياسات ولا تحليلات ولا إعلانات. لا يتصل التطبيق بالشبكة إلا عند تنزيل نموذج تختاره أنت، وكل ما تراه هنا مسجّل على جهازك ويمكنك مسحه.</string>
+
+    <string name="privacy_audit_title">الشبكة</string>
+    <string name="privacy_audit_declared">نقاط النهاية المعلنة</string>
+    <string name="privacy_audit_calls">الطلبات المسجلة على هذا الجهاز</string>
+    <string name="privacy_audit_empty">لا توجد طلبات شبكة مسجلة.</string>
+    <string name="privacy_audit_no_endpoints">لا توجد نقاط نهاية معلنة في إعدادات هذا البناء.</string>
+    <string name="privacy_audit_clear">مسح السجل</string>
+    <string name="privacy_audit_close">إغلاق</string>
+    <string name="privacy_audit_user_initiated">لا يبدأ إلا بطلب منك</string>
+    <string name="privacy_audit_started">بدأ</string>
+    <string name="privacy_audit_completed">اكتمل</string>
+    <string name="privacy_audit_failed">فشل</string>
+    <string name="privacy_endpoint_model_download_purpose">تنزيل نموذج الذكاء الذي تختاره</string>
+    <string name="privacy_endpoint_model_download_when">فقط عند بدء تنزيل نموذج من إدارة النماذج</string>
+    <string name="privacy_endpoint_unknown_purpose">غرض غير موصوف</string>
+    <string name="privacy_endpoint_unknown_when">وقت استخدام غير محدد</string>
+
+    <string name="privacy_reports_title">بلاغات مخرجات الذكاء</string>
+    <string name="privacy_reports_note">البلاغات تُحفظ على جهازك فقط. لا يُرسل شيء تلقائياً؛ المشاركة خطوة تختارها أنت.</string>
+    <string name="privacy_reports_empty">لا توجد بلاغات محفوظة.</string>
+    <string name="privacy_reports_clear">مسح كل البلاغات</string>
+    <string name="privacy_report_share">مشاركة</string>
+    <string name="privacy_report_delete">حذف</string>
+    <string name="privacy_report_action">الإبلاغ عن هذه الإجابة</string>
+    <string name="privacy_report_dialog_title">الإبلاغ عن إجابة</string>
+    <string name="privacy_report_reason_label">سبب البلاغ</string>
+    <string name="privacy_report_note_label">ملاحظة (اختياري)</string>
+    <string name="privacy_report_save">حفظ البلاغ</string>
+    <string name="privacy_report_cancel">إلغاء</string>
+    <string name="privacy_report_saved_title">حُفظ البلاغ على جهازك</string>
+    <string name="privacy_report_saved_body">لم يُرسل شيء. يمكنك مشاركة البلاغ الآن عبر تطبيق تختاره، أو إغلاق النافذة والاحتفاظ به هنا.</string>
+    <string name="privacy_report_share_action">مشاركة البلاغ</string>
+    <string name="privacy_report_done">تم</string>
+    <string name="privacy_report_queue_full">قائمة البلاغات ممتلئة؛ احذف بلاغاً أولاً.</string>
+    <string name="privacy_report_empty_answer">لا توجد إجابة قابلة للبلاغ.</string>
+    <string name="privacy_report_share_copied">نُسخ نص البلاغ إلى الحافظة لأن لا تطبيق مشاركة متاح.</string>
+    <string name="privacy_report_share_failed">تعذرت المشاركة. نص البلاغ محفوظ هنا.</string>
+    <string name="privacy_report_reason_harmful">محتوى ضار</string>
+    <string name="privacy_report_reason_hate">كراهية</string>
+    <string name="privacy_report_reason_sexual">محتوى جنسي</string>
+    <string name="privacy_report_reason_violence">عنف</string>
+    <string name="privacy_report_reason_privacy">انتهاك خصوصية</string>
+    <string name="privacy_report_reason_other">سبب آخر</string>
+</resources>

@@ -1,0 +1,31 @@
+{
+  "models": [
+    {
+      "id": "qwen2.5-1.5b-instruct-q4km",
+      "displayName": "Qwen2.5 1.5B Instruct",
+      "parameterLabel": "1.5B",
+      "quant": "Q4_K_M",
+      "sizeLabel": "~1.1 GB",
+      "ramLabel": "~1.4 GB",
+      "status": "GGUF · ready to import"
+    },
+    {
+      "id": "whisper-small-int8",
+      "displayName": "Whisper Small",
+      "parameterLabel": "244M",
+      "quant": "INT8",
+      "sizeLabel": "~0.5 GB",
+      "ramLabel": "~0.9 GB",
+      "status": "Planned · voice"
+    },
+    {
+      "id": "piper-ar-voice",
+      "displayName": "Piper Arabic voice",
+      "parameterLabel": "63M",
+      "quant": "ONNX fp32",
+      "sizeLabel": "~0.06 GB",
+      "ramLabel": "~0.2 GB",
+      "status": "Planned · voice"
+    }
+  ]
+}

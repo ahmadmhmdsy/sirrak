@@ -1,0 +1,105 @@
+{
+  "schemaVersion": 1,
+  "versionSource": "app/build.gradle.kts",
+  "requireVersionInWhatsNew": true,
+  "limits": {
+    "name": 30,
+    "shortDescription": 80,
+    "fullDescription": 4000,
+    "whatsNew": 500
+  },
+  "languages": [
+    {
+      "code": "ar",
+      "dir": "ar",
+      "rtl": true,
+      "files": {
+        "name": "name.txt",
+        "shortDescription": "short_description.txt",
+        "fullDescription": "full_description.txt",
+        "whatsNew": "whats_new.txt"
+      }
+    },
+    {
+      "code": "en",
+      "dir": "en",
+      "rtl": false,
+      "files": {
+        "name": "name.txt",
+        "shortDescription": "short_description.txt",
+        "fullDescription": "full_description.txt",
+        "whatsNew": "whats_new.txt"
+      }
+    }
+  ],
+  "screenshots": {
+    "dir": "screenshots",
+    "min": 2,
+    "max": 8,
+    "minSide": 320,
+    "maxSide": 3840,
+    "orientation": "portrait",
+    "extension": ".png"
+  },
+  "graphics": {
+    "manifest": "graphics/manifest.json",
+    "required": [
+      {
+        "file": "icon-512.png",
+        "width": 512,
+        "height": 512
+      },
+      {
+        "file": "feature-graphic-1024x500.png",
+        "width": 1024,
+        "height": 500
+      }
+    ]
+  },
+  "requiredFiles": [
+    "README.md",
+    "play/data-safety.md",
+    "graphics/README.md",
+    "../fdroid/metadata/app.sirrak.yml",
+    "../sbom.cdx.json",
+    "../NOTICE",
+    "../PRIVACY.md",
+    "../SECURITY.md"
+  ],
+  "nameSources": {
+    "ar": "strings:app_name",
+    "en": "literal:Sirrak"
+  },
+  "release": {
+    "gradleTasks": [
+      ":app:assembleLibreRelease",
+      ":app:bundlePlayRelease",
+      ":app:lintLibreDebug",
+      ":app:testLibreDebugUnitTest",
+      "testDebugUnitTest"
+    ],
+    "jvmTestsMinimum": 555,
+    "lintReport": "app/build/reports/lint-results-libreDebug.xml",
+    "artifacts": [
+      {
+        "id": "apk-libre",
+        "format": "apk",
+        "path": "app/build/outputs/apk/libre/release/app-libre-release.apk"
+      },
+      {
+        "id": "aab-play",
+        "format": "aab",
+        "path": "app/build/outputs/bundle/playRelease/app-play-release.aab"
+      }
+    ],
+    "signing": {
+      "certificateSha256": "4537ECEB9952AC9020EFFCEB8B50CB10AEB795772792D632CFC3D0B9F7106806"
+    },
+    "publicSite": {
+      "siteFile": "website/site.json",
+      "distDir": "website/dist",
+      "buildScript": "scripts/build-site.ps1",
+      "validateScript": "scripts/validate-site.ps1"
+    }
+  }
+}

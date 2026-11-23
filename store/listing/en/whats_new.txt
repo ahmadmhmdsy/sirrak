@@ -1,0 +1,8 @@
+1.0.0-rc1 — first release candidate, as a signed APK from GitHub Releases.
+- On-device chat with a local GGUF model, streaming answers.
+- Arabic and English dictation with on-device Whisper.
+- Import documents, index locally, get answers with sources.
+- Model catalogue, resumable checksum-verified downloads, offline-only, network log.
+- Five theme packs, Arabic-first RTL, large text.
+- Apache-2.0, no account, no cloud, no telemetry. Android 9+.
+- Google Play and F-Droid not published yet.

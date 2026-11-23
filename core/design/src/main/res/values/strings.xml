@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Theme packs (M4). Adding a pack = add its name/description here in both locales + one ThemePack. -->
+    <string name="theme_pack_girih_ink">جِرِه والحِبر</string>
+    <string name="theme_pack_girih_ink_desc">الأصلي: عاجي وحِبري، لازوردي ونُحاسي.</string>
+    <string name="theme_pack_lapis_night">ليل لازوردي</string>
+    <string name="theme_pack_lapis_night_desc">أرضية لازوردية عميقة للقراءة الليلية.</string>
+    <string name="theme_pack_turquoise_dawn">فجر فيروزي</string>
+    <string name="theme_pack_turquoise_dawn_desc">ورق دافئ وفيروزي عميق، كفجرٍ على دجلة.</string>
+    <string name="theme_pack_madder_dusk">غروب الفُوَّة</string>
+    <string name="theme_pack_madder_dusk_desc">دفء السوق: عاجي ورديّ، فُوَّة ونُحاس.</string>
+    <string name="theme_pack_paper_contrast">ورق</string>
+    <string name="theme_pack_paper_contrast_desc">أقصى وضوح: حبرٌ على ورق، بلا زخرفة لونية.</string>
+
+    <!-- Font scale (M6 THM-6). Adding a preset = one FontScales entry + its label here in both locales. -->
+    <string name="font_scale_small">صغير</string>
+    <string name="font_scale_default">افتراضي</string>
+    <string name="font_scale_large">كبير</string>
+    <string name="font_scale_largest">الأكبر</string>
+</resources>

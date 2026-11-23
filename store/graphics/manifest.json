@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "generatedBy": "scripts/store-graphics.ps1",
+  "renderer": {
+    "name": "chrome.exe",
+    "mode": "headless --screenshot",
+    "version": "158.0.8127.36"
+  },
+  "sources": {
+    "brand": "store/graphics/brand.json",
+    "brandSha256": "117d062844a7f8c0b1cb24028679e184e6088eff8bb6dc08cda77ae0ae243868",
+    "mark": "app/src/main/res/drawable/ic_launcher_foreground.xml",
+    "palette": "core/design/src/main/java/app/sirrak/core/design/ThemePacks.kt#girih_ink light"
+  },
+  "outputs": [
+    {
+      "file": "icon-512.png",
+      "width": 512,
+      "height": 512,
+      "bytes": 7665,
+      "sha256": "582d02e21a37856c0b08373c483442c7dfba6ceddb8bbf02a4cc1fd0789ddbcb"
+    },
+    {
+      "file": "feature-graphic-1024x500.png",
+      "width": 1024,
+      "height": 500,
+      "bytes": 32749,
+      "sha256": "5089dfab3cafc30d11631f9b4b450d8e34ed88b5f57c945d68a547f14f827c05"
+    }
+  ]
+}

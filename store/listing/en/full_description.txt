@@ -1,0 +1,29 @@
+Sirrak is a private assistant for Arabic and English that runs the language model on your phone. Chat, dictation, questions about your documents and model management all work without a network, and nothing is sent to a server.
+
+WHERE TO GET IT
+Sirrak is distributed today as a signed APK from GitHub Releases, and it is not on Google Play or F-Droid yet. The APK is about 139 MiB, universal for arm64-v8a and x86_64, and signed with the project certificate (SHA-256 4537ECEB9952AC9020EFFCEB8B50CB10AEB795772792D632CFC3D0B9F7106806), so you can check it with apksigner before you install. The source and the build records are public under Apache-2.0.
+
+HOW IT WORKS
+- On-device engine. Chat runs through llama.cpp on the CPU with a GGUF model you choose; conversations stay in app-private storage.
+- Offline by design. Import a GGUF file and the app never needs a network again. The offline-only switch blocks every request and cancels a running download.
+- Arabic first. Right-to-left layout, Amiri and IBM Plex Sans Arabic typography, Arabic and English dictation, and five hand-written theme packs (Girih and Ink, Lapis Night, Turquoise Dawn, Madder Dusk, Paper) instead of a stock Material palette.
+
+WHAT YOU CAN DO
+- Chat: streaming answers, conversation history with search and rename, attachments, regenerate and copy, per-conversation settings, and a report action for AI output.
+- Dictate: on-device sherpa-onnx Whisper in Arabic and English with a live level meter; the transcript waits in the composer until you send it, and the audio never leaves the phone.
+- Ask your documents: import PDF, text, DOCX, EPUB or Markdown, index on the device, and ask questions answered from numbered sources you can open.
+- Manage models: a curated catalogue with device-aware recommendations, resumable checksum-verified downloads, pause, cancel and retry, background progress, storage management, and Hugging Face import for anything else.
+- Tune the engine: temperature, top-p, top-k, repeat penalty, context size, streaming, chat templates and prompts.
+- Keep your privacy: a per-call network log, offline-only mode, and local AI-output reports you export only if you choose.
+
+REQUIREMENTS
+- Android 9 (API 28) or newer on an arm64 phone; the x86_64 build is for emulators.
+- The signed APK is about 139 MiB, because the llama.cpp and sherpa-onnx runtimes ship inside it.
+- No model is bundled. Pick one in onboarding, import a GGUF file, or start with the built-in demo engine to see the interface.
+
+LICENCE AND PRIVACY
+- App code: Apache-2.0. A built-in credits list covers every engine, library and font, with the full licence texts offline.
+- No account, no cloud, no ads, no analytics, no telemetry and no crash reporting service. There is no server to send anything to.
+- The only network request is a model download you start yourself. Gated models need your own Hugging Face token, held in memory only.
+
+Sirrak is not affiliated with, endorsed by, or sponsored by any model provider.

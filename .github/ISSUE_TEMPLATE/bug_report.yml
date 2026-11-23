@@ -1,0 +1,81 @@
+name: Bug report
+description: Something in Sirrak does not work as intended.
+title: "[bug] "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to report a bug. A security problem does not belong here: use the
+        private advisory form linked in the issue chooser instead (see [SECURITY.md](https://github.com/alshahia/sirrak/blob/main/SECURITY.md)).
+
+        Please do not paste keystore material, download tokens, private documents or personal data.
+
+  - type: input
+    id: version
+    attributes:
+      label: Sirrak version
+      description: Settings → About shows the version, the versionCode and the store flavour (`libre` or `play`). Copy them from there.
+      placeholder: 1.0.0-rc1 (versionCode 12, libre)
+    validations:
+      required: true
+
+  - type: input
+    id: device
+    attributes:
+      label: Device and Android version
+      description: Phone or emulator model, ABI (arm64-v8a or x86_64) and the Android version.
+      placeholder: Samsung Galaxy A54, arm64-v8a, Android 14 (API 34)
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      description: Numbered steps from a known starting state — a fresh launch, an empty library, a loaded model.
+      placeholder: |
+        1. Launch Sirrak
+        2. Open Settings → Engine
+        3. ...
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behaviour
+      description: What the app should have done, and where that is documented (if it is).
+    validations:
+      required: true
+
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behaviour
+      description: What happened instead. For a UI bug, a screenshot or a screen recording is more useful than a description.
+    validations:
+      required: true
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs
+      description: |
+        Optional. If the bug involves chat, dictation, downloads or model loading, attach the relevant logcat lines:
+        `adb logcat -s SirrakLlama`. Remove anything private (prompts, document text, tokens) before posting.
+      render: text
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: confirmations
+    attributes:
+      label: Before you post
+      options:
+        - label: I removed secrets, download tokens, keystore material and personal data from this report.
+          required: true
+        - label: This is not a security vulnerability; security reports go to the private advisory form, never to a public issue.
+          required: true
+        - label: I checked the known limits in the README (emulator-only performance, universal APK, no store listing yet) and this is not one of them.
+          required: false

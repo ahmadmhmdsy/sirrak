@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="nav_settings">الإعدادات</string>
+    <string name="settings_title">الإعدادات</string>
+    <string name="settings_appearance">المظهر</string>
+    <string name="settings_theme">الوضع</string>
+    <string name="theme_light">نهاري</string>
+    <string name="theme_dark">ليلي</string>
+    <string name="theme_system">النظام</string>
+    <string name="settings_theme_pack">حزمة الألوان</string>
+    <string name="settings_theme_pack_note">الألوان فقط تتغير: الشكل والخطوط والحركة تبقى كما هي. يُطبَّق فورًا ويُحفظ.</string>
+    <string name="settings_language">اللغة</string>
+    <string name="language_arabic">العربية</string>
+    <string name="language_english">English</string>
+    <string name="settings_language_note">تغيير اللغة يعيد تحميل الواجهة ويحفظ اختيارك.</string>
+    <string name="settings_font_scale">حجم النص</string>
+    <string name="settings_font_scale_note">يكبّر النص فقط، دون تغيير التخطيط. يُطبَّق فورًا ويُحفظ.</string>
+</resources>

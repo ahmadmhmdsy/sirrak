@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="nav_settings">Settings</string>
+    <string name="settings_title">Settings</string>
+    <string name="settings_appearance">Appearance</string>
+    <string name="settings_theme">Theme</string>
+    <string name="theme_light">Light</string>
+    <string name="theme_dark">Dark</string>
+    <string name="theme_system">System</string>
+    <string name="settings_theme_pack">Theme pack</string>
+    <string name="settings_theme_pack_note">Only colours change: layout, type and motion stay. Applies instantly and is remembered.</string>
+    <string name="settings_language">Language</string>
+    <string name="language_arabic">العربية</string>
+    <string name="language_english">English</string>
+    <string name="settings_language_note">Changing the language reloads the interface and remembers your choice.</string>
+    <string name="settings_font_scale">Text size</string>
+    <string name="settings_font_scale_note">Scales text only, not layout. Applies instantly and is remembered.</string>
+</resources>

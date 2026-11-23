@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- P3 privacy surfaces (PRV-2/PRV-5/PRV-6). English. -->
+    <string name="privacy_section_title">Privacy &amp; data</string>
+    <string name="privacy_offline_label">Offline-only mode</string>
+    <string name="privacy_offline_description">Blocks every new network request and stops a running download. The app works fully without internet.</string>
+    <string name="privacy_network_audit">Network log</string>
+    <string name="privacy_network_audit_value">%1$d calls</string>
+    <string name="privacy_reports">AI output reports</string>
+    <string name="privacy_reports_value">%1$d reports</string>
+    <string name="privacy_policy">Privacy policy</string>
+    <string name="privacy_security">Security disclosure</string>
+    <string name="privacy_not_published">Not published yet</string>
+    <string name="privacy_open">Open</string>
+    <string name="privacy_note">No telemetry, analytics or ads. The app contacts the network only to download a model you chose, and everything on this page is logged on your device and can be cleared.</string>
+
+    <string name="privacy_audit_title">Network</string>
+    <string name="privacy_audit_declared">Declared endpoints</string>
+    <string name="privacy_audit_calls">Calls recorded on this device</string>
+    <string name="privacy_audit_empty">No network calls are recorded.</string>
+    <string name="privacy_audit_no_endpoints">No endpoints are declared in this build\'s configuration.</string>
+    <string name="privacy_audit_clear">Clear log</string>
+    <string name="privacy_audit_close">Close</string>
+    <string name="privacy_audit_user_initiated">Only starts when you ask</string>
+    <string name="privacy_audit_started">Started</string>
+    <string name="privacy_audit_completed">Completed</string>
+    <string name="privacy_audit_failed">Failed</string>
+    <string name="privacy_endpoint_model_download_purpose">Download the AI model you choose</string>
+    <string name="privacy_endpoint_model_download_when">Only when you start a download in Models</string>
+    <string name="privacy_endpoint_unknown_purpose">Undescribed purpose</string>
+    <string name="privacy_endpoint_unknown_when">Unspecified usage time</string>
+
+    <string name="privacy_reports_title">AI output reports</string>
+    <string name="privacy_reports_note">Reports are saved on your device only. Nothing is sent automatically; sharing is a step you choose.</string>
+    <string name="privacy_reports_empty">No reports are saved.</string>
+    <string name="privacy_reports_clear">Clear all reports</string>
+    <string name="privacy_report_share">Share</string>
+    <string name="privacy_report_delete">Delete</string>
+    <string name="privacy_report_action">Report this answer</string>
+    <string name="privacy_report_dialog_title">Report an answer</string>
+    <string name="privacy_report_reason_label">Reason</string>
+    <string name="privacy_report_note_label">Note (optional)</string>
+    <string name="privacy_report_save">Save report</string>
+    <string name="privacy_report_cancel">Cancel</string>
+    <string name="privacy_report_saved_title">Report saved on your device</string>
+    <string name="privacy_report_saved_body">Nothing was sent. You can share the report now through an app you choose, or close this dialog and keep it here.</string>
+    <string name="privacy_report_share_action">Share report</string>
+    <string name="privacy_report_done">Done</string>
+    <string name="privacy_report_queue_full">The report list is full; delete a report first.</string>
+    <string name="privacy_report_empty_answer">There is no answer to report.</string>
+    <string name="privacy_report_share_copied">The report text was copied to the clipboard because no sharing app is available.</string>
+    <string name="privacy_report_share_failed">Sharing failed. The report is still saved here.</string>
+    <string name="privacy_report_reason_harmful">Harmful content</string>
+    <string name="privacy_report_reason_hate">Hate</string>
+    <string name="privacy_report_reason_sexual">Sexual content</string>
+    <string name="privacy_report_reason_violence">Violence</string>
+    <string name="privacy_report_reason_privacy">Privacy violation</string>
+    <string name="privacy_report_reason_other">Other reason</string>
+</resources>

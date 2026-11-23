@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Security policy</title>
+<meta name="description" content="How to report a vulnerability in Sirrak, what is in scope, and the design commitments that reduce the attack surface to a phone with no server and no telemetry.">
+<meta name="author" content="Sirrak contributors">
+<meta name="theme-color" content="#F7F3EA">
+<meta name="color-scheme" content="light">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<link rel="canonical" href="https://alshahia.github.io/sirrak/security/">
+<link rel="alternate" hreflang="en" href="https://alshahia.github.io/sirrak/security/">
+<link rel="alternate" hreflang="ar" href="https://alshahia.github.io/sirrak/ar/security/">
+<link rel="alternate" hreflang="x-default" href="https://alshahia.github.io/sirrak/security/">
+<link rel="icon" href="../assets/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="icon" href="../assets/icon-192.png" sizes="192x192" type="image/png">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+<link rel="manifest" href="../manifest.webmanifest">
+<link rel="preload" href="../assets/fonts/amiri-bold.ttf" as="font" type="font/ttf" crossorigin>
+<link rel="preload" href="../assets/fonts/plex-arabic-regular.ttf" as="font" type="font/ttf" crossorigin>
+<link rel="stylesheet" href="../assets/site.css">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Sirrak · سِرِّك">
+<meta property="og:title" content="Security policy">
+<meta property="og:description" content="How to report a vulnerability in Sirrak, what is in scope, and the design commitments that reduce the attack surface to a phone with no server and no telemetry.">
+<meta property="og:url" content="https://alshahia.github.io/sirrak/security/">
+<meta property="og:image" content="https://alshahia.github.io/sirrak/assets/og-image.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="سِرِّك — مساعدك الخاص يعمل على جهازك">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="ar_IQ">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Security policy">
+<meta name="twitter:description" content="How to report a vulnerability in Sirrak, what is in scope, and the design commitments that reduce the attack surface to a phone with no server and no telemetry.">
+<meta name="twitter:image" content="https://alshahia.github.io/sirrak/assets/og-image.png">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","name":"Security policy","description":"How to report a vulnerability in Sirrak, what is in scope, and the design commitments that reduce the attack surface to a phone with no server and no telemetry.","url":"https://alshahia.github.io/sirrak/security/","inLanguage":"en","datePublished":"2026-11-23","dateModified":"2026-11-23","isPartOf":{"@type":"WebSite","name":"Sirrak · سِرِّك","url":"https://alshahia.github.io/sirrak/","inLanguage":["ar","en"],"publisher":{"@type":"Organization","name":"Sirrak","url":"https://alshahia.github.io/sirrak/","logo":"https://alshahia.github.io/sirrak/assets/icon-512.png","sameAs":["https://github.com/alshahia/sirrak"]}},"publisher":{"@type":"Organization","name":"Sirrak","url":"https://alshahia.github.io/sirrak/","logo":"https://alshahia.github.io/sirrak/assets/icon-512.png","sameAs":["https://github.com/alshahia/sirrak"]}}]}</script>
+</head>
+<body class="policy">
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+<div class="wrap header-inner">
+<a class="brand" href="../" aria-label="Sirrak — سِرِّك"><svg class="brand-mark" viewBox="0 0 108 108" fill="none" stroke="currentColor" stroke-width="4.5" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M54,26 L62.8,37.6 L77.4,40.2 L67.2,51.4 L69.8,66 L54,59.6 L38.2,66 L40.8,51.4 L30.6,40.2 L45.2,37.6 Z" /><path d="M41,82 L41,74 A13,13 0 0 1 67,74 L67,82 Z" /></svg><span class="brand-name" lang="ar">سِرِّك</span><span class="brand-latin" aria-hidden="true">SIRRAK</span></a>
+<nav class="site-nav" aria-label="Sirrak"><ul>
+<li><a href="../#steps">How it works</a></li>
+<li><a href="../#privacy">Privacy</a></li>
+<li><a href="../#download">Download</a></li>
+<li><a href="../#docs">Docs</a></li>
+</ul></nav>
+<a class="lang-switch" href="../ar/security/" hreflang="ar" lang="ar">العربية</a>
+</div>
+</header>
+<main id="main">
+<div class="wrap policy-wrap">
+<header class="policy-head">
+<a class="policy-back" href="../">Back to Sirrak</a>
+<p class="policy-dateline">Last updated: 23 November 2026 · Applies to 1.0.0-rc1</p>
+<h1>Security policy</h1>
+<ul class="policy-summary">
+<li>Report vulnerabilities privately through GitHub Security Advisories — never in a public issue.</li>
+<li>Sirrak has no server and no telemetry endpoint to attack; release builds are minified and store data in app-private storage.</li>
+<li>Expected acknowledgement within 7 days; no paid bug bounty.</li>
+</ul>
+</header>
+<article class="policy">
+<section class="policy-section">
+<h2>Supported versions</h2>
+<p>Sirrak is pre-1.0. Security fixes land on the newest release only; older builds are not patched.</p>
+</section>
+<section class="policy-section">
+<h2>Reporting a vulnerability</h2>
+<p>Please do not open a public issue for a security problem. Use the private advisory form at github.com/alshahia/sirrak/security/advisories/new and include:</p>
+<ul>
+<li>the app version (Settings → About) and Android version,</li>
+<li>the device or emulator model,</li>
+<li>what you did, what you expected, and what happened,</li>
+<li>a proof of concept if you have one.</li>
+</ul>
+<p>You can expect an acknowledgement within 7 days and a status update within 30 days. We do not run a paid bug bounty.</p>
+</section>
+<section class="policy-section">
+<h2>Scope</h2>
+<p>In scope: the app itself (chat, library/RAG, dictation, model download/import, privacy surfaces) and the way it stores data on the device.</p>
+<ul>
+<li>Out of scope: vulnerabilities in Android itself, in third-party model weights, and in the upstream llama.cpp / sherpa-onnx / LiteRT-LM code — report those upstream.</li>
+<li>Out of scope: attacks that require a rooted device or physical access with an unlocked bootloader.</li>
+</ul>
+</section>
+<section class="policy-section">
+<h2>Design commitments relevant to security</h2>
+<ul>
+<li>No server-side component and no telemetry endpoint to attack.</li>
+<li>Chats, documents, embeddings, models, network log and reports are stored in app-private storage.</li>
+<li>The network audit is the single place that records outbound calls; it is bounded and local.</li>
+<li>Release builds are minified with R8 and ship no debug-only cleartext permission (cleartext HTTP is debug-only, used by loopback device tests).</li>
+<li>Model downloads are verified against the catalogue SHA-256 before installation.</li>
+</ul>
+</section>
+<section class="policy-section">
+<h2>Disclosure</h2>
+<p>We will credit reporters who ask to be credited, and publish a short advisory once a fix is available. Please give us a reasonable window before public disclosure.</p>
+</section>
+</article>
+<p class="policy-footnote">Last updated: 23 November 2026 · Applies to 1.0.0-rc1 · <a href="https://github.com/alshahia/sirrak">An Arabic-first assistant that runs on your phone and never phones home.</a></p>
+</div>
+</main>
+<footer class="site-footer">
+<div class="wrap">
+<div class="footer-top">
+<div>
+<p class="footer-mark" lang="ar">سِرِّك</p>
+<p class="footer-tagline">An Arabic-first assistant that runs on your phone and never phones home.</p>
+</div>
+<div class="footer-columns">
+<div>
+<h3>Product</h3>
+<ul>
+<li><a href="https://github.com/alshahia/sirrak/releases/latest">Download</a></li>
+<li><a href="https://github.com/alshahia/sirrak/tree/main/docs">Docs</a></li>
+<li><a href="https://github.com/alshahia/sirrak/blob/main/DESIGN.md">Design</a></li>
+<li><a href="https://github.com/alshahia/sirrak/blob/main/PRODUCT.md">Product scope</a></li>
+</ul>
+</div>
+<div>
+<h3>Project</h3>
+<ul>
+<li><a href="https://github.com/alshahia/sirrak">GitHub</a></li>
+<li><a href="https://github.com/alshahia/sirrak/releases">Releases</a></li>
+<li><a href="https://github.com/alshahia/sirrak/issues">Issues</a></li>
+<li><a href="https://github.com/alshahia/sirrak/blob/main/CONTRIBUTING.md">Contributing</a></li>
+</ul>
+</div>
+<div>
+<h3>Legal &amp; safety</h3>
+<ul>
+<li><a href="../privacy/">Privacy</a></li>
+<li><a href="../security/">Security</a></li>
+<li><a href="https://github.com/alshahia/sirrak/blob/main/LICENSE">Licence</a></li>
+<li><a href="https://github.com/alshahia/sirrak/blob/main/NOTICE">Credits (NOTICE)</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="footer-legal">
+<span>Apache-2.0 · no telemetry · not affiliated with any model provider.</span>
+<span>© 2026 Sirrak contributors · <a href="https://github.com/alshahia/sirrak/blob/main/LICENSE">Apache-2.0</a></span>
+</div>
+</div>
+</footer>
+</body>
+</html>

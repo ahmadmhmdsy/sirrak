@@ -1,0 +1,137 @@
+{
+  "schemaVersion": 1,
+  "provenance": {
+    "palette": "core/design/src/main/java/app/sirrak/core/design/ThemePacks.kt#girih_ink light",
+    "mark": "app/src/main/res/drawable/ic_launcher_foreground.xml",
+    "copy": {
+      "arabicWordmark": "app/src/main/res/values/strings.xml#app_name",
+      "latinWordmark": "store/listing/en/name.txt",
+      "taglineLine1": "feature/chat/src/main/res/values/strings.xml#empty_promise line 1",
+      "taglineLine2": "feature/chat/src/main/res/values/strings.xml#empty_promise line 2",
+      "privacyLine": "feature/chat/src/main/res/values/strings.xml#empty_privacy"
+    }
+  },
+  "palette": {
+    "ground": "#F7F3EA",
+    "surface": "#FDFAF3",
+    "ink": "#1B2430",
+    "muted": "#5C6672",
+    "lapis": "#1D3F6E",
+    "brass": "#B08D3E",
+    "hairline": "#E3DCCB"
+  },
+  "fonts": {
+    "displayBold": "core/design/src/main/res/font/amiri_bold.ttf",
+    "displayRegular": "core/design/src/main/res/font/amiri_regular.ttf",
+    "sansSemibold": "core/design/src/main/res/font/ibm_plex_sans_arabic_semibold.ttf",
+    "sansRegular": "core/design/src/main/res/font/ibm_plex_sans_arabic_regular.ttf"
+  },
+  "copy": {
+    "arabicWordmark": "سِرِّك",
+    "latinWordmark": "SIRRAK",
+    "taglineLine1": "مساعدك الخاص،",
+    "taglineLine2": "يعمل على جهازك ولا يغادره.",
+    "privacyLine": "لا حساب. لا سحابة. لا تتبّع."
+  },
+  "mark": {
+    "viewport": 108,
+    "paths": [
+      {
+        "d": "M54,26 L62.8,37.6 L77.4,40.2 L67.2,51.4 L69.8,66 L54,59.6 L38.2,66 L40.8,51.4 L30.6,40.2 L45.2,37.6 Z"
+      },
+      {
+        "d": "M41,82 L41,74 A13,13 0 0 1 67,74 L67,82 Z"
+      }
+    ]
+  },
+  "outputs": {
+    "icon": {
+      "file": "icon-512.png",
+      "width": 512,
+      "height": 512,
+      "background": "ground",
+      "mark": {
+        "color": "lapis",
+        "box": "full"
+      }
+    },
+    "featureGraphic": {
+      "file": "feature-graphic-1024x500.png",
+      "width": 1024,
+      "height": 500,
+      "background": "ground",
+      "layers": [
+        {
+          "kind": "tile",
+          "left": 128,
+          "top": 116,
+          "size": 200,
+          "radius": 42,
+          "background": "lapis",
+          "markColor": "ground"
+        },
+        {
+          "kind": "text",
+          "textKey": "privacyLine",
+          "font": "sansRegular",
+          "size": 19,
+          "color": "muted",
+          "top": 340,
+          "left": 68,
+          "width": 320,
+          "align": "center",
+          "letterSpacing": 0
+        },
+        {
+          "kind": "text",
+          "textKey": "arabicWordmark",
+          "font": "displayBold",
+          "size": 138,
+          "color": "lapis",
+          "top": 64,
+          "right": 72,
+          "lineHeight": 1.4
+        },
+        {
+          "kind": "text",
+          "textKey": "latinWordmark",
+          "font": "sansSemibold",
+          "size": 25,
+          "color": "ink",
+          "top": 270,
+          "right": 80,
+          "letterSpacing": 13,
+          "direction": "ltr"
+        },
+        {
+          "kind": "rule",
+          "top": 306,
+          "right": 80,
+          "width": 158,
+          "height": 2,
+          "color": "brass"
+        },
+        {
+          "kind": "text",
+          "textKey": "taglineLine1",
+          "font": "displayBold",
+          "size": 40,
+          "color": "ink",
+          "top": 330,
+          "right": 78,
+          "lineHeight": 1.35
+        },
+        {
+          "kind": "text",
+          "textKey": "taglineLine2",
+          "font": "displayBold",
+          "size": 40,
+          "color": "ink",
+          "top": 386,
+          "right": 78,
+          "lineHeight": 1.35
+        }
+      ]
+    }
+  }
+}

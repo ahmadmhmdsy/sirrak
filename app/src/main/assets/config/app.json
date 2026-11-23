@@ -1,0 +1,62 @@
+{
+  "schemaVersion": 1,
+  "features": {
+    "order": [
+      "library",
+      "engine",
+      "about",
+      "chat",
+      "settings",
+      "asr",
+      "voice",
+      "models",
+      "privacy"
+    ],
+    "enabled": []
+  },
+  "theme": {
+    "defaultMode": "system",
+    "defaultPack": "girih_ink"
+  },
+  "language": {
+    "defaultLanguage": "ar"
+  },
+  "engine": {
+    "provider": "llamacpp",
+    "contextTokens": 2048,
+    "maxTokens": 512,
+    "temperature": 0.7,
+    "topP": 0.95,
+    "topK": 40,
+    "systemPrompt": "You are Sirrak, a private AI assistant running entirely on the user's phone. Answer in the language of the user's last message. Be concise, honest and helpful. If asked who you are, say you are Sirrak. Never claim to be made by another company."
+  },
+  "content": {
+    "demoReplies": "content/demo_chat.json",
+    "models": "content/models.json",
+    "catalog": "catalog/models_catalogue.json"
+  },
+  "privacy": {
+    "offlineByDefault": false,
+    "policyUrl": "https://alshahia.github.io/sirrak/privacy/",
+    "securityUrl": "https://alshahia.github.io/sirrak/security/",
+    "reportEmail": "",
+    "reportIssueUrl": "https://github.com/alshahia/sirrak/issues/new/choose",
+    "endpoints": [
+      {
+        "id": "model_download",
+        "host": "huggingface.co",
+        "purpose": "Download the AI model you choose",
+        "whenUsed": "Only when you start a model download",
+        "userInitiated": true,
+        "purposeKey": "model_download"
+      }
+    ]
+  },
+  "licences": {
+    "assetPath": "config/licences.json"
+  },
+  "ui": {
+    "maxContentWidthDp": 680,
+    "showTimestamps": false
+  }
+}

@@ -1,0 +1,78 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "nameAr": "سِرِّك",
+    "nameEn": "Sirrak",
+    "version": "1.0.0-rc1",
+    "releaseDate": "2026-11-23"
+  },
+  "siteUrl": "https://alshahia.github.io/sirrak/",
+  "repoUrl": "https://github.com/alshahia/sirrak",
+  "releaseUrl": "https://github.com/alshahia/sirrak/releases/latest",
+  "releasesUrl": "https://github.com/alshahia/sirrak/releases",
+  "issuesUrl": "https://github.com/alshahia/sirrak/issues",
+  "advisoriesUrl": "https://github.com/alshahia/sirrak/security/advisories/new",
+  "docsUrl": "https://github.com/alshahia/sirrak/tree/main/docs",
+  "designUrl": "https://github.com/alshahia/sirrak/blob/main/DESIGN.md",
+  "apkSizeLabel": "139 MiB",
+  "minAndroid": "Android 9+ (API 28)",
+  "minAndroidAr": "أندرويد 9+ (API 28)",
+  "certificateSha256": "4537ECEB9952AC9020EFFCEB8B50CB10AEB795772792D632CFC3D0B9F7106806",
+  "certificateShort": "4537 ECEB 9952 AC90",
+  "license": "Apache-2.0",
+  "languages": [
+    {
+      "code": "en",
+      "path": "",
+      "htmlLang": "en",
+      "dir": "ltr",
+      "label": "English",
+      "switchLabel": "العربية",
+      "ogLocale": "en_US",
+      "alternateOgLocale": "ar_IQ"
+    },
+    {
+      "code": "ar",
+      "path": "ar/",
+      "htmlLang": "ar",
+      "dir": "rtl",
+      "label": "العربية",
+      "switchLabel": "English",
+      "ogLocale": "ar_IQ",
+      "alternateOgLocale": "en_US"
+    }
+  ],
+  "pages": {
+    "landing": {
+      "file": "index.html"
+    },
+    "privacy": {
+      "file": "privacy/index.html"
+    },
+    "security": {
+      "file": "security/index.html"
+    }
+  },
+  "assets": {
+    "css": "assets/site.css",
+    "ogImage": "assets/og-image.png",
+    "icon512": "assets/icon-512.png",
+    "icon192": "assets/icon-192.png",
+    "appleTouchIcon": "assets/apple-touch-icon.png",
+    "favicon32": "assets/favicon-32.png",
+    "fonts": {
+      "amiriBold": "assets/fonts/amiri-bold.ttf",
+      "amiriRegular": "assets/fonts/amiri-regular.ttf",
+      "sansRegular": "assets/fonts/plex-arabic-regular.ttf",
+      "sansSemibold": "assets/fonts/plex-arabic-semibold.ttf"
+    },
+    "screenshots": {
+      "homeAr": "assets/screenshots/01-home-ar.png",
+      "chatAr": "assets/screenshots/02-chat-answer-ar.png",
+      "modelsAr": "assets/screenshots/03-model-manager-ar.png",
+      "privacyAr": "assets/screenshots/05-privacy-ar.png",
+      "dictationAr": "assets/screenshots/07-dictation-ar.png",
+      "settingsEn": "assets/screenshots/08-settings-en.png"
+    }
+  }
+}

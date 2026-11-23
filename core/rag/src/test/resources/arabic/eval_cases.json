@@ -1,0 +1,229 @@
+{
+  "version": 1,
+  "description": "Deterministic Arabic text-pipeline eval for the retrieval stack: normalisation, tokenisation, sentence splitting and BM25 retrieval including negative controls. Every expectation is derived from docs/26 P3.6 and the ArabicText contract; no model inference is involved.",
+  "normalization": [
+    {
+      "id": "diacritics",
+      "input": "مُحَمَّدٌ",
+      "expected": "محمد",
+      "tokens": [
+        "محمد"
+      ]
+    },
+    {
+      "id": "tatweel",
+      "input": "سِـــرِّك",
+      "expected": "سرك",
+      "tokens": [
+        "سرك"
+      ]
+    },
+    {
+      "id": "alef_variants",
+      "input": "أَحْمَد إِبْرَاهِيم آدَم",
+      "expected": "احمد ابراهيم ادم"
+    },
+    {
+      "id": "alef_maqsura",
+      "input": "مستشفى على",
+      "expected": "مستشفي علي"
+    },
+    {
+      "id": "ta_marbuta",
+      "input": "مدرسة المئة",
+      "expected": "مدرسه الميه"
+    },
+    {
+      "id": "waw_and_ya_hamza",
+      "input": "مؤمن بيئة مسؤول",
+      "expected": "مومن بييه مسوول"
+    },
+    {
+      "id": "arabic_indic_digits",
+      "input": "٣٥٪ في ٢٠٢٤",
+      "expected": "35 في 2024",
+      "tokens": [
+        "35",
+        "في",
+        "2024"
+      ]
+    },
+    {
+      "id": "persian_digits",
+      "input": "۱۴۰۲",
+      "expected": "1402"
+    },
+    {
+      "id": "invisible_marks",
+      "input": "س‏ر​ك",
+      "expected": "سرك"
+    },
+    {
+      "id": "latin_lowercase_and_decimals",
+      "input": "Qwen2.5 MODEL",
+      "expected": "qwen2 5 model",
+      "tokens": [
+        "qwen2",
+        "5",
+        "model"
+      ]
+    },
+    {
+      "id": "empty_stays_empty",
+      "input": "",
+      "expected": ""
+    },
+    {
+      "id": "overlong_token_dropped",
+      "input": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa كلمة",
+      "expected": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa كلمه",
+      "tokens": [
+        "كلمه"
+      ]
+    }
+  ],
+  "sentenceSplit": [
+    {
+      "id": "terminal_punctuation",
+      "input": "هذه جملة. وهذه أخرى؟ ثم ثالثة!",
+      "expected": [
+        "هذه جملة.",
+        "وهذه أخرى؟",
+        "ثم ثالثة!"
+      ]
+    },
+    {
+      "id": "decimal_is_not_a_break",
+      "input": "النموذج 0.5B صغير. جملة ثانية.",
+      "expected": [
+        "النموذج 0.5B صغير.",
+        "جملة ثانية."
+      ]
+    },
+    {
+      "id": "ellipsis",
+      "input": "انتظر… ثم جاء.",
+      "expected": [
+        "انتظر…",
+        "ثم جاء."
+      ]
+    },
+    {
+      "id": "newline",
+      "input": "سطر أول\nسطر ثانٍ",
+      "expected": [
+        "سطر أول",
+        "سطر ثانٍ"
+      ]
+    }
+  ],
+  "retrieval": [
+    {
+      "id": "diacritics_query_matches_plain_document",
+      "query": "الْمَدْرَسَة",
+      "documents": [
+        {
+          "id": "a",
+          "text": "المدرسة الابتدائية في بغداد"
+        },
+        {
+          "id": "b",
+          "text": "الجامعة في الموصل"
+        }
+      ],
+      "expectTopDocument": "a"
+    },
+    {
+      "id": "alef_hamza_query_matches_plain_document",
+      "query": "أحمد",
+      "documents": [
+        {
+          "id": "a",
+          "text": "احمد علي"
+        },
+        {
+          "id": "b",
+          "text": "حسين كريم"
+        }
+      ],
+      "expectTopDocument": "a"
+    },
+    {
+      "id": "digits_are_folded",
+      "query": "٣٥",
+      "documents": [
+        {
+          "id": "a",
+          "text": "نسبة 35 بالمئة"
+        },
+        {
+          "id": "b",
+          "text": "نسبة 50 بالمئة"
+        }
+      ],
+      "expectTopDocument": "a"
+    },
+    {
+      "id": "multi_word_phrase",
+      "query": "الذكاء الاصطناعي",
+      "documents": [
+        {
+          "id": "a",
+          "text": "الذكاء الاصطناعي في التعليم"
+        },
+        {
+          "id": "b",
+          "text": "الطباعة على الورق"
+        }
+      ],
+      "expectTopDocument": "a"
+    },
+    {
+      "id": "ta_marbuta_folded",
+      "query": "مدرسة",
+      "documents": [
+        {
+          "id": "a",
+          "text": "مدرسه واحدة"
+        },
+        {
+          "id": "b",
+          "text": "مكتبة"
+        }
+      ],
+      "expectTopDocument": "a"
+    }
+  ],
+  "noMatch": [
+    {
+      "id": "different_word_family",
+      "query": "السيارات",
+      "documents": [
+        {
+          "id": "a",
+          "text": "الكتب في المكتبة"
+        }
+      ]
+    },
+    {
+      "id": "no_stemming_invented",
+      "query": "كتب",
+      "documents": [
+        {
+          "id": "a",
+          "text": "كتاب جديد"
+        }
+      ]
+    },
+    {
+      "id": "empty_query",
+      "query": "   ",
+      "documents": [
+        {
+          "id": "a",
+          "text": "أي نص"
+        }
+      ]
+    }
+  ]
+}

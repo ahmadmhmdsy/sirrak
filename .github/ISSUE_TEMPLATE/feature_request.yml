@@ -1,0 +1,74 @@
+name: Feature request
+description: Propose a change in what Sirrak does, or how it does it.
+title: "[feature] "
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Sirrak is feature-complete for `1.0.0-rc1`; a request can be accepted, recorded for a later release, or
+        declined. The more concrete the problem is, the easier that call is. Read the scope in
+        [PRODUCT.md](https://github.com/alshahia/sirrak/blob/main/PRODUCT.md) first.
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: The problem
+      description: What you cannot do today, who it affects, and what you do instead. Describe the situation, not the implementation.
+      placeholder: I read Arabic PDFs that mix Latin citations, and the retrieved excerpt drops the citation line, so I cannot tell which source a sentence came from.
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed change
+      description: What Sirrak should do instead. If it changes a screen, describe the flow; if it changes behaviour, describe the new rule.
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+      description: Optional. Workarounds you tried, or a smaller change that would also solve the problem.
+    validations:
+      required: false
+
+  - type: dropdown
+    id: scope
+    attributes:
+      label: Scope
+      description: Which part of the project does this touch? Choose the closest one.
+      options:
+        - The app (Android, Compose, engine, storage)
+        - Arabic language, typography or RTL
+        - Documentation and build records
+        - Website and public metadata
+    validations:
+      required: true
+
+  - type: dropdown
+    id: data-driven
+    attributes:
+      label: Can this be expressed as data?
+      description: The project keeps behaviour in config, catalogues, theme packs and typed slots rather than in code. Say what you think this change needs; a wrong answer is fine, it is a design question.
+      options:
+        - Data only (config, catalogue, pack, slot — no new code path)
+        - Data plus a small code change
+        - New code and a new module
+        - I do not know
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: confirmations
+    attributes:
+      label: Before you post
+      options:
+        - label: I searched the existing issues and the README's limits section for this request.
+          required: true
+        - label: I am willing to send a pull request for this if the design is accepted.
+          required: false
+        - label: I understand that requests for telemetry, accounts, ads or cloud processing will be declined.
+          required: true

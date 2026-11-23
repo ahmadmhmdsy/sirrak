@@ -1,0 +1,11 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Security vulnerability
+    url: https://github.com/alshahia/sirrak/security/advisories/new
+    about: Report a vulnerability privately. Never open a public issue for a security problem.
+  - name: Documentation and build records
+    url: https://github.com/alshahia/sirrak/tree/main/docs
+    about: Architecture, milestone records and the launch checklist live in docs/ — start at docs/README.md.
+  - name: README
+    url: https://github.com/alshahia/sirrak/blob/main/README.md
+    about: What Sirrak is, how to build it, and the limits it does not hide.

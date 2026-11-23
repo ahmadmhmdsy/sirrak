@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Dictation, M10. Default resources are Arabic like the rest of the app. -->
+    <string name="dictation_section_title">الإملاء الصوتي</string>
+    <string name="dictation_status">الحالة</string>
+    <string name="dictation_status_ready">جاهز</string>
+    <string name="dictation_status_loading">جارٍ التحميل…</string>
+    <string name="dictation_status_failed">تعذّر التحميل</string>
+    <string name="dictation_status_unloaded">غير محمّل</string>
+    <string name="dictation_status_working">جارٍ العمل…</string>
+    <string name="dictation_model">الطراز</string>
+    <string name="dictation_no_model">لا يوجد طراز</string>
+    <string name="dictation_size">الحجم</string>
+    <string name="dictation_import">استيراد طراز Whisper</string>
+    <string name="dictation_selected">محدد</string>
+    <string name="dictation_remove">إزالة</string>
+    <string name="dictation_remove_title">إزالة الطراز</string>
+    <string name="dictation_remove_message">سيُحذف «%1$s» من هذا الجهاز. يمكنك استيراده مرة أخرى لاحقًا.</string>
+    <string name="dictation_language">لغة الإملاء</string>
+    <string name="dictation_language_auto">تلقائي</string>
+    <string name="dictation_language_arabic">العربية</string>
+    <string name="dictation_language_english">الإنجليزية</string>
+    <string name="dictation_mode">طريقة الإملاء</string>
+    <string name="dictation_mode_toggle">نقرة</string>
+    <string name="dictation_mode_hold">استمرار</string>
+    <string name="dictation_note">يعمل التفريغ على جهازك: لا يُرسل الصوت أو النص إلى أي خادم. استورد ملفات الطراز الثلاثة من مدير الملفات — المشفّر (encoder)، وفكّ التشفير (decoder)، والرموز (tokens) — وتبقى في مساحة التطبيق الخاصة. اللغتان العربية والإنجليزية مدعومتان، و«تلقائي» يترك الكشف للطراز.</string>
+    <string name="dictation_working">جارٍ الاستيراد…</string>
+    <string name="dictation_action_cancel">إلغاء</string>
+
+    <string name="dictation_mic_start">بدء الإملاء</string>
+    <string name="dictation_mic_stop">إيقاف الإملاء</string>
+    <string name="dictation_listening">يستمع…</string>
+    <string name="dictation_transcribing">جارٍ التفريغ…</string>
+    <string name="dictation_stop">إيقاف</string>
+    <string name="dictation_cancel">إلغاء التسجيل</string>
+    <string name="dictation_dismiss">إغلاق</string>
+
+    <string name="dictation_permission_title">إذن الميكروفون</string>
+    <string name="dictation_permission_message">يحتاج الإملاء إلى الميكروفون لتحويل كلامك إلى نص. يبقى الصوت على جهازك ولا يُرسل إلى أي خادم.</string>
+    <string name="dictation_permission_allow">السماح</string>
+    <string name="dictation_permission_not_now">ليس الآن</string>
+
+    <string name="dictation_reason_no_model">استورد طراز إملاء أولًا من الإعدادات.</string>
+    <string name="dictation_reason_engine_load">تعذّر تحميل محرّك الإملاء. تحقّق من ملفات الطراز.</string>
+    <string name="dictation_reason_no_permission">الإملاء يحتاج إلى إذن الميكروفون.</string>
+    <string name="dictation_reason_recorder_unavailable">الميكروفون غير متاح على هذا الجهاز.</string>
+    <string name="dictation_reason_recording_failed">تعذّر التقاط الصوت.</string>
+    <string name="dictation_reason_too_short">التسجيل قصير جدًا؛ تحدّث ثم أوقف التسجيل.</string>
+    <string name="dictation_reason_no_speech">لم يُسمع كلام في التسجيل.</string>
+    <string name="dictation_reason_transcription_failed">تعذّر تفريغ الصوت إلى نص.</string>
+    <string name="dictation_reason_import_empty">لم يتم اختيار ملفات.</string>
+    <string name="dictation_reason_unsupported">اختر ملفات الطراز الثلاثة: المشفّر (encoder)، وفكّ التشفير (decoder)، والرموز (tokens).</string>
+    <string name="dictation_reason_missing_encoder">ملف المشفّر (encoder) مفقود من الاختيار.</string>
+    <string name="dictation_reason_missing_decoder">ملف فكّ التشفير (decoder) مفقود من الاختيار.</string>
+    <string name="dictation_reason_missing_tokens">ملف الرموز (tokens) مفقود من الاختيار.</string>
+    <string name="dictation_reason_duplicate_role">الاختيار يحتوي ملفًا مكرّرًا لنفس الدور.</string>
+    <string name="dictation_reason_too_large">الطراز أكبر من الحد المسموح.</string>
+    <string name="dictation_reason_generic">تعذّر استيراد الطراز.</string>
+</resources>

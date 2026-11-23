@@ -1,0 +1,43 @@
+# Gradle / Android build outputs (never commit a build)
+.gradle/
+build/
+.cxx/
+local.properties
+.idea/
+*.iml
+.kotlin/
+captures/
+*.hprof
+hs_err_pid*
+*.apk
+*.aab
+
+# P3.5 release signing (never commit the keystore or its passwords)
+keystore.properties
+keystore/
+*.jks
+*.keystore
+
+# P3.6 screenshot regression: transient captures; the baseline in scripts/ui-baseline is committed
+scripts/ui-current/
+
+# P3.7 store graphics renderer: intermediate HTML + throwaway browser profile
+store/graphics/.render/
+
+# Milestone evidence and build logs stay local; docs/ carries the written public record
+.evidence-*
+build-evidence/
+build-*.txt
+*.log
+
+# Impeccable development-only design context (briefs/contracts never ship)
+.impeccable/
+
+# Generated site scratch (the committed site lives in website/dist via the Pages workflow)
+website/.build/
+website/.render/
+
+# OS / editor noise
+.DS_Store
+Thumbs.db
+desktop.ini

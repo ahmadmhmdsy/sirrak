@@ -1,0 +1,135 @@
+Sirrak 1.0.0-rc1
+Copyright 2026 Sirrak contributors
+Licensed under the Apache License, Version 2.0 (https://www.apache.org/licenses/LICENSE-2.0).
+
+This product includes the following third-party components:
+
+Sirrak - Apache-2.0
+  Copyright 2026 Sirrak contributors
+  Licence: https://www.apache.org/licenses/LICENSE-2.0
+
+Kotlin 2.0.21 - Apache-2.0
+  Copyright 2010-2026 JetBrains s.r.o. and Kotlin contributors
+  https://kotlinlang.org
+  Licence: https://www.apache.org/licenses/LICENSE-2.0
+
+Kotlin Coroutines 1.9.0 - Apache-2.0
+  Copyright 2016-2024 JetBrains s.r.o.
+  https://github.com/Kotlin/kotlinx.coroutines
+  Licence: https://www.apache.org/licenses/LICENSE-2.0
+
+Kotlin Serialization 1.7.3 - Apache-2.0
+  Copyright 2017-2024 JetBrains s.r.o.
+  https://github.com/Kotlin/kotlinx.serialization
+  Licence: https://www.apache.org/licenses/LICENSE-2.0
+
+AndroidX Core 1.13.1 - Apache-2.0
+  Copyright The Android Open Source Project
+  https://developer.android.com/jetpack/androidx
+  Licence: https://www.apache.org/licenses/LICENSE-2.0
+
+AndroidX Activity Compose 1.9.3 - Apache-2.0
+  Copyright The Android Open Source Project
+  https://developer.android.com/jetpack/androidx
+  Licence: https://www.apache.org/licenses/LICENSE-2.0
+
+AndroidX Lifecycle 2.8.7 - Apache-2.0
+  Copyright The Android Open Source Project
+  https://developer.android.com/jetpack/androidx
+  Licence: https://www.apache.org/licenses/LICENSE-2.0
+
+Jetpack Compose 2024.10.00 - Apache-2.0
+  Copyright The Android Open Source Project
+  https://developer.android.com/jetpack/compose
+  Licence: https://www.apache.org/licenses/LICENSE-2.0
+
+Compose Material 3 2024.10.00 - Apache-2.0
+  Copyright The Android Open Source Project
+  https://developer.android.com/jetpack/compose
+  Licence: https://www.apache.org/licenses/LICENSE-2.0
+
+Compose Material Icons Extended 2024.10.00 - Apache-2.0
+  Copyright The Android Open Source Project
+  https://developer.android.com/jetpack/compose
+  Licence: https://www.apache.org/licenses/LICENSE-2.0
+
+llama.cpp - MIT
+  Copyright 2023-2026 The ggml authors
+  https://github.com/ggml-org/llama.cpp
+  Licence: https://opensource.org/license/mit
+  Vendored source under third_party/llama.cpp; built for x86_64 and arm64-v8a.
+
+sherpa-onnx 2.0.1 - Apache-2.0
+  Copyright 2023-2026 The sherpa-onnx authors
+  https://github.com/k2-fsa/sherpa-onnx
+  Licence: https://www.apache.org/licenses/LICENSE-2.0
+  On-device speech recognition runtime (Whisper).
+
+LiteRT-LM 0.19.1 - Apache-2.0
+  Copyright Google LLC
+  https://github.com/google-ai-edge/LiteRT-LM
+  Licence: https://www.apache.org/licenses/LICENSE-2.0
+  On-device embedding runtime; the embedding model itself is user-imported.
+
+PDFBox-Android 2.0.27.0 - Apache-2.0
+  Copyright 2015-2024 Tom Roush and Apache PDFBox contributors
+  https://github.com/TomRoush/PdfBox-Android
+  Licence: https://www.apache.org/licenses/LICENSE-2.0
+  PDF text extraction for the document library.
+
+Amiri - OFL-1.1
+  Copyright 2010-2022 The Amiri Project Authors
+  https://github.com/aliftype/amiri
+  Licence: https://openfontlicense.org
+  Arabic reading typeface.
+
+IBM Plex Sans Arabic - OFL-1.1
+  Copyright 2017 IBM Corp. with Reserved Font Name "Plex"
+  https://github.com/IBM/plex
+  Licence: https://openfontlicense.org
+  Interface typeface.
+
+Qwen2.5 Instruct - Apache-2.0
+  Copyright 2024-2026 Alibaba Cloud
+  https://huggingface.co/Qwen
+  Licence: https://www.apache.org/licenses/LICENSE-2.0
+  Model weights are downloaded by the user after the licence is shown in the catalogue.
+
+SmolVLM Instruct - Apache-2.0
+  Copyright Hugging Face
+  https://huggingface.co/HuggingFaceTB
+  Licence: https://www.apache.org/licenses/LICENSE-2.0
+  Downloaded by the user; not bundled with the app.
+
+Llama 3.2 Instruct - Llama-3.2-Community
+  Copyright Meta Platforms, Inc.
+  https://www.llama.com
+  Licence: https://www.llama.com/llama3_2/license/
+  Downloaded by the user under the Llama 3.2 Community Licence; a licence token may be required.
+
+EmbeddingGemma - Gemma-Terms
+  Copyright Google LLC
+  https://ai.google.dev/gemma
+  Licence: https://ai.google.dev/gemma/terms
+  User-imported embedding model; never bundled because of the Gemma Terms of Use.
+
+Whisper (ggml) - MIT
+  Copyright 2022-2026 The whisper.cpp authors
+  https://github.com/ggml-org/whisper.cpp
+  Licence: https://opensource.org/license/mit
+  User-imported dictation model.
+
+JUnit 4 4.13.2 - EPL-1.0
+  Copyright JUnit contributors
+  https://junit.org/junit4/
+  Licence: https://www.eclipse.org/legal/epl-v10.html
+  Test-only; not shipped in the APK.
+
+AndroidX Test 1.6.2 - Apache-2.0
+  Copyright The Android Open Source Project
+  https://developer.android.com/training/testing
+  Licence: https://www.apache.org/licenses/LICENSE-2.0
+  Device-test-only; not shipped in the APK.
+
+Model weights are not bundled with the app. Each model is downloaded by the user under
+its own licence, shown in the model catalogue before download.

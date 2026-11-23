@@ -1,0 +1,27 @@
+# EditorConfig for Sirrak — https://editorconfig.org
+# Line endings are also pinned in .gitattributes: LF everywhere except Windows scripts.
+root = true
+
+[*]
+charset = utf-8
+end_of_line = lf
+insert_final_newline = true
+trim_trailing_whitespace = true
+indent_style = space
+indent_size = 4
+
+# Kotlin, Gradle Kotlin DSL and Java
+[*.{kt,kts,java}]
+indent_size = 4
+
+# Resources, config, workflows and the citation metadata
+[*.{xml,json,yml,yaml,cff}]
+indent_size = 2
+
+# Windows build scripts keep CRLF (see .gitattributes)
+[*.{ps1,psm1,bat,cmd}]
+end_of_line = crlf
+
+# Markdown prose is not wrapped to a column
+[*.md]
+max_line_length = off

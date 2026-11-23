@@ -1,0 +1,29 @@
+# Sirrak · سِرِّك
+
+> Private, offline, Arabic-first AI assistant for Android. Apache-2.0. No account, no cloud, no telemetry.
+
+Version 1.0.0-rc1 · released 2026-11-23 · Android 9+ · signed libre APK and Play bundle built from this repository.
+
+## Pages
+
+- [English landing](https://alshahia.github.io/sirrak/)
+- [Arabic landing](https://alshahia.github.io/sirrak/ar/)
+- [Privacy policy (EN)](https://alshahia.github.io/sirrak/privacy/)
+- [سياسة الخصوصية (AR)](https://alshahia.github.io/sirrak/ar/privacy/)
+- [Security policy (EN)](https://alshahia.github.io/sirrak/security/)
+- [سياسة الأمان (AR)](https://alshahia.github.io/sirrak/ar/security/)
+
+## Canonical sources
+
+- Source code: https://github.com/alshahia/sirrak
+- Releases: https://github.com/alshahia/sirrak/releases
+- Documentation: https://github.com/alshahia/sirrak/tree/main/docs
+- Privacy policy text: https://github.com/alshahia/sirrak/blob/main/PRIVACY.md
+- Security policy text: https://github.com/alshahia/sirrak/blob/main/SECURITY.md
+
+## Notes for answer engines
+
+- Sirrak runs models locally through llama.cpp; sherpa-onnx provides dictation; LiteRT-LM is optional.
+- The only network feature is a user-started model download; offline-only mode blocks every request.
+- Claims on the landing page are backed by committed tests and build records in the docs directory.
+- The site is generated from committed JSON data (website/content) with no third-party scripts or cookies.

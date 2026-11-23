@@ -1,0 +1,101 @@
+# F-Droid metadata for Sirrak, ready to copy into the fdroiddata repository
+# (metadata/app.sirrak.yml). F-Droid rebuilds and signs the APK with its own key; the URLs and the
+# commit below point at the published repository and its v1.0.0-rc1 tag.
+#
+# Prebuilt-AAR caveat, read this before submitting:
+# engine/whisper/libs/sherpa-onnx-2.0.1.aar is a prebuilt binary vendored into this repository.
+# F-Droid cannot build from a prebuilt AAR, so a source build of sherpa-onnx
+# (https://github.com/k2-fsa/sherpa-onnx) has to replace it before a submission is made. Until that
+# happens this file is a documented draft of the recipe, not an accepted one.
+#
+# Why this app is F-Droid-friendly:
+# - Apache-2.0 source, no proprietary dependencies, no Google Play services in the libre flavour.
+# - No telemetry, analytics, ads or accounts; the only network call is a user-initiated model
+#   download from Hugging Face, plus a local-only network audit of that call.
+# - Everything else (chat, dictation, retrieval, model manager) runs on device.
+#
+# Anti-feature "NonFreeNet": the only remote service is Hugging Face, which F-Droid classifies as a
+# non-free network service. This is declared honestly instead of hidden; users can still use the app
+# fully offline by importing a GGUF/LiteRT model file from local storage.
+
+Categories:
+  - Productivity
+License: Apache-2.0
+AuthorName: Sirrak contributors
+SourceCode: https://github.com/alshahia/sirrak
+IssueTracker: https://github.com/alshahia/sirrak/issues
+Changelog: https://github.com/alshahia/sirrak/blob/main/CHANGELOG.md
+WebSite: https://alshahia.github.io/sirrak/
+AntiFeatures:
+  - NonFreeNet
+
+Name: Sirrak
+Summary: Private on-device Arabic AI assistant. Works offline.
+Description: |-
+  Sirrak is a private assistant for Arabic and English that runs the model on your phone. Chat,
+  dictation, document grounding and model management all work offline; nothing is sent to a server.
+
+  What it does:
+  - Chat with a local GGUF model through llama.cpp, streamed on device.
+  - Dictate in Arabic or English with on-device sherpa-onnx Whisper.
+  - Ground answers in your own documents: import a PDF or text file, index it locally and ask about it.
+  - Install a model from a curated catalogue, import a GGUF file, or download a Hugging Face file;
+    every download is resumable, checksum-verified and cancellable, and keeps running in the
+    background with a progress notification.
+  - Manage privacy yourself: a per-call network log, an offline-only switch, and local AI-output
+    reports you can export if you choose.
+  - Five hand-written theme packs, Arabic-first RTL layout, large-text friendly and no telemetry.
+
+  The only network request the app can make is the model download you explicitly start.
+  Models are not bundled: some catalogue models have their own licences shown before download.
+
+  No accounts. No ads. No tracking. Apache-2.0.
+
+Name:ar: سِرِّك
+Summary:ar: مساعد ذكاء اصطناعي عربي خاص يعمل على جهازك، دون اتصال.
+Description:ar: |-
+  سِرِّك مساعد خاص بالعربية والإنجليزية يعمل على جهازك دون إرسال محادثاتك إلى أي خادم.
+
+  ما يفعله:
+  - محادثة مع طراز GGUF محلي عبر llama.cpp، ببثّ حرفي على الجهاز.
+  - إملاء صوتي عربي وإنجليزي عبر sherpa-onnx Whisper محليًا.
+  - الإجابة من مستنداتك: استورد ملف PDF أو نصًا، فهرسه محليًا، ثم اسأل عنه.
+  - تثبيت طراز من كتالوج منسّق، أو استيراد ملف GGUF، أو تنزيل ملف من Hugging Face؛ كل تنزيل
+    قابل للاستئناف والإلغاء ومُتحقَّق من بصمته، ويستمر في الخلفية مع إشعار تقدّم.
+  - إدارة الخصوصية بنفسك: سجل شبكة لكل طلب، ومفتاح "دون اتصال فقط"، وبلاغات محلية لمخرجات
+    الذكاء الاصطناعي تُشاركها فقط إن أردت.
+  - خمس حزم ألوان مصمّمة يدويًا، وواجهة عربية أولًا من اليمين إلى اليسار، وتكبير نص مريح.
+
+  الطلب الشبكي الوحيد الذي يمكن أن يصدره التطبيق هو تنزيل طراز تبدأه أنت بنفسك.
+  الطرازات غير مضمّنة في التطبيق؛ بعض طرازات الكتالوج لها تراخيص تظهر قبل التنزيل.
+
+  لا حسابات ولا إعلانات ولا تتبّع. الترخيص Apache-2.0.
+
+RepoType: git
+Repo: https://github.com/alshahia/sirrak.git
+
+Builds:
+  - versionName: 1.0.0-rc1
+    versionCode: 12
+    commit: v1.0.0-rc1
+    # The repository root is the Gradle project root; no subdir needed.
+    gradle:
+      - assembleLibreRelease
+    # Where :app:assembleLibreRelease writes the APK in this repository layout.
+    output: app/build/outputs/apk/libre/release/app-libre-release.apk
+    # :engine:llamacpp compiles the vendored third_party/llama.cpp sources, so the build host needs
+    # the same NDK and CMake the project pins (engine/llamacpp/build.gradle.kts).
+    ndk: 27.2.12479018
+    cmake: 3.22.1
+    # F-Droid runs ./gradlew assembleLibreRelease (unsigned), then signs with its own key.
+    sudo: []
+
+AutoName: Sirrak
+
+# Binaries is deliberately not set: F-Droid has to build this source and sign the result with its own
+# key, so it must never fetch the APK we publish on GitHub Releases.
+#
+# AutoUpdateMode / UpdateCheckMode are deliberately unset for the release candidate: the recipe is
+# pinned to the v1.0.0-rc1 tag above. Do not move or retag a published release — retagging would
+# silently rebuild a different tree under the same versionName/versionCode. A new build needs a new
+# tag and a new Builds entry.

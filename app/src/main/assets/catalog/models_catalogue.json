@@ -1,0 +1,97 @@
+{
+  "schemaVersion": 1,
+  "models": [
+    {
+      "id": "qwen2.5-0.5b-instruct-q4_k_m",
+      "displayName": "Qwen2.5 0.5B Instruct",
+      "repo": "Qwen/Qwen2.5-0.5B-Instruct-GGUF",
+      "fileName": "qwen2.5-0.5b-instruct-q4_k_m.gguf",
+      "sizeBytes": 491400032,
+      "sha256": "74a4da8c9fdbcd15bd1f6d01d621410d31c6fc00986f5eb687824e7b93d7a9db",
+      "parameterLabel": "0.5B",
+      "quantization": "Q4_K_M",
+      "contextTokens": 32768,
+      "ramMb": 700,
+      "minRamMb": 3072,
+      "licence": "Apache-2.0",
+      "licenceUrl": "https://huggingface.co/Qwen/Qwen2.5-0.5B-Instruct-GGUF",
+      "gated": false,
+      "languages": [
+        "ar",
+        "en"
+      ],
+      "descriptionKey": "catalogue_qwen05b",
+      "tokensPerSecondHint": 14
+    },
+    {
+      "id": "qwen2.5-1.5b-instruct-q4_k_m",
+      "displayName": "Qwen2.5 1.5B Instruct",
+      "repo": "Qwen/Qwen2.5-1.5B-Instruct-GGUF",
+      "fileName": "qwen2.5-1.5b-instruct-q4_k_m.gguf",
+      "sizeBytes": 1117320736,
+      "sha256": "6a1a2eb6d15622bf3c96857206351ba97e1af16c30d7a74ee38970e434e9407e",
+      "parameterLabel": "1.5B",
+      "quantization": "Q4_K_M",
+      "contextTokens": 32768,
+      "ramMb": 1900,
+      "minRamMb": 6144,
+      "licence": "Apache-2.0",
+      "licenceUrl": "https://huggingface.co/Qwen/Qwen2.5-1.5B-Instruct-GGUF",
+      "gated": false,
+      "languages": [
+        "ar",
+        "en"
+      ],
+      "descriptionKey": "catalogue_qwen15b",
+      "tokensPerSecondHint": 6.2
+    },
+    {
+      "id": "smolvlm-500m-instruct-q8_0",
+      "displayName": "SmolVLM 500M Instruct",
+      "repo": "ggml-org/SmolVLM-500M-Instruct-GGUF",
+      "fileName": "SmolVLM-500M-Instruct-Q8_0.gguf",
+      "sizeBytes": 436806912,
+      "sha256": "9d4612de6a42214499e301494a3ecc2be0abdd9de44e663bda63f1152fad1bf4",
+      "parameterLabel": "0.5B",
+      "quantization": "Q8_0",
+      "contextTokens": 8192,
+      "ramMb": 900,
+      "minRamMb": 4096,
+      "licence": "Apache-2.0",
+      "licenceUrl": "https://huggingface.co/ggml-org/SmolVLM-500M-Instruct-GGUF",
+      "gated": false,
+      "languages": [
+        "en"
+      ],
+      "descriptionKey": "catalogue_smolvlm",
+      "tokensPerSecondHint": 18,
+      "visionProjector": {
+        "repo": "ggml-org/SmolVLM-500M-Instruct-GGUF",
+        "fileName": "mmproj-SmolVLM-500M-Instruct-Q8_0.gguf",
+        "sizeBytes": 108783360,
+        "sha256": "d1eb8b6b23979205fdf63703ed10f788131a3f812c7b1f72e0119d5d81295150"
+      }
+    },
+    {
+      "id": "llama-3.2-1b-instruct-q4_k_m",
+      "displayName": "Llama 3.2 1B Instruct",
+      "repo": "meta-llama/Llama-3.2-1B-Instruct-GGUF",
+      "fileName": "Llama-3.2-1B-Instruct-Q4_K_M.gguf",
+      "sizeBytes": 807000000,
+      "parameterLabel": "1B",
+      "quantization": "Q4_K_M",
+      "contextTokens": 131072,
+      "ramMb": 1500,
+      "minRamMb": 4096,
+      "licence": "Llama 3.2 Community Licence",
+      "licenceUrl": "https://huggingface.co/meta-llama/Llama-3.2-1B-Instruct-GGUF",
+      "gated": true,
+      "languages": [
+        "ar",
+        "en"
+      ],
+      "descriptionKey": "catalogue_llama1b",
+      "tokensPerSecondHint": 9
+    }
+  ]
+}
