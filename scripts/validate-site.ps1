@@ -17,7 +17,9 @@ param(
 )
 
 $ErrorActionPreference = 'Stop'
-Add-Type -AssemblyName System.Drawing | Out-Null
+# Image dimensions are read from the file header, so this works on Windows and on the Linux CI
+# runners alike. System.Drawing is only used as a fallback for non-PNG formats on Windows.
+if ($IsWindows) { Add-Type -AssemblyName System.Drawing -ErrorAction SilentlyContinue | Out-Null }
 
 $RepoRoot = [System.IO.Path]::GetFullPath($RepoRoot)
 $DistRoot = Join-Path $RepoRoot 'website/dist'
@@ -64,8 +66,18 @@ function Get-ImageSize([string]$RelativePath) {
     $path = Join-Path $RepoRoot $RelativePath
     if (-not (Test-Path -LiteralPath $path -PathType Leaf)) { return $null }
     try {
-        $image = [System.Drawing.Image]::FromFile($path)
-        try { return [pscustomobject]@{ Width = $image.Width; Height = $image.Height } } finally { $image.Dispose() }
+        $bytes = [System.IO.File]::ReadAllBytes($path)
+        if ($bytes.Length -ge 24 -and $bytes[0] -eq 0x89 -and $bytes[1] -eq 0x50 -and $bytes[2] -eq 0x4E -and $bytes[3] -eq 0x47) {
+            # PNG: IHDR width and height are big-endian 32-bit integers at offsets 16 and 20.
+            $width = ([int]$bytes[16] -shl 24) -bor ([int]$bytes[17] -shl 16) -bor ([int]$bytes[18] -shl 8) -bor [int]$bytes[19]
+            $height = ([int]$bytes[20] -shl 24) -bor ([int]$bytes[21] -shl 16) -bor ([int]$bytes[22] -shl 8) -bor [int]$bytes[23]
+            return [pscustomobject]@{ Width = $width; Height = $height }
+        }
+        if ($IsWindows) {
+            $image = [System.Drawing.Image]::FromFile($path)
+            try { return [pscustomobject]@{ Width = $image.Width; Height = $image.Height } } finally { $image.Dispose() }
+        }
+        return $null
     } catch {
         return $null
     }
