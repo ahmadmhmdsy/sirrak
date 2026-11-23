@@ -1,0 +1,72 @@
+{
+  "schemaVersion": 1,
+  "repository": "alshahia/sirrak",
+  "defaultBranch": "main",
+  "license": "Apache-2.0",
+  "homepage": "https://alshahia.github.io/sirrak/",
+  "descriptionKeywords": [
+    "offline-first",
+    "Arabic",
+    "on-device",
+    "Apache-2.0"
+  ],
+  "topics": [
+    "android",
+    "apache2",
+    "arabic",
+    "jetpack-compose",
+    "kotlin",
+    "llama-cpp",
+    "llm",
+    "offline-first",
+    "on-device-ai",
+    "privacy",
+    "rag",
+    "sirrak",
+    "speech-recognition",
+    "whisper"
+  ],
+  "pages": {
+    "buildType": "workflow",
+    "httpsEnforced": true
+  },
+  "security": {
+    "secretScanning": "enabled",
+    "secretScanningPushProtection": "enabled",
+    "vulnerabilityAlerts": true
+  },
+  "branchProtection": {
+    "strict": true,
+    "linearHistory": true,
+    "allowForcePushes": false,
+    "allowDeletions": false,
+    "requiredChecks": [
+      "JVM unit tests (libre debug)",
+      "Arabic eval",
+      "Android lint (libre debug)",
+      "Public site (build, validate, committed output)"
+    ]
+  },
+  "release": {
+    "tag": "v1.0.0-rc1",
+    "requiredAssets": [
+      "app-libre-release.apk",
+      "app-play-release.aab",
+      "SHA256SUMS"
+    ],
+    "verifyDigests": true
+  },
+  "liveUrls": [
+    "",
+    "ar/",
+    "privacy/",
+    "security/",
+    "ar/privacy/",
+    "ar/security/",
+    "sitemap.xml",
+    "robots.txt",
+    "llms.txt",
+    "manifest.webmanifest",
+    "assets/og-image.png"
+  ]
+}

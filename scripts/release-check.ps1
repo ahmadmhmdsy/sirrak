@@ -118,6 +118,14 @@ foreach ($artifact in $release.artifacts) {
     $sha = Get-Sha256 $path
     $artifactOk = $true
     $detail = "$size B sha256=$sha"
+    if ($null -ne $artifact.bytes -and [int64]$artifact.bytes -ne [int64]$size) {
+        $artifactOk = $false
+        $detail += '; size drift (recorded ' + [int64]$artifact.bytes + ' B)'
+    }
+    if ($artifact.sha256 -and ([string]$artifact.sha256).ToUpperInvariant() -ne $sha.ToUpperInvariant()) {
+        $artifactOk = $false
+        $detail += '; sha256 drift (recorded ' + [string]$artifact.sha256 + ')'
+    }
     if ($artifact.format -eq 'apk' -and $buildTools) {
         $apksigner = Join-Path $buildTools[0].FullName 'apksigner.bat'
         $certificate = & $apksigner verify --print-certs $path 2>&1 | Out-String

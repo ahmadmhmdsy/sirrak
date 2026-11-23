@@ -661,8 +661,14 @@ evidence stands.
   were rebuilt after that wiring (new hashes below).
 - **Launch validators:** `scripts/validate-site.ps1` (225 structural, SEO, accessibility, policy and drift
   checks, portable to Linux), `WebsiteContentTest.kt` (7 JVM drift tests), and `release-check.ps1` gained a
-  public-site gate. CI gained a `public-site` job; `.github/workflows/pages.yml` builds, validates and
-  deploys `website/dist` to GitHub Pages.
+  public-site gate plus a recorded-digest check (a rebuilt artifact that no longer matches the SHA-256 in
+  `store/store-spec.json` fails the gate). CI gained a `public-site` job; `.github/workflows/pages.yml`
+  builds, validates and deploys `website/dist` to GitHub Pages.
+- **Published-facts validator:** `scripts/validate-repo.ps1` covers what an offline check cannot see —
+  repository description/topics/homepage/license, Pages settings, secret scanning and Dependabot alerts,
+  branch protection (strict required checks, linear history, no force pushes/deletions), the release assets
+  with their GitHub-computed SHA-256 digests, and every live URL returning 200. Expected values live in
+  `store/repo-spec.json`, so nothing is hardcoded in the script.
 - **Public distribution:** public repo, Pages site, and the `v1.0.0-rc1` GitHub Release with the signed APK,
   AAB and `SHA256SUMS`. Branch protection requires all four CI checks and linear history.
 
@@ -674,6 +680,7 @@ evidence stands.
 | Public site | `pwsh -File scripts/build-site.ps1` + `validate-site.ps1` | **225/225 checks**, 30 files, 2,312,218 B, zero failures |
 | Site drift | `:app` `WebsiteContentTest` | 7 tests: data/version parity, EN/AR structure, brand palette + mark + fonts, policy rendering + dates, app-config URLs, SEO files, no local paths or drafts |
 | Store assets | `pwsh -File scripts/validate-store.ps1` | **79/79 checks** |
+| Repo + release facts | `pwsh -File scripts/validate-repo.ps1` | **36/36 checks**: repo metadata, Pages, security features, branch protection (4 required checks), release assets with digests matching the spec, 11/11 live URLs 200 |
 | CI | GitHub Actions run `45159519429` | green: JVM tests, Arabic eval, lint, public-site |
 | Pages | GitHub Actions run `45159519451` | green: build → validate → deploy |
 | Live site | <https://alshahia.github.io/sirrak/> | 200 for all six pages, sitemap, robots, llms.txt, manifest, OG image; EN/AR `lang`+`dir`, canonical, hreflang, JSON-LD, bilingual 404 verified |
@@ -705,7 +712,8 @@ evidence stands.
 evidence + §15.2 launch table), `docs/27` (P3.8 publication record with live evidence), `docs/28` (council
 record), `store/README.md` (rebuilt artifact hashes), `store/listing/` (EN/AR copy refreshed),
 `fdroid/metadata/app.sirrak.yml` (source/commit/changelog URLs, NDK/CMake recipe, prebuilt-AAR caveat),
-`CONTRIBUTING.md`, `CHANGELOG.md`, and the site generator/validators under `website/` and `scripts/`.
+`CONTRIBUTING.md`, `CHANGELOG.md`, `store/repo-spec.json`, the site generator/validators under `website/`
+and `scripts/` (including `validate-repo.ps1` and the updated `scripts/README.md`).
 Exit criteria for the milestone: CI and Pages green on `main`, the release live with both artifacts, the site
 validators green, and every recorded hash matching the files in `store/README.md` — all true as of this record.
 

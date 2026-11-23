@@ -11,6 +11,9 @@ scripts, so changing a rule is a data edit.
 | `validate-store.ps1` | files only | listing copy obeys Play limits; screenshots, graphics and launch docs are complete and current |
 | `release-check.ps1` | JDK/SDK (+ emulator unless `-SkipEmulator`) | the whole pre-release gate: Gradle build/lint/tests, signed artifacts + certificate, store assets, screenshots |
 | `store-graphics.ps1` | Chrome or Edge | regenerates the 512×512 icon and 1024×500 feature graphic from `store/graphics/brand.json` |
+| `build-site.ps1` | files only | regenerates the committed bilingual site (`website/dist/`) from `website/site.json`, `website/content/` and `store/graphics/brand.json` |
+| `validate-site.ps1` | files only | 225 structural checks over the generated site: pages, copy parity, SEO (canonical/hreflang/JSON-LD/sitemap/robots/llms.txt), a11y, brand and committed-output drift |
+| `validate-repo.ps1` | authenticated `gh` + network | the published GitHub facts: description/topics/homepage/license, Pages, secret scanning, branch protection, release assets and digests, live URLs |
 
 ## `ui-regression.ps1` — screenshot regression smoke test
 
@@ -62,11 +65,12 @@ Runs the local half of `docs/27-sirrak-launch-checklist.md` in order and writes
 2. JVM test results summed per module from `build/test-results/` (flavoured `app` uses
    `testLibreDebugUnitTest`, plain modules use `testDebugUnitTest`) against the minimum in the spec;
 3. lint XML: 0 errors, warnings reported;
-4. artifacts: size/SHA-256, `apksigner verify --print-certs` + certificate fingerprint for the APK,
-   `jarsigner -verify` for the AAB;
+4. artifacts: size/SHA-256 compared with the digests recorded in the spec (drift fails the gate),
+   `apksigner verify --print-certs` + certificate fingerprint for the APK, `jarsigner -verify` for the AAB;
 5. `validate-store.ps1`;
-6. `ui-regression.ps1` when the serial is online (skip with `-SkipEmulator`);
-7. pass/fail summary and exit code. `-SkipBuild` re-verifies existing artifacts without rebuilding.
+6. `build-site.ps1` + `validate-site.ps1` (the generated site must be complete and match the data);
+7. `ui-regression.ps1` when the serial is online (skip with `-SkipEmulator`);
+8. pass/fail summary and exit code. `-SkipBuild` re-verifies existing artifacts without rebuilding.
 
 ```powershell
 pwsh -File scripts/release-check.ps1
@@ -86,9 +90,43 @@ of those drift. Details and limits: `store/graphics/README.md`.
 pwsh -File scripts/store-graphics.ps1
 ```
 
+## `build-site.ps1` and `validate-site.ps1` — the bilingual public site
+
+The site is generated, never hand-written: `website/site.json` holds URLs, release facts and palette
+roles; `website/content/en.json` and `ar.json` hold the copy; `website/content/policies.json` holds
+the privacy/security pages that `PRIVACY.md` and `SECURITY.md` also render from; `store/graphics/brand.json`
+supplies the mark. The build writes the committed `website/dist/` (six pages plus the bilingual 404,
+sitemap, robots, llms.txt, manifest, icons and OG image) with LF endings, so CI can prove the committed
+output matches the sources via `git diff --exit-code -- website/dist`.
+
+```powershell
+pwsh -File scripts/build-site.ps1
+pwsh -File scripts/validate-site.ps1
+```
+
+Live address: <https://alshahia.github.io/sirrak/>. The `WebsiteContentTest` JVM suite independently
+checks the same contract app-side (data sources, EN/AR parity, brand tokens, URLs, no local paths), so a
+drift fails both the Gradle suite and the PowerShell gate. Raster assets are rendered once by
+`site-assets.ps1` from the brand data and committed.
+
+## `validate-repo.ps1` — published repository and release validator
+
+`validate-site.ps1` is offline and structural; `validate-repo.ps1` checks the account-side facts that
+only exist on GitHub and on the web. Expected values are data too (`store/repo-spec.json`), so a rename
+or a new required CI job is a spec edit: risk visibility, default branch, license, homepage, description
+keywords and topics; Pages build type + HTTPS; secret scanning, push protection and Dependabot alerts;
+branch protection (strict required checks = the four CI jobs, linear history, no force pushes/deletions);
+the published release's required assets with GitHub-computed SHA-256 digests matching `store/store-spec.json`;
+and every live URL returning 200. Read-only; needs an authenticated `gh` CLI.
+
+```powershell
+pwsh -File scripts/validate-repo.ps1              # includes the live Pages URLs
+pwsh -File scripts/validate-repo.ps1 -SkipLive    # repository + release only
+```
+
 ## Why these are not in GitHub CI
 
 GitHub-hosted runners have no KVM acceleration for an Android emulator, no signing key and no
 headless-browser font stack, and this project rules out paid device farms. The JVM half of the gate
-(unit tests, Arabic eval, lint) runs in `.github/workflows/ci.yml`; the rest runs locally before a
-release cut. A future self-hosted runner with KVM could call these scripts unchanged.
+(unit tests, Arabic eval, lint) and the offline site build/validation run in `.github/workflows/ci.yml`;
+the rest runs locally before a release cut. A future self-hosted runner with KVM could call these scripts unchanged.
