@@ -103,6 +103,7 @@
     <string name="onboarding_model_installed">The model is installed.</string>
     <string name="onboarding_storage_tight">Free space is tight for this model; a smaller one may fit better.</string>
     <string name="catalogue_qwen05b">Light and fast; good for short chats on mid-range devices.</string>
+  <string name="catalogue_lfm25_350m">The smallest model in the catalogue: 219 MB and runs on 2 GB phones. Short answers; Arabic is weaker than in the larger models.</string>
     <string name="catalogue_qwen15b">Better answers; needs more memory.</string>
     <string name="catalogue_smolvlm">A small vision model that reads images in chat.</string>
     <string name="catalogue_llama1b">Gated-licence model for newer devices.</string>

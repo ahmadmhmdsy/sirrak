@@ -24,6 +24,27 @@
       "tokensPerSecondHint": 14
     },
     {
+      "id": "lfm2.5-350m-instruct-q4_k_m",
+      "displayName": "LFM2.5 350M Instruct",
+      "repo": "LiquidAI/LFM2.5-350M-GGUF",
+      "fileName": "LFM2.5-350M-Q4_K_M.gguf",
+      "sizeBytes": 229312224,
+      "sha256": "7e6f72643caafc9a68256686638c4d7916f2cec76d1df478d4c3ddcd95a6aed4",
+      "parameterLabel": "0.35B",
+      "quantization": "Q4_K_M",
+      "contextTokens": 32768,
+      "ramMb": 550,
+      "minRamMb": 2048,
+      "licence": "LFM Open License v1.0",
+      "licenceUrl": "https://huggingface.co/LiquidAI/LFM2.5-350M-GGUF/blob/main/LICENSE",
+      "gated": false,
+      "languages": [
+        "ar",
+        "en"
+      ],
+      "descriptionKey": "catalogue_lfm25_350m"
+    },
+    {
       "id": "qwen2.5-1.5b-instruct-q4_k_m",
       "displayName": "Qwen2.5 1.5B Instruct",
       "repo": "Qwen/Qwen2.5-1.5B-Instruct-GGUF",

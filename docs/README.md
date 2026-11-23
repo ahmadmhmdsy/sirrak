@@ -26,6 +26,7 @@ worth what its evidence is worth.
 | [26-sirrak-p3-polish-launch.md](26-sirrak-p3-polish-launch.md) | P3 privacy, a11y, signing, SBOM, graphics, validators |
 | [27-sirrak-launch-checklist.md](27-sirrak-launch-checklist.md) | ordered pre-publish checklist and honest gaps |
 | [28-public-launch-council.md](28-public-launch-council.md) | this repository/site/SEO launch council and decisions |
+| [29-small-models-council.md](29-small-models-council.md) | compact model tiers, supported formats, verified candidates, safetensors→GGUF conversion |
 
 ## What is not published here
 

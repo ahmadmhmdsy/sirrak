@@ -103,6 +103,7 @@
     <string name="onboarding_model_installed">تم تثبيت النموذج.</string>
     <string name="onboarding_storage_tight">المساحة الحرة ضيقة لهذا النموذج؛ يمكنك اختيار طراز أصغر.</string>
     <string name="catalogue_qwen05b">خفيف وسريع، مناسب للمحادثة القصيرة والأجهزة المتوسطة.</string>
+  <string name="catalogue_lfm25_350m">أصغر نموذج في الكتالوج: 219 م.ب ويعمل على هواتف بذاكرة 2 غ.ب. إجابات قصيرة، ومستواه في العربية أقل من النماذج الأكبر.</string>
     <string name="catalogue_qwen15b">أجود إجابات، ويحتاج ذاكرة أكبر.</string>
     <string name="catalogue_smolvlm">نموذج رؤية صغير يقرأ الصور داخل المحادثة.</string>
     <string name="catalogue_llama1b">نموذج مقيّد الترخيص، مناسب للأجهزة الحديثة.</string>

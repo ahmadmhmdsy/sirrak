@@ -7,8 +7,20 @@ reused for different content.
 
 ## [Unreleased]
 
-Nothing yet. Work after `1.0.0-rc1` starts with the publishing steps in
-[docs/27-sirrak-launch-checklist.md](docs/27-sirrak-launch-checklist.md).
+### Added
+
+- **A compact 2 GB tier in the curated catalogue.** LFM2.5 350M Instruct (GGUF Q4_K_M, 218.7 MiB, `minRamMb 2048`) gives
+  2 GB phones a fitting recommendation instead of "nothing fits". The row carries the Hugging Face LFS SHA-256 value and
+  Arabic/English descriptions. The default recommendation is unchanged: Qwen2.5 0.5B still wins for 3 GB+ devices.
+  Qwen3.5 0.8B was evaluated and rejected after the device gate: it loads (arch `qwen35`, 1,659 ms on the emulator) but
+  llama.cpp's template application turns its thinking mode on by default, so answers start with a `<think>` block — the
+  row stays out until the engine can pass `enable_thinking=false`.
+- **[docs/29-small-models-council.md](docs/29-small-models-council.md)**: the Qiyas council record for formats and small
+  models — GGUF as the only native text format, the verified candidate table (including Jais-3-0.9B rejected for its
+  unsupported `k2-horizon` architecture), the open device falsification gate, and a safetensors→GGUF conversion guide.
+
+The rows ship in the next signed build; on `1.0.0-rc1` the same files can be imported through Settings → Models →
+Add from Hugging Face. Publishing steps stay in [docs/27-sirrak-launch-checklist.md](docs/27-sirrak-launch-checklist.md).
 
 ## [1.0.0-rc1] - 2026-11-23
 
