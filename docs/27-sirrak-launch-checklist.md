@@ -122,16 +122,17 @@ the privacy policy hosted. Otherwise ship `1.0.0-rcN` and keep the gaps in §6 e
 
 ## P3.8 - public repository and launch surface (2026-11-23)
 
-Publication record for `1.0.0-rc1`. A checked item below is proven by a committed file in this tree;
-an unchecked item is a Lead action that needs a GitHub account, a pushed repository or an upload, and
-nothing in this section was verified against a live URL. "Hosted site" here means the bilingual site
-and its policy pages are committed (`website/`) and the Pages workflow exists (`.github/workflows/pages.yml`);
-enabling Pages and opening the URLs is still open in the list below.
+Publication record for `1.0.0-rc1`, completed on 2026-11-23 (+03:00). A checked item below is proven by a
+committed file in this tree; the repository, Pages, CI and release rows are additionally proven by the live
+evidence recorded next to them (GitHub run ids and public HTTP responses, measured after the first push).
 
 - [x] root Apache-2.0 LICENSE, NOTICE, public README (EN) + README.ar.md, CONTRIBUTING, CODE_OF_CONDUCT, SUPPORT, CHANGELOG, CITATION.cff, issue/PR templates, .editorconfig, .gitattributes
 - [x] hosted bilingual site with privacy/security pages; app config wired to https://alshahia.github.io/sirrak/privacy/ and /security/
 - [x] F-Droid metadata completed (version/commit/source URLs) + documented prebuilt sherpa-onnx AAR limitation; submission not made yet
 - [x] store listing copy refreshed for GitHub-only distribution
-- [ ] GitHub repo created, pushed and verified (Lead action, in progress)
-- [ ] GitHub Pages enabled and live URLs verified (Lead action, in progress)
-- [ ] release v1.0.0-rc1 created with signed APK attached (Lead action, in progress)
+- [x] GitHub repository created, pushed and verified: <https://github.com/alshahia/sirrak> — public, Apache-2.0 detected, default branch `main`, description/topics/homepage set, secret scanning + push protection + Dependabot alerts enabled, branch protection on `main` with strict required checks (JVM tests, Arabic eval, lint, public site; linear history). Commits: `94aa16a` (P3.8 tree) and `e8125f6` (Linux CI fixes).
+- [x] GitHub Pages enabled (`build_type=workflow`, HTTPS enforced) and live URLs verified on 2026-11-23 13:55 +03:00 — `/`, `/ar/`, `/privacy/`, `/security/`, `/ar/privacy/`, `/ar/security/`, `/sitemap.xml`, `/robots.txt`, `/llms.txt`, `/manifest.webmanifest`, `/assets/og-image.png` all return 200; EN `lang="en" dir="ltr"`, AR `lang="ar" dir="rtl"`; canonical, hreflang, Open Graph image and JSON-LD present (SoftwareApplication on the landing page, PrivacyPolicy and WebPage on the policy pages); sitemap lists all six pages; robots.txt points at the sitemap; the committed bilingual 404 page is served for unknown paths. Pages run `45159519451` green (build → validate → deploy).
+- [x] Release `v1.0.0-rc1` created with the signed `app-libre-release.apk` (145,711,750 B, SHA-256 `FD94EA31…`) and `app-play-release.aab` (64,938,455 B, SHA-256 `9326F505…`) attached, plus `SHA256SUMS`; certificate `4537ECEB…6806` — <https://github.com/alshahia/sirrak/releases/tag/v1.0.0-rc1>.
+- [x] CI green on `main` (run `45159519429`): 567 JVM tests, Arabic eval 24/24, lint 0 errors, and the public-site job (build + 225/225 validation + committed-output drift) — all four status checks required by branch protection.
+- [x] Public-site drift guard: `app/src/test/java/app/sirrak/WebsiteContentTest.kt` (7 JVM tests) keeps the generated site, the brand source, the shipped app config and the hosted policy copy in sync, so a data edit without a rebuild fails CI.
+- [x] Live limits recorded: Google Search Console / Bing Webmaster verification and the GitHub social-preview image are account-side settings that were not done; F-Droid and Play remain unpublished; Pages cannot set custom security headers and `robots.txt` lives under the project subpath.

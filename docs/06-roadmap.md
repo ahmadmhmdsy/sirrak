@@ -471,14 +471,18 @@ warning), screenshot regression 4/4 with a committed baseline, signed `libre` re
 median (debug 4.61 s), release executed on the API 36 emulator. P3.7 additionally leaves a drift-tested
 CycloneDX 1.5 SBOM (`sbom.cdx.json`), data-generated Play graphics (`store/graphics/`, manifest hashes),
 and two green launch validators (`validate-store.ps1` 79/79, `release-check.ps1` all gates) over the
-rebuilt signed artifacts.
+rebuilt signed artifacts. P3.8 additionally published the project: a public GitHub repository with health
+files and branch protection, a bilingual static site generated from data and validated by 225 checks
+(`validate-site.ps1`) plus 7 JVM drift tests (`WebsiteContentTest`), root privacy/security policies wired
+into `app.json` with the signed artifacts rebuilt (APK 145,711,750 B / AAB 64,938,455 B), GitHub Pages live
+(EN + AR, HTTPS), and the `v1.0.0-rc1` release with both signed artifacts attached.
 
 ### 15.2 §5 launch checklist — actual status (23 Nov 2026)
 
 | Item | State | Remaining action |
 |---|---|---|
 | Name cleared + ADR-13 recorded + package ID frozen | package frozen (`app.sirrak`); name approved provisionally | formal search + counsel sign-off (doc 08) |
-| Privacy policy + security disclosure published | drafts exist in doc 26 §P3.2 | host them and fill `privacy.policyUrl` / `securityUrl` in `app.json` |
+| Privacy policy + security disclosure published | published bilingual on the hosted site (`/privacy/`, `/security/`, `/ar/...`) and wired into `privacy.policyUrl` / `securityUrl`; the rebuilt APK opens them from Settings | — |
 | Data safety form accurate | answers written (`store/play/data-safety.md`) | paste into Play Console |
 | AI-generated content reporting implemented | done (P3.1, per-answer report action) | — |
 | Model licence consent screens | done (M11) | — |
@@ -487,9 +491,10 @@ rebuilt signed artifacts.
 | Target API 36, 64-bit | done (P3.4: targetSdk 36; arm64-v8a + x86_64) | — |
 | Closed testing completed per Play rules | not started | create closed track, recruit ≥12 testers |
 | Store listing AR + EN, honest screenshots | copy + 8 screenshots + generated icon/feature graphic ready (`store/`, `store/graphics/`) | upload them in Play Console; closed testing remains |
-| GitHub release: signed APK, checksums, source tag | artifacts + SHA-256 recorded in `store/README.md` | publish repository, tag, attach APK |
-| F-Droid: libre builds, metadata MR | metadata ready (`fdroid/`), build verified locally | publish repo, tag, fill TODOs, open `fdroiddata` MR |
-| Support channel | config keys exist (`reportEmail`, `reportIssueUrl`) | publish repo issues + address, fill config |
+| GitHub release: signed APK, checksums, source tag | live: <https://github.com/alshahia/sirrak/releases/tag/v1.0.0-rc1> — signed APK + AAB + `SHA256SUMS`, tag `v1.0.0-rc1`; SHA-256 recorded in `store/README.md` and the release notes | — |
+| F-Droid: libre builds, metadata MR | repository + tag published; metadata completed (source/commit/changelog URLs, NDK/CMake recipe) with the prebuilt sherpa-onnx AAR caveat | open the `fdroiddata` MR — blocked on a source-buildable sherpa-onnx |
+| Support channel | live: GitHub issue chooser (`reportIssueUrl`), security advisories for private reports, `SUPPORT.md`; no email is offered (`reportEmail` empty by design) | — |
+| Public repository + bilingual site on Pages (P3.8) | live: <https://github.com/alshahia/sirrak>, <https://alshahia.github.io/sirrak/> (EN/AR, policy pages, sitemap/robots/llms.txt, bilingual 404); CI and Pages green; branch protection with required checks | — |
 | Backups: keystore offline, Play App Signing, CI secrets | keystore created locally and git-ignored | back up offline, register Play upload key |
 
 Ordered execution: `docs/27-sirrak-launch-checklist.md`. The launch gate in §5 still applies unchanged;

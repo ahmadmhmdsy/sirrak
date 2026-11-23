@@ -594,7 +594,7 @@ baseline stay valid; only the packaging record changed.
 
 | Check | Command | Result |
 | --- | --- | --- |
-| JVM suite | `./gradlew :app:testLibreDebugUnitTest testDebugUnitTest` | **567 tests, 0 failures, 0 errors** — `:app` 178, `:core:runtime` 93, `:feature:chat` 73, `:core:rag` 67, `:core:design` 47, `:core:models` 45, `:core:speech` 40, `:core:privacy` 18, `:engine:embeddings` 6 (+12 vs P3.6: 6 `SbomTest`, 2 licence-registry SBOM tests, 4 store-graphics tests) |
+| JVM suite | `./gradlew :app:testLibreDebugUnitTest testDebugUnitTest` | **567 tests, 0 failures, 0 errors** — `:app` 178, `:core:runtime` 93, `:feature:chat` 73, `:core:rag` 67, `:core:design` 47, `:core:models` 45, `:core:speech` 40, `:core:privacy` 18, `:engine:embeddings` 6 (+19 vs P3.6: 6 `SbomTest`, 2 licence-registry SBOM tests, 4 store-graphics tests, 7 website-content tests) |
 | SBOM drift | `:app` licence-registry tests | committed `sbom.cdx.json` equals the registry render; 22 components + app subject, CycloneDX 1.5, 14,733 B |
 | Store graphics drift | `:app` store-graphics tests | palette == Girih & Ink light, mark == launcher vector, copy == shipped strings/listing names, PNG dims + manifest hashes current |
 | Arabic eval | `./gradlew :core:rag:testDebugUnitTest --tests "app.sirrak.core.rag.ArabicEvalTest"` | **24/24 cases** (normalisation 12, sentence splitting 4, retrieval 5, negative controls 3) |
@@ -633,3 +633,79 @@ baseline stay valid; only the packaging record changed.
 `PRODUCT.md`, `.gitignore` (`store/graphics/.render/`), and this section. Exit criteria for the
 milestone: `release-check.ps1` green on a rebuilt signed release, `validate-store.ps1` green, and the
 committed SBOM/graphics matching their sources — all three are true as of this record.
+
+---
+
+## P3.8 — public launch surface (23 Nov 2026)
+
+P3.8 turns the launch candidate into a public project: a repository with health files, a bilingual product
+site generated from data, published privacy/security policies wired into the app, and launch validators that
+keep all of it honest. It does not change runtime behaviour beyond the policy links, so the P3.7 performance
+evidence stands.
+
+### What shipped
+
+- **Repository health:** root Apache-2.0 `LICENSE` and `NOTICE`, `CONTRIBUTING.md`,
+  `CODE_OF_CONDUCT.md`, `SUPPORT.md`, `CHANGELOG.md`, `CITATION.cff`, issue and PR templates,
+  `.editorconfig`, `.gitattributes`, bilingual `README.md` + `README.ar.md`, and a curated `docs/`
+  tree (04–28) with local machine paths and spike-app references removed.
+- **Hosted site:** a static generator (`scripts/build-site.ps1`) renders `website/dist` from
+  `website/site.json`, `website/content/{en,ar}.json`, `website/content/policies.json`,
+  `website/theme/site.css` and `store/graphics/brand.json`. Thirty files: EN and AR landing pages, EN/AR
+  privacy and security pages, a bilingual 404, sitemap, robots, `llms.txt`, web manifest, OG/icon assets and
+  four self-hosted font files. No framework, no third-party scripts, no cookies.
+- **Policies:** `PRIVACY.md` and `SECURITY.md` rewritten as published documents (dateline, hosted EN/AR
+  URLs, in-app path, permissions table, reporting channels, signing facts, known limits). `app.json` now
+  points `privacy.policyUrl`, `privacy.securityUrl` and `privacy.reportIssueUrl` at the hosted pages and the
+  issue chooser, so Settings → Privacy & data opens real pages instead of a dead link. The signed artifacts
+  were rebuilt after that wiring (new hashes below).
+- **Launch validators:** `scripts/validate-site.ps1` (225 structural, SEO, accessibility, policy and drift
+  checks, portable to Linux), `WebsiteContentTest.kt` (7 JVM drift tests), and `release-check.ps1` gained a
+  public-site gate. CI gained a `public-site` job; `.github/workflows/pages.yml` builds, validates and
+  deploys `website/dist` to GitHub Pages.
+- **Public distribution:** public repo, Pages site, and the `v1.0.0-rc1` GitHub Release with the signed APK,
+  AAB and `SHA256SUMS`. Branch protection requires all four CI checks and linear history.
+
+### Evidence (23 Nov 2026)
+
+| Gate | Command / URL | Result |
+| --- | --- | --- |
+| JVM suite | `./gradlew :app:testLibreDebugUnitTest testDebugUnitTest` | **567 tests, 0 failures, 0 errors** (9 modules; +7 `WebsiteContentTest`) |
+| Public site | `pwsh -File scripts/build-site.ps1` + `validate-site.ps1` | **225/225 checks**, 30 files, 2,312,218 B, zero failures |
+| Site drift | `:app` `WebsiteContentTest` | 7 tests: data/version parity, EN/AR structure, brand palette + mark + fonts, policy rendering + dates, app-config URLs, SEO files, no local paths or drafts |
+| Store assets | `pwsh -File scripts/validate-store.ps1` | **79/79 checks** |
+| CI | GitHub Actions run `45159519429` | green: JVM tests, Arabic eval, lint, public-site |
+| Pages | GitHub Actions run `45159519451` | green: build → validate → deploy |
+| Live site | <https://alshahia.github.io/sirrak/> | 200 for all six pages, sitemap, robots, llms.txt, manifest, OG image; EN/AR `lang`+`dir`, canonical, hreflang, JSON-LD, bilingual 404 verified |
+| Release | <https://github.com/alshahia/sirrak/releases/tag/v1.0.0-rc1> | signed APK 145,711,750 B (`FD94EA31…`), AAB 64,938,455 B (`9326F505…`), `SHA256SUMS`; certificate `4537ECEB…6806` |
+
+### Honest limits
+
+- **The site validators enforce structure, not taste.** They prove copy parity, canonical/hreflang/OG/JSON-LD
+  correctness, policy accuracy, brand drift and absence of local paths; they cannot judge translation
+  quality or visual design. Both were reviewed manually (EN/AR desktop + mobile captures).
+- **GitHub Pages constraints:** a project site cannot set custom security headers (no CSP/HSTS control at the
+  host level), and `robots.txt` is served under `/sirrak/` rather than the host root, which limits what it can
+  say to crawlers for the whole domain.
+- **Discovery is only technically prepared.** Search Console / Bing Webmaster verification, sitemap
+  submission and the GitHub social-preview image are account actions that were not taken; `llms.txt` and
+  `robots.txt` are present and correct but no indexing outcome is claimed.
+- **Distribution is GitHub-only.** Play closed testing and the F-Droid `fdroiddata` MR remain external;
+  F-Droid submission is blocked on a source-buildable sherpa-onnx (the shipped AAR is prebuilt).
+- **Artifact size and performance unchanged:** the rebuild after policy wiring adds bytes only (APK +52 B,
+  AAB +58 B versus P3.7); no runtime code changed, so P3.7's emulator-measured numbers stand and are not
+  re-measured here. Emulator-only performance remains a limit.
+- **The release notes are bilingual in one Markdown body.** GitHub renders Arabic paragraphs correctly but
+  cannot set a per-section direction, so the English body comes first and the Arabic section follows.
+
+### Documentation added / updated
+
+`README.md` + `README.ar.md` (public status, live links, install path, 15 modules), `PRIVACY.md`,
+`SECURITY.md`, `DESIGN.md` (public surface & brand assets), `PRODUCT.md` (P3.8 bullet), `docs/06` (§15.1
+evidence + §15.2 launch table), `docs/27` (P3.8 publication record with live evidence), `docs/28` (council
+record), `store/README.md` (rebuilt artifact hashes), `store/listing/` (EN/AR copy refreshed),
+`fdroid/metadata/app.sirrak.yml` (source/commit/changelog URLs, NDK/CMake recipe, prebuilt-AAR caveat),
+`CONTRIBUTING.md`, `CHANGELOG.md`, and the site generator/validators under `website/` and `scripts/`.
+Exit criteria for the milestone: CI and Pages green on `main`, the release live with both artifacts, the site
+validators green, and every recorded hash matching the files in `store/README.md` — all true as of this record.
+

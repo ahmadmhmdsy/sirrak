@@ -11,6 +11,7 @@
 
 <p align="center">
   <a href="https://github.com/alshahia/sirrak/actions/workflows/ci.yml"><img src="https://github.com/alshahia/sirrak/actions/workflows/ci.yml/badge.svg" alt="CI status"></a>
+  <a href="https://github.com/alshahia/sirrak/actions/workflows/pages.yml"><img src="https://github.com/alshahia/sirrak/actions/workflows/pages.yml/badge.svg" alt="Site deploy status"></a>
   <img src="https://img.shields.io/badge/license-Apache--2.0-blue.svg" alt="License: Apache-2.0">
   <img src="https://img.shields.io/badge/Android-9%2B%20(API%2028)-3ddc84.svg" alt="Android 9 or newer">
   <img src="https://img.shields.io/badge/JVM%20tests-567%20green-brightgreen.svg" alt="567 green JVM tests">
