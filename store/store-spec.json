@@ -78,7 +78,7 @@
       ":app:testLibreDebugUnitTest",
       "testDebugUnitTest"
     ],
-    "jvmTestsMinimum": 555,
+    "jvmTestsMinimum": 567,
     "lintReport": "app/build/reports/lint-results-libreDebug.xml",
     "artifacts": [
       {
