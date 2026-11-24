@@ -1,6 +1,6 @@
 # Sirrak docs — product and build records
 
-These are the public build records for Sirrak `1.0.0-rc1`: what was built, how it was verified, what was
+These are the public build records for Sirrak `1.0.0-rc2`: what was built, how it was verified, what was
 rejected and which limits are still open. They are shipped in the repository because a launch claim is only
 worth what its evidence is worth.
 

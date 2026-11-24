@@ -22,7 +22,7 @@ Store availability is not claimed: F-Droid submission is planned and not done, a
 has not happened. Builds are published on [Releases](https://github.com/alshahia/sirrak/releases) or built
 from source. When you report anything, include:
 
-- **Version, versionCode and flavour** from **Settings → About** (for example `1.0.0-rc1`, versionCode 12,
+- **Version, versionCode and flavour** from **Settings → About** (for example `1.0.0-rc2`, versionCode 13,
   `libre`). The flavour matters: `libre` and `play` are built from one source but are not the same artifact.
 - **Device and Android version**, and the ABI — `arm64-v8a` on a phone, `x86_64` on an emulator.
 - **Steps** from a known state: fresh launch, empty library, which model is loaded, which document is in scope.

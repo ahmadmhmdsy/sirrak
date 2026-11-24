@@ -2,10 +2,10 @@
 
 All notable changes to Sirrak are recorded here. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Version numbers follow Semantic Versioning:
-`1.0.0-rc1` is a release candidate for `1.0.0`, not a stable release, and pre-release suffixes are never
+`1.0.0-rcN` is a release candidate for `1.0.0`, not a stable release, and pre-release suffixes are never
 reused for different content.
 
-## [Unreleased]
+## [1.0.0-rc2] - 2026-11-24
 
 ### Added
 
@@ -30,9 +30,16 @@ reused for different content.
   literal was updated. The dictionary evidence, Qiyas council transcript and the governing glossary are in
   [docs/30-arabic-terminology.md](docs/30-arabic-terminology.md).
 
-The rows and the terminology fix ship in the next signed build; on `1.0.0-rc1` the same model files can be imported
-through Settings → Models → Add from Hugging Face, and the installed app still shows the old Arabic wording. Publishing
-steps stay in [docs/27-sirrak-launch-checklist.md](docs/27-sirrak-launch-checklist.md).
+- **Public surfaces refreshed for `1.0.0-rc2`.** The signed APK/AAB, the eight store screenshots, the screenshot
+  regression baseline, the store listing, both READMEs and the generated website were rebuilt from the same tree.
+  `1.0.0-rc1` keeps its tag, artifacts, screenshots and record untouched as history; the rc2 release is a new tag,
+  never a re-tag.
+
+Shipped as `1.0.0-rc2` (versionCode 13) on 2026-11-24: the signed artifacts were rebuilt and re-recorded, the
+screenshots were recaptured from the rc2 build, and the store/site/README facts were refreshed from the same source.
+On `1.0.0-rc1` the same model files could be imported through Settings → Models → Add from Hugging Face, but the
+installed rc1 app still shows the old Arabic wording; that record stands. Publishing steps stay in
+[docs/27-sirrak-launch-checklist.md](docs/27-sirrak-launch-checklist.md).
 
 ## [1.0.0-rc1] - 2026-11-23
 

@@ -2,7 +2,7 @@ cff-version: 1.2.0
 message: "If you use Sirrak in research, a report or a product, cite the release you actually used with this metadata."
 title: Sirrak
 abstract: "Sirrak is a private, Arabic-first AI assistant for Android that runs its models on the device: chat through a vendored llama.cpp, dictation through sherpa-onnx Whisper, document retrieval grounded in the user's own files, and a curated model manager with resumable checksum-verified downloads. It has no accounts, ads, telemetry or analytics, and is licensed under Apache-2.0."
-version: "1.0.0-rc1"
+version: "1.0.0-rc2"
 date-released: "2026-11-23"
 license: Apache-2.0
 repository-code: "https://github.com/alshahia/sirrak"

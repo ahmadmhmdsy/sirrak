@@ -1,6 +1,6 @@
 # Sirrak security policy
 
-Last updated: 2026-11-23 · Applies to 1.0.0-rc1 (versionCode 12, released 2026-11-23).
+Last updated: 2026-11-24 · Applies to 1.0.0-rc2 (versionCode 13, released 2026-11-24).
 
 Published at <https://alshahia.github.io/sirrak/security/> — Arabic:
 <https://alshahia.github.io/sirrak/ar/security/>. The app opens this page from
@@ -15,11 +15,11 @@ of those and what to expect afterwards.
 
 | Version | versionCode | Supported |
 | --- | --- | --- |
-| 1.0.0-rc1 | 12 | Yes — current release; security fixes land here |
+| 1.0.0-rc2 | 13 | Yes — current release; security fixes land here |
 | earlier builds, other release candidates, builds from arbitrary commits | — | No |
 
 Sirrak is pre-1.0: fixes land on the newest release only, and older builds are not patched. If you are not
-on 1.0.0-rc1, reproduce the issue there before reporting it.
+on 1.0.0-rc2, reproduce the issue there before reporting it.
 
 ## Reporting a vulnerability
 
@@ -32,7 +32,7 @@ The report stays private between you and the maintainer until an advisory is pub
 
 ## What to include
 
-- The app version from **Settings → About** — 1.0.0-rc1 is versionCode 12 — and the distribution channel
+- The app version from **Settings → About** — 1.0.0-rc2 is versionCode 13 — and the distribution channel
   shown beside it (`libre` or `play`).
 - Device or emulator model, Android version and ABI (`arm64-v8a` on a phone, `x86_64` on an emulator).
 - Steps from a known state: fresh launch or existing data, which model is loaded, which document is in
@@ -97,7 +97,7 @@ Out of scope:
 - Upstream llama.cpp, sherpa-onnx or LiteRT-LM code — report those upstream. Bugs in how Sirrak integrates
   or packages them are in scope.
 
-## Security-relevant facts about 1.0.0-rc1
+## Security-relevant facts about 1.0.0-rc2
 
 **Signing.** Release APKs are signed with the project certificate, SHA-256:
 
@@ -130,7 +130,7 @@ publishes one, and every model must pass a GGUF header check before it becomes v
 yourself is checked for the GGUF header only, so treat the source you chose as trusted.
 
 **TLS and dependencies.** Downloads use HTTPS with the platform trust store; there is no certificate pinning
-and no proxy configuration. Android lint keeps 33 accepted warnings visible in every report, including three
+and no proxy configuration. Android lint keeps 36 accepted warnings visible in every report, including three
 transitive Bouncy Castle `TrustAllX509TrustManager` warnings pulled in by PDFBox-Android, which is not on
 the network path. Pinned dependency and AGP versions are upgraded deliberately and tracked rather than
 patched silently; a dependency advisory that affects a reachable code path is treated as a security report.

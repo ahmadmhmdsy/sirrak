@@ -14,11 +14,11 @@ model download the user explicitly starts, which is declared as the `NonFreeNet`
 
 ## Release steps
 
-1. Publish the source repository and a signed tag (for example `v1.0.0-rc1`).
+1. Publish the source repository and a signed tag (for example `v1.0.0-rc2`).
 2. Fill `SourceCode`, `IssueTracker`, `Changelog`, `Repo` and `commit` in the metadata file.
 3. Check that F-Droid can fetch the native engines: llama.cpp, sherpa-onnx and LiteRT-LM are consumed
    as Maven artifacts from public repositories; no NDK build is required from F-Droid's side.
-4. Run `fdroid lint app.sirrak` and `fdroid build app.sirrak:12` with the fdroiddata tooling before
+4. Run `fdroid lint app.sirrak` and `fdroid build app.sirrak:13` with the fdroiddata tooling before
    submitting.
 5. F-Droid signs the APK with its own key. Keep `keystore.properties` out of the public repo — the
    `libre` build works without it (release stays unsigned in that case).

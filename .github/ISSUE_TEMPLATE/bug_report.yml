@@ -16,7 +16,7 @@ body:
     attributes:
       label: Sirrak version
       description: Settings → About shows the version, the versionCode and the store flavour (`libre` or `play`). Copy them from there.
-      placeholder: 1.0.0-rc1 (versionCode 12, libre)
+      placeholder: 1.0.0-rc2 (versionCode 13, libre)
     validations:
       required: true
 

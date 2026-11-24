@@ -6,8 +6,8 @@
     "component": {
       "type": "application",
       "name": "Sirrak",
-      "version": "1.0.0-rc1",
-      "purl": "pkg:generic/sirrak@1.0.0-rc1",
+      "version": "1.0.0-rc2",
+      "purl": "pkg:generic/sirrak@1.0.0-rc2",
       "licenses": [
         {
           "id": "Apache-2.0",

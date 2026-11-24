@@ -85,15 +85,15 @@
         "id": "apk-libre",
         "format": "apk",
         "path": "app/build/outputs/apk/libre/release/app-libre-release.apk",
-        "bytes": 145711750,
-        "sha256": "FD94EA313EBA7D71E6E10C3BD4B6BFBC288696EBD2DC4F05E6FEBD0C038A8CCE"
+        "bytes": 145712378,
+        "sha256": "0B53BD7157CA9CC1A2D9DE42ADD44FE46F58D42C908ABB0E7E40E32B23693182"
       },
       {
         "id": "aab-play",
         "format": "aab",
         "path": "app/build/outputs/bundle/playRelease/app-play-release.aab",
-        "bytes": 64938455,
-        "sha256": "9326F505C25916D5FD1A888408DBA73C8EFA355AF5893EC76A23829CBB5B5D81"
+        "bytes": 64938759,
+        "sha256": "BCB25473BEFF23E2EE3AC5E45C570A6C97C92B4A8331FAC70DF5A266C9997FCC"
       }
     ],
     "signing": {

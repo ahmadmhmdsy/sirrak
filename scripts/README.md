@@ -34,8 +34,9 @@ Screens covered: `home`, `model-picker` (model sheet opened from the composer ch
 `ui-current/` (git-ignored) so a failing run can be reviewed next to `ui-baseline/`.
 
 Baseline provenance: captured on the API 36 `Nawa_Phone` AVD (720x1280) from the signed `libre`
-release build `1.0.0-rc1` (versionCode 12). Refresh the baseline only together with an intended UI
-change, and commit the new PNGs in the same change as the code.
+release build `1.0.0-rc2` (versionCode 13) on 24 Nov 2026, from a clean launch and with no model
+installed. Refresh the baseline only together with an intended UI change, and commit the new PNGs in
+the same change as the code.
 
 ## `validate-store.ps1` — Play/F-Droid listing validator
 

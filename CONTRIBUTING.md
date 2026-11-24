@@ -11,7 +11,7 @@ that introduced it is the argument for it.
 ## Before you write code
 
 - **Bug fix or small improvement:** open an issue or send the pull request directly.
-- **New feature, or a change to existing behaviour:** open an issue first. `1.0.0-rc1` is feature-complete;
+- **New feature, or a change to existing behaviour:** open an issue first. `1.0.0-rc2` is feature-complete;
   scope changes are decisions, not drive-bys. The scope is in [PRODUCT.md](PRODUCT.md).
 - **Security problem:** stop and read [SECURITY.md](SECURITY.md). Never open a public issue for it.
 - **Translation or wording:** both locales move together (see [Arabic, RTL and accessibility](#arabic-rtl-and-accessibility)).

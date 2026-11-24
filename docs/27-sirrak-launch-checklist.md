@@ -11,8 +11,8 @@ names the command or file that proves it. Nothing here needs a test phone (F8): 
       failures, 0 errors** (flavoured `app` + plain modules; release/stale result folders ignored).
 - [x] Arabic eval: `./gradlew :core:rag:testDebugUnitTest --tests "app.sirrak.core.rag.ArabicEvalTest"`
       → **24/24** cases, printed as four `Arabic eval ... cases passed` lines.
-- [x] Android lint: `./gradlew :app:lintLibreDebug` → **0 errors**, 33 accepted warnings (pinned
-      dependency/AGP updates + a transitive third-party TLS warning; see docs/26 P3.6).
+- [x] Android lint: `./gradlew :app:lintLibreDebug` → **0 errors**, 36 accepted warnings (27 pinned
+      dependency/AGP updates + 3 transitive third-party TLS warnings; see docs/26 P3.6 and §P3.9).
 - [x] Screenshot regression (device): `pwsh -File scripts/ui-regression.ps1` → **4/4 screens match**
       (`-UpdateBaseline` only together with an intended UI change).
 - [x] Store assets: `pwsh -File scripts/validate-store.ps1` → **79 checks pass** (Play character
@@ -81,7 +81,7 @@ jarsigner -verify app/build/outputs/bundle/playRelease/app-play-release.aab
 - [ ] Vision: attach camera/gallery image, answer describes it (when a projector is installed).
 - [ ] Privacy: network log records the download only, offline-only blocks a download, reports are local.
 - [ ] Settings: five theme packs × light/dark, text size 200 %, language switch (Arabic ↔ English),
-      About shows `1.0.0-rc1`, the correct distribution channel and 23 licensed components.
+      About shows `1.0.0-rc2`, the correct distribution channel and 23 licensed components.
 - [ ] Accessibility: TalkBack pass over home/settings/composer, 48 dp targets, no clipped text at 200 %.
 
 ## 5. Documentation to host before publishing

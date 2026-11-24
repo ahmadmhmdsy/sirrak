@@ -48,7 +48,7 @@
     ]
   },
   "release": {
-    "tag": "v1.0.0-rc1",
+    "tag": "v1.0.0-rc2",
     "requiredAssets": [
       "app-libre-release.apk",
       "app-play-release.aab",

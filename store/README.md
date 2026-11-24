@@ -44,12 +44,12 @@ manifest, and every launch document). Fixing it found and fixed two real launch 
 and English short descriptions were 84/89 characters (limit 80) and the English What's new was 545
 (limit 500).
 
-## Artifacts (final `1.0.0-rc1` build, 23 Nov 2026, rebuilt after P3.7)
+## Artifacts (final `1.0.0-rc2` build, 24 Nov 2026)
 
 | Artifact | Path | Size | SHA-256 |
 | --- | --- | --- | --- |
-| Signed release APK (libre, F-Droid/self-hosted) | `app/build/outputs/apk/libre/release/app-libre-release.apk` | 145,711,750 B (138.96 MiB) | `FD94EA313EBA7D71E6E10C3BD4B6BFBC288696EBD2DC4F05E6FEBD0C038A8CCE` |
-| Signed release AAB (play) | `app/build/outputs/bundle/playRelease/app-play-release.aab` | 64,938,455 B (61.93 MiB) | `9326F505C25916D5FD1A888408DBA73C8EFA355AF5893EC76A23829CBB5B5D81` |
+| Signed release APK (libre, F-Droid/self-hosted) | `app/build/outputs/apk/libre/release/app-libre-release.apk` | 145,712,378 B (138.96 MiB) | `0B53BD7157CA9CC1A2D9DE42ADD44FE46F58D42C908ABB0E7E40E32B23693182` |
+| Signed release AAB (play) | `app/build/outputs/bundle/playRelease/app-play-release.aab` | 64,938,759 B (61.93 MiB) | `BCB25473BEFF23E2EE3AC5E45C570A6C97C92B4A8331FAC70DF5A266C9997FCC` |
 
 Signing certificate (local release key, not F-Droid's): certificate SHA-256
 `4537ECEB9952AC9020EFFCEB8B50CB10AEB795772792D632CFC3D0B9F7106806`, 4,096-bit RSA, valid

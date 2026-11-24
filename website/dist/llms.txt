@@ -2,7 +2,7 @@
 
 > Private, offline, Arabic-first AI assistant for Android. Apache-2.0. No account, no cloud, no telemetry.
 
-Version 1.0.0-rc1 · released 2026-11-23 · Android 9+ · signed libre APK and Play bundle built from this repository.
+Version 1.0.0-rc2 · released 2026-11-24 · Android 9+ · signed libre APK and Play bundle built from this repository.
 
 ## Pages
 

@@ -41,7 +41,7 @@ instead of a stock Material palette.
 
 **Status:** the [repository](https://github.com/alshahia/sirrak) and the bilingual site are public, the
 privacy and security policies are published in both languages, and the signed APK is served from
-[GitHub Releases](https://github.com/alshahia/sirrak/releases/latest). `1.0.0-rc1` is the current
+[GitHub Releases](https://github.com/alshahia/sirrak/releases/latest). `1.0.0-rc2` is the current
 candidate; F-Droid and Play are prepared but have no store listing yet — see [Limits](#limits-honest).
 
 ## Why Sirrak
@@ -52,6 +52,8 @@ candidate; F-Droid and Play are prepared but have no store listing yet — see [
   switch blocks every request and cancels a running download.
 - **Arabic-first.** RTL layout, Arabic typography, Arabic dictation, Arabic document retrieval — tested with a
   24-case Arabic evaluation suite on every JVM test run.
+- **Consistent Arabic terminology.** A Qiyas-reviewed glossary fixes the shipped wording: an AI model is **نموذج**
+  (not طراز), prompts are **تعليمات**, and the vision projector is **ملحق الرؤية** — [docs/30](docs/30-arabic-terminology.md).
 - **Honest licences.** A bundled licence and credits registry (23 components, full texts offline) feeds
   Settings → About, [NOTICE](NOTICE) and a drift-tested [CycloneDX SBOM](sbom.cdx.json); every catalogue model
   shows its licence before download.
@@ -66,7 +68,7 @@ candidate; F-Droid and Play are prepared but have no store listing yet — see [
 | Chat | Streaming answers from a local GGUF model, multiple conversations with search/rename/delete, Markdown rendering, per-conversation system prompt and stop sequences, copy/regenerate/new-chat actions, token meter with measured tok/s |
 | Dictation | On-device sherpa-onnx Whisper for Arabic and English with a live level meter; the transcript is appended to the composer, never sent automatically; audio never leaves the device |
 | Documents | Import PDF, DOCX, EPUB, Markdown or text, index locally (embeddings + Arabic BM25 fused by RRF) and ask questions answered from numbered, explicitly untrusted sources with citation chips and excerpt sheets |
-| Models | Curated catalogue with device-aware recommendations, resumable checksum-verified downloads, pause/cancel/retry, background progress notification, installed-model manager, storage manager, Hugging Face import |
+| Models | Curated catalogue with device-aware recommendations (including a compact 2 GB tier), resumable checksum-verified downloads, pause/cancel/retry, background progress notification, installed-model manager, storage manager, Hugging Face import |
 | Tuning | Temperature, top-p, top-k, repeat penalty, context size, streaming, chat-template choice, global and per-model prompts — all provable in one engine log line |
 | Themes | Five hand-written theme packs with a live preview and a WCAG contrast gate: Girih & Ink, Lapis Night, Turquoise Dawn, Madder Dusk, Paper |
 | Privacy | Per-call network log, offline-only switch, local AI-output reports you choose to export, and an honest state instead of a dead link where no store listing exists yet |
@@ -205,11 +207,11 @@ The rules are written down in [CONTRIBUTING.md](CONTRIBUTING.md) and [docs/17-cu
 
 ## Quality and evidence
 
-| Gate | Result on <code>1.0.0-rc1</code> |
+| Gate | Result on <code>1.0.0-rc2</code> |
 |---|---|
 | JVM unit tests | **567 tests, 0 failures** across 9 modules |
 | Arabic evaluation | **24/24** cases (normalisation, sentence splitting, BM25, negative controls) |
-| Android lint | **0 errors**, 33 reviewed warnings |
+| Android lint | **0 errors**, 36 reviewed warnings (dependency/AGP version pins plus 3 transitive TLS warnings) |
 | Screenshot regression | **4/4 screens, distance 0** against committed baselines |
 | Store validator | **79/79 checks** (copy limits, graphics hashes, launch docs) |
 | Release gate | [<code>scripts/release-check.ps1</code>](scripts/release-check.ps1) builds, verifies v2 signature + certificate, checks the AAB, validates store assets and runs the screenshot gate |

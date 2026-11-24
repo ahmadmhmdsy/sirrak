@@ -499,3 +499,20 @@ into `app.json` with the signed artifacts rebuilt (APK 145,711,750 B / AAB 64,93
 
 Ordered execution: `docs/27-sirrak-launch-checklist.md`. The launch gate in §5 still applies unchanged;
 none of its quality bars were lowered to reach the candidate.
+
+---
+
+## 16. Amendment — 24 Nov 2026: `1.0.0-rc2` refresh
+
+Two source changes landed after rc1 was published and needed a new signed build, so `1.0.0-rc2` (versionCode 13)
+was cut on 24 Nov 2026 as the delivery vehicle: the Qiyas-reviewed Arabic terminology normalization
+([docs/30-arabic-terminology.md](30-arabic-terminology.md)) and the compact 2 GB catalogue tier
+(LFM2.5 350M Instruct, [docs/29-small-models-council.md](29-small-models-council.md)). rc1's tag, artifacts,
+screenshots and record were left untouched.
+
+The refresh also rebuilt every public surface from the same tree so the published facts match the shipped app:
+the signed APK/AAB were re-recorded in `store/store-spec.json` and `store/README.md`, eight screenshots were
+recaptured, the UI regression baseline was refreshed, the store listing and both READMEs were updated, the
+bilingual site was regenerated (OG card included), and the SBOM/NOTICE version stamps were bumped. The gates
+were rerun on the rc2 tree with `scripts/release-check.ps1`; the release and CI evidence is recorded in
+[docs/27-sirrak-launch-checklist.md](27-sirrak-launch-checklist.md) §P3.9.

@@ -1,16 +1,16 @@
 {
-  "generatedAt": "2026-11-23T05:17:23Z",
+  "generatedAt": "2026-11-24T07:04:07Z",
   "device": "emulator-5554",
   "screen": "720 x 1280",
   "note": "Captured from a clean launch; status bar and nav bar are cropped before hashing.",
   "screens": [
     {
       "Name": "home",
-      "Hash": "0x91716F671F1F8DBC"
+      "Hash": "0x91716F671F1F8D9E"
     },
     {
       "Name": "model-picker",
-      "Hash": "0xE171E3E3E3597BEA"
+      "Hash": "0xE171E3E3E3595BC2"
     },
     {
       "Name": "library-empty",

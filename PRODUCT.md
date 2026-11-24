@@ -55,6 +55,7 @@ The mechanism a neighboring product could not truthfully copy: **a local-first a
   now upload-ready apart from the account-bound steps.
 
 - **P3.8 public launch surface landed 23 Nov 2026** (`1.0.0-rc1`): the repository is public at
+- **P3.9 terminology and compact-tier refresh landed 24 Nov 2026** (`1.0.0-rc2`, versionCode 13): the Arabic terminology was normalized across the app, both READMEs, the website and the store listing after the Qiyas review ([docs/30](docs/30-arabic-terminology.md)); the curated catalogue gained a compact 2 GB tier (LFM2.5 350M Instruct, [docs/29](docs/29-small-models-council.md)); and the signed APK/AAB, eight screenshots, UI baseline and every public version fact were rebuilt and re-recorded for rc2.
   <https://github.com/alshahia/sirrak>, the bilingual site is live at <https://alshahia.github.io/sirrak/>
   (English) and <https://alshahia.github.io/sirrak/ar/> (Arabic, right-to-left), the privacy and security
   policies are published in both languages at `/privacy/` and `/security/`, and the signed APK is

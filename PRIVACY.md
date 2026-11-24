@@ -1,6 +1,6 @@
 # Sirrak privacy policy
 
-Last updated: 2026-11-23 · Policy version 1 · Applies to 1.0.0-rc1 (versionCode 12).
+Last updated: 2026-11-24 · Policy version 1 · Applies to 1.0.0-rc2 (versionCode 13).
 
 Published at <https://alshahia.github.io/sirrak/privacy/> — Arabic:
 <https://alshahia.github.io/sirrak/ar/privacy/>. The app opens this page from
@@ -55,7 +55,7 @@ Sirrak has exactly one network feature today: downloading a model that you expli
   check, font fetch or asset download that could phone home on its own.
 
 The optional Hugging Face token is held in memory for that download only; the app does not write it to
-storage or reuse it. There is no "remember this token" option in 1.0.0-rc1.
+storage or reuse it. There is no "remember this token" option in 1.0.0-rc2.
 
 **Offline-only mode** is a switch in **Settings → Privacy & data**. When it is on, the app refuses every new
 network request and cancels a running download; the check runs before a socket is opened, so neither a
@@ -115,7 +115,7 @@ no form and no cookie, and it does not collect, store or process anything about 
 
 ## Changes to this policy
 
-This policy is versioned with the app: version 1 accompanies 1.0.0-rc1 (23 November 2026). Material changes
+This policy is versioned with the app: version 1 accompanies 1.0.0-rc2 (24 November 2026). Material changes
 will be shown in the app before they take effect, and this page keeps the same URL. If a future version adds
 a network feature or stores something new, this document will say so before that version ships.
 

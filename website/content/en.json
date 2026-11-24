@@ -54,7 +54,7 @@
       "href": "#privacy"
     },
     "meta": [
-      "Version 1.0.0-rc1",
+      "Version 1.0.0-rc2",
       "139 MiB · Android 9+",
       "libre flavour · SHA-256 in release notes"
     ],
@@ -148,7 +148,7 @@
       {
         "icon": "models",
         "title": "Model control",
-        "body": "A curated catalogue with device-aware recommendations, resumable checksum-verified downloads, a storage manager and Hugging Face import."
+        "body": "A curated catalogue with device-aware recommendations (including a compact 2 GB tier), resumable checksum-verified downloads, a storage manager and Hugging Face import."
       },
       {
         "icon": "sliders",
@@ -179,7 +179,7 @@
       {
         "label": "Android lint",
         "value": "0 errors",
-        "note": "33 reviewed warnings, no suppressions for this surface"
+        "note": "36 reviewed warnings, no suppressions for this surface"
       },
       {
         "label": "Network calls when idle",
@@ -260,7 +260,7 @@
       },
       {
         "label": "Release tag",
-        "value": "v1.0.0-rc1 · versionCode 12",
+        "value": "v1.0.0-rc2 · versionCode 13",
         "ltr": true
       },
       {
@@ -308,7 +308,7 @@
       },
       {
         "q": "Where do the models come from?",
-        "a": "A curated catalogue with recommendations (Qwen2.5 and other GGUF models), a local GGUF import, or a Hugging Face repository import. Every model's licence is shown before download; nothing is bundled."
+        "a": "A curated catalogue with recommendations (Qwen2.5, LFM2.5 350M for 2 GB phones and other GGUF models), a local GGUF import, or a Hugging Face repository import. Every model's licence is shown before download; nothing is bundled."
       },
       {
         "q": "Why is the APK 139 MiB?",

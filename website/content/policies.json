@@ -1,11 +1,11 @@
 {
   "schemaVersion": 1,
-  "updated": "2026-11-23",
+  "updated": "2026-11-24",
   "privacy": {
     "en": {
       "title": "Privacy policy",
       "description": "How Sirrak handles your data: everything stays on your device; the only network request is a model download you start. No telemetry, no accounts, no tracking.",
-      "updated": "Last updated: 23 November 2026 · Policy version 1",
+      "updated": "Last updated: 24 November 2026 · Policy version 1 · Applies to 1.0.0-rc2",
       "summary": [
         "Sirrak is an on-device assistant: chats, documents, models and settings stay in app-private storage.",
         "The only network feature is a model download you explicitly start. There is no telemetry, no analytics, no crash reporting, no ads and no account.",
@@ -61,7 +61,7 @@
         {
           "heading": "Changes to this policy",
           "paragraphs": [
-            "This policy is versioned with the app (current version: 1, 23 November 2026). Material changes will be shown in the app before they take effect, and this page will keep the same URL."
+            "This policy is versioned with the app (current version: 1, 24 November 2026, shipped with 1.0.0-rc2). Material changes will be shown in the app before they take effect, and this page will keep the same URL."
           ]
         },
         {
@@ -75,7 +75,7 @@
     "ar": {
       "title": "سياسة الخصوصية",
       "description": "كيف يتعامل سِرِّك مع بياناتك: كل شيء يبقى على جهازك، والطلب الشبكي الوحيد هو تنزيل نموذج تبدأه أنت. بلا تتبّع ولا حسابات ولا قياسات.",
-      "updated": "آخر تحديث: 23 نوفمبر 2026 · إصدار السياسة 1",
+      "updated": "آخر تحديث: 24 نوفمبر 2026 · إصدار السياسة 1 · ينطبق على 1.0.0-rc2",
       "summary": [
         "سِرِّك مساعد يعمل على الجهاز: المحادثات والمستندات والنماذج والإعدادات تبقى في تخزين التطبيق الخاص.",
         "الميزة الشبكية الوحيدة هي تنزيل نموذج تبدأه أنت صراحةً. لا تتبّع ولا تحليلات ولا تقارير أعطال ولا إعلانات ولا حساب.",
@@ -131,7 +131,7 @@
         {
           "heading": "التغييرات على هذه السياسة",
           "paragraphs": [
-            "تُصدَر هذه السياسة بإصدار مع التطبيق (الإصدار الحالي: 1، 23 نوفمبر 2026). التغييرات الجوهرية تُعرض في التطبيق قبل سريانها، وتبقى هذه الصفحة على العنوان نفسه."
+            "تُصدَر هذه السياسة بإصدار مع التطبيق (الإصدار الحالي: 1، 24 نوفمبر 2026، مع 1.0.0-rc2). التغييرات الجوهرية تُعرض في التطبيق قبل سريانها، وتبقى هذه الصفحة على العنوان نفسه."
           ]
         },
         {
@@ -147,7 +147,7 @@
     "en": {
       "title": "Security policy",
       "description": "How to report a vulnerability in Sirrak, what is in scope, and the design commitments that reduce the attack surface to a phone with no server and no telemetry.",
-      "updated": "Last updated: 23 November 2026 · Applies to 1.0.0-rc1",
+      "updated": "Last updated: 24 November 2026 · Applies to 1.0.0-rc2",
       "summary": [
         "Report vulnerabilities privately through GitHub Security Advisories — never in a public issue.",
         "Sirrak has no server and no telemetry endpoint to attack; release builds are minified and store data in app-private storage.",
@@ -206,7 +206,7 @@
     "ar": {
       "title": "سياسة الأمان",
       "description": "كيف تبلّغ عن ثغرة في سِرِّك، وما داخل النطاق، والالتزامات التصميمية التي تقلّص سطح الهجوم إلى هاتف بلا خادم وبلا تتبّع.",
-      "updated": "آخر تحديث: 23 نوفمبر 2026 · ينطبق على 1.0.0-rc1",
+      "updated": "آخر تحديث: 24 نوفمبر 2026 · ينطبق على 1.0.0-rc2",
       "summary": [
         "أبلغ عن الثغرات بخصوصية عبر نماذج أمان GitHub — لا تفتح مشكلة عامة.",
         "لا خادم لسِرِّك ولا نقطة تتبّع لمهاجمتها؛ ونسخ الإصدار مصغَّرة وتخزّن البيانات في تخزين التطبيق الخاص.",

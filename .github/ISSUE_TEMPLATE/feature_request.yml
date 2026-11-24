@@ -6,7 +6,7 @@ body:
   - type: markdown
     attributes:
       value: |
-        Sirrak is feature-complete for `1.0.0-rc1`; a request can be accepted, recorded for a later release, or
+        Sirrak is feature-complete for `1.0.0-rc2`; a request can be accepted, recorded for a later release, or
         declined. The more concrete the problem is, the easier that call is. Read the scope in
         [PRODUCT.md](https://github.com/alshahia/sirrak/blob/main/PRODUCT.md) first.
 

@@ -1,6 +1,6 @@
 # F-Droid metadata for Sirrak, ready to copy into the fdroiddata repository
 # (metadata/app.sirrak.yml). F-Droid rebuilds and signs the APK with its own key; the URLs and the
-# commit below point at the published repository and its v1.0.0-rc1 tag.
+# commit below point at the published repository and its v1.0.0-rc2 tag.
 #
 # Prebuilt-AAR caveat, read this before submitting:
 # engine/whisper/libs/sherpa-onnx-2.0.1.aar is a prebuilt binary vendored into this repository.
@@ -75,9 +75,9 @@ RepoType: git
 Repo: https://github.com/alshahia/sirrak.git
 
 Builds:
-  - versionName: 1.0.0-rc1
-    versionCode: 12
-    commit: v1.0.0-rc1
+  - versionName: 1.0.0-rc2
+    versionCode: 13
+    commit: v1.0.0-rc2
     # The repository root is the Gradle project root; no subdir needed.
     gradle:
       - assembleLibreRelease
@@ -96,6 +96,6 @@ AutoName: Sirrak
 # key, so it must never fetch the APK we publish on GitHub Releases.
 #
 # AutoUpdateMode / UpdateCheckMode are deliberately unset for the release candidate: the recipe is
-# pinned to the v1.0.0-rc1 tag above. Do not move or retag a published release — retagging would
+# pinned to the v1.0.0-rc2 tag above. Do not move or retag a published release — retagging would
 # silently rebuild a different tree under the same versionName/versionCode. A new build needs a new
 # tag and a new Builds entry.
