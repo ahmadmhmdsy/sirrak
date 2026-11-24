@@ -5,7 +5,7 @@
     <string name="models_device_ram">RAM</string>
     <string name="models_device_storage">Free storage</string>
     <string name="models_device_android">Android version</string>
-    <string name="models_device_abi">CPU architecture</string>
+    <string name="models_device_abi">CPU architecture (ABI)</string>
     <string name="models_device_soc">Chipset</string>
     <string name="models_recommended_title">Recommended model</string>
     <string name="models_recommended_why_recommended_fits">Fits your device\'s memory and storage</string>

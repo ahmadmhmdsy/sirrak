@@ -14,8 +14,8 @@
     <string name="empty_privacy">لا حساب. لا سحابة. لا تتبّع.</string>
     <string name="suggestions_title">جرّب أن تسأل</string>
     <string name="sources_label">مصادر</string>
-    <string name="error_engine">الطراز غير متاح الآن. أعد المحاولة أو بدّل المحرّك.</string>
-    <string name="error_no_model">لم يُحمَّل أي طراز بعد. استورد ملف GGUF من الإعدادات ثم حاول مجددًا.</string>
+    <string name="error_engine">النموذج غير متاح الآن. أعد المحاولة أو بدّل المحرّك.</string>
+    <string name="error_no_model">لم يُحمَّل أي نموذج بعد. استورد ملف GGUF من الإعدادات ثم حاول مجددًا.</string>
     <string name="action_open_settings">فتح الإعدادات</string>
     <string name="error_stopped">أوقفت الإجابة. أعد المحاولة إن شئت.</string>
     <string name="action_new_chat">محادثة جديدة</string>
@@ -28,8 +28,8 @@
     <string name="meter_overflow">المحادثة أطول من نافذة السياق؛ أقدم الرسائل لا تُرسل.</string>
     <string name="meter_speed">‎≈ %1$s رمز/ث</string>
     <string name="conversation_settings">إعدادات المحادثة</string>
-    <string name="conversation_system_prompt">موجّه المحادثة</string>
-    <string name="conversation_system_prompt_hint">اتركه فارغًا لاستخدام الموجه العام.</string>
+    <string name="conversation_system_prompt">تعليمات المحادثة</string>
+    <string name="conversation_system_prompt_hint">اتركه فارغًا لاستخدام التعليمات العامة.</string>
     <string name="conversation_stop_sequences">تسلسلات التوقف</string>
     <string name="conversation_stop_hint">سطر لكل تسلسل، حتى ٤ تسلسلات.</string>
     <string name="conversation_customized">مخصّصة</string>
@@ -64,8 +64,8 @@
     <string name="attachment_kind_audio">نسخ صوتي</string>
     <string name="attachment_kind_shared_text">نص مشارك</string>
     <string name="attachment_shared_text_hint">الصق نصًا من الحافظة بنفسك؛ يُرسَل كبيانات غير موثوقة.</string>
-    <string name="attachment_blocked_document">يتطلب طراز التضمين أولًا؛ استورده من تبويب المكتبة ثم أضف مستنداتك.</string>
-    <string name="attachment_blocked_vision">الطراز المحمّل لا يرى الصور.</string>
+    <string name="attachment_blocked_document">يتطلب نموذج التضمين أولًا؛ استورده من تبويب المكتبة ثم أضف مستنداتك.</string>
+    <string name="attachment_blocked_vision">النموذج المحمّل لا يرى الصور.</string>
     <string name="attachment_blocked_audio">إدخال الصوت غير متاح بعد.</string>
     <string name="attachment_blocked_text">المحرّك الحالي لا يقرأ النص.</string>
     <string name="attachment_capture_pending">التقاط هذا النوع يصل في مرحلة لاحقة.</string>
@@ -83,14 +83,14 @@
     <string name="documents_scope_remove">إزالة %1$s من نطاق المحادثة</string>
     <string name="documents_picker_title">مستندات المحادثة</string>
     <string name="documents_picker_body">اختر المستندات التي ستُبنى عليها الإجابات. تُقتبَس المقاطع المستخدمة بصفحاتها ويمكنك فتحها.</string>
-    <string name="documents_picker_embedding_missing">لا يمكن فهرسة المستندات قبل استيراد طراز التضمين من الإعدادات.</string>
+    <string name="documents_picker_embedding_missing">لا يمكن فهرسة المستندات قبل استيراد نموذج التضمين من الإعدادات.</string>
     <string name="documents_empty">لا مستندات بعد. استورد ملف PDF أو Markdown أو نصًا أو DOCX أو EPUB.</string>
     <string name="documents_select_all">تحديد كل الجاهز</string>
     <string name="documents_import">استيراد مستند</string>
     <string name="documents_importing">جارٍ الاستخراج والفهرسة…</string>
     <string name="documents_note">يبقى المستند على جهازك؛ لا يُرسل أي شيء إلى خادم.</string>
     <string name="documents_status_ready">جاهز للاستخدام</string>
-    <string name="documents_status_pending">بانتظار طراز التضمين</string>
+    <string name="documents_status_pending">بانتظار نموذج التضمين</string>
     <string name="documents_status_indexing">جارٍ الفهرسة…</string>
     <string name="documents_status_failed">تعذّرت الفهرسة</string>
     <string name="citations_label">المصادر المستخدمة</string>
@@ -106,16 +106,16 @@
     <string name="document_error_no_text">لا يوجد نص قابل للاستخراج؛ قد يكون مستندًا مصوّرًا (OCR في مرحلة لاحقة).</string>
     <string name="document_error_too_many_pages">عدد الصفحات يتجاوز الحد المسموح.</string>
     <string name="document_error_storage">تعذّر حفظ المستند على الجهاز.</string>
-    <string name="document_error_embedding">طراز التضمين غير جاهز بعد.</string>
+    <string name="document_error_embedding">نموذج التضمين غير جاهز بعد.</string>
     <string name="document_error_index">تعذّرت فهرسة المستند؛ أعد المحاولة من المكتبة.</string>
     <string name="document_error_generic">تعذّر استيراد المستند.</string>
     <!-- M9 vision -->
-    <string name="attachment_image_hint">أرفق صورة من المعرض أو الكاميرا واسأل الطراز عنها.</string>
+    <string name="attachment_image_hint">أرفق صورة من المعرض أو الكاميرا واسأل النموذج عنها.</string>
     <string name="image_source_title">إرفاق صورة</string>
     <string name="image_source_gallery">من المعرض</string>
     <string name="image_source_camera">التقاط صورة</string>
     <string name="image_attach_failed">تعذّر إرفاق الصورة. جرّب صورة JPEG أو PNG أصغر.</string>
-    <string name="image_attach_no_vision">هذا الطراز لا يرى الصور. اختر طرازًا يدعم الرؤية من الإعدادات.</string>
+    <string name="image_attach_no_vision">هذا النموذج لا يرى الصور. اختر نموذجًا يدعم الرؤية من الإعدادات.</string>
     <!-- M9 (VIS-4): OCR-style prompt shortcuts; they are prompts for the vision model, not an OCR engine -->
     <string name="image_prompt_extract_text">استخرج كل النص الظاهر في الصورة كما هو.</string>
     <string name="image_prompt_describe">صف ما في الصورة بالتفصيل.</string>

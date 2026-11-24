@@ -27,6 +27,7 @@ worth what its evidence is worth.
 | [27-sirrak-launch-checklist.md](27-sirrak-launch-checklist.md) | ordered pre-publish checklist and honest gaps |
 | [28-public-launch-council.md](28-public-launch-council.md) | this repository/site/SEO launch council and decisions |
 | [29-small-models-council.md](29-small-models-council.md) | compact model tiers, supported formats, verified candidates, safetensors→GGUF conversion |
+| [30-arabic-terminology.md](30-arabic-terminology.md) | Arabic terminology council, dictionary evidence, and the glossary that governs model/prompt/projector copy |
 
 ## What is not published here
 

@@ -29,6 +29,6 @@ class SettingsValueDirectionTest {
 
     @Test
     fun arabicValueWithLatinDigitsStaysContentDirected() {
-        assertEquals(TextDirection.Content, settingsValueTextDirection("الطراز Qwen2.5"))
+        assertEquals(TextDirection.Content, settingsValueTextDirection("النموذج Qwen2.5"))
     }
 }

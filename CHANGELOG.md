@@ -19,8 +19,20 @@ reused for different content.
   models — GGUF as the only native text format, the verified candidate table (including Jais-3-0.9B rejected for its
   unsupported `k2-horizon` architecture), the open device falsification gate, and a safetensors→GGUF conversion guide.
 
-The rows ship in the next signed build; on `1.0.0-rc1` the same files can be imported through Settings → Models →
-Add from Hugging Face. Publishing steps stay in [docs/27-sirrak-launch-checklist.md](docs/27-sirrak-launch-checklist.md).
+### Changed
+
+- **Arabic terminology normalized: an AI model is نموذج, not طراز.** "لا طراز" (the engine status that meant "no model
+  selected or loaded", not a load failure) now reads **"لا يوجد نموذج"**, and "تعذّر تحميل الطراز" reads "تعذّر تحميل
+  النموذج". Prompt copy is unified as **تعليمات** (تعليمات النظام/المحادثة/العامة/النهائية), the vision projector is
+  **"ملحق الرؤية (mmproj)"** instead of "مشروع الرؤية", and the old calques are replaced by التكميم، الملفات غير المرتبطة،
+  بنية المعالج (ABI), and المُرمِّز/مُفكِّك الترميز for encoder/decoder. 158 occurrences of طراز plus five related terms were
+  removed from app strings, both READMEs, the website content, the store listing and the demo chat asset; one JVM test
+  literal was updated. The dictionary evidence, Qiyas council transcript and the governing glossary are in
+  [docs/30-arabic-terminology.md](docs/30-arabic-terminology.md).
+
+The rows and the terminology fix ship in the next signed build; on `1.0.0-rc1` the same model files can be imported
+through Settings → Models → Add from Hugging Face, and the installed app still shows the old Arabic wording. Publishing
+steps stay in [docs/27-sirrak-launch-checklist.md](docs/27-sirrak-launch-checklist.md).
 
 ## [1.0.0-rc1] - 2026-11-23
 
