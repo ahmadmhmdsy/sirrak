@@ -78,11 +78,11 @@
     <string name="models_reason_cancelled">The download was cancelled.</string>
     <string name="models_reason_range_unsupported">The server does not support resuming.</string>
     <string name="models_reason_offline_mode">Offline-only mode is on; turn it off in Privacy &amp; data before downloading.</string>
-    <string name="models_network_note">The network is used only for model downloads; no telemetry, no accounts.</string>
+    <string name="models_network_note">Nothing runs in the background: the network is used only when you ask — to download a model, search Hugging Face and open a repository, or probe a GGUF header. No telemetry, no accounts.</string>
     <string name="models_storage_note">Models stay in app-private storage, and deleting a model never touches your conversations.</string>
     <string name="onboarding_privacy_title">Privacy first</string>
     <string name="onboarding_privacy_body">Your privacy stays on your device: no account, no tracking, and your chats, voice and documents are never sent to a server.</string>
-    <string name="onboarding_privacy_network">The network is used only to download the models you choose.</string>
+    <string name="onboarding_privacy_network">The app never contacts the network in the background: only when you download a model, search Hugging Face, or probe a file header.</string>
     <string name="onboarding_privacy_local">Models run on the device and are stored in app-private storage.</string>
     <string name="onboarding_privacy_no_telemetry">No telemetry and no usage analytics.</string>
     <string name="onboarding_language_title">Interface language</string>

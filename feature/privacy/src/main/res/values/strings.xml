@@ -2,6 +2,8 @@
 <resources>
     <!-- P3 privacy surfaces (PRV-2/PRV-5/PRV-6). Arabic is the default locale. -->
     <string name="privacy_section_title">الخصوصية والبيانات</string>
+    <string name="privacy_door_summary_online">متصّل عند الطلب · سجل على الجهاز</string>
+    <string name="privacy_door_summary_offline">غير متصل تمامًا</string>
     <string name="privacy_offline_label">وضع عدم الاتصال فقط</string>
     <string name="privacy_offline_description">يمنع كل طلب شبكة جديد، ويوقف أي تنزيل جارٍ. التطبيق يعمل كاملاً دون إنترنت.</string>
     <string name="privacy_network_audit">سجل الشبكة</string>
@@ -12,7 +14,7 @@
     <string name="privacy_security">الإفصاح الأمني</string>
     <string name="privacy_not_published">غير منشورة بعد</string>
     <string name="privacy_open">فتح</string>
-    <string name="privacy_note">لا قياسات ولا تحليلات ولا إعلانات. لا يتصل التطبيق بالشبكة إلا عند تنزيل نموذج تختاره أنت، وكل ما تراه هنا مسجّل على جهازك ويمكنك مسحه.</string>
+    <string name="privacy_note">لا قياسات ولا تحليلات ولا إعلانات. لا يتصل التطبيق بالشبكة إلا عندما تبدأ أنت أمرًا: تنزيل نموذج، أو البحث في Hugging Face وفتح مستودع، أو فحص ترويسة GGUF. وكل ما تراه هنا مسجّل على جهازك ويمكنك مسحه.</string>
 
     <string name="privacy_audit_title">الشبكة</string>
     <string name="privacy_audit_declared">نقاط النهاية المعلنة</string>
@@ -26,7 +28,11 @@
     <string name="privacy_audit_completed">اكتمل</string>
     <string name="privacy_audit_failed">فشل</string>
     <string name="privacy_endpoint_model_download_purpose">تنزيل نموذج الذكاء الذي تختاره</string>
-    <string name="privacy_endpoint_model_download_when">فقط عند بدء تنزيل نموذج من إدارة النماذج</string>
+    <string name="privacy_endpoint_model_download_when">فقط عند بدء تنزيل نموذج من المكتبة ← النماذج</string>
+    <string name="privacy_endpoint_hf_search_purpose">البحث في فهرس نماذج Hugging Face العام وقراءة قائمة ملفات مستودع تختاره</string>
+    <string name="privacy_endpoint_hf_search_when">فقط عند فتح البحث في Hugging Face، أو طلب المزيد من النتائج، أو فتح مستودع اخترته</string>
+    <string name="privacy_endpoint_hf_probe_purpose">قراءة مقطع محدود (12 م.ب كحد أقصى) من ترويسة GGUF للنموذج الذي تفحصه</string>
+    <string name="privacy_endpoint_hf_probe_when">فقط عند الضغط على «فحص الترويسة» لملف قبل تنزيله</string>
     <string name="privacy_endpoint_unknown_purpose">غرض غير موصوف</string>
     <string name="privacy_endpoint_unknown_when">وقت استخدام غير محدد</string>
 

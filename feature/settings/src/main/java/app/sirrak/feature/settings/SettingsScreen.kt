@@ -1,6 +1,7 @@
 package app.sirrak.feature.settings
 
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
@@ -9,6 +10,9 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
@@ -16,23 +20,32 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import app.sirrak.core.design.FontScaleOption
 import app.sirrak.core.design.FontScales
+import app.sirrak.core.design.LocalAppContext
 import app.sirrak.core.design.ReadingColumn
 import app.sirrak.core.design.ScreenHeader
 import app.sirrak.core.design.SettingsChoiceRow
+import app.sirrak.core.design.SettingsDivider
 import app.sirrak.core.design.SettingsNote
+import app.sirrak.core.design.SettingsRow
 import app.sirrak.core.design.SettingsSection
-import app.sirrak.core.design.SlotList
 import app.sirrak.core.design.ThemePackOption
 import app.sirrak.core.design.ThemePacks
 import app.sirrak.core.runtime.AppLanguage
 import app.sirrak.core.runtime.SettingsService
-import app.sirrak.core.runtime.Slots
 import app.sirrak.core.runtime.ThemeMode
 import app.sirrak.core.runtime.findActivity
 
-/** Settings renders slots only. Every group, including the engine and about groups, is contributed. */
+/**
+ * Settings is a root of six doors, not one long scroll (P4). The root owns the card, the dividers and
+ * the single expanded door; every door's label, live summary and destination come from the plugin
+ * that owns the state, so this module never imports another feature. Tapping a door pushes its page
+ * through [app.sirrak.core.runtime.AppNavigator]; the language door expands in place because switching
+ * language recreates the activity, and a push would make that feel like a lost page.
+ */
 @Composable
 fun SettingsScreen(settings: SettingsService, modifier: Modifier = Modifier) {
+    val doors = LocalAppContext.current.settingsDoors.all()
+    var expandedDoorId by rememberSaveable { mutableStateOf<String?>(null) }
     ReadingColumn(modifier = modifier) {
         ScreenHeader(title = stringResource(R.string.settings_title))
         Column(
@@ -41,21 +54,43 @@ fun SettingsScreen(settings: SettingsService, modifier: Modifier = Modifier) {
                 .verticalScroll(rememberScrollState())
                 .padding(top = 4.dp),
         ) {
-            SlotList(Slots.SettingsSections)
+            Column(Modifier.padding(horizontal = 20.dp, vertical = 6.dp)) {
+                SettingsSection(title = stringResource(R.string.settings_doors_section)) {
+                    doors.forEachIndexed { index, door ->
+                        if (index > 0) SettingsDivider()
+                        SettingsRow(
+                            label = stringResource(door.labelRes),
+                            value = door.summary(),
+                            onClick = {
+                                if (door.expandedContent != null) {
+                                    expandedDoorId =
+                                        if (expandedDoorId == door.id) null else door.id
+                                } else {
+                                    door.onClick()
+                                }
+                            },
+                        )
+                        if (door.expandedContent != null && expandedDoorId == door.id) {
+                            door.expandedContent?.invoke()
+                        }
+                    }
+                }
+            }
             Spacer(Modifier.size(28.dp))
         }
     }
 }
 
-/** Appearance group, contributed by the settings feature itself. */
+/**
+ * Appearance page body: mode, text size and pack — three groups, one concept each. Both list choices
+ * recompose through StateFlows, so no activity recreate is needed.
+ */
 @Composable
 fun AppearanceSection(settings: SettingsService) {
     val mode by settings.themeMode.collectAsStateWithLifecycle()
     val packId by settings.themePackId.collectAsStateWithLifecycle()
     val fontScaleId by settings.fontScaleId.collectAsStateWithLifecycle()
     Column(Modifier.padding(horizontal = 20.dp, vertical = 6.dp)) {
-        // Three groups, one concept each: mode (light/dark/system), text size and pack (colour
-        // identity). Both list choices recompose through StateFlows — no activity recreate.
         SettingsSection(title = stringResource(R.string.settings_appearance)) {
             SettingsChoiceRow(
                 label = stringResource(R.string.settings_theme),
@@ -105,29 +140,30 @@ fun AppearanceSection(settings: SettingsService) {
     }
 }
 
-/** Language group: persists the choice, then recreates the activity so resources reload. */
+/**
+ * The language door's inline body. It is not a [SettingsSection]: the root renders it inside the
+ * doors card under the language row, so it reads as one expanded row rather than a second card.
+ */
 @Composable
-fun LanguageSection(settings: SettingsService) {
+fun LanguageChoices(settings: SettingsService) {
     val language by settings.language.collectAsStateWithLifecycle()
     val context = LocalContext.current
-    Column(Modifier.padding(horizontal = 20.dp, vertical = 6.dp)) {
-        SettingsSection(title = stringResource(R.string.settings_language)) {
-            SettingsChoiceRow(
-                label = stringResource(R.string.settings_language),
-                options = listOf(
-                    stringResource(R.string.language_arabic),
-                    stringResource(R.string.language_english),
-                ),
-                selectedIndex = if (language == AppLanguage.ARABIC) 0 else 1,
-                onSelect = { index ->
-                    val target = if (index == 0) AppLanguage.ARABIC else AppLanguage.ENGLISH
-                    if (target != language) {
-                        settings.setLanguage(target)
-                        context.findActivity()?.recreate()
-                    }
-                },
-            )
-            SettingsNote(stringResource(R.string.settings_language_note))
-        }
+    Column {
+        SettingsChoiceRow(
+            label = stringResource(R.string.settings_language),
+            options = listOf(
+                stringResource(R.string.language_arabic),
+                stringResource(R.string.language_english),
+            ),
+            selectedIndex = if (language == AppLanguage.ARABIC) 0 else 1,
+            onSelect = { index ->
+                val target = if (index == 0) AppLanguage.ARABIC else AppLanguage.ENGLISH
+                if (target != language) {
+                    settings.setLanguage(target)
+                    context.findActivity()?.recreate()
+                }
+            },
+        )
+        SettingsNote(stringResource(R.string.settings_language_note))
     }
 }

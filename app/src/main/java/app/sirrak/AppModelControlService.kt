@@ -60,6 +60,9 @@ class AppModelControlService(
 
     fun currentKey(): String? = currentModel()?.let(identity::keyFor)
 
+    /** Fingerprint key of any installed model, for pages that describe a model that is not selected. */
+    fun keyFor(model: InstalledModel): String = identity.keyFor(model)
+
     fun modelFacts(): ModelFacts? = engine.modelFacts
 
     fun modelSettingsFor(modelKey: String? = currentKey()): ModelSettings? =
@@ -121,6 +124,48 @@ class AppModelControlService(
             modelMetadata = layers.modelMetadata,
             userParams = layers.userParams,
             userTouched = layers.userTouched,
+        )
+    }
+
+    /** The context window stored for [modelKey], or null when it follows the app default. */
+    fun storedContextTokens(modelKey: String? = currentKey()): Int? =
+        modelKey?.let { settingsStore.get(it)?.contextTokens }
+
+    /** The trained window of the loaded model, known only after a successful load. */
+    fun trainedContextTokens(modelKey: String? = currentKey()): Int? =
+        if (modelKey != null && modelKey == currentKey()) modelFacts()?.nCtxTrain?.takeIf { it > 0 } else null
+
+    /**
+     * The window the next load will request: stored choice or app default, clamped to the trained
+     * window once the header has answered. Before a load the trained value is unknown, so the native
+     * layer is the second clamp — the first load can only be corrected after the facts arrive.
+     */
+    fun requestedContextTokens(modelKey: String? = currentKey()): Int {
+        val requested = storedContextTokens(modelKey) ?: config.engine.contextTokens
+        val trained = trainedContextTokens(modelKey) ?: return requested
+        return requested.coerceAtMost(trained)
+    }
+
+    /**
+     * The context sizes the model page offers: the standard ladder up to the trained window, plus the
+     * effective value even if it is unusual, sorted so the row order never jumps between recompositions.
+     */
+    fun contextChoices(modelKey: String? = currentKey()): List<Int> {
+        val trained = trainedContextTokens(modelKey)
+        val upper = trained ?: config.engine.contextTokens
+        val ladder = listOf(512, 1024, 2048, 4096, 8192, 16384).filter { it <= upper }
+        return (ladder + requestedContextTokens(modelKey)).distinct().sorted()
+    }
+
+    /** Stores the chosen window; null returns to the app default. Takes effect on the next load. */
+    fun setContextTokens(tokens: Int?) {
+        val key = currentKey() ?: return
+        val existing = settingsStore.get(key) ?: ModelSettings(modelKey = key)
+        settingsStore.put(
+            existing.copy(
+                contextTokens = tokens?.takeIf { it > 0 },
+                userModifiedAt = System.currentTimeMillis(),
+            ),
         )
     }
 

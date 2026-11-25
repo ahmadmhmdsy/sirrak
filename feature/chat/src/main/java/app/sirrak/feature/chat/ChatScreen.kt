@@ -5,6 +5,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.gestures.scrollBy
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
@@ -222,27 +223,35 @@ fun ChatScreen(
 
         Box(Modifier.weight(1f)) {
             if (store.items.isEmpty()) {
-                Column(
-                    modifier = Modifier
-                        .fillMaxSize()
-                        .verticalScroll(rememberScrollState()),
-                ) {
-                    Spacer(Modifier.height(8.dp))
-                    EmptyConversation(
-                        promise = stringResource(R.string.empty_promise),
-                        privacy = stringResource(R.string.empty_privacy),
-                        suggestionsTitle = stringResource(R.string.suggestions_title),
-                        suggestions = {
-                            suggestions.forEach { suggestion ->
-                                SuggestionCard(
-                                    prompt = suggestion.prompt,
-                                    gloss = suggestion.gloss,
-                                    onClick = { store.send(suggestion.prompt, scope) },
-                                )
-                            }
-                        },
-                    )
-                    Spacer(Modifier.height(24.dp))
+                // The composer (meter, document scope, input) leaves a short reading area on a
+                // 720x1280 phone; the compact variant drops the girih mark and tightens spacing so
+                // the promise, the privacy line and the first suggestion card are fully visible
+                // without a scroll, while the deck below still scrolls.
+                BoxWithConstraints(Modifier.fillMaxSize()) {
+                    val compact = maxHeight < 300.dp
+                    Column(
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .verticalScroll(rememberScrollState()),
+                    ) {
+                        Spacer(Modifier.height(if (compact) 4.dp else 8.dp))
+                        EmptyConversation(
+                            promise = stringResource(R.string.empty_promise),
+                            privacy = stringResource(R.string.empty_privacy),
+                            suggestionsTitle = stringResource(R.string.suggestions_title),
+                            compact = compact,
+                            suggestions = {
+                                suggestions.forEach { suggestion ->
+                                    SuggestionCard(
+                                        prompt = suggestion.prompt,
+                                        gloss = suggestion.gloss,
+                                        onClick = { store.send(suggestion.prompt, scope) },
+                                    )
+                                }
+                            },
+                        )
+                        Spacer(Modifier.height(if (compact) 12.dp else 24.dp))
+                    }
                 }
             } else {
                 LazyColumn(
@@ -358,12 +367,16 @@ fun ChatScreen(
             }
         }
 
-        PromptMeter(
-            budget = store.tokenBudget,
-            speed = store.lastSpeed,
-            streaming = store.streaming,
-            modifier = Modifier.padding(bottom = 6.dp),
-        )
+        // A meter of a conversation that does not exist yet is noise over the empty state (and it
+        // costs the empty state a whole row on small phones); it appears with the first turn.
+        if (store.items.isNotEmpty()) {
+            PromptMeter(
+                budget = store.tokenBudget,
+                speed = store.lastSpeed,
+                streaming = store.streaming,
+                modifier = Modifier.padding(bottom = 6.dp),
+            )
+        }
 
         // M8: what this conversation is grounded in. Always present when RAG is composed, so the
         // capability is discoverable before the first document is imported; the picker explains the

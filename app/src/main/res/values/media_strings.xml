@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  P5 media shelf strings. Kept in their own file so a different agent editing strings.xml cannot
+  collide with this work; every key is prefixed media_. Digits are Latin (Locale.US in code), and all
+  sentences are written for an Arabic-first RTL screen.
+-->
+<resources>
+    <string name="media_title">الوسائط</string>
+    <string name="media_intro">مستندات وصور ومقاطع صوتية محفوظة على هذا الجهاز. التفريغ النصي يجري على الجهاز وحده، ولا يُرسل شيء إلى أي خدمة.</string>
+    <string name="media_empty">لا توجد وسائط بعد. استورد ملفًا من الأزرار أدناه.</string>
+
+    <string name="media_import_document">استيراد مستند</string>
+    <string name="media_import_image">استيراد صورة</string>
+    <string name="media_import_audio">استيراد مقطع صوتي وتفريغه</string>
+    <string name="media_audio_unavailable_value">غير متاح: %1$s</string>
+    <string name="media_import_note">الحد الأقصى للملف 50 ميجابايت، وللمقطع الصوتي 10 دقائق. تُنسخ الملفات إلى مساحة التطبيق الخاصة على هذا الجهاز.</string>
+
+    <string name="media_working_copying">جارٍ نسخ «%1$s»…</string>
+    <string name="media_working_decoding">جارٍ فك ترميز «%1$s»…</string>
+    <string name="media_working_transcribing">جارٍ تفريغ «%1$s» نصيًا على الجهاز…</string>
+    <string name="media_working_indexing">جارٍ فهرسة «%1$s»…</string>
+    <string name="media_storage">المساحة المستخدمة: %1$s</string>
+    <string name="media_unknown_size">حجم غير معروف</string>
+
+    <string name="media_policy_title">السياسة الافتراضية</string>
+    <string name="media_policy_retention">الاحتفاظ الافتراضي</string>
+    <string name="media_retention_keep">احفظ</string>
+    <string name="media_retention_once">مؤقت</string>
+    <string name="media_policy_access">وصول الوكيل الافتراضي</string>
+    <string name="media_access_granted">مسموح</string>
+    <string name="media_access_denied">ممنوع</string>
+    <string name="media_policy_note">تُطبَّق هذه القيم على أي استيراد لا يُتخذ له قرار صريح، وتظهر في ورقة القرار. لا يمكن منح الوكيل قراءة عنصر مؤقت أو صورة.</string>
+
+    <string name="media_section_documents">المستندات</string>
+    <string name="media_section_images">الصور</string>
+    <string name="media_section_audio">الصوت والتفريغ</string>
+    <string name="media_documents_empty">لا مستندات بعد.</string>
+    <string name="media_images_empty">لا صور بعد.</string>
+    <string name="media_audio_empty">لا مقاطع صوتية بعد.</string>
+    <string name="media_image_no_index_note">الصور تُحفظ للعرض فقط في هذا الإصدار: لا يفهرسها الوكيل، لذلك يبقى مفتاح الوصول معطّلًا.</string>
+
+    <string name="media_access_toggle">قراءة الوكيل لـ «%1$s»</string>
+    <string name="media_delete">حذف «%1$s»</string>
+    <string name="media_delete_title">حذف العنصر؟</string>
+    <string name="media_delete_body">سيُحذف «%1$s» من هذا الجهاز، ولا يمكن التراجع عن ذلك.</string>
+    <string name="media_delete_confirm">حذف</string>
+    <string name="media_delete_cancel">إلغاء</string>
+
+    <string name="media_state_once">مؤقت · يُحذف مع المحادثة ولا يُفهرس</string>
+    <string name="media_state_indexed">مفهرس · يقرؤه الوكيل</string>
+    <string name="media_state_not_indexed">غير مفهرس · لا يقرؤه الوكيل</string>
+    <string name="media_state_image_only">صورة محفوظة · لا يفهرسها الوكيل</string>
+    <string name="media_document_status">%1$s · %2$s</string>
+    <string name="media_image_status">%1$s · %2$s</string>
+    <string name="media_audio_status">%1$s · %2$s · %3$s</string>
+    <string name="media_once_status">%1$s · %2$s</string>
+
+    <string name="media_audio_pending">جارٍ التفريغ…</string>
+    <string name="media_audio_ready">النص جاهز</string>
+    <string name="media_audio_failed">فشل التفريغ: %1$s</string>
+    <string name="media_audio_no_transcript">لا يوجد نص بعد</string>
+    <string name="media_retry_transcription">إعادة تفريغ «%1$s»</string>
+    <string name="media_transcript_title">نص «%1$s»</string>
+    <string name="media_transcript_missing">لا يوجد نص محفوظ لهذا العنصر.</string>
+    <string name="media_transcript_close">إغلاق</string>
+
+    <string name="media_sheet_title">أضف «%1$s» إلى الوسائط</string>
+    <string name="media_sheet_kind">النوع: %1$s · الحجم: %2$s</string>
+    <string name="media_kind_document">مستند</string>
+    <string name="media_kind_image">صورة</string>
+    <string name="media_kind_audio">صوت</string>
+    <string name="media_sheet_body">اختر ما يحدث لهذا الملف. كل شيء محلي: لا رفع إلى أي خدمة سحابية.</string>
+    <string name="media_sheet_default">الافتراضي المحفوظ: %1$s</string>
+    <string name="media_sheet_keep">احفظه ليقرأه الوكيل</string>
+    <string name="media_sheet_once">مؤقت: يُحذف مع المحادثة ولا يُفهرس</string>
+    <string name="media_default_keep_access">احفظ · %1$s</string>
+    <string name="media_default_once">مؤقت · لا يُفهرس</string>
+
+    <string name="media_once_note">العناصر المؤقتة لا تُفهرس أبدًا، ويُحذف ملفها عند إغلاق التطبيق. لا يوجد ربط بالمحادثات في هذا الإصدار بعد، لذلك يُحذف المؤقت عند الإغلاق.</string>
+    <string name="media_no_speech_model_note">لا يوجد نموذج تفريغ Whisper مُنزَّل. افتح الإعدادات ← الصوت واستورد ملفات النموذج الثلاثة (المُرمِّز، ومُفكِّك الترميز، والرموز) ثم أعد المحاولة.</string>
+    <string name="media_evidence_note">كل المعالجة على الجهاز: لا تفريغ سحابي ولا فهرسة خارجية.</string>
+    <string name="media_library_documents_note">هذه هي المكتبة المفهرسة المشتركة بين المحادثة والوسائط.</string>
+
+    <string name="media_reason_empty">الملف فارغ.</string>
+    <string name="media_reason_too_large">الملف أكبر من 50 ميجابايت.</string>
+    <string name="media_reason_unsupported_type">صيغة الملف غير مدعومة للفهرسة.</string>
+    <string name="media_reason_unreadable">تعذّرت قراءة الملف.</string>
+    <string name="media_reason_storage">تعذّر تخزين الملف على الجهاز.</string>
+    <string name="media_reason_import_failed">تعذّر استيراد الملف.</string>
+    <string name="media_reason_index_failed">حُفظ الملف، لكن تعذّرت فهرسته. جرّب إعادة المحاولة لاحقًا.</string>
+    <string name="media_reason_index_unavailable">الفهرسة غير متاحة الآن.</string>
+    <string name="media_reason_no_transcriber">محرّك التفريغ غير متاح في هذا البناء.</string>
+    <string name="media_reason_no_speech_model">لا يوجد نموذج تفريغ Whisper مُنزَّل.</string>
+    <string name="media_reason_decode_failed">تعذّر فك ترميز الصوت. قد تكون الصيغة غير مدعومة على هذا الجهاز.</string>
+    <string name="media_reason_audio_too_long">المقطع أطول من 10 دقائق.</string>
+    <string name="media_reason_transcription_failed">فشل التفريغ النصي.</string>
+    <string name="media_reason_no_speech">يبدو أن المقطع لا يحتوي كلامًا.</string>
+    <string name="media_reason_transcript_empty">لم يُنتج التفريغ أي نص.</string>
+    <string name="media_reason_not_transcribed">لا يوجد نص بعد.</string>
+    <string name="media_reason_generic">حدث خطأ غير متوقع.</string>
+</resources>

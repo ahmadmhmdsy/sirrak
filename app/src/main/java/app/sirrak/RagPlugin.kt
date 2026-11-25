@@ -18,14 +18,18 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import app.sirrak.core.design.SettingsDivider
 import app.sirrak.core.design.SettingsNote
+import app.sirrak.core.design.SettingsPageScaffold
 import app.sirrak.core.design.SettingsRow
 import app.sirrak.core.design.SettingsSection
 import app.sirrak.core.rag.EmbeddingStatus
 import app.sirrak.core.rag.RagDocumentStatus
 import app.sirrak.core.rag.RagService
+import app.sirrak.core.runtime.AppNavigator
+import app.sirrak.core.runtime.PageContribution
+import app.sirrak.core.runtime.PageIds
 import app.sirrak.core.runtime.Plugin
 import app.sirrak.core.runtime.PluginScope
-import app.sirrak.core.runtime.Slots
+import app.sirrak.core.runtime.SettingsDoor
 import app.sirrak.feature.chat.DocumentPicker
 import kotlinx.coroutines.launch
 
@@ -46,12 +50,41 @@ class RagPlugin(
     override val requires: List<Class<*>> = listOf(
         RagService::class.java,
         FileEmbeddingModelStore::class.java,
+        AppNavigator::class.java,
     )
 
     override fun install(scope: PluginScope) {
-        scope.slotList(Slots.SettingsSections, order = 20) {
-            EmbeddingModelSettingsSection(embeddings = embeddings, rag = rag)
-        }
+        val navigator = scope.service(AppNavigator::class.java)
+        scope.door(
+            SettingsDoor(
+                id = "advanced",
+                labelRes = R.string.settings_advanced_title,
+                order = 30,
+                summary = {
+                    val installed = embeddings.installedModel()
+                    val status by embeddings.status.collectAsStateWithLifecycle()
+                    // The door is named "Advanced", so the bare status word ("Not imported") read as if
+                    // the advanced section itself were missing; the summary now names the capability it
+                    // actually controls. An imported model keeps its own name as the live summary.
+                    installed?.displayName ?: if (status is EmbeddingStatus.Missing) {
+                        stringResource(R.string.settings_advanced_door_semantic_missing)
+                    } else {
+                        embeddingStatusLabel(status, busy = false)
+                    }
+                },
+                onClick = { navigator.push(PageIds.SETTINGS_ADVANCED) },
+            ),
+        )
+        scope.page(
+            PageContribution(PageIds.SETTINGS_ADVANCED, labelRes = R.string.settings_advanced_title) {
+                SettingsPageScaffold(
+                    title = stringResource(R.string.settings_advanced_title),
+                    onBack = { navigator.back() },
+                ) {
+                    EmbeddingModelSettingsSection(embeddings = embeddings, rag = rag)
+                }
+            },
+        )
         // Reverse-order disposal: the repository's collector stops first, then the native provider.
         scope.effect {
             runCatching { rag.close() }

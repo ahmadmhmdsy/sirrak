@@ -5,6 +5,55 @@ All notable changes to Sirrak are recorded here. The format follows
 `1.0.0-rcN` is a release candidate for `1.0.0`, not a stable release, and pre-release suffixes are never
 reused for different content.
 
+## [1.1.0] - 2026-11-25
+
+The UX rework from the six-area product review: the app now tells the truth about its state and routes
+you to the fix instead of showing a dead end, the Library is one shelf, Settings is six doors, and a
+model can be acquired from Hugging Face without leaving the app. Council record and decisions:
+[docs/31-ux-rework-council.md](docs/31-ux-rework-council.md); build record:
+[docs/32-ux-rework-build-record.md](docs/32-ux-rework-build-record.md).
+
+### Added
+
+- **Library (النماذج / التنزيلات / الوسائط)** — one device shelf in three segments. **Models** lists the
+  curated catalogue with an honest per-device verdict (runs / tight / won't run / not verified), GGUF
+  import and a per-model page that owns its context and generation settings. **Downloads** is the
+  persisted queue: one transfer at a time, pause/resume/cancel/retry, progress survives an app restart,
+  and the background notification goes through the same queue. **Media** holds documents (indexed for
+  cited answers), images and audio; audio is transcribed on the device by Whisper into a text item —
+  the recording never leaves the phone.
+- **Keep-or-once media retention with agent access control** — every media item asks whether to keep it
+  or use it once; a once-only item is never indexed and is deleted when its session ends. A per-item
+  access switch and policy defaults decide what the agent may read.
+- **In-app Hugging Face import** — search the public GGUF index, open a repository, inspect a file, and
+  get a fit verdict before downloading. The 8–12 MB capped GGUF header probe returns real architecture
+  numbers plus a **تقديري** estimate of memory; a model that will not fit is blocked with its reason, a
+  tight fit needs an explicit confirmation, and an unprobed model reads "not verified", never "runs".
+  Gated repositories keep their token in memory only. Search, file list and probe are audited as
+  `hf_search` and `hf_probe` in the network log and covered by the privacy policy.
+- **Settings doors with live summaries** — the single long scroll is now six doors: appearance & reading,
+  language, privacy & network, voice, advanced and about. Each door shows a live one-line summary and
+  opens a page; language is chosen inline.
+
+### Changed
+
+- **The model chip tells the truth in four states** — no model loaded (with a button to the Library),
+  downloading, selected but not loaded, and failed. Its sheet routes to the model's own page or the
+  Library instead of a dead end.
+- **Model management moved out of Settings into the Library**; the fake catalogue cards and the old
+  download-manager surface are gone.
+- **Version 1.1.0** (versionCode 14), the first build from the reworked UI. Policy version 2 records the
+  two new Hugging Face endpoints; both policies, the store copy, the website and the screenshots were
+  refreshed from this tree.
+
+### Known limits in this build
+
+- Media-to-chat wiring is V1: once-only items are deleted at app close/restart (no conversation link
+  yet), images are view-only and never indexed, and indexed documents are stored once for the shelf and
+  once for retrieval.
+- Discovering more results in Hugging Face search, concurrency beyond one active download, and OCR are
+  deliberately out of scope for this build.
+
 ## [1.0.0-rc2] - 2026-11-24
 
 ### Added

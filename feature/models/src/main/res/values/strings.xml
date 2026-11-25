@@ -78,11 +78,11 @@
     <string name="models_reason_cancelled">أُلغي التنزيل.</string>
     <string name="models_reason_range_unsupported">الخادم لا يدعم استكمال التنزيل.</string>
     <string name="models_reason_offline_mode">وضع عدم الاتصال فقط مفعّل؛ أوقفه من الخصوصية والبيانات قبل التنزيل.</string>
-    <string name="models_network_note">يُستخدم الإنترنت لتنزيل النماذج فقط؛ لا تتبّع ولا حسابات.</string>
+    <string name="models_network_note">لا شيء يعمل في الخلفية: يُستخدم الإنترنت فقط عند طلبك — لتنزيل نموذج، أو البحث في Hugging Face وفتح مستودع، أو فحص ترويسة GGUF. لا تتبّع ولا حسابات.</string>
     <string name="models_storage_note">تبقى النماذج في مساحة التطبيق الخاصة، وحذف نموذج لا يمس محادثاتك.</string>
     <string name="onboarding_privacy_title">خصوصيتك أولًا</string>
     <string name="onboarding_privacy_body">سِرّك يبقى على جهازك: لا حساب، لا تتبّع، ولا تُرسل محادثاتك أو صوتك أو مستنداتك إلى أي خادم.</string>
-    <string name="onboarding_privacy_network">يُستخدم الإنترنت فقط لتنزيل النماذج التي تختارها.</string>
+    <string name="onboarding_privacy_network">لا يتصل التطبيق بالشبكة في الخلفية: فقط عند طلبك لتنزيل نموذج أو البحث في Hugging Face أو فحص ترويسة ملف.</string>
     <string name="onboarding_privacy_local">تعمل النماذج على الجهاز وتُخزَّن في مساحة التطبيق الخاصة.</string>
     <string name="onboarding_privacy_no_telemetry">لا تتبّع ولا إحصاءات استخدام.</string>
     <string name="onboarding_language_title">لغة الواجهة</string>

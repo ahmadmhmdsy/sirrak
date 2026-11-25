@@ -514,6 +514,11 @@ data class ModelSettings(
     val systemPrompt: String? = null,
     /** Forced built-in template name; null means "use the model's own template". */
     val template: String? = null,
+    /**
+     * Requested context window for this model; null means "the app default". Clamped to the model's
+     * trained window when it loads, so a 2048-trained model cannot be asked for 4096.
+     */
+    val contextTokens: Int? = null,
     val userModifiedAt: Long? = null,
 ) {
     val templateChoice: TemplateChoice get() = TemplateChoice.fromStored(template)

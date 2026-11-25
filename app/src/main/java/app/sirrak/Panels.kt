@@ -10,6 +10,8 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
+import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.ModalBottomSheet
@@ -34,11 +36,13 @@ import app.sirrak.core.design.SettingsKeyValueRow
 import app.sirrak.core.design.SettingsNote
 import app.sirrak.core.design.SettingsRow
 import app.sirrak.core.design.SettingsSection
+import app.sirrak.core.runtime.AppNavigator
 import app.sirrak.core.runtime.EngineStatus
 import app.sirrak.core.runtime.InferenceEngine
 import app.sirrak.core.runtime.InstalledModel
 import app.sirrak.core.runtime.ModelInfo
 import app.sirrak.core.runtime.ModelStore
+import app.sirrak.core.runtime.PageIds
 import app.sirrak.core.runtime.SettingsService
 import app.sirrak.engine.llamacpp.LlamaCppEngine
 import app.sirrak.engine.llamacpp.LlamaProjector
@@ -46,15 +50,32 @@ import java.io.File
 import java.io.IOException
 import kotlinx.coroutines.launch
 
-/** Chat header chip contributed by the engine plugin; opens the model passport sheet. */
+/**
+ * Chat header chip. It is a doorway, not a label: "no model" is a state with an action (open the
+ * Library), a failed load offers a retry, and a ready model opens its passport. The chip must never
+ * say two contradictory things at once — the defect this replaces showed "no model" and "could not
+ * load" together because both states fell into the same `else`.
+ */
 @Composable
-fun EngineModelChip(engine: InferenceEngine, models: List<ModelInfo>) {
+fun EngineModelChip(
+    engine: InferenceEngine,
+    store: ModelStore,
+    navigator: AppNavigator,
+    onLoad: (InstalledModel) -> Unit = {},
+    onUnload: () -> Unit = {},
+) {
     val status by engine.status.collectAsStateWithLifecycle()
+    val selected by store.selected.collectAsStateWithLifecycle()
     var open by remember { mutableStateOf(false) }
     val label = when (val current = status) {
         is EngineStatus.Ready -> current.label
         is EngineStatus.Loading -> current.label ?: engine.displayName
-        else -> stringResource(R.string.engine_no_model)
+        is EngineStatus.Failed -> stringResource(R.string.engine_chip_failed)
+        is EngineStatus.Unloaded -> if (selected != null) {
+            stringResource(R.string.engine_chip_unloaded)
+        } else {
+            stringResource(R.string.engine_no_model)
+        }
     }
     ModelChip(
         label = label,
@@ -62,12 +83,21 @@ fun EngineModelChip(engine: InferenceEngine, models: List<ModelInfo>) {
         onClick = { open = true },
     )
     if (open) {
-        ModelSheet(models = models, onDismiss = { open = false })
+        ModelDoorwaySheet(
+            engine = engine,
+            selected = selected,
+            navigator = navigator,
+            status = status,
+            onLoad = onLoad,
+            onUnload = onUnload,
+            onOpenLibrary = { navigator.select("library") },
+            onDismiss = { open = false },
+        )
     }
 }
 
 @Composable
-private fun engineStatusLabel(status: EngineStatus): String = stringResource(
+internal fun engineStatusLabel(status: EngineStatus): String = stringResource(
     when (status) {
         is EngineStatus.Ready -> R.string.engine_status_ready
         is EngineStatus.Loading -> R.string.engine_status_loading
@@ -76,33 +106,134 @@ private fun engineStatusLabel(status: EngineStatus): String = stringResource(
     },
 )
 
+/** The chip's sheet: a doorway to the Library, a retry after failure, or the loaded model's passport. */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun ModelSheet(models: List<ModelInfo>, onDismiss: () -> Unit) {
+private fun ModelDoorwaySheet(
+    engine: InferenceEngine,
+    selected: InstalledModel?,
+    navigator: AppNavigator,
+    status: EngineStatus,
+    onLoad: (InstalledModel) -> Unit,
+    onUnload: () -> Unit,
+    onOpenLibrary: () -> Unit,
+    onDismiss: () -> Unit,
+) {
     val sheetState = rememberModalBottomSheetState(skipPartiallyExpanded = true)
     ModalBottomSheet(onDismissRequest = onDismiss, sheetState = sheetState) {
         Column(Modifier.fillMaxWidth().padding(start = 20.dp, end = 20.dp, bottom = 28.dp)) {
-            ScreenTitle(stringResource(R.string.models_title))
-            Spacer(Modifier.height(6.dp))
-            Text(
-                text = stringResource(R.string.models_note),
-                style = MaterialTheme.typography.bodySmall,
-                color = MaterialTheme.colorScheme.onSurfaceVariant,
-            )
-            Spacer(Modifier.height(18.dp))
-            models.forEach { model ->
-                SettingsSection(title = model.displayName, emphasis = true) {
-                    SettingsKeyValueRow(stringResource(R.string.model_params), model.parameterLabel)
-                    SettingsDivider()
-                    SettingsKeyValueRow(stringResource(R.string.model_quant), model.quant)
-                    SettingsDivider()
-                    SettingsKeyValueRow(stringResource(R.string.model_disk), model.sizeLabel)
-                    SettingsDivider()
-                    SettingsKeyValueRow(stringResource(R.string.model_ram), model.ramLabel)
-                    SettingsDivider()
-                    SettingsKeyValueRow(stringResource(R.string.model_status), model.status)
+            when (status) {
+                is EngineStatus.Ready -> {
+                    ScreenTitle(stringResource(R.string.engine_passport_title))
+                    Spacer(Modifier.height(6.dp))
+                    Text(
+                        text = stringResource(R.string.engine_passport_ready_note),
+                        style = MaterialTheme.typography.bodySmall,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    )
+                    Spacer(Modifier.height(16.dp))
+                    SettingsSection(title = selected?.displayName ?: engine.displayName, emphasis = true) {
+                        SettingsKeyValueRow(stringResource(R.string.model_status), engineStatusLabel(status))
+                        selected?.let { model ->
+                            SettingsDivider()
+                            SettingsKeyValueRow(stringResource(R.string.model_disk), model.sizeLabel)
+                            model.quantization?.let { quantization ->
+                                SettingsDivider()
+                                SettingsKeyValueRow(stringResource(R.string.model_quant), quantization)
+                            }
+                        }
+                        engine.modelFacts?.architecture?.let { architecture ->
+                            SettingsDivider()
+                            SettingsKeyValueRow(stringResource(R.string.model_arch), architecture)
+                        }
+                        engine.modelFacts?.takeIf { it.nCtxTrain > 0 }?.let { facts ->
+                            SettingsDivider()
+                            SettingsKeyValueRow(stringResource(R.string.model_context_train), facts.nCtxTrain.toString())
+                        }
+                        if (engine.modelFacts?.hasModelTemplate == true) {
+                            SettingsDivider()
+                            SettingsKeyValueRow(
+                                stringResource(R.string.model_template),
+                                stringResource(R.string.model_template_model),
+                            )
+                        }
+                    }
+                    Spacer(Modifier.height(16.dp))
+                    if (selected != null) {
+                        TextButton(
+                            onClick = {
+                                navigator.push(PageIds.MODEL_DETAIL, selected.id)
+                                onDismiss()
+                            },
+                            modifier = Modifier.fillMaxWidth(),
+                        ) { Text(stringResource(R.string.model_page_title)) }
+                    }
+                    Button(onClick = { onUnload(); onDismiss() }, modifier = Modifier.fillMaxWidth()) {
+                        Text(stringResource(R.string.library_engine_unload))
+                    }
+                    TextButton(onClick = { onOpenLibrary(); onDismiss() }, modifier = Modifier.fillMaxWidth()) {
+                        Text(stringResource(R.string.engine_open_library))
+                    }
                 }
-                Spacer(Modifier.height(16.dp))
+                is EngineStatus.Failed -> {
+                    ScreenTitle(stringResource(R.string.engine_status_failed))
+                    Spacer(Modifier.height(6.dp))
+                    Text(
+                        text = stringResource(R.string.engine_passport_failed_body),
+                        style = MaterialTheme.typography.bodySmall,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    )
+                    Spacer(Modifier.height(16.dp))
+                    if (selected != null) {
+                        Button(
+                            onClick = { onLoad(selected); onDismiss() },
+                            modifier = Modifier.fillMaxWidth(),
+                        ) { Text(stringResource(R.string.engine_retry)) }
+                    }
+                    TextButton(onClick = { onOpenLibrary(); onDismiss() }, modifier = Modifier.fillMaxWidth()) {
+                        Text(stringResource(R.string.engine_open_library))
+                    }
+                }
+                is EngineStatus.Loading -> {
+                    ScreenTitle(stringResource(R.string.engine_status_loading))
+                    Spacer(Modifier.height(6.dp))
+                    Text(
+                        text = stringResource(R.string.engine_passport_loading_body),
+                        style = MaterialTheme.typography.bodySmall,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    )
+                }
+                EngineStatus.Unloaded -> {
+                    if (selected != null) {
+                        ScreenTitle(stringResource(R.string.engine_passport_title))
+                        Spacer(Modifier.height(6.dp))
+                        Text(
+                            text = stringResource(R.string.engine_chip_unloaded_body),
+                            style = MaterialTheme.typography.bodySmall,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant,
+                        )
+                        Spacer(Modifier.height(16.dp))
+                        Button(
+                            onClick = { onLoad(selected); onDismiss() },
+                            modifier = Modifier.fillMaxWidth(),
+                        ) { Text(stringResource(R.string.library_engine_load)) }
+                        TextButton(onClick = { onOpenLibrary(); onDismiss() }, modifier = Modifier.fillMaxWidth()) {
+                            Text(stringResource(R.string.engine_open_library))
+                        }
+                    } else {
+                        ScreenTitle(stringResource(R.string.engine_no_model))
+                        Spacer(Modifier.height(6.dp))
+                        Text(
+                            text = stringResource(R.string.engine_passport_no_model_body),
+                            style = MaterialTheme.typography.bodySmall,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant,
+                        )
+                        Spacer(Modifier.height(16.dp))
+                        Button(onClick = { onOpenLibrary(); onDismiss() }, modifier = Modifier.fillMaxWidth()) {
+                            Text(stringResource(R.string.engine_download_cta))
+                        }
+                    }
+                }
             }
         }
     }

@@ -1,24 +1,24 @@
 {
-  "generatedAt": "2026-11-24T07:04:07Z",
+  "generatedAt": "2026-11-24T22:05:17Z",
   "device": "emulator-5554",
   "screen": "720 x 1280",
   "note": "Captured from a clean launch; status bar and nav bar are cropped before hashing.",
   "screens": [
     {
       "Name": "home",
-      "Hash": "0x91716F671F1F8D9E"
+      "Hash": "0xD9717F6B5F1F9FBE"
     },
     {
       "Name": "model-picker",
-      "Hash": "0xE171E3E3E3595BC2"
+      "Hash": "0x733B4C6B4F1F9F97"
     },
     {
       "Name": "library-empty",
-      "Hash": "0xC971E3C3635979E0"
+      "Hash": "0x4F476773637BEBC0"
     },
     {
       "Name": "settings-top",
-      "Hash": "0xC7C1C3C14343E160"
+      "Hash": "0x49C36363CBCBE1E0"
     }
   ]
 }

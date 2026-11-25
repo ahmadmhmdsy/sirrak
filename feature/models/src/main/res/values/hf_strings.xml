@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- P3: in-app Hugging Face browser. Owner: feature/models (the screens live here). -->
+    <string name="hf_back">رجوع</string>
+    <string name="hf_retry">إعادة المحاولة</string>
+
+    <!-- Search -->
+    <string name="hf_search_title">البحث في Hugging Face</string>
+    <string name="hf_search_field_label">اسم النموذج أو المطوّر</string>
+    <string name="hf_search_field_placeholder">مثال: Qwen2.5-1.5B-GGUF</string>
+    <string name="hf_search_action">بحث</string>
+    <string name="hf_search_clear">مسح</string>
+    <string name="hf_search_loading">جارٍ البحث…</string>
+    <string name="hf_search_initial">اكتب اسم نموذج أو مطوّر لعرض نماذج GGUF من Hugging Face.</string>
+    <string name="hf_search_empty">لا نتائج مطابقة. جرّب كلمات أقل أو اكتب الاسم بالإنجليزية.</string>
+    <string name="hf_search_more">المزيد من النتائج</string>
+    <string name="hf_search_more_loading">جارٍ تحميل المزيد…</string>
+    <string name="hf_search_more_failed">تعذّر تحميل المزيد من النتائج.</string>
+    <string name="hf_search_debounce_note">يبحث تلقائيًا بعد توقّفك عن الكتابة.</string>
+    <string name="hf_search_source_note">النتائج من Hugging Face، مرتّبة حسب عدد التنزيلات.</string>
+    <string name="hf_search_downloads">تنزيل</string>
+    <string name="hf_search_likes">إعجاب</string>
+    <string name="hf_search_row_meta">%1$s تنزيل · %2$s إعجاب</string>
+    <string name="hf_search_gated_badge">يتطلب حساب Hugging Face</string>
+    <string name="hf_search_open">فتح ملفات النموذج</string>
+    <string name="hf_search_offline_title">وضع عدم الاتصال مفعّل</string>
+    <string name="hf_search_offline_body">البحث يحتاج اتصالًا. أوقف وضع عدم الاتصال لعرض نماذج Hugging Face.</string>
+    <string name="hf_search_offline_action">إيقاف وضع عدم الاتصال</string>
+    <string name="hf_search_failure_network">تعذّر الوصول إلى Hugging Face. تحقّق من الاتصال وأعد المحاولة.</string>
+    <string name="hf_search_failure_rate">بلغنا حدّ الطلبات المجانية مؤقتًا. انتظر قليلًا ثم أعد المحاولة.</string>
+    <string name="hf_search_failure_gated">هذا المحتوى يتطلب حساب Hugging Face.</string>
+    <string name="hf_search_failure_generic">تعذّر إكمال البحث. أعد المحاولة.</string>
+
+    <!-- Repo page -->
+    <string name="hf_repo_loading">جارٍ قراءة بيانات المستودع…</string>
+    <string name="hf_repo_failure">تعذّر قراءة هذا المستودع. تأكّد من الاسم والاتصال ثم أعد المحاولة.</string>
+    <string name="hf_repo_files_title">ملفات GGUF</string>
+    <string name="hf_repo_files_empty">لا يوجد ملف GGUF في هذا المستودع.</string>
+    <string name="hf_repo_select_hint">اختر ملفًا لعرض تقدير التشغيل وتنزيله.</string>
+    <string name="hf_repo_from_hub_note">بيانات يعلنها ناشر النموذج، وليست قياسًا على جهازك.</string>
+    <string name="hf_repo_hub_context">السياق من Hugging Face</string>
+    <string name="hf_repo_hub_architecture">المعمارية من Hugging Face</string>
+    <string name="hf_repo_licence">الرخصة</string>
+    <string name="hf_repo_unknown">غير معروفة</string>
+    <string name="hf_repo_offline_title">وضع عدم الاتصال مفعّل</string>
+    <string name="hf_repo_offline_body">لا يمكن قراءة الملفات أو فحصها الآن. أوقف وضع عدم الاتصال ثم أعد المحاولة.</string>
+
+    <!-- Gated token: memory-only, never persisted -->
+    <string name="hf_repo_token_title">يتطلب حساب Hugging Face</string>
+    <string name="hf_repo_token_body">هذا المستودع مقيّد. أدخل رمز وصول Hugging Face لعرض الملفات.</string>
+    <string name="hf_repo_token_note">يبقى الرمز في الذاكرة لهذه الجلسة فقط، ولا يُحفَظ على الجهاز.</string>
+    <string name="hf_repo_token_label">رمز الوصول</string>
+    <string name="hf_repo_token_save">استخدام الرمز</string>
+    <string name="hf_repo_token_active">الرمز محفوظ في الذاكرة لهذه الجلسة.</string>
+    <string name="hf_repo_token_clear">مسح الرمز من الذاكرة</string>
+
+    <!-- Capped header probe -->
+    <string name="hf_probe_action">فحص الترويسة (حتى 12 م.ب)</string>
+    <string name="hf_probe_running">جارٍ فحص ترويسة الملف…</string>
+    <string name="hf_probe_note">الفحص يقرأ أول 12 م.ب من الملف عبر اتصال غير محدود، ويكشف المعمارية والسياق. يمكنك تخطّيه والتنزيل دون تحقّق.</string>
+    <string name="hf_probe_metered_title">فحص عبر بيانات الجوال؟</string>
+    <string name="hf_probe_metered_body">الفحص ينزّل حتى 12 م.ب عبر بيانات الجوال. يمكنك الانتظار حتى Wi-Fi أو المتابعة الآن.</string>
+    <string name="hf_probe_failure_network">تعذّر فحص الملف. تحقّق من الاتصال وأعد المحاولة.</string>
+    <string name="hf_probe_failure_range">الخادم لا يدعم قراءة جزء من الملف. يمكنك تنزيل الملف ثم المحاولة لاحقًا.</string>
+    <string name="hf_probe_failure_malformed">هذه البايتات ليست ترويسة GGUF صالحة. قد يكون الملف غير مكتمل.</string>
+    <string name="hf_probe_failure_gated">الملف مقيّد؛ أدخل رمز Hugging Face ثم أعد المحاولة.</string>
+    <string name="hf_probe_failure_generic">تعذّر قراءة ترويسة الملف. أعد المحاولة.</string>
+    <string name="hf_probe_blocked_metered">لم يبدأ الفحص: رفضت استخدام بيانات الجوال. يمكنك الفحص على Wi-Fi أو تخطّيه.</string>
+    <string name="hf_probe_complete">قُرئت الترويسة كاملة.</string>
+    <string name="hf_probe_partial">قراءة جزئية داخل حدّ 12 م.ب؛ بعض الحقول غير متاحة.</string>
+    <string name="hf_probe_bytes">قرأنا %1$s</string>
+    <string name="hf_probe_ranged_note">استُخدم طلب Range، فحمّلنا مقطعًا واحدًا فقط.</string>
+    <string name="hf_probe_full_note">استجاب الخادم بالملف من أوله (200) بدل مقطع (206)؛ هذا ليس خطأ لكنه يعني قراءة غير مقيّدة على الخادم.</string>
+
+    <string name="hf_meta_title">ترويسة الملف</string>
+    <string name="hf_meta_architecture">المعمارية</string>
+    <string name="hf_meta_layers">الطبقات</string>
+    <string name="hf_meta_heads">الرؤوس</string>
+    <string name="hf_meta_kv_heads">رؤوس KV</string>
+    <string name="hf_meta_embedding">أبعاد التضمين</string>
+    <string name="hf_meta_context">السياق المدرَّب</string>
+    <string name="hf_meta_hub_note">من ترويسة الملف، لا من بيانات الناشر.</string>
+    <string name="hf_meta_missing">—</string>
+
+    <!-- Fit verdict -->
+    <string name="hf_fit_title">التقدير على جهازك</string>
+    <string name="hf_fit_status_runs">يُتوقع أنه يعمل</string>
+    <string name="hf_fit_status_tight">يعمل بضيق</string>
+    <string name="hf_fit_status_wont_run">لن يعمل</string>
+    <string name="hf_fit_status_unknown">غير مؤكَّد</string>
+    <string name="hf_fit_total">الأثر الكلي في الذاكرة</string>
+    <string name="hf_fit_weights">حجم الملف</string>
+    <string name="hf_fit_kv">ذاكرة KV</string>
+    <string name="hf_fit_overhead">أعباء إضافية</string>
+    <string name="hf_fit_usable_ram">الذاكرة المتاحة للاستخدام</string>
+    <string name="hf_fit_free_disk">المساحة الحرة</string>
+    <string name="hf_fit_suggested_context">السياق المقترح</string>
+    <string name="hf_fit_requested_context">السياق المطلوب</string>
+    <string name="hf_fit_estimate">تقديري</string>
+    <string name="hf_fit_math_note">الأثر = الملف + أعباء المحرك + ذاكرة KV. الأرقام تقديرية، لا قياس.</string>
+    <string name="hf_fit_unverified_note">لم نفحص الملف، لذلك الحكم غير مؤكَّد؛ يمكنك التنزيل لكن التشغيل غير مضمون.</string>
+    <string name="hf_fit_blocked_note">التنزيل محجوب بسبب الحكم أعلاه.</string>
+    <string name="hf_fit_reason_low_ram">جهاز منخفض الذاكرة: ملف بهذا الحجم غالبًا يُوقف.</string>
+    <string name="hf_fit_reason_ram">الذاكرة الحرة لا تكفي لهذا الملف.</string>
+    <string name="hf_fit_reason_tight">الذاكرة الحرة قريبة من الحد؛ قد يوقف النظام التطبيق أثناء المحادثة.</string>
+    <string name="hf_fit_reason_disk">المساحة الحرة أقل من 1.1× حجم الملف.</string>
+    <string name="hf_fit_reason_arch_unsupported">هذه المعمارية غير مدعومة في محرّك هذا الإصدار.</string>
+    <string name="hf_fit_reason_arch_unknown">لم نتحقّق من معمارية الملف.</string>
+    <string name="hf_fit_reason_file_unknown">حجم الملف غير معلن.</string>
+
+    <!-- Download hand-off -->
+    <string name="hf_download_action">تنزيل النموذج</string>
+    <string name="hf_download_metered_title">تنزيل عبر بيانات الجوال؟</string>
+    <string name="hf_download_metered_body">سيُنزّل الملف كاملًا عبر بيانات الجوال، وقد يستهلك عدة جيجابايت. يمكنك الانتظار حتى Wi-Fi.</string>
+    <string name="hf_metered_allow">متابعة عبر بيانات الجوال</string>
+    <string name="hf_metered_cancel">انتظار Wi-Fi</string>
+    <string name="hf_fit_tight_title">تنزيل مع المخاطرة؟</string>
+    <string name="hf_fit_tight_body">قد يعمل النموذج، لكن الذاكرة الحرة قريبة من الحد وقد يوقفه النظام. التنزيل نفسه لا يتأثر.</string>
+    <string name="hf_fit_tight_accept">تنزيل رغم ذلك</string>
+    <string name="hf_fit_tight_cancel">إلغاء</string>
+    <string name="hf_download_notice_queued">أُضيف إلى التنزيلات. تابع التقدّم من صفحة التنزيلات.</string>
+    <string name="hf_download_notice_started">بدأ التنزيل عبر بيانات الجوال.</string>
+    <string name="hf_download_notice_duplicate">هذا الملف موجود في التنزيلات بالفعل.</string>
+    <string name="hf_download_notice_installed">هذا الملف مثبّت بالفعل.</string>
+    <string name="hf_download_notice_rejected">تعذّر إضافة التنزيل إلى القائمة. أعد المحاولة.</string>
+    <string name="hf_download_notice_declined">لم يبدأ التنزيل: رفضت بيانات الجوال. سيبقى في القائمة حتى Wi-Fi.</string>
+    <string name="hf_download_notice_waiting_other">في قائمة الانتظار خلف تنزيل آخر.</string>
+    <string name="hf_download_notice_offline">وضع عدم الاتصال مفعّل؛ لم يُضَف أي تنزيل.</string>
+    <string name="hf_download_notice_start_failed">أُضيف التنزيل لكن تعذّر بدؤه. أعد المحاولة من صفحة التنزيلات.</string>
+    <string name="hf_download_open">عرض التنزيلات</string>
+</resources>

@@ -1,6 +1,6 @@
 # Sirrak privacy policy
 
-Last updated: 2026-11-24 · Policy version 1 · Applies to 1.0.0-rc2 (versionCode 13).
+Last updated: 2026-11-25 · Policy version 2 · Applies to 1.1.0 (versionCode 14).
 
 Published at <https://alshahia.github.io/sirrak/privacy/> — Arabic:
 <https://alshahia.github.io/sirrak/ar/privacy/>. The app opens this page from
@@ -8,22 +8,26 @@ Published at <https://alshahia.github.io/sirrak/privacy/> — Arabic:
 
 Sirrak (سِرِّك) is a private AI assistant for Android that runs its language model on your phone. There is
 no account, no sign-in and no cloud behind it, so there is no server holding your conversations. The app
-works fully offline once a model is imported or downloaded, and the only network request it can make is a
-model download you start yourself.
+works fully offline once a model is imported or downloaded. It touches the network only for three things
+you start yourself: a model download, a Hugging Face index search, and a capped header probe that estimates
+whether a model fits this phone.
 
 ## In short
 
-- Chats, documents, models and settings stay in app-private storage on your device.
+- Chats, documents, media, models and settings stay in app-private storage on your device.
 - There is no telemetry, no analytics, no crash reporting, no advertising and no account.
-- The only network feature is a model download you explicitly start; offline-only mode blocks it before a
-  socket opens.
+- The three network features each start with a tap: model download, Hugging Face search, capped header
+  probe. Offline-only mode blocks all of them before a socket opens.
 
 ## What stays on your device
 
 - **Chats** — conversations, prompts, answers, titles, system prompts and per-conversation settings.
-- **Documents and attachments** — files you add to the Library (PDF, DOCX, EPUB, Markdown and plain text),
-  their extracted text, chunks and embedding vectors, and images or audio transcripts you attach to a
-  message.
+- **Documents** — files you add to the Library (PDF, DOCX, EPUB, Markdown and plain text), their extracted
+  text, chunks and embedding vectors.
+- **Media** — images, audio clips and their on-device Whisper transcripts that you add to the Library's
+  Media segment. Audio is transcribed on the phone and the recording is never uploaded. Each item is kept
+  or used once according to your choice; a once-only item is never indexed and is deleted when its session
+  ends.
 - **Models** — GGUF model files you download or import, and any projector file paired with them.
 - **Settings** — theme, language, text size, engine tuning, prompts and the offline-only switch.
 - **Dictation audio** — held in memory or a temporary file only while a transcription runs, never uploaded;
@@ -38,37 +42,43 @@ device, and it is removed when you uninstall Sirrak or clear its app data.
 
 ## What leaves your device
 
-Sirrak has exactly one network feature today: downloading a model that you explicitly start.
+Sirrak has three network features, and each starts with your tap: downloading a model, searching the
+public Hugging Face model index, and reading a capped byte range of a GGUF header to estimate device fit.
 
-- The request is addressed to `huggingface.co`, the public model resolver. The same host is shown in
+- Every request is addressed to `huggingface.co`, the public model resolver. The same host is shown in
   **Settings → Privacy & data → Network log**.
-- It is a `GET` for the model repository and file you chose. It carries a standard user agent
-  (`Sirrak/0.1 (Android; on-device model downloader)`) and — only if you pasted a token for a gated model —
+- A **download** is a `GET` for the model repository and file you chose. It carries a standard user agent
+  (`Sirrak/0.1 (Android; on-device model downloader)`) and — only if you typed a token for a gated model —
   an `Authorization: Bearer` header with that token. As with any HTTPS download, the server's redirects for
   the file are followed.
-- It carries no chat text, prompt, document, report, contact, location, device identifier, advertising
-  identifier or account credential. The network layer still reveals your IP address to Hugging Face, as any
-  HTTPS request does, and its servers may log it with the time and the file requested.
+- A **search** sends the words you typed to the public model index. Opening a repository sends its public
+  name to read the file list.
+- A **header probe** asks for at most 12 MB of the header of the single GGUF file you inspect, using ranged
+  reads, not the whole model. Its authorization token is dropped when the transfer moves to the download
+  host.
+- None of them carries chat text, prompt, document, media, report, contact, location, device identifier,
+  advertising identifier or account credential. The network layer still reveals your IP address to Hugging
+  Face, as any HTTPS request does, and its servers may log it with the time and the file or query requested.
 - Hugging Face serves the file under its own terms and privacy policy. That logging and those terms are
   Hugging Face's, not Sirrak's.
 - There are no analytics, no crash reporting, no ads, no tracking and no remote accounts, and no update
   check, font fetch or asset download that could phone home on its own.
 
-The optional Hugging Face token is held in memory for that download only; the app does not write it to
-storage or reuse it. There is no "remember this token" option in 1.0.0-rc2.
+The optional Hugging Face token is held in memory for the current session only; the app never writes it to
+storage, the network log or a report. There is no "remember this token" option in 1.1.0.
 
 **Offline-only mode** is a switch in **Settings → Privacy & data**. When it is on, the app refuses every new
 network request and cancels a running download; the check runs before a socket is opened, so neither a
-metered nor an unmetered connection can bypass it. Chat, dictation, document search and reports keep
-working. The switch is off by default, and model downloads otherwise wait for an unmetered connection
-(Wi-Fi or Ethernet).
+metered nor an unmetered connection can bypass it. Chat, dictation, media transcription, document search
+and reports keep working. The switch is off by default, and model downloads, searches and probes otherwise
+wait for an unmetered connection (Wi-Fi or Ethernet) or ask you before using mobile data.
 
 ## Permissions
 
 | Permission | Why it is declared | When it is used |
 | --- | --- | --- |
-| `INTERNET` | fetch a model file you chose | only while a download you started runs |
-| `ACCESS_NETWORK_STATE` | check the connection before a download | same |
+| `INTERNET` | fetch a model file you chose, search the public model index, probe a file header | only while one of those actions you started runs |
+| `ACCESS_NETWORK_STATE` | check the connection before a download, search or probe | same |
 | `RECORD_AUDIO` | dictation, transcribed on the device | only while dictation is active |
 | `POST_NOTIFICATIONS` | show download progress and a Cancel action | from the first download on Android 13+; optional |
 | `FOREGROUND_SERVICE`, `FOREGROUND_SERVICE_DATA_SYNC` | keep a download alive when you leave the app | only during a download |
@@ -79,8 +89,11 @@ and only for the item you selected.
 
 ## Retention and deletion
 
-- Delete a chat, document or model from inside the app. Deleting a model removes its file from app-private
-  storage.
+- Delete a chat, document, media item or model from inside the app. Deleting a model removes its file from
+  app-private storage.
+- Media items are kept or used once according to your choice; a once-only item is never indexed and is
+  deleted when its session ends.
+- A Hugging Face token is discarded when the app process ends; it is never persisted.
 - The network log and the report queue each have a clear action and a fixed cap (50 entries, 50 reports).
 - Exports and shared reports leave only through the Android chooser you invoke.
 - Uninstalling Sirrak deletes all app-private data; **Settings → Apps → Sirrak → Storage → Clear storage**
@@ -99,8 +112,9 @@ licence, which the app shows before download; that licence is between you and th
 some licences restrict commercial use or require attribution. Sirrak is not affiliated with, endorsed by or
 sponsored by any model provider.
 
-A download from Hugging Face is also subject to Hugging Face's terms and privacy policy, and a gated model's
-token belongs to your Hugging Face account and is governed by Hugging Face's policies.
+Browsing, searching, probing and downloading from Hugging Face are also subject to Hugging Face's terms and
+privacy policy, and a gated model's token belongs to your Hugging Face account and is governed by Hugging
+Face's policies.
 
 ## The website
 
@@ -115,7 +129,7 @@ no form and no cookie, and it does not collect, store or process anything about 
 
 ## Changes to this policy
 
-This policy is versioned with the app: version 1 accompanies 1.0.0-rc2 (24 November 2026). Material changes
+This policy is versioned with the app: version 2 accompanies 1.1.0 (25 November 2026). Material changes
 will be shown in the app before they take effect, and this page keeps the same URL. If a future version adds
 a network feature or stores something new, this document will say so before that version ships.
 

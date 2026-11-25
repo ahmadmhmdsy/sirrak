@@ -61,7 +61,13 @@ fun ReadingColumn(
     }
 }
 
-/** The empty conversation: one promise, one privacy line, then suggestions from content JSON. */
+/**
+ * The empty conversation: one promise, one privacy line, then suggestions from content JSON.
+ *
+ * [compact] is the short-viewport variant (a 720x1280 phone whose composer leaves a small reading
+ * area): the girih mark and the generous spacings are dropped so the promise, the privacy line and a
+ * fully visible first suggestion card fit without scrolling; the deck itself still scrolls.
+ */
 @Composable
 fun EmptyConversation(
     promise: String,
@@ -70,20 +76,23 @@ fun EmptyConversation(
     modifier: Modifier = Modifier,
     footer: (@Composable () -> Unit)? = null,
     suggestions: (@Composable () -> Unit)? = null,
+    compact: Boolean = false,
 ) {
     Column(
         modifier = modifier.fillMaxWidth().padding(horizontal = 24.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
-        GirihMark(modifier = Modifier.size(36.dp), tint = MaterialTheme.colorScheme.primary)
-        androidx.compose.foundation.layout.Spacer(Modifier.size(14.dp))
+        if (!compact) {
+            GirihMark(modifier = Modifier.size(36.dp), tint = MaterialTheme.colorScheme.primary)
+            androidx.compose.foundation.layout.Spacer(Modifier.size(14.dp))
+        }
         Text(
             text = promise,
             style = MaterialTheme.typography.headlineSmall,
             color = MaterialTheme.colorScheme.onSurface,
             textAlign = TextAlign.Center,
         )
-        androidx.compose.foundation.layout.Spacer(Modifier.size(10.dp))
+        androidx.compose.foundation.layout.Spacer(Modifier.size(if (compact) 5.dp else 10.dp))
         Text(
             text = privacy,
             style = MaterialTheme.typography.bodySmall,
@@ -91,20 +100,20 @@ fun EmptyConversation(
             textAlign = TextAlign.Center,
         )
         if (suggestions != null) {
-            androidx.compose.foundation.layout.Spacer(Modifier.size(18.dp))
+            androidx.compose.foundation.layout.Spacer(Modifier.size(if (compact) 8.dp else 18.dp))
             Text(
                 text = suggestionsTitle,
                 style = MaterialTheme.typography.labelLarge,
                 color = MaterialTheme.colorScheme.onSurfaceVariant,
-                modifier = Modifier.fillMaxWidth().padding(start = 2.dp, bottom = 8.dp),
+                modifier = Modifier.fillMaxWidth().padding(start = 2.dp, bottom = if (compact) 6.dp else 8.dp),
             )
             Column(
                 modifier = Modifier.fillMaxWidth(),
-                verticalArrangement = Arrangement.spacedBy(10.dp),
+                verticalArrangement = Arrangement.spacedBy(if (compact) 8.dp else 10.dp),
             ) { suggestions() }
         }
         if (footer != null) {
-            androidx.compose.foundation.layout.Spacer(Modifier.size(24.dp))
+            androidx.compose.foundation.layout.Spacer(Modifier.size(if (compact) 12.dp else 24.dp))
             footer()
         }
     }

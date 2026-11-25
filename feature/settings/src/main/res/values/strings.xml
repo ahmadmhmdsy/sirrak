@@ -15,4 +15,6 @@
     <string name="settings_language_note">تغيير اللغة يعيد تحميل الواجهة ويحفظ اختيارك.</string>
     <string name="settings_font_scale">حجم النص</string>
     <string name="settings_font_scale_note">يكبّر النص فقط، دون تغيير التخطيط. يُطبَّق فورًا ويُحفظ.</string>
+    <string name="settings_doors_section">الأقسام</string>
+    <string name="settings_door_appearance_value">%1$s · حجم النص %2$d%%</string>
 </resources>

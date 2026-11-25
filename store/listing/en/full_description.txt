@@ -10,7 +10,7 @@ HOW IT WORKS
 
 WHAT YOU CAN DO
 - Chat: streaming answers, conversation history with search and rename, attachments, regenerate and copy, per-conversation settings, and a report action for AI output.
-- Dictate: on-device sherpa-onnx Whisper in Arabic and English with a live level meter; the transcript waits in the composer until you send it, and the audio never leaves the phone.
+- Dictate: on-device sherpa-onnx Whisper in Arabic and English; a timer runs while you record, the transcript waits in the composer until you send it, and the audio never leaves the phone.
 - Ask your documents: import PDF, text, DOCX, EPUB or Markdown, index on the device, and ask questions answered from numbered sources you can open.
 - Manage models: a curated catalogue with device-aware recommendations, resumable checksum-verified downloads, pause, cancel and retry, background progress, storage management, and Hugging Face import for anything else.
 - Tune the engine: temperature, top-p, top-k, repeat penalty, context size, streaming, chat templates and prompts.

@@ -91,8 +91,11 @@ class LlamaCppEngine(
             audioTranscripts = false,
         )
 
-    /** Loads [model] and its optional vision projector, replacing any resident model. */
-    suspend fun load(model: InstalledModel) {
+    /**
+     * Loads [model] and its optional vision projector, replacing any resident model. [contextTokens]
+     * is the per-model context window chosen on the model page; the default keeps the app default.
+     */
+    suspend fun load(model: InstalledModel, contextTokens: Int = defaultContextTokens) {
         loadMutex.withLock {
             val previous = handle
             handle = 0L
@@ -107,7 +110,7 @@ class LlamaCppEngine(
             _status.value = EngineStatus.Loading(model.displayName)
             val loaded = withContext(Dispatchers.Default) {
                 runCatching {
-                    LlamaNative.nativeLoadModel(model.path, defaultContextTokens, model.visionProjectorPath)
+                    LlamaNative.nativeLoadModel(model.path, contextTokens, model.visionProjectorPath)
                 }.onFailure { Log.e(TAG, "model load failed", it) }.getOrDefault(0L)
             }
             when {

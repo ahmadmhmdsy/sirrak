@@ -37,6 +37,13 @@ data class CatalogueEntry(
     val parameterLabel: String = "",
     val quantization: String = "",
     val contextTokens: Int = 0,
+    /** GGUF `general.architecture`, verified from the file header; null when it has not been verified yet. */
+    val architecture: String? = null,
+    /** Measured header numbers (probe round). Null means "not verified", never "zero". */
+    val layerCount: Int? = null,
+    val headCount: Int? = null,
+    val kvHeadCount: Int? = null,
+    val embeddingLength: Int? = null,
     val ramMb: Int = 0,
     val minRamMb: Int = 0,
     val licence: String = "",
@@ -51,6 +58,30 @@ data class CatalogueEntry(
     val downloadUrl: String get() = "https://huggingface.co/$repo/resolve/main/$fileName"
 
     val sizeLabel: String get() = GgufFile.formatSize(sizeBytes)
+
+    /**
+     * The architecture facts a fit verdict needs, or null when the header has not been verified yet.
+     * A curated entry carries them from the release probe; a web-searched file gets them from the
+     * 12 MB range probe before any download decision.
+     */
+    fun fitArchitecture(): GgufArchitecture? {
+        // A missing number is not zero: with kv heads unknown the KV cache would be assumed free and
+        // the verdict would say "runs" for a model that cannot. Requiring the measured set keeps the
+        // unverified entries at UNKNOWN until a probe answers.
+        val name = architecture?.takeIf { it.isNotBlank() } ?: return null
+        val layers = layerCount?.takeIf { it > 0 } ?: return null
+        val heads = headCount?.takeIf { it > 0 } ?: return null
+        val kvHeads = kvHeadCount?.takeIf { it > 0 } ?: return null
+        val embedding = embeddingLength?.takeIf { it > 0 } ?: return null
+        return GgufArchitecture(
+            name = name,
+            layerCount = layers,
+            headCount = heads,
+            kvHeadCounts = listOf(kvHeads),
+            embeddingLength = embedding,
+            contextTokens = contextTokens.takeIf { it > 0 },
+        )
+    }
 }
 
 /** The whole catalogue asset. Priority is list order: the first suitable entry is recommended. */
@@ -93,6 +124,17 @@ object CatalogueJson {
             if (entry.ramMb <= 0) errors += "non-positive-ram:${entry.id}"
             if (entry.minRamMb < 0) errors += "negative-min-ram:${entry.id}"
             if (entry.contextTokens < 0) errors += "negative-context:${entry.id}"
+            if (entry.architecture != null && entry.architecture.isBlank()) {
+                errors += "blank-architecture:${entry.id}"
+            }
+            listOf(
+                "negative-layers" to entry.layerCount,
+                "negative-heads" to entry.headCount,
+                "negative-kv-heads" to entry.kvHeadCount,
+                "negative-embd" to entry.embeddingLength,
+            ).forEach { (code, value) ->
+                if (value != null && value <= 0) errors += "$code:${entry.id}"
+            }
             if (entry.sha256 != null && !isSha256(entry.sha256)) errors += "invalid-sha256:${entry.id}"
             entry.visionProjector?.let { projector ->
                 if (projector.fileName.isBlank()) errors += "blank-projector-file:${entry.id}"

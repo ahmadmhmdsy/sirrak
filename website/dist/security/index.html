@@ -36,7 +36,7 @@
 <meta name="twitter:title" content="Security policy">
 <meta name="twitter:description" content="How to report a vulnerability in Sirrak, what is in scope, and the design commitments that reduce the attack surface to a phone with no server and no telemetry.">
 <meta name="twitter:image" content="https://alshahia.github.io/sirrak/assets/og-image.png">
-<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","name":"Security policy","description":"How to report a vulnerability in Sirrak, what is in scope, and the design commitments that reduce the attack surface to a phone with no server and no telemetry.","url":"https://alshahia.github.io/sirrak/security/","inLanguage":"en","datePublished":"2026-11-24","dateModified":"2026-11-24","isPartOf":{"@type":"WebSite","name":"Sirrak · سِرِّك","url":"https://alshahia.github.io/sirrak/","inLanguage":["ar","en"],"publisher":{"@type":"Organization","name":"Sirrak","url":"https://alshahia.github.io/sirrak/","logo":"https://alshahia.github.io/sirrak/assets/icon-512.png","sameAs":["https://github.com/alshahia/sirrak"]}},"publisher":{"@type":"Organization","name":"Sirrak","url":"https://alshahia.github.io/sirrak/","logo":"https://alshahia.github.io/sirrak/assets/icon-512.png","sameAs":["https://github.com/alshahia/sirrak"]}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","name":"Security policy","description":"How to report a vulnerability in Sirrak, what is in scope, and the design commitments that reduce the attack surface to a phone with no server and no telemetry.","url":"https://alshahia.github.io/sirrak/security/","inLanguage":"en","datePublished":"2026-11-25","dateModified":"2026-11-25","isPartOf":{"@type":"WebSite","name":"Sirrak · سِرِّك","url":"https://alshahia.github.io/sirrak/","inLanguage":["ar","en"],"publisher":{"@type":"Organization","name":"Sirrak","url":"https://alshahia.github.io/sirrak/","logo":"https://alshahia.github.io/sirrak/assets/icon-512.png","sameAs":["https://github.com/alshahia/sirrak"]}},"publisher":{"@type":"Organization","name":"Sirrak","url":"https://alshahia.github.io/sirrak/","logo":"https://alshahia.github.io/sirrak/assets/icon-512.png","sameAs":["https://github.com/alshahia/sirrak"]}}]}</script>
 </head>
 <body class="policy">
 <a class="skip" href="#main">Skip to content</a>
@@ -56,7 +56,7 @@
 <div class="wrap policy-wrap">
 <header class="policy-head">
 <a class="policy-back" href="../">Back to Sirrak</a>
-<p class="policy-dateline">Last updated: 24 November 2026 · Applies to 1.0.0-rc2</p>
+<p class="policy-dateline">Last updated: 25 November 2026 · Applies to 1.1.0</p>
 <h1>Security policy</h1>
 <ul class="policy-summary">
 <li>Report vulnerabilities privately through GitHub Security Advisories — never in a public issue.</li>
@@ -82,7 +82,7 @@
 </section>
 <section class="policy-section">
 <h2>Scope</h2>
-<p>In scope: the app itself (chat, library/RAG, dictation, model download/import, privacy surfaces) and the way it stores data on the device.</p>
+<p>In scope: the app itself (chat, the Library&#39;s models/downloads/media shelves and RAG, dictation, model download/import, Hugging Face browsing and the capped header probe, privacy surfaces) and the way it stores data on the device.</p>
 <ul>
 <li>Out of scope: vulnerabilities in Android itself, in third-party model weights, and in the upstream llama.cpp / sherpa-onnx / LiteRT-LM code — report those upstream.</li>
 <li>Out of scope: attacks that require a rooted device or physical access with an unlocked bootloader.</li>
@@ -96,6 +96,8 @@
 <li>The network audit is the single place that records outbound calls; it is bounded and local.</li>
 <li>Release builds are minified with R8 and ship no debug-only cleartext permission (cleartext HTTP is debug-only, used by loopback device tests).</li>
 <li>Model downloads are verified against the catalogue SHA-256 before installation.</li>
+<li>The Hugging Face header probe is capped at 12 MB, accepts only ranged reads, and drops an authorization token when a redirect leaves huggingface.co.</li>
+<li>A Hugging Face token is kept in memory only and never written to disk, the network log or a report.</li>
 </ul>
 </section>
 <section class="policy-section">
@@ -103,7 +105,7 @@
 <p>We will credit reporters who ask to be credited, and publish a short advisory once a fix is available. Please give us a reasonable window before public disclosure.</p>
 </section>
 </article>
-<p class="policy-footnote">Last updated: 24 November 2026 · Applies to 1.0.0-rc2 · <a href="https://github.com/alshahia/sirrak">An Arabic-first assistant that runs on your phone and never phones home.</a></p>
+<p class="policy-footnote">Last updated: 25 November 2026 · Applies to 1.1.0 · <a href="https://github.com/alshahia/sirrak">An Arabic-first assistant that runs on your phone and never phones home.</a></p>
 </div>
 </main>
 <footer class="site-footer">

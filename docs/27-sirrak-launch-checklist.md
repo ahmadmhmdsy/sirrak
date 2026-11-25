@@ -3,7 +3,8 @@
 The concrete, ordered list that turns the repository into a published launch candidate. Each item
 names the command or file that proves it. Nothing here needs a test phone (F8): the API 36
 `Nawa_Phone` AVD is the device under test. `[x]` marks items proven on the P3.7 record (23 Nov 2026);
-`[ ]` items still need an account, a host or a human review.
+`[ ]` items still need an account, a host or a human review. The §1–§7 body is the **P3.7 baseline**
+(567 tests, lint 36 warnings); the current `1.1.0` candidate's gates and artifact are in §P3.10 at the end.
 
 ## 1. Quality gates (must be green before cutting a build)
 
@@ -157,3 +158,74 @@ artifacts, screenshots and record were left untouched.
 - [x] CI green on `3b63f1f` (run `45373203824`): JVM unit tests, Arabic eval 24/24, Android lint and the public-site job (build + 225/225 + committed-output drift) all success; Pages deployment run `45373203860` success.
 - [x] Live surface verified after deployment: `validate-repo.ps1` **36/36** (repository facts, Pages, secret scanning, branch protection, release digests, all 11 live URLs 200); the live EN and AR landing pages serve `1.0.0-rc2` and the rc2 evidence rows.
 - [x] Limits unchanged and still explicit in §6: F-Droid and Play remain unpublished, performance is emulator-measured only, and no test phone was used (F8) — the rc2 device evidence is the emulator, as recorded above.
+
+## P3.10 — `1.1.0` UX rework candidate (2026-11-25)
+
+Record for the `1.1.0` candidate (versionCode 14), built on 2026-11-25 (+03:00) from the UX rework in
+[docs/31](31-ux-rework-council.md) / [docs/32](32-ux-rework-build-record.md). This is a **candidate**, not a
+signed release: this checkout contains no release keystore (`keystore.properties` / `*.jks` are absent), so the
+validated artifact is a debug-signed universal APK. The signed `1.0.0-rc2` release remains the last published
+build, and its tag, artifacts and record are untouched.
+
+- [x] Version facts: `versionCode 14` / `versionName 1.1.0` in `app/build.gradle.kts`; About, NOTICE,
+      `sbom.cdx.json`, What's new, the site, `store/store-spec.json` floor and both READMEs read 1.1.0; the
+      licence registry still renders 23 entries (22 CycloneDX components + the app subject) and
+      `LicenceRegistryAssetTest` is green.
+- [x] UX rework delivered in the approved P1→P6 order: honest four-state chip that routes to a model (P1);
+      three-segment Library with a durable single-transfer download queue (P2); in-app Hugging Face search +
+      bounded GGUF probe + RAM/disk fit verdict (P3); six Settings doors with live summaries (P4); Media V1 —
+      documents / images / audio-to-on-device-transcript with keep-or-once and per-item agent access (P5);
+      no download-manager UI; hints without removing controls. Deviations are itemised in docs/32.
+- [x] JVM suite: `./gradlew :app:testLibreDebugUnitTest testDebugUnitTest` → **744 tests, 0 failures,
+      0 errors** across 75 XML suites in 10 module result folders (`:app` contributes 253 tests / 26 suites).
+- [x] Arabic eval: **24/24** cases inside the suite (normalisation, sentence splitting, BM25, negative controls).
+- [x] Android lint: `./gradlew :app:lintLibreDebug` → **0 errors, 39 reviewed warnings** (30 pinned
+      dependency updates, 6 AGP version warnings, 3 transitive third-party TLS warnings).
+- [x] Configuration test: `privacy.endpoints` declares the three real network features — `model_download`,
+      `hf_search`, `hf_probe` — and `AppConfigTest` asserts exactly that set.
+- [x] Store assets: `pwsh -File scripts/validate-store.ps1` → **79/79 checks**, version 1.1.0 present in
+      What's new (EN 491 / AR 494 characters, Play limit 500).
+- [x] Bilingual site: `website/site.json` version 1.1.0 / release date 2026-11-25, policies updated to
+      policy version 2; `build-site.ps1` clean and `validate-site.ps1` **225/225**; `WebsiteContentTest`
+      keeps the app-side facts in sync. Nothing is pushed: the live Pages site still describes rc2.
+- [x] Candidate artifact: `app-libre-debug.apk`, **223,217,333 B (212.9 MiB)**, SHA-256
+      `4CD65A603A32E829032DBAB5FD390F73FA201FA15F97CEAA75F3E9F4568D539A`, versionCode 14, minSdk 28,
+      universal `arm64-v8a` + `x86_64` with all seven native libraries per ABI (including
+      `libsirrak_llm.so`), built with `:app:assembleLibreDebug -PsirrakArm64Debug=true`. Signed with the
+      Android debug key — not installable as an update over the signed rc2 build (different certificate).
+- [x] Screenshot regression: baseline refreshed from a clean launch of candidate `3BDC4213…192E` on the
+      API 36 `Nawa_Phone` AVD (720×1280) — home, model doorway, empty Library and Settings root compare at
+      distance 0 (**4/4**); the chip tap in `scripts/ui-regression.ps1` moved to `0.64 0.166` because the
+      chip left the composer. The final artifact `4CD6…539A` re-ran the plain read-only compare against that
+      baseline: **4/4 at distance 0** again.
+- [x] Eight store screenshots (720×1280): home empty state, chat answer, Library → models, background
+      download notification, privacy network log, licences, dictation recording strip (listening state,
+      timer, stop/cancel), and the six-door Settings root in English. `05`/`08` were recaptured on
+      `3BDC4213…192E` after copy corrections; the final artifact differs only in two in-app network
+      sentences that appear in no shot. Split provenance in `store/screenshots/README.md`.
+- [x] Final copy audit after the capture pass: fixed the privacy footer and endpoint line, the Advanced door
+      summary ("semantic search not set up" instead of "not imported"), the first-run privacy slide and the
+      model-section note, so no in-app sentence claims the network is used only for model downloads. The
+      onboarding slide was checked in Arabic and English on the final artifact (no clipping, Next/Back/Skip
+      pass). README, store listing and site copy no longer claim a "live level meter": the recording strip
+      shows the listening state and a timer. `validate-store.ps1` **79/79** and `validate-site.ps1`
+      **225/225** were re-run on the final tree.
+- [ ] Signed `1.1.0` APK/AAB and their recorded hashes — **blocked on the release keystore**; re-run
+      `scripts/release-check.ps1` and re-record `store/store-spec.json` / `store/README.md` where the
+      keystore lives. `release-check.ps1` is expected to fail here because its artifact digests are rc2's.
+- [ ] Physical-phone smoke: **not run** — the Redmi Note 7 (`ef008a2`, Android 10 / API 29, arm64-v8a) was
+      not attached to adb during this session, so all device evidence is the API 36 emulator. When attached,
+      install this APK and run the small-model path: Qwen2.5-0.5B-Instruct Q4_K_M (~794 MB, fits the phone's
+      ~3.7 GB RAM) — download or adb-push it, load, ask one Arabic and one English question, dictate once,
+      import one PDF, and confirm offline-only blocks the network.
+- [ ] CI / pushed tree / live Pages: not applicable yet — the rework is uncommitted in the working tree and
+      nothing was pushed; the 567-test and rc2 rows above remain the last CI-proven state.
+- [x] Docs and data aligned to 1.1.0: docs/31, docs/32, PRODUCT.md, CHANGELOG.md, README.md and
+      README.ar.md, PRIVACY.md (policy version 2), SECURITY.md, website policies, store copy, NOTICE, SBOM,
+      store/README candidate-artifact table and the docs index.
+
+**Known gaps carried into this candidate** (also in docs/32 and README): media is V1 (once-only items are
+deleted at app close because chat cannot reference shelf media; images are view-only; no OCR; audio is not
+played from chat); HF rows cannot show per-file parameters/quantisation and an unprobed file stays `UNKNOWN`;
+downloads run one at a time; gated HF repos need a token that is held in memory only; settings search was not
+shipped; the APK is debug-signed and has no signing provenance.

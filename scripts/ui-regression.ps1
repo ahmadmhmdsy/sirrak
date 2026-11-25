@@ -125,7 +125,9 @@ New-Item -ItemType Directory -Force -Path $CurrentDir | Out-Null
 $screens = @(
     @{ Name = "home"; Capture = { Save-Screenshot (Join-Path $CurrentDir "home.png") } },
     @{ Name = "model-picker"; Capture = {
-        Tap-Scaled 0.64 0.10 | Out-Null
+        # The engine chip moved into the wordmark row when the model manager left Settings; its
+        # centre is now at y=0.166 of the frame (418,212 on a 720x1280 device).
+        Tap-Scaled 0.64 0.166 | Out-Null
         Start-Sleep -Seconds 2
         Save-Screenshot (Join-Path $CurrentDir "model-picker.png")
         Invoke-Adb @("shell", "input", "keyevent", "KEYCODE_BACK") | Out-Null

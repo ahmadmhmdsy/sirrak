@@ -24,8 +24,8 @@ android {
         applicationId = "app.sirrak"
         minSdk = 28
         targetSdk = 36
-        versionCode = 13
-        versionName = "1.0.0-rc2"
+        versionCode = 14
+        versionName = "1.1.0"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         ndk {
             // The engine ships x86_64 (emulator) and arm64-v8a (phone). Nothing else is built or

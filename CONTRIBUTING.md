@@ -49,7 +49,7 @@ default, `play` is the Play build):
 | What | Command |
 | --- | --- |
 | Debug APK | `.\gradlew :app:assembleLibreDebug` |
-| JVM suite (567 tests) | `.\gradlew :app:testLibreDebugUnitTest testDebugUnitTest` |
+| JVM suite (744 tests) | `.\gradlew :app:testLibreDebugUnitTest testDebugUnitTest` |
 | Arabic eval only | `.\gradlew :core:rag:testDebugUnitTest --tests "app.sirrak.core.rag.ArabicEvalTest"` |
 | Android lint | `.\gradlew :app:lintLibreDebug` |
 | Release artifacts (signs only with `keystore.properties`) | `.\gradlew assembleLibreRelease bundlePlayRelease` |

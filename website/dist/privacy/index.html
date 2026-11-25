@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Privacy policy</title>
-<meta name="description" content="How Sirrak handles your data: everything stays on your device; the only network request is a model download you start. No telemetry, no accounts, no tracking.">
+<meta name="description" content="How Sirrak handles your data: everything stays on your device. The network is touched only when you start a model download or a Hugging Face search. No telemetry or accounts.">
 <meta name="author" content="Sirrak contributors">
 <meta name="theme-color" content="#F7F3EA">
 <meta name="color-scheme" content="light">
@@ -23,7 +23,7 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Sirrak · سِرِّك">
 <meta property="og:title" content="Privacy policy">
-<meta property="og:description" content="How Sirrak handles your data: everything stays on your device; the only network request is a model download you start. No telemetry, no accounts, no tracking.">
+<meta property="og:description" content="How Sirrak handles your data: everything stays on your device. The network is touched only when you start a model download or a Hugging Face search. No telemetry or accounts.">
 <meta property="og:url" content="https://alshahia.github.io/sirrak/privacy/">
 <meta property="og:image" content="https://alshahia.github.io/sirrak/assets/og-image.png">
 <meta property="og:image:type" content="image/png">
@@ -34,9 +34,9 @@
 <meta property="og:locale:alternate" content="ar_IQ">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Privacy policy">
-<meta name="twitter:description" content="How Sirrak handles your data: everything stays on your device; the only network request is a model download you start. No telemetry, no accounts, no tracking.">
+<meta name="twitter:description" content="How Sirrak handles your data: everything stays on your device. The network is touched only when you start a model download or a Hugging Face search. No telemetry or accounts.">
 <meta name="twitter:image" content="https://alshahia.github.io/sirrak/assets/og-image.png">
-<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"PrivacyPolicy","name":"Privacy policy","description":"How Sirrak handles your data: everything stays on your device; the only network request is a model download you start. No telemetry, no accounts, no tracking.","url":"https://alshahia.github.io/sirrak/privacy/","inLanguage":"en","datePublished":"2026-11-24","dateModified":"2026-11-24","isPartOf":{"@type":"WebSite","name":"Sirrak · سِرِّك","url":"https://alshahia.github.io/sirrak/","inLanguage":["ar","en"],"publisher":{"@type":"Organization","name":"Sirrak","url":"https://alshahia.github.io/sirrak/","logo":"https://alshahia.github.io/sirrak/assets/icon-512.png","sameAs":["https://github.com/alshahia/sirrak"]}},"publisher":{"@type":"Organization","name":"Sirrak","url":"https://alshahia.github.io/sirrak/","logo":"https://alshahia.github.io/sirrak/assets/icon-512.png","sameAs":["https://github.com/alshahia/sirrak"]}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"PrivacyPolicy","name":"Privacy policy","description":"How Sirrak handles your data: everything stays on your device. The network is touched only when you start a model download or a Hugging Face search. No telemetry or accounts.","url":"https://alshahia.github.io/sirrak/privacy/","inLanguage":"en","datePublished":"2026-11-25","dateModified":"2026-11-25","isPartOf":{"@type":"WebSite","name":"Sirrak · سِرِّك","url":"https://alshahia.github.io/sirrak/","inLanguage":["ar","en"],"publisher":{"@type":"Organization","name":"Sirrak","url":"https://alshahia.github.io/sirrak/","logo":"https://alshahia.github.io/sirrak/assets/icon-512.png","sameAs":["https://github.com/alshahia/sirrak"]}},"publisher":{"@type":"Organization","name":"Sirrak","url":"https://alshahia.github.io/sirrak/","logo":"https://alshahia.github.io/sirrak/assets/icon-512.png","sameAs":["https://github.com/alshahia/sirrak"]}}]}</script>
 </head>
 <body class="policy">
 <a class="skip" href="#main">Skip to content</a>
@@ -56,11 +56,11 @@
 <div class="wrap policy-wrap">
 <header class="policy-head">
 <a class="policy-back" href="../">Back to Sirrak</a>
-<p class="policy-dateline">Last updated: 24 November 2026 · Policy version 1 · Applies to 1.0.0-rc2</p>
+<p class="policy-dateline">Last updated: 25 November 2026 · Policy version 2 · Applies to 1.1.0</p>
 <h1>Privacy policy</h1>
 <ul class="policy-summary">
-<li>Sirrak is an on-device assistant: chats, documents, models and settings stay in app-private storage.</li>
-<li>The only network feature is a model download you explicitly start. There is no telemetry, no analytics, no crash reporting, no ads and no account.</li>
+<li>Sirrak is an on-device assistant: chats, documents, media, models and settings stay in app-private storage.</li>
+<li>Network features are three, each started by you: a model download, a search of the public Hugging Face index, and a capped header probe that estimates whether a model fits. There is no telemetry, no analytics, no crash reporting, no ads and no account.</li>
 <li>Offline-only mode is enforced before any socket opens and cancels a running download.</li>
 </ul>
 </header>
@@ -70,7 +70,9 @@
 <ul>
 <li>Chats, prompts and answers are stored in app-private storage on your phone.</li>
 <li>Documents you add to the Library (PDF, DOCX, EPUB, Markdown and text) and their extracted text, chunks and embedding vectors stay in app-private storage.</li>
+<li>Images, audio clips and their on-device transcripts that you add to the Library&#39;s Media segment stay in app-private storage. Audio is transcribed by Whisper on the phone; the recording is never uploaded.</li>
 <li>Model files you download or import are stored in app-private storage.</li>
+<li>A Hugging Face token you type for a gated model is held in memory for the current session only; it is never written to disk, the network log or a report.</li>
 <li>Settings, including the offline-only switch, are stored on the device.</li>
 <li>The network log lists the calls this app actually made on this device. It is stored locally, bounded to the 50 newest entries, and is never uploaded.</li>
 <li>AI-output reports you create are stored locally, bounded to 50 reports; they leave the device only when you tap Share and choose an app in the Android chooser.</li>
@@ -78,27 +80,30 @@
 </section>
 <section class="policy-section">
 <h2>What leaves your device</h2>
-<p>Sirrak has exactly one network feature today: downloading a model that you explicitly start.</p>
+<p>Sirrak has three network features, and each one starts with your tap: downloading a model, searching the public Hugging Face model index, and reading a capped byte range of a model file&#39;s header to estimate whether it fits this phone.</p>
 <ul>
-<li>The request goes to the host shown in Settings → Privacy &amp; data → Network log (currently huggingface.co, the model&#39;s public resolver).</li>
-<li>The request contains the model file path you chose, a standard user agent and — only if you typed a token for a gated model — that token. No chat text, prompt, document, report or device identifier is sent with it.</li>
+<li>Every request goes to the host shown in Settings → Privacy &amp; data → Network log (currently huggingface.co, the public model resolver).</li>
+<li>A download request contains the model file path you chose, a standard user agent and — only if you typed a token for a gated model — that token. No chat text, prompt, document, media, report or device identifier is sent with it.</li>
+<li>A search sends the words you typed to the public model index; opening a repository sends that repository&#39;s public name to read its file list.</li>
+<li>A header probe asks for at most 12 MB of the header of the single GGUF file you inspect, not the whole model. Its token is dropped when the transfer moves to the download host.</li>
 <li>There are no analytics, no crash reporting, no ads, no tracking and no remote accounts.</li>
-<li>When offline-only is on, the app refuses every new request and cancels a running download; chat, dictation, document search and reports keep working.</li>
+<li>When offline-only is on, the app refuses every new request and cancels a running download; chat, dictation, media transcription, document search and reports keep working.</li>
 </ul>
 </section>
 <section class="policy-section">
 <h2>Permissions</h2>
 <ul>
-<li>Internet and network state: model downloads and the Wi-Fi-only default.</li>
+<li>Internet and network state: model downloads, Hugging Face search and the Wi-Fi-only default.</li>
 <li>Microphone: only while you start or hold dictation.</li>
 <li>Notifications: download progress for a download you started (optional; the download also runs without it where Android allows).</li>
-<li>No location, contacts, phone or SMS permissions. Images and documents are only read through the Android system picker or camera intent after you choose them.</li>
+<li>No location, contacts, phone or SMS permissions. Images, audio and documents are only read through the Android system picker after you choose them.</li>
 </ul>
 </section>
 <section class="policy-section">
 <h2>Retention and deletion</h2>
 <ul>
-<li>Delete a chat, document or model from inside the app; deleting a model removes its file from app-private storage.</li>
+<li>Delete a chat, document, media item or model from inside the app; deleting a model removes its file from app-private storage.</li>
+<li>Media items have two retention choices: keep until you delete them, or use once and have them removed automatically (a one-time item is never indexed and is deleted when its session ends).</li>
 <li>The network log and AI-output reports each have a clear action and a bounded size.</li>
 <li>Uninstalling the app deletes all app-private data.</li>
 </ul>
@@ -109,14 +114,14 @@
 </section>
 <section class="policy-section">
 <h2>Changes to this policy</h2>
-<p>This policy is versioned with the app (current version: 1, 24 November 2026, shipped with 1.0.0-rc2). Material changes will be shown in the app before they take effect, and this page will keep the same URL.</p>
+<p>This policy is versioned with the app (current version: 2, 25 November 2026, shipped with 1.1.0). Material changes will be shown in the app before they take effect, and this page will keep the same URL.</p>
 </section>
 <section class="policy-section">
 <h2>Contact</h2>
 <p>Privacy questions: open an issue at github.com/alshahia/sirrak/issues labelled privacy. Security problems: use the private advisory form on the security page — never a public issue.</p>
 </section>
 </article>
-<p class="policy-footnote">Last updated: 24 November 2026 · Policy version 1 · Applies to 1.0.0-rc2 · <a href="https://github.com/alshahia/sirrak">An Arabic-first assistant that runs on your phone and never phones home.</a></p>
+<p class="policy-footnote">Last updated: 25 November 2026 · Policy version 2 · Applies to 1.1.0 · <a href="https://github.com/alshahia/sirrak">An Arabic-first assistant that runs on your phone and never phones home.</a></p>
 </div>
 </main>
 <footer class="site-footer">

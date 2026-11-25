@@ -49,6 +49,22 @@
         "whenUsed": "Only when you start a model download",
         "userInitiated": true,
         "purposeKey": "model_download"
+      },
+      {
+        "id": "hf_search",
+        "host": "huggingface.co",
+        "purpose": "Search the public Hugging Face model index and read a repository's file list you asked for",
+        "whenUsed": "Only when you open Hugging Face search, ask for more results, or open a repository you picked",
+        "userInitiated": true,
+        "purposeKey": "hf_search"
+      },
+      {
+        "id": "hf_probe",
+        "host": "huggingface.co",
+        "purpose": "Read a capped byte range (at most 12 MB) of the GGUF header of the model you inspect",
+        "whenUsed": "Only when you tap probe on a model file before downloading it",
+        "userInitiated": true,
+        "purposeKey": "hf_probe"
       }
     ]
   },

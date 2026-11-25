@@ -13,12 +13,16 @@ import androidx.compose.ui.res.pluralStringResource
 import androidx.compose.ui.unit.dp
 import app.sirrak.core.design.SettingsDivider
 import app.sirrak.core.design.SettingsNote
+import app.sirrak.core.design.SettingsPageScaffold
 import app.sirrak.core.design.SettingsRow
 import app.sirrak.core.design.SettingsSection
+import app.sirrak.core.runtime.AppNavigator
 import app.sirrak.core.runtime.LicenceRegistry
+import app.sirrak.core.runtime.PageContribution
+import app.sirrak.core.runtime.PageIds
 import app.sirrak.core.runtime.Plugin
 import app.sirrak.core.runtime.PluginScope
-import app.sirrak.core.runtime.Slots
+import app.sirrak.core.runtime.SettingsDoor
 
 /**
  * About as its own tiny plugin: proves a settings group can live outside the settings module, and
@@ -28,11 +32,33 @@ import app.sirrak.core.runtime.Slots
 class AboutPlugin : Plugin {
     override val id: String = "about"
 
-    override val requires: List<Class<*>> = listOf(LicenceRegistry::class.java)
+    override val requires: List<Class<*>> = listOf(
+        LicenceRegistry::class.java,
+        AppNavigator::class.java,
+    )
 
     override fun install(scope: PluginScope) {
         val licences = scope.service(LicenceRegistry::class.java)
-        scope.slotList(Slots.SettingsSections, order = 30) { AboutSection(licences) }
+        val navigator = scope.service(AppNavigator::class.java)
+        scope.door(
+            SettingsDoor(
+                id = "about",
+                labelRes = R.string.settings_about,
+                order = 40,
+                summary = { BuildConfig.VERSION_NAME },
+                onClick = { navigator.push(PageIds.SETTINGS_ABOUT) },
+            ),
+        )
+        scope.page(
+            PageContribution(PageIds.SETTINGS_ABOUT, labelRes = R.string.settings_about) {
+                SettingsPageScaffold(
+                    title = stringResource(R.string.settings_about),
+                    onBack = { navigator.back() },
+                ) {
+                    AboutSection(licences)
+                }
+            },
+        )
     }
 }
 

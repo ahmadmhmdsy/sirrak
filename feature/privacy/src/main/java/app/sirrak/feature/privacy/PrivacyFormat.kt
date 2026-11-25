@@ -16,12 +16,16 @@ import java.util.Locale
 @Composable
 internal fun endpointPurpose(endpoint: NetworkEndpoint): String = when (endpoint.purposeKey) {
     "model_download" -> stringResource(R.string.privacy_endpoint_model_download_purpose)
+    "hf_search" -> stringResource(R.string.privacy_endpoint_hf_search_purpose)
+    "hf_probe" -> stringResource(R.string.privacy_endpoint_hf_probe_purpose)
     else -> endpoint.purpose.ifBlank { stringResource(R.string.privacy_endpoint_unknown_purpose) }
 }
 
 @Composable
 internal fun endpointWhenUsed(endpoint: NetworkEndpoint): String = when (endpoint.purposeKey) {
     "model_download" -> stringResource(R.string.privacy_endpoint_model_download_when)
+    "hf_search" -> stringResource(R.string.privacy_endpoint_hf_search_when)
+    "hf_probe" -> stringResource(R.string.privacy_endpoint_hf_probe_when)
     else -> endpoint.whenUsed.ifBlank { stringResource(R.string.privacy_endpoint_unknown_when) }
 }
 

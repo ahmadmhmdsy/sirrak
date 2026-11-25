@@ -2,12 +2,15 @@ package app.sirrak
 
 import android.content.Context
 import app.sirrak.core.runtime.AppConfig
-import app.sirrak.core.runtime.ContentRepository
+import app.sirrak.core.runtime.AppNavigator
+import app.sirrak.core.runtime.EngineStatus
 import app.sirrak.core.runtime.GenerationSettingsProvider
 import app.sirrak.core.runtime.InferenceEngine
 import app.sirrak.core.runtime.ModelIdentity
 import app.sirrak.core.runtime.ModelSettingsStore
 import app.sirrak.core.runtime.ModelStore
+import app.sirrak.core.runtime.PageContribution
+import app.sirrak.core.runtime.PageIds
 import app.sirrak.core.runtime.Plugin
 import app.sirrak.core.runtime.PluginScope
 import app.sirrak.core.runtime.PresetRepository
@@ -35,7 +38,7 @@ class LlamaCppPlugin(
 
     override val requires: List<Class<*>> = listOf(
         ModelStore::class.java,
-        ContentRepository::class.java,
+        AppNavigator::class.java,
         ModelSettingsStore::class.java,
         ModelIdentity::class.java,
         PresetRepository::class.java,
@@ -44,7 +47,7 @@ class LlamaCppPlugin(
 
     override fun install(scope: PluginScope) {
         val store = scope.service(ModelStore::class.java)
-        val content = scope.service(ContentRepository::class.java)
+        val navigator = scope.service(AppNavigator::class.java)
         val settingsService = scope.service(SettingsService::class.java)
         val fallbackSystemPrompt = context.getString(R.string.engine_system_prompt)
         val engine = LlamaCppEngine(
@@ -77,7 +80,20 @@ class LlamaCppPlugin(
         val scopeForModels = CoroutineScope(SupervisorJob() + Dispatchers.Main.immediate)
         val loadJob = scopeForModels.launch {
             store.selected.collect { model ->
-                if (model == null) engine.unload() else engine.load(model)
+                if (model == null) {
+                    engine.unload()
+                } else {
+                    val key = modelControl.keyFor(model)
+                    val requested = modelControl.requestedContextTokens(key)
+                    engine.load(model, requested)
+                    // Before the load the trained window is unknown; if the user asked for more than
+                    // the file supports, reload once at the trained window instead of letting the
+                    // native layer silently decide.
+                    val trained = engine.modelFacts?.nCtxTrain?.takeIf { it > 0 }
+                    if (engine.status.value is EngineStatus.Ready && trained != null && requested > trained) {
+                        engine.load(model, trained)
+                    }
+                }
             }
         }
         scope.effect {
@@ -87,15 +103,37 @@ class LlamaCppPlugin(
         }
 
         scope.slotList(Slots.ChatTopBarTrailing, order = 0) {
-            EngineModelChip(engine = engine, models = content.models())
-        }
-        scope.slotList(Slots.SettingsSections, order = 10) {
-            LlamaEngineSettingsSection(
+            EngineModelChip(
                 engine = engine,
                 store = store,
-                modelControl = modelControl,
-                settings = settingsService,
+                navigator = navigator,
+                onLoad = { model ->
+                    scopeForModels.launch {
+                        engine.load(model, modelControl.requestedContextTokens(modelControl.keyFor(model)))
+                    }
+                },
+                onUnload = { engine.unload() },
             )
         }
+        // The model page replaces the old Settings > Model detour: one model, one page, its own
+        // parameters and its own context window.
+        scope.page(
+            PageContribution(
+                id = PageIds.MODEL_DETAIL,
+                labelRes = R.string.model_page_title,
+                content = { argument ->
+                    ModelDetailPage(
+                        modelId = argument,
+                        store = store,
+                        engine = engine,
+                        modelControl = modelControl,
+                        settings = settingsService,
+                        onBack = { navigator.back() },
+                    )
+                },
+            ),
+        )
+        // P4: the engine and per-model settings are no longer a Settings group — the engine lives on
+        // the Library's model card and every per-model setting lives on its model page.
     }
 }

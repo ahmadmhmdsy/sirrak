@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  P5 media shelf strings (English). Mirrors values/media_strings.xml key for key; see that file for the
+  rationale. Digits are Latin, sizes are formatted with Locale.US in code.
+-->
+<resources>
+    <string name="media_title">Media</string>
+    <string name="media_intro">Documents, images and audio kept on this device. Transcription runs on the device only; nothing is sent to any service.</string>
+    <string name="media_empty">No media yet. Import a file from the buttons below.</string>
+
+    <string name="media_import_document">Import a document</string>
+    <string name="media_import_image">Import an image</string>
+    <string name="media_import_audio">Import audio and transcribe it</string>
+    <string name="media_audio_unavailable_value">Unavailable: %1$s</string>
+    <string name="media_import_note">Files are capped at 50 MB and audio at 10 minutes. Files are copied into the private app storage on this device.</string>
+
+    <string name="media_working_copying">Copying «%1$s»…</string>
+    <string name="media_working_decoding">Decoding «%1$s»…</string>
+    <string name="media_working_transcribing">Transcribing «%1$s» on the device…</string>
+    <string name="media_working_indexing">Indexing «%1$s»…</string>
+    <string name="media_storage">Used storage: %1$s</string>
+    <string name="media_unknown_size">Unknown size</string>
+
+    <string name="media_policy_title">Default policy</string>
+    <string name="media_policy_retention">Default retention</string>
+    <string name="media_retention_keep">Keep</string>
+    <string name="media_retention_once">Temporary</string>
+    <string name="media_policy_access">Default assistant access</string>
+    <string name="media_access_granted">Allowed</string>
+    <string name="media_access_denied">Blocked</string>
+    <string name="media_policy_note">These values apply to any import made without an explicit decision and are shown in the decision sheet. The assistant can never read a temporary item or an image.</string>
+
+    <string name="media_section_documents">Documents</string>
+    <string name="media_section_images">Images</string>
+    <string name="media_section_audio">Audio and transcripts</string>
+    <string name="media_documents_empty">No documents yet.</string>
+    <string name="media_images_empty">No images yet.</string>
+    <string name="media_audio_empty">No audio yet.</string>
+    <string name="media_image_no_index_note">Images are stored for viewing only in this release: the assistant cannot index them, so their access switch stays off.</string>
+
+    <string name="media_access_toggle">Assistant access to «%1$s»</string>
+    <string name="media_delete">Delete «%1$s»</string>
+    <string name="media_delete_title">Delete this item?</string>
+    <string name="media_delete_body">«%1$s» will be removed from this device. This cannot be undone.</string>
+    <string name="media_delete_confirm">Delete</string>
+    <string name="media_delete_cancel">Cancel</string>
+
+    <string name="media_state_once">Temporary · deleted with the conversation, never indexed</string>
+    <string name="media_state_indexed">Indexed · readable by the assistant</string>
+    <string name="media_state_not_indexed">Not indexed · not readable by the assistant</string>
+    <string name="media_state_image_only">Stored image · not indexed for the assistant</string>
+    <string name="media_document_status">%1$s · %2$s</string>
+    <string name="media_image_status">%1$s · %2$s</string>
+    <string name="media_audio_status">%1$s · %2$s · %3$s</string>
+    <string name="media_once_status">%1$s · %2$s</string>
+
+    <string name="media_audio_pending">Transcribing…</string>
+    <string name="media_audio_ready">Transcript ready</string>
+    <string name="media_audio_failed">Transcription failed: %1$s</string>
+    <string name="media_audio_no_transcript">No transcript yet</string>
+    <string name="media_retry_transcription">Retry transcription of «%1$s»</string>
+    <string name="media_transcript_title">Transcript of «%1$s»</string>
+    <string name="media_transcript_missing">No stored transcript for this item.</string>
+    <string name="media_transcript_close">Close</string>
+
+    <string name="media_sheet_title">Add «%1$s» to Media</string>
+    <string name="media_sheet_kind">Type: %1$s · Size: %2$s</string>
+    <string name="media_kind_document">Document</string>
+    <string name="media_kind_image">Image</string>
+    <string name="media_kind_audio">Audio</string>
+    <string name="media_sheet_body">Choose what happens to this file. Everything is local: nothing is uploaded to any cloud service.</string>
+    <string name="media_sheet_default">Saved default: %1$s</string>
+    <string name="media_sheet_keep">Keep it for the assistant</string>
+    <string name="media_sheet_once">Temporary: deleted with the conversation, never indexed</string>
+    <string name="media_default_keep_access">Keep · %1$s</string>
+    <string name="media_default_once">Temporary · never indexed</string>
+
+    <string name="media_once_note">Temporary items are never indexed, and their files are deleted when the app closes. This release does not link media to conversations yet, so a temporary item is deleted on close.</string>
+    <string name="media_no_speech_model_note">No Whisper transcription model is installed. Open Settings → Voice and import the three model files (encoder, decoder, tokens), then try again.</string>
+    <string name="media_evidence_note">All processing stays on the device: no cloud transcription and no remote indexing.</string>
+    <string name="media_library_documents_note">This is the indexed library shared by chat and media.</string>
+
+    <string name="media_reason_empty">The file is empty.</string>
+    <string name="media_reason_too_large">The file is larger than 50 MB.</string>
+    <string name="media_reason_unsupported_type">This file format is not supported for indexing.</string>
+    <string name="media_reason_unreadable">The file could not be read.</string>
+    <string name="media_reason_storage">The file could not be stored on this device.</string>
+    <string name="media_reason_import_failed">The file could not be imported.</string>
+    <string name="media_reason_index_failed">The file was saved but could not be indexed. Try again later.</string>
+    <string name="media_reason_index_unavailable">Indexing is not available right now.</string>
+    <string name="media_reason_no_transcriber">The transcription engine is not available in this build.</string>
+    <string name="media_reason_no_speech_model">No Whisper transcription model is installed.</string>
+    <string name="media_reason_decode_failed">The audio could not be decoded. The format may be unsupported on this device.</string>
+    <string name="media_reason_audio_too_long">The recording is longer than 10 minutes.</string>
+    <string name="media_reason_transcription_failed">Transcription failed.</string>
+    <string name="media_reason_no_speech">The recording does not seem to contain speech.</string>
+    <string name="media_reason_transcript_empty">Transcription produced no text.</string>
+    <string name="media_reason_not_transcribed">There is no transcript yet.</string>
+    <string name="media_reason_generic">Something went wrong.</string>
+</resources>

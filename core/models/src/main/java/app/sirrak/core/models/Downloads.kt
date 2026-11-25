@@ -137,6 +137,8 @@ class ModelDownloader(
         val url: String,
         val authorization: String?,
         val projector: CatalogueProjector?,
+        /** Set only after the user explicitly accepted a metered connection for this request. */
+        val allowMetered: Boolean = false,
     )
 
     private val _progress = MutableStateFlow<DownloadProgress?>(null)
@@ -151,8 +153,13 @@ class ModelDownloader(
     private var runId: Int = 0
 
     @Synchronized
-    fun start(entry: CatalogueEntry, url: String = entry.downloadUrl, authorization: String? = null) {
-        enqueue(Request(entry, url, authorization, projector = null))
+    fun start(
+        entry: CatalogueEntry,
+        url: String = entry.downloadUrl,
+        authorization: String? = null,
+        allowMetered: Boolean = false,
+    ) {
+        enqueue(Request(entry, url, authorization, projector = null, allowMetered = allowMetered))
     }
 
     @Synchronized
@@ -162,7 +169,14 @@ class ModelDownloader(
         authorization: String? = null,
     ) {
         val repo = projector.repo ?: entry.repo
-        enqueue(Request(entry, "https://huggingface.co/$repo/resolve/main/${projector.fileName}", authorization, projector))
+        enqueue(
+            Request(
+                entry,
+                "https://huggingface.co/$repo/resolve/main/${projector.fileName}",
+                authorization,
+                projector,
+            ),
+        )
     }
 
     @Synchronized
@@ -246,7 +260,9 @@ class ModelDownloader(
             fail(request, blocked, id)
             return@withContext
         }
-        if (wifiOnly() && !networkPolicy.isUnmetered()) {
+        // ONB-3: the default is Wi-Fi only. A metered run is allowed only when the screen asked the
+        // user and they said yes; the request remembers that answer across pause/resume.
+        if (!request.allowMetered && wifiOnly() && !networkPolicy.isUnmetered()) {
             fail(request, DownloadReasons.NOT_UNMETERED, id)
             return@withContext
         }

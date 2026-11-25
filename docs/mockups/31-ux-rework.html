@@ -1,0 +1,449 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<title>سرّك — التصميم المقترح (مجلس 31)</title>
+<style>
+  :root{
+    --bg:#F7F3EA; --surface:#FDFAF3; --on:#1B2430; --onvar:#5C6672;
+    --variant:#EDE7D8; --low:#F3EEE2; --high:#E6DFCE;
+    --primary:#1D3F6E; --primaryc:#D8E2F0; --onprimaryc:#10305A;
+    --secondary:#1F6F6B; --secondaryc:#D6E9E5; --onsecondaryc:#0E3F3C;
+    --tertiary:#6F561A; --tertiaryc:#EFE2C2; --ontertiaryc:#3F300B;
+    --outline:#8A8F93; --outlinev:#D6D0C2; --error:#A63A2E; --errorc:#F4DAD3; --onerrorc:#5A160E;
+    --brass:#B08D3E; --hairline:#E3DCCB; --page:#E7E1D2;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--page);color:var(--on);
+    font-family:"Segoe UI","Tahoma",system-ui,sans-serif;padding:26px 20px 40px}
+  .wrap{max-width:1360px;margin:0 auto}
+  h1{font-family:"Amiri","Traditional Arabic","Times New Roman",serif;font-size:29px;margin:0 0 6px;color:#10161B}
+  .sub{color:#57616C;font-size:13px;margin:0;line-height:1.9}
+  .legend{display:flex;gap:15px;flex-wrap:wrap;margin:12px 0 22px;font-size:11px;color:#57616C}
+  .sw{display:inline-flex;align-items:center;gap:6px}
+  .dot{width:11px;height:11px;border-radius:3px;display:inline-block;border:1px solid rgba(0,0,0,.08)}
+  .grid{display:flex;flex-wrap:wrap;gap:22px 24px;align-items:flex-start}
+  .cap{width:320px;display:flex;flex-direction:column}
+  .frame{width:320px;height:768px;background:var(--bg);border-radius:28px;overflow:hidden;
+    box-shadow:0 16px 34px rgba(15,20,22,.15);
+    border:1px solid #CFC6B2;display:flex;flex-direction:column;position:relative}
+  .caption{font-size:11px;color:#5A626B;margin:8px 2px 0;text-align:center;line-height:1.75;min-height:60px}
+  .status{height:24px;display:flex;align-items:center;justify-content:space-between;
+    padding:0 16px;font-size:9.5px;color:var(--onvar);letter-spacing:.2px}
+  .topbar{display:flex;align-items:center;gap:8px;padding:6px 12px 8px;min-height:44px}
+  .avatar{width:30px;height:30px;border-radius:10px;background:var(--primaryc);
+    display:flex;align-items:center;justify-content:center;color:var(--primary);font-size:13px;font-weight:700;flex:none}
+  .brand{font-family:"Amiri","Times New Roman",serif;font-size:17px;font-weight:700;color:var(--primary)}
+  .chip{margin-inline-start:auto;display:inline-flex;align-items:center;gap:6px;min-width:0;
+    border:1px solid var(--outlinev);background:var(--surface);border-radius:999px;
+    padding:6px 10px;font-size:10.5px;color:var(--on);max-width:186px}
+  .chip .st{width:7px;height:7px;border-radius:50%;flex:none}
+  .chip .tick{color:var(--brass);font-size:10px;flex:none}
+  .chip.warn{border-color:#E5C9A2;background:#FBF2E4}
+  .chip.fail{border-color:#E3B7AE;background:var(--errorc);color:var(--onerrorc)}
+  .chip .tt{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .body{flex:1;min-height:0;overflow:hidden;padding:2px 12px 0;display:flex;flex-direction:column;gap:9px}
+  .h{font-size:16px;font-weight:700;color:#10161B;line-height:1.5}
+  .h2{font-size:10.5px;font-weight:700;color:var(--onvar);margin-top:1px}
+  .card{background:var(--surface);border:1px solid var(--hairline);border-radius:15px;padding:10px 11px}
+  .card.tight{padding:8px 10px}
+  .row{display:flex;align-items:center;gap:8px}
+  .row .grow{flex:1;min-width:0}
+  .title{font-size:12px;font-weight:700;line-height:1.5}
+  .meta{font-size:10px;color:var(--onvar);line-height:1.65;margin-top:1px}
+  .badge{font-size:9px;font-weight:700;padding:2px 7px;border-radius:999px;white-space:nowrap;flex:none}
+  .ok{background:var(--secondaryc);color:var(--onsecondaryc)}
+  .tightb{background:#F6E7C6;color:var(--ontertiaryc)}
+  .no{background:var(--errorc);color:var(--onerrorc)}
+  .unknown{background:var(--variant);color:var(--onvar)}
+  .btn{background:var(--primary);color:#F7F3EA;border-radius:12px;padding:10px 12px;
+    text-align:center;font-size:12px;font-weight:700}
+  .btn.ghost{background:transparent;color:var(--primary);border:1px solid var(--outlinev)}
+  .btn.small{padding:5px 9px;font-size:10px;border-radius:9px;font-weight:600}
+  .seg{display:flex;background:var(--variant);border-radius:11px;padding:3px;gap:3px}
+  .seg span{flex:1;text-align:center;font-size:10.5px;padding:6px 0;border-radius:8px;color:var(--onvar)}
+  .seg span.on{background:var(--surface);color:var(--primary);font-weight:700;box-shadow:0 1px 2px rgba(0,0,0,.07)}
+  .bar{height:5px;border-radius:3px;background:var(--variant);overflow:hidden;margin-top:6px}
+  .bar i{display:block;height:100%;background:var(--primary)}
+  .bar i.p{background:var(--brass)}
+  .bar i.e{background:var(--error)}
+  .line{height:1px;background:var(--hairline);margin:2px 0}
+  .kv{display:flex;justify-content:space-between;font-size:10px;color:var(--onvar);padding:2px 0}
+  .kv b{color:var(--on);font-weight:600}
+  .note{font-size:9.5px;color:#6E5D38;background:#FBF3E2;border:1px solid #EAD9B5;
+    border-radius:11px;padding:7px 9px;line-height:1.75}
+  .switch{width:32px;height:19px;border-radius:999px;background:var(--secondary);position:relative;flex:none}
+  .switch:after{content:"";position:absolute;width:13px;height:13px;border-radius:50%;background:#fff;top:3px;right:3px}
+  .switch.off{background:var(--outlinev)}
+  .switch.off:after{right:auto;left:3px}
+  .nav{display:flex;background:var(--surface);border-top:1px solid var(--hairline);padding:6px 6px 8px;height:52px;flex:none}
+  .nav div{flex:1;text-align:center;font-size:9px;color:var(--onvar)}
+  .nav div.on{color:var(--primary);font-weight:700}
+  .nav div i{display:block;font-size:14px;font-style:normal;margin-bottom:1px}
+  .sheet{background:var(--surface);border-radius:20px 20px 0 0;border-top:1px solid var(--hairline);
+    padding:8px 12px 12px;box-shadow:0 -8px 22px rgba(15,20,22,.08);flex:none}
+  .grab{width:32px;height:4px;border-radius:2px;background:var(--outlinev);margin:0 auto 9px}
+  .sheet h3{margin:0 0 3px;font-size:13.5px}
+  .sheet p{margin:0 0 9px;font-size:10.5px;color:var(--onvar);line-height:1.8}
+  .actions{display:flex;flex-direction:column;gap:6px}
+  .link{font-size:10px;color:var(--primary);text-align:center;padding-top:3px}
+  .girih{height:8px;background:
+    repeating-linear-gradient(45deg,transparent 0 5px,rgba(176,141,62,.28) 5px 6px),
+    repeating-linear-gradient(-45deg,transparent 0 5px,rgba(176,141,62,.28) 5px 6px);
+    opacity:.6;margin:0 0 4px}
+  .bubble{max-width:88%;font-size:11px;line-height:1.8}
+  .bubble.user{background:var(--high);color:var(--on);border:1px solid var(--hairline);
+    border-radius:16px 16px 5px 16px;padding:8px 11px;align-self:flex-end}
+  .bubble.bot{background:transparent;border:none;padding:0;align-self:flex-start;
+    font-family:"Amiri","Traditional Arabic","Times New Roman",serif;font-size:13px;color:var(--on)}
+  .send{width:34px;height:34px;border-radius:50%;background:var(--primary);color:var(--onprimary);
+    display:flex;align-items:center;justify-content:center;flex:none;font-size:13px}
+  .sugg{display:flex;gap:6px;flex-wrap:wrap}
+  .sugg span{font-size:9.5px;color:var(--onvar);border:1px solid var(--outlinev);border-radius:999px;padding:5px 9px;background:var(--surface)}
+  .composer{margin-top:auto;display:flex;gap:6px;align-items:center;border:1px solid var(--outlinev);
+    border-radius:14px;padding:8px 10px;background:var(--surface);font-size:10.5px;color:var(--outline)}
+  .dark{--bg:#0F1416;--surface:#121A1D;--on:#E9E4D6;--onvar:#A9B1AF;--variant:#1A262A;
+    --low:#162024;--primary:#9DB8DD;--primaryc:#24436B;--onprimaryc:#D8E2F0;--secondary:#7FC0B9;
+    --secondaryc:#1B4B47;--onsecondaryc:#D6E9E5;--tertiary:#D6B568;--tertiaryc:#4A3A12;
+    --ontertiaryc:#EFE2C2;--outline:#7C8A8E;--outlinev:#2C3A3E;--error:#E8A79C;--errorc:#5E1D14;
+    --onerrorc:#F4DAD3;--brass:#D6B568;--hairline:#243134}
+  .dark .h{color:#E9E4D6}
+  .dark .chip{background:#162024}
+  .dark .chip.warn{background:#2B2413;border-color:#4A3A12;color:#F0E2BE}
+  .tag{font-size:8.5px;padding:1px 6px;border-radius:6px;background:var(--variant);color:var(--onvar)}
+  .foot{margin-top:30px;font-size:11px;color:#655C4A;line-height:1.9;max-width:1240px}
+  code{background:#DCD4C0;border-radius:5px;padding:1px 5px;font-size:10.5px;direction:ltr;display:inline-block}
+  .colw{color:#57616C}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<h1>سرّك — التصميم المقترح لجولة المراجعة الأولى</h1>
+<p class="sub">مبنيّ على ألوان الحزمة الافتراضية <b>Girih Ink</b> من الكود نفسه، ومقاسات Material 3، والعربية أولًا. الهدف: أن ترى ما ستلمسه قبل أن نكتبه.</p>
+<div class="legend">
+  <span class="sw"><i class="dot" style="background:#1D3F6E"></i> primary / lapis</span>
+  <span class="sw"><i class="dot" style="background:#1F6F6B"></i> secondary / يعمل</span>
+  <span class="sw"><i class="dot" style="background:#B08D3E"></i> brass / girih</span>
+  <span class="sw"><i class="dot" style="background:#A63A2E"></i> error / لن يعمل</span>
+  <span class="sw"><i class="dot" style="background:#FDFAF3;border-color:#CFC6B2"></i> paper</span>
+  <span class="sw"><i class="dot" style="background:#0F1416"></i> dark</span>
+  <span class="colw">— 8 لقطات: الشريحة، جواز النموذج، المكتبة، التنزيلات، الوسائط، الإعدادات، Hugging Face، صفحة النموذج ليلًا.</span>
+</div>
+
+<div class="grid">
+
+  <!-- 1 -->
+  <div class="cap">
+    <div class="frame">
+      <div class="status"><span>9:41</span><span>5G · 46%</span></div>
+      <div class="topbar">
+        <div class="avatar">س</div><div class="brand">سرّك</div>
+        <div class="chip warn"><span class="st" style="background:#B08D3E"></span><span class="tt">لا يوجد نموذج · ابدأ</span></div>
+      </div>
+      <div class="girih"></div>
+      <div class="body">
+        <div class="sugg" style="margin-top:6px"><span>لخّص لي هذا المستند</span><span>اكتب رسالة قصيرة</span><span>اشرح فكرة</span></div>
+        <div class="bubble bot">أهلًا، أنا مساعدك على هذا الجهاز. لم أختر نموذجًا بعد — لن يعمل شيء حتى تختار.</div>
+        <div class="card tight" style="border-style:dashed;background:transparent">
+          <div class="meta" style="line-height:1.9">جرّب أن تسألني عن ملف، أو تلخّص نصًا، أو تشرح فكرة. كل شيء يبقى على جهازك.</div>
+        </div>
+        <div style="flex:1"></div>
+        <div class="composer"><span>اكتب رسالة…</span><span class="send" style="margin-inline-start:auto">←</span></div>
+        <div style="height:6px"></div>
+      </div>
+      <div class="sheet">
+        <div class="grab"></div>
+        <h3>ابدأ بنموذج</h3>
+        <p>النموذج هو «الدماغ» الذي يجيب. نرشّح لك الأصغر الذي يعمل على هذا الهاتف، ونقول الحجم والذاكرة قبل التنزيل.</p>
+        <div class="note" style="margin-bottom:8px">هذا الهاتف: ~1.15 ج.ب ذاكرة متاحة · 15 ج.ب مساحة. الترشيح مبني عليها.</div>
+        <div class="actions">
+          <div class="btn">اختر نموذجًا ←</div>
+          <div class="btn ghost">استيراد ملف GGUF من جهازي</div>
+          <div class="link">ما هو النموذج؟ · لماذا يحتاج تنزيلًا؟</div>
+        </div>
+      </div>
+    </div>
+    <div class="caption">1 — الشريحة بوابة لا نهاية مسدودة: تقول «لا يوجد» وتفتح الطريق إلى نموذج، وتصف الهاتف.</div>
+  </div>
+
+  <!-- 2 -->
+  <div class="cap">
+    <div class="frame">
+      <div class="status"><span>9:42</span><span>5G · 45%</span></div>
+      <div class="topbar">
+        <div class="avatar">س</div><div class="brand">سرّك</div>
+        <div class="chip"><span class="st" style="background:#1F6F6B"></span><span class="tt">Qwen2.5 0.5B · جاهز</span><span class="tick">✦</span></div>
+      </div>
+      <div class="girih"></div>
+      <div class="body">
+        <div class="bubble user">ما الفرق بين النموذج والمساعد؟</div>
+        <div class="bubble bot">النموذج هو الدماغ الذي يكتب، والمساعد هو الواجهة والذاكرة والملفات. أنت الآن تحادث Qwen2.5 0.5B محليًا، ولا يخرج شيء من هذا الجهاز.</div>
+        <div style="flex:1"></div>
+        <div class="composer"><span>اكتب رسالة…</span><span class="send" style="margin-inline-start:auto">←</span></div>
+        <div style="height:6px"></div>
+      </div>
+      <div class="sheet">
+        <div class="grab"></div>
+        <div class="row" style="margin-bottom:5px">
+          <div class="grow"><div class="title" style="font-size:13px">Qwen2.5 0.5B Instruct</div>
+            <div class="meta">Q4_K_M · حجم 469 م.ب · سياق 2048</div></div>
+          <span class="badge ok">يعمل هنا</span>
+        </div>
+        <div class="line"></div>
+        <div class="kv"><span>الذاكرة المتوقعة</span><b>~0.79 من 1.15 ج.ب</b></div>
+        <div class="kv"><span>قالب المحادثة</span><b>ChatML · تلقائي</b></div>
+        <div class="kv"><span>الترخيص</span><b>Apache-2.0</b></div>
+        <div class="actions" style="margin-top:9px">
+          <div class="btn">التفاصيل والإعدادات</div>
+          <div class="btn ghost">إلغاء تحميل النموذج</div>
+        </div>
+      </div>
+    </div>
+    <div class="caption">2 — عند الجاهزية: جواز سفر مختصر (حجم، ذاكرة، قالب، ترخيص) ومنه إلى الإعدادات الكاملة.</div>
+  </div>
+
+  <!-- 3 -->
+  <div class="cap">
+    <div class="frame">
+      <div class="status"><span>9:43</span><span>5G · 44%</span></div>
+      <div class="topbar"><div class="h">المكتبة</div></div>
+      <div class="body">
+        <div class="seg"><span class="on">النماذج</span><span>التنزيلات 2</span><span>الوسائط</span></div>
+        <div class="card">
+          <div class="row">
+            <div class="grow"><div class="meta">النموذج النشط</div><div class="title">Qwen2.5 0.5B</div></div>
+            <span class="badge ok">جاهز</span>
+          </div>
+          <div class="meta" style="margin-top:4px">469 م.ب على القرص · يعمل بسلاسة · <span style="color:var(--primary);font-weight:700">تبديل ▾</span></div>
+        </div>
+        <div class="h2">تنزيل جارٍ</div>
+        <div class="card tight">
+          <div class="row"><div class="grow"><div class="title" style="font-size:11px">Gemma-3-270m · Q4_K_M</div>
+            <div class="meta">178 من 241 م.ب · 2.1 م.ب/ث · يتبقى ~30 ثانية</div></div>
+            <span class="badge tightb">يعمل</span></div>
+          <div class="bar"><i style="width:74%"></i></div>
+        </div>
+        <div class="h2">المتاحة</div>
+        <div class="card tight">
+          <div class="row"><div class="grow"><div class="title" style="font-size:11px">Qwen2.5 0.5B · Q4_K_M</div>
+            <div class="meta">469 م.ب · موصى به لهاتفك</div></div><span class="badge ok">يعمل</span></div>
+        </div>
+        <div class="card tight">
+          <div class="row"><div class="grow"><div class="title" style="font-size:11px">Llama-3.2 1B · Q4_K_M</div>
+            <div class="meta">808 م.ب · قد يثقل الجهاز</div></div><span class="badge tightb">بضيق</span></div>
+        </div>
+        <div class="card tight" style="opacity:.75">
+          <div class="row"><div class="grow"><div class="title" style="font-size:11px">Qwen2.5 1.5B · Q4_K_M</div>
+            <div class="meta">1.1 ج.ب · يتجاوز ذاكرتك المتاحة</div></div><span class="badge no">لن يعمل</span></div>
+        </div>
+        <div class="card tight" style="border-style:dashed">
+          <div class="row"><div class="grow"><div class="title" style="font-size:11px">ابحث في Hugging Face</div>
+            <div class="meta">ملايين النماذج — نفحص التوافق قبل التنزيل</div></div><span style="color:var(--primary)">←</span></div>
+        </div>
+      </div>
+      <div class="nav"><div><i>◍</i>المحادثة</div><div class="on"><i>▤</i>المكتبة</div><div><i>⚙</i>الإعدادات</div></div>
+    </div>
+    <div class="caption">3 — المكتبة = ما على الجهاز فعلًا: نشط، تنزيل جارٍ، ومتاح بشارات توافق محسوبة لا مُدّعاة.</div>
+  </div>
+
+  <!-- 4 -->
+  <div class="cap">
+    <div class="frame">
+      <div class="status"><span>9:44</span><span>5G · 44%</span></div>
+      <div class="topbar"><div class="h">التنزيلات</div><div class="chip" style="margin-inline-start:auto"><span class="tt">15.0 ج.ب حرة</span></div></div>
+      <div class="body">
+        <div class="card tight">
+          <div class="row"><div class="grow"><div class="title" style="font-size:11px">Gemma-3-270m · Q4_K_M</div>
+            <div class="meta">178 من 241 م.ب · 2.1 م.ب/ث · التحقق بعد الاكتمال</div></div>
+            <div class="btn small ghost">إيقاف</div></div>
+          <div class="bar"><i style="width:74%"></i></div>
+        </div>
+        <div class="card tight">
+          <div class="row"><div class="grow"><div class="title" style="font-size:11px">LFM2.5-350M · Q4_K_M</div>
+            <div class="meta">في الانتظار · 219 م.ب</div></div><span class="badge unknown">بالدور</span></div>
+        </div>
+        <div class="card tight">
+          <div class="row"><div class="grow"><div class="title" style="font-size:11px">TinyLlama-1.1B · Q4_K_M</div>
+            <div class="meta">متوقف عند 412 م.ب — انقطعت الشبكة</div></div><div class="btn small ghost">متابعة</div></div>
+          <div class="bar"><i class="p" style="width:62%"></i></div>
+        </div>
+        <div class="card tight">
+          <div class="row"><div class="grow"><div class="title" style="font-size:11px">SmolVLM-500M · Q5_K_M</div>
+            <div class="meta">فشل: لا مساحة تكفي بعد التنزيل — حرّر 1.2 ج.ب</div></div><div class="btn small ghost">إعادة</div></div>
+          <div class="bar"><i class="e" style="width:12%"></i></div>
+        </div>
+        <div class="card tight" style="background:var(--low)">
+          <div class="row"><div class="grow"><div class="title" style="font-size:11px">Qwen2.5 0.5B · Q4_K_M</div>
+            <div class="meta">اكتمل · مثبّت · 469 م.ب</div></div><span class="badge ok">جاهز</span></div>
+        </div>
+        <div class="card tight">
+          <div class="row"><div class="grow"><div class="title" style="font-size:11px">التخزين</div>
+            <div class="meta">15.0 من 107 ج.ب متاحة · النماذج تشغل 693 م.ب</div></div></div>
+          <div class="bar"><i style="width:14%"></i></div>
+        </div>
+        <div class="note">التنزيل يستمر إن خرجت من التطبيق. عُد من الإشعار أو من الشارة في تبويب المكتبة. إن أغلقت التطبيق قسرًا، نسألك عند العودة: أتتابع؟</div>
+      </div>
+      <div class="nav"><div><i>◍</i>المحادثة</div><div class="on"><i>▤</i>المكتبة</div><div><i>⚙</i>الإعدادات</div></div>
+    </div>
+    <div class="caption">4 — مدير تنزيلات: نشط/بالدور/متوقف/فشل/اكتمل، ولكل حالة سببها وفعلها الظاهر.</div>
+  </div>
+
+  <!-- 5 -->
+  <div class="cap">
+    <div class="frame">
+      <div class="status"><span>9:45</span><span>5G · 43%</span></div>
+      <div class="topbar"><div class="h">الوسائط</div></div>
+      <div class="body">
+        <div class="seg"><span>النماذج</span><span>التنزيلات</span><span class="on">الوسائط</span></div>
+        <div class="card tight">
+          <div class="row"><div class="grow"><div class="title" style="font-size:11px">السياسة الافتراضية</div>
+            <div class="meta">عند رفع ملف: اسألني في كل مرة</div></div><span style="color:var(--primary);font-size:10px">تغيير</span></div>
+        </div>
+        <div class="h2">ملفات محفوظة</div>
+        <div class="card tight">
+          <div class="row"><div class="grow"><div class="title" style="font-size:11px">عقد-الإيجار.pdf</div>
+            <div class="meta">2.4 م.ب · مستند · مفهرس · متاح للمساعد</div></div><div class="switch"></div></div>
+        </div>
+        <div class="card tight">
+          <div class="row"><div class="grow"><div class="title" style="font-size:11px">صورة-الغلاف.png</div>
+            <div class="meta">0.8 م.ب · صورة · تحتاج ملحق رؤية</div></div><div class="switch off"></div></div>
+        </div>
+        <div class="card tight" style="background:var(--low)">
+          <div class="row"><div class="grow"><div class="title" style="font-size:11px">ملاحظات-اجتماع.txt</div>
+            <div class="meta">هذه المحادثة فقط · يُحذف معها ولا يُفهرس</div></div><span class="tag">مؤقت</span></div>
+        </div>
+        <div class="h2">ما يستطيع المساعد الوصول إليه</div>
+        <div class="card tight"><div class="meta">المستندات <b>مسموح</b> · الصور <b>مسموح</b> · الصوت <b>غير مدعوم بعد</b></div></div>
+        <div style="flex:1"></div>
+        <div class="card tight" style="border-style:dashed">
+          <div class="row"><div class="grow"><div class="title" style="font-size:11px">نموذج التضمين</div>
+            <div class="meta">غير مثبّت — يلزم للبحث في مستنداتك</div></div><span style="color:var(--primary)">←</span></div>
+        </div>
+        <div class="btn">إضافة ملف</div>
+        <div style="height:8px"></div>
+      </div>
+      <div class="nav"><div><i>◍</i>المحادثة</div><div class="on"><i>▤</i>المكتبة</div><div><i>⚙</i>الإعدادات</div></div>
+    </div>
+    <div class="caption">5 — الوسائط: مفتاح وصول لكل ملف، وسياسة افتراضية، وملفات «هذه المحادثة فقط» لا تُفهرس.</div>
+  </div>
+
+  <!-- 6 -->
+  <div class="cap">
+    <div class="frame">
+      <div class="status"><span>9:46</span><span>5G · 42%</span></div>
+      <div class="topbar"><div class="h">الإعدادات</div></div>
+      <div class="body">
+        <div class="card tight">
+          <div class="row"><div class="grow"><div class="title">المظهر والقراءة</div><div class="meta">فاتح · خط كبير · Girih Ink</div></div><span style="color:var(--onvar)">‹</span></div>
+        </div>
+        <div class="card tight">
+          <div class="row"><div class="grow"><div class="title">اللغة</div><div class="meta">العربية — التطبيق عربي أولًا</div></div><span style="color:var(--onvar)">‹</span></div>
+        </div>
+        <div class="card tight">
+          <div class="row"><div class="grow"><div class="title">الخصوصية والشبكة</div><div class="meta">عدم الاتصال · سجل الشبكة · تقارير الذكاء</div></div><span style="color:var(--onvar)">‹</span></div>
+        </div>
+        <div class="card tight">
+          <div class="row"><div class="grow"><div class="title">الصوت والإملاء</div><div class="meta">النموذج غير مثبّت · إملاء مباشر</div></div><span style="color:var(--onvar)">‹</span></div>
+        </div>
+        <div class="card tight">
+          <div class="row"><div class="grow"><div class="title">متقدم</div><div class="meta">المحرك · ABI · إعادة الإعداد · تنظيف</div></div><span style="color:var(--onvar)">‹</span></div>
+        </div>
+        <div class="card tight">
+          <div class="row"><div class="grow"><div class="title">عن التطبيق</div><div class="meta">1.0.0 · 12 رخصة · شكر وتقدير</div></div><span style="color:var(--onvar)">‹</span></div>
+        </div>
+        <div style="flex:1"></div>
+        <div class="note">35 إعدادًا صارت 6 أبواب بحالة حقيقية قبل الدخول. الإعدادات الصغيرة تبقى في مكانها كسطر مطوي.</div>
+        <div style="height:6px"></div>
+      </div>
+      <div class="nav"><div><i>◍</i>المحادثة</div><div><i>▤</i>المكتبة</div><div class="on"><i>⚙</i>الإعدادات</div></div>
+    </div>
+    <div class="caption">6 — الإعدادات: تمرير واحد طويل ← 6 أبواب؛ كل صف يقول حالته قبل أن تدخل، بلا تنازل عن أي خيار.</div>
+  </div>
+
+  <!-- 7 -->
+  <div class="cap">
+    <div class="frame">
+      <div class="status"><span>9:47</span><span>5G · 41%</span></div>
+      <div class="topbar"><div class="h" style="font-size:14px">Hugging Face</div><div class="meta" style="margin-inline-start:auto">GGUF فقط</div></div>
+      <div class="body">
+        <div class="card tight"><div class="meta" style="color:var(--on)">qwen2.5</div></div>
+        <div class="card tight">
+          <div class="row"><div class="grow"><div class="title" style="font-size:11px">Qwen2.5-0.5B-Instruct-GGUF</div>
+            <div class="meta">20 ملفًا · 3.1M تنزيل · Apache-2.0</div></div><span class="badge ok">يعمل</span></div>
+        </div>
+        <div class="card tight">
+          <div class="row"><div class="grow"><div class="title" style="font-size:11px">Qwen2.5-1.5B-Instruct-GGUF</div>
+            <div class="meta">1.1M تنزيل · Apache-2.0</div></div><span class="badge no">لن يعمل</span></div>
+        </div>
+        <div class="h2">الملف المختار</div>
+        <div class="card">
+          <div class="row"><div class="grow"><div class="title" style="font-size:11.5px">qwen2.5-0.5b-instruct-q4_k_m.gguf</div>
+            <div class="meta">469 م.ب · Q4_K_M · qwen2</div></div><span class="badge ok">يعمل</span></div>
+          <div class="line" style="margin:6px 0"></div>
+          <div class="kv"><span>الأوزان على القرص</span><b>0.47 ج.ب</b></div>
+          <div class="kv"><span>ذاكرة السياق (2048)</span><b>+0.03 ج.ب</b></div>
+          <div class="kv"><span>الحساب والتشغيل</span><b>+0.30 ج.ب</b></div>
+          <div class="kv" style="border-top:1px dashed var(--outlinev);margin-top:2px;padding-top:4px">
+            <span>المجموع مقابل المتاح</span><b>~0.80 من 1.15 ج.ب</b></div>
+          <div class="note" style="margin-top:7px">فُحصت الترويسة قبل التنزيل: 24 طبقة · 2 رأس KV · قالب ChatML جاهز.</div>
+          <div class="actions" style="margin-top:8px"><div class="btn">تنزيل 469 م.ب</div></div>
+        </div>
+        <div class="card tight" style="border-color:#E3B7AE;background:var(--errorc)">
+          <div class="title" style="font-size:11px;color:var(--onerrorc)">Qwen2.5 1.5B — لن يعمل</div>
+          <div class="meta" style="color:var(--onerrorc)">يحتاج ~1.48 ج.ب والمتاح 1.15. جرّب النسخة الأصغر أو سياقًا أقل.</div>
+        </div>
+      </div>
+      <div class="nav"><div><i>◍</i>المحادثة</div><div class="on"><i>▤</i>المكتبة</div><div><i>⚙</i>الإعدادات</div></div>
+    </div>
+    <div class="caption">7 — البحث + الحكم قبل التنزيل بالأرقام، مع ما فُحص من الترويسة، وحالة منع واضحة لغير القابل للتشغيل.</div>
+  </div>
+
+  <!-- 8 -->
+  <div class="cap dark">
+    <div class="frame dark" style="background:#0F1416;border-color:#2C3A3E">
+      <div class="status"><span>9:48</span><span>5G · 40%</span></div>
+      <div class="topbar"><div class="h" style="font-size:14px">Qwen2.5 0.5B</div><div class="meta" style="margin-inline-start:auto">‹ المكتبة</div></div>
+      <div class="body">
+        <div class="card tight">
+          <div class="row"><div class="grow"><div class="title">جواز النموذج</div>
+            <div class="meta">469 م.ب · Q4_K_M · Apache-2.0</div></div><span class="badge ok">يعمل</span></div>
+          <div class="line" style="margin:6px 0"></div>
+          <div class="kv"><span>المعمارية</span><b>qwen2 · 24 طبقة</b></div>
+          <div class="kv"><span>السياق المدرَّب</span><b>32k · أنت تستخدم 2048</b></div>
+          <div class="kv"><span>قالب المحادثة</span><b>ChatML ✓</b></div>
+        </div>
+        <div class="h2">الإعدادات</div>
+        <div class="card tight">
+          <div class="kv"><span>الحرارة</span><b>0.7</b></div><div class="bar"><i style="width:70%"></i></div>
+          <div class="kv" style="margin-top:6px"><span>السياق</span><b>2048</b></div><div class="bar"><i style="width:27%"></i></div>
+          <div class="kv" style="margin-top:6px"><span>حد الرد</span><b>512 رمزًا</b></div><div class="bar"><i style="width:40%"></i></div>
+        </div>
+        <div class="card tight" style="background:#162024;border-color:#243134">
+          <div class="row"><div class="grow"><div class="title" style="font-size:11px">خيارات متقدمة</div>
+            <div class="meta">11 معاملًا · بذرة · إيقاف · تعليمات النموذج</div></div><span style="color:#7FC0B9">▾</span></div>
+        </div>
+        <div style="flex:1"></div>
+        <div class="btn" style="background:#9DB8DD;color:#0B2B52">إلغاء تحميل النموذج</div>
+        <div style="height:6px"></div>
+      </div>
+      <div class="nav" style="background:#121A1D;border-color:#243134">
+        <div style="color:#A9B1AF"><i>◍</i>المحادثة</div>
+        <div style="color:#9DB8DD"><i>▤</i>المكتبة</div>
+        <div style="color:#A9B1AF"><i>⚙</i>الإعدادات</div>
+      </div>
+    </div>
+    <div class="caption">8 — صفحة النموذج ليلًا: الحقيقة كاملة كجواز، والإعدادات تابعة للنموذج لا مدفونة في الإعدادات.</div>
+  </div>
+
+</div>
+
+<div class="foot">
+  <b>ماذا يثبت هذا النموذج؟</b> أن المكتبة صارت «ما على الجهاز» بشارة توافق محسوبة؛ وأن الشريحة صارت مدخلًا لا نهاية؛ وأن التنزيلات صار لها مكان وحالة مرئية؛ وأن الإعدادات صارت ستة أبواب بحالة صادقة؛ وأن ملف Hugging Face يُحكم عليه قبل تنزيله بالأرقام لا بالحدس.
+  <br>الأرقام في اللقطات من قياسات حقيقية: ذاكرة هذا الهاتف (~1.15 ج.ب متاحة بعد الهامش)، وترويسات GGUF المقروءة فعلًا (Qwen2.5-0.5B: 5.93 م.ب، 24 طبقة، 2 رأس KV، قالب 2509 بايت)، وأحجام الملفات من Hugging Face tree API.
+  <br>الملف: <code>docs/mockups/31-ux-rework.html</code> — مرجع تصميم يُفتح في المتصفح، ولا يُشحن في التطبيق.
+</div>
+
+</div>
+</body>
+</html>

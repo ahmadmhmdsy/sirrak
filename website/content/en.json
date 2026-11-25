@@ -107,10 +107,10 @@
       {
         "n": "03",
         "title": "Dictate instead of typing",
-        "body": "On-device Whisper transcribes Arabic or English with a live level meter. The transcript is appended to the composer — never sent on its own — and the audio never leaves the phone.",
+        "body": "On-device Whisper transcribes Arabic or English. The recording strip keeps a live timer while it listens; the transcript is appended to the composer — never sent on its own — and the audio never leaves the phone.",
         "screenshot": {
           "src": "assets/screenshots/07-dictation-ar.png",
-          "alt": "Dictation control with a live audio level meter above the composer"
+          "alt": "Dictation recording strip with its timer and stop/cancel controls above the composer"
         },
         "callout": "The compose bridge: speech lands as text you can edit"
       },
@@ -122,7 +122,7 @@
           "src": "assets/screenshots/05-privacy-ar.png",
           "alt": "Privacy settings with the offline-only switch and network log"
         },
-        "callout": "The only endpoint is a download you start yourself"
+        "callout": "No background calls: every network request is one you start"
       }
     ]
   },
@@ -138,7 +138,7 @@
       {
         "icon": "mic",
         "title": "Arabic & English dictation",
-        "body": "sherpa-onnx Whisper on the device, a live volume meter, and a transcript that waits in the composer until you send it."
+        "body": "sherpa-onnx Whisper on the device, a recording strip with a live timer, and a transcript that waits in the composer until you send it."
       },
       {
         "icon": "document",

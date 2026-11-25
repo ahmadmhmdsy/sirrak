@@ -1,6 +1,6 @@
 # Sirrak security policy
 
-Last updated: 2026-11-24 · Applies to 1.0.0-rc2 (versionCode 13, released 2026-11-24).
+Last updated: 2026-11-25 · Applies to 1.1.0 (versionCode 14, released 2026-11-25).
 
 Published at <https://alshahia.github.io/sirrak/security/> — Arabic:
 <https://alshahia.github.io/sirrak/ar/security/>. The app opens this page from
@@ -15,11 +15,11 @@ of those and what to expect afterwards.
 
 | Version | versionCode | Supported |
 | --- | --- | --- |
-| 1.0.0-rc2 | 13 | Yes — current release; security fixes land here |
+| 1.1.0 | 14 | Yes — current release; security fixes land here |
 | earlier builds, other release candidates, builds from arbitrary commits | — | No |
 
-Sirrak is pre-1.0: fixes land on the newest release only, and older builds are not patched. If you are not
-on 1.0.0-rc2, reproduce the issue there before reporting it.
+Sirrak is in its 1.x series: fixes land on the newest release only, and older builds are not patched. If you
+are not on 1.1.0, reproduce the issue there before reporting it.
 
 ## Reporting a vulnerability
 
@@ -32,13 +32,14 @@ The report stays private between you and the maintainer until an advisory is pub
 
 ## What to include
 
-- The app version from **Settings → About** — 1.0.0-rc2 is versionCode 13 — and the distribution channel
+- The app version from **Settings → About** — 1.1.0 is versionCode 14 — and the distribution channel
   shown beside it (`libre` or `play`).
 - Device or emulator model, Android version and ABI (`arm64-v8a` on a phone, `x86_64` on an emulator).
 - Steps from a known state: fresh launch or existing data, which model is loaded, which document is in
   scope, whether offline-only was on.
-- The affected component: chat, library/RAG, dictation, model manager, settings and privacy surfaces, the
-  website, or a release artifact.
+- The affected component: chat, the Library (models, downloads, media/RAG), dictation, model manager,
+  Hugging Face browsing and the header probe, settings and privacy surfaces, the website, or a release
+  artifact.
 - The impact: what an attacker gains, and what they need first — a malicious document, a hostile network, a
   crafted model file.
 - A minimal proof of concept: the smallest file, command or recording that reproduces the issue.
@@ -75,14 +76,15 @@ through the advisory form first.
 
 In scope:
 
-- **App code** — chat, library/RAG, dictation, model manager, settings and privacy surfaces, and the way data
-  is stored on the device.
+- **App code** — chat, the Library's models/downloads/media shelves and RAG, dictation, model manager,
+  Hugging Face browsing and the header probe, settings and privacy surfaces, and the way data is stored on
+  the device.
 - **Native engine integration** — the JNI bridge, GGUF loading, projector pairing and memory handling around
   llama.cpp and sherpa-onnx.
 - **Document handling** — PDF, DOCX, EPUB, Markdown and text extraction, chunking, embedding and retrieval,
   including hostile or malformed files.
 - **Model manager** — download, resume, redirect handling, SHA-256 and GGUF verification, import and
-  installation.
+  installation, plus the Hugging Face search client, the capped header probe and its token handling.
 - **Website** — the static pages and policy content generated from this repository.
 - **Release artifacts** — the APK and AAB, signing, `sbom.cdx.json` and the licence registry.
 
@@ -97,7 +99,7 @@ Out of scope:
 - Upstream llama.cpp, sherpa-onnx or LiteRT-LM code — report those upstream. Bugs in how Sirrak integrates
   or packages them are in scope.
 
-## Security-relevant facts about 1.0.0-rc2
+## Security-relevant facts about 1.1.0
 
 **Signing.** Release APKs are signed with the project certificate, SHA-256:
 
@@ -128,6 +130,11 @@ the caveat is tracked in [docs/27](docs/27-sirrak-launch-checklist.md).
 **Download verification.** Catalogue downloads are checked against the catalogue SHA-256 when the entry
 publishes one, and every model must pass a GGUF header check before it becomes visible. A GGUF you import
 yourself is checked for the GGUF header only, so treat the source you chose as trusted.
+
+**Hugging Face browse and probe.** Search, the repository file list and the header probe are read-only
+requests to `huggingface.co`, audited as `hf_search` and `hf_probe` in the network log. The probe is
+capped at 12 MB, accepts only ranged reads, and drops an authorization token when a redirect leaves
+`huggingface.co`. A token typed for a gated model is held in memory only — never disk, the log or a report.
 
 **TLS and dependencies.** Downloads use HTTPS with the platform trust store; there is no certificate pinning
 and no proxy configuration. Android lint keeps 36 accepted warnings visible in every report, including three

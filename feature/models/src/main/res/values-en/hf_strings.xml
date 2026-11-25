@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- P3: in-app Hugging Face browser. Owner: feature/models (the screens live here). -->
+    <string name="hf_back">Back</string>
+    <string name="hf_retry">Try again</string>
+
+    <!-- Search -->
+    <string name="hf_search_title">Search Hugging Face</string>
+    <string name="hf_search_field_label">Model or author name</string>
+    <string name="hf_search_field_placeholder">e.g. Qwen2.5-1.5B-GGUF</string>
+    <string name="hf_search_action">Search</string>
+    <string name="hf_search_clear">Clear</string>
+    <string name="hf_search_loading">Searching…</string>
+    <string name="hf_search_initial">Type a model or author name to see GGUF models from Hugging Face.</string>
+    <string name="hf_search_empty">No matching results. Try fewer words or the English name.</string>
+    <string name="hf_search_more">More results</string>
+    <string name="hf_search_more_loading">Loading more…</string>
+    <string name="hf_search_more_failed">Could not load more results.</string>
+    <string name="hf_search_debounce_note">Searches automatically once you stop typing.</string>
+    <string name="hf_search_source_note">Results from Hugging Face, ordered by download count.</string>
+    <string name="hf_search_downloads">downloads</string>
+    <string name="hf_search_likes">likes</string>
+    <string name="hf_search_row_meta">%1$s downloads · %2$s likes</string>
+    <string name="hf_search_gated_badge">Needs a Hugging Face account</string>
+    <string name="hf_search_open">Open model files</string>
+    <string name="hf_search_offline_title">Offline-only mode is on</string>
+    <string name="hf_search_offline_body">Search needs a connection. Turn off offline-only mode to browse Hugging Face.</string>
+    <string name="hf_search_offline_action">Turn off offline-only mode</string>
+    <string name="hf_search_failure_network">Could not reach Hugging Face. Check your connection and try again.</string>
+    <string name="hf_search_failure_rate">The free request limit was reached temporarily. Wait a moment and try again.</string>
+    <string name="hf_search_failure_gated">This content needs a Hugging Face account.</string>
+    <string name="hf_search_failure_generic">The search could not be completed. Try again.</string>
+
+    <!-- Repo page -->
+    <string name="hf_repo_loading">Reading the repository…</string>
+    <string name="hf_repo_failure">Could not read this repository. Check the name and the connection, then try again.</string>
+    <string name="hf_repo_files_title">GGUF files</string>
+    <string name="hf_repo_files_empty">This repository has no GGUF file.</string>
+    <string name="hf_repo_select_hint">Pick a file to see the fit estimate and download it.</string>
+    <string name="hf_repo_from_hub_note">Declared by the model publisher, not measured on your device.</string>
+    <string name="hf_repo_hub_context">Context from Hugging Face</string>
+    <string name="hf_repo_hub_architecture">Architecture from Hugging Face</string>
+    <string name="hf_repo_licence">Licence</string>
+    <string name="hf_repo_unknown">Unknown</string>
+    <string name="hf_repo_offline_title">Offline-only mode is on</string>
+    <string name="hf_repo_offline_body">Files cannot be read or probed right now. Turn off offline-only mode, then try again.</string>
+
+    <!-- Gated token: memory-only, never persisted -->
+    <string name="hf_repo_token_title">Requires a Hugging Face account</string>
+    <string name="hf_repo_token_body">This repository is gated. Enter a Hugging Face access token to list its files.</string>
+    <string name="hf_repo_token_note">The token stays in memory for this session only and is never saved on the device.</string>
+    <string name="hf_repo_token_label">Access token</string>
+    <string name="hf_repo_token_save">Use this token</string>
+    <string name="hf_repo_token_active">The token is held in memory for this session.</string>
+    <string name="hf_repo_token_clear">Clear the token from memory</string>
+
+    <!-- Capped header probe -->
+    <string name="hf_probe_action">Probe the header (up to 12 MB)</string>
+    <string name="hf_probe_running">Probing the file header…</string>
+    <string name="hf_probe_note">The probe reads the first 12 MB of the file over an unmetered connection to learn its architecture and context. You can skip it and download unverified.</string>
+    <string name="hf_probe_metered_title">Probe using mobile data?</string>
+    <string name="hf_probe_metered_body">The probe downloads up to 12 MB over mobile data. You can wait for Wi-Fi or continue now.</string>
+    <string name="hf_probe_failure_network">Could not probe the file. Check your connection and try again.</string>
+    <string name="hf_probe_failure_range">The server does not support partial reads. You can download the file and try later.</string>
+    <string name="hf_probe_failure_malformed">These bytes are not a valid GGUF header. The file may be incomplete.</string>
+    <string name="hf_probe_failure_gated">The file is gated; enter a Hugging Face token, then try again.</string>
+    <string name="hf_probe_failure_generic">Could not read the file header. Try again.</string>
+    <string name="hf_probe_blocked_metered">The probe did not start: mobile data use was declined. Probe on Wi-Fi or skip it.</string>
+    <string name="hf_probe_complete">The header was read completely.</string>
+    <string name="hf_probe_partial">Partial read within the 12 MB cap; some fields are unavailable.</string>
+    <string name="hf_probe_bytes">Read %1$s</string>
+    <string name="hf_probe_ranged_note">A Range request was used, so only one slice was fetched.</string>
+    <string name="hf_probe_full_note">The server answered with the file from the start (200) instead of a range (206); not an error, but the server read is not bounded.</string>
+
+    <string name="hf_meta_title">File header</string>
+    <string name="hf_meta_architecture">Architecture</string>
+    <string name="hf_meta_layers">Layers</string>
+    <string name="hf_meta_heads">Heads</string>
+    <string name="hf_meta_kv_heads">KV heads</string>
+    <string name="hf_meta_embedding">Embedding size</string>
+    <string name="hf_meta_context">Trained context</string>
+    <string name="hf_meta_hub_note">From the file header, not from the publisher metadata.</string>
+    <string name="hf_meta_missing">—</string>
+
+    <!-- Fit verdict -->
+    <string name="hf_fit_title">Fit on this device</string>
+    <string name="hf_fit_status_runs">Expected to run</string>
+    <string name="hf_fit_status_tight">Runs tightly</string>
+    <string name="hf_fit_status_wont_run">Will not run</string>
+    <string name="hf_fit_status_unknown">Unverified</string>
+    <string name="hf_fit_total">Total memory footprint</string>
+    <string name="hf_fit_weights">File size</string>
+    <string name="hf_fit_kv">KV cache</string>
+    <string name="hf_fit_overhead">Overhead</string>
+    <string name="hf_fit_usable_ram">Usable memory</string>
+    <string name="hf_fit_free_disk">Free storage</string>
+    <string name="hf_fit_suggested_context">Suggested context</string>
+    <string name="hf_fit_requested_context">Requested context</string>
+    <string name="hf_fit_estimate">estimated</string>
+    <string name="hf_fit_math_note">Footprint = file + runtime overhead + KV cache. The numbers are estimates, not measurements.</string>
+    <string name="hf_fit_unverified_note">The file was not probed, so this verdict is unverified; download is allowed but running is not guaranteed.</string>
+    <string name="hf_fit_blocked_note">Download is blocked by the verdict above.</string>
+    <string name="hf_fit_reason_low_ram">Low-RAM device: a file this large is likely to be killed.</string>
+    <string name="hf_fit_reason_ram">Free memory is not enough for this file.</string>
+    <string name="hf_fit_reason_tight">Free memory is close to the limit; the system may stop the app mid-chat.</string>
+    <string name="hf_fit_reason_disk">Free storage is below 1.1× the file size.</string>
+    <string name="hf_fit_reason_arch_unsupported">This architecture is not supported by this build engine.</string>
+    <string name="hf_fit_reason_arch_unknown">The file architecture was not verified.</string>
+    <string name="hf_fit_reason_file_unknown">The file size is not published.</string>
+
+    <!-- Download hand-off -->
+    <string name="hf_download_action">Download the model</string>
+    <string name="hf_download_metered_title">Download using mobile data?</string>
+    <string name="hf_download_metered_body">The whole file will download over mobile data and may use several gigabytes. You can wait for Wi-Fi.</string>
+    <string name="hf_metered_allow">Continue on mobile data</string>
+    <string name="hf_metered_cancel">Wait for Wi-Fi</string>
+    <string name="hf_fit_tight_title">Download anyway?</string>
+    <string name="hf_fit_tight_body">The model may run, but free memory is close to the limit and the system may stop it. The download itself is unaffected.</string>
+    <string name="hf_fit_tight_accept">Download anyway</string>
+    <string name="hf_fit_tight_cancel">Cancel</string>
+    <string name="hf_download_notice_queued">Added to downloads. Follow the progress on the downloads page.</string>
+    <string name="hf_download_notice_started">The download started over mobile data.</string>
+    <string name="hf_download_notice_duplicate">This file is already in the download list.</string>
+    <string name="hf_download_notice_installed">This file is already installed.</string>
+    <string name="hf_download_notice_rejected">The download could not be added to the list. Try again.</string>
+    <string name="hf_download_notice_declined">The download did not start: mobile data was declined. It stays in the list until Wi-Fi.</string>
+    <string name="hf_download_notice_waiting_other">Waiting behind another download.</string>
+    <string name="hf_download_notice_offline">Offline-only mode is on; nothing was added.</string>
+    <string name="hf_download_notice_start_failed">The download was added but could not start. Retry it from the downloads page.</string>
+    <string name="hf_download_open">Show downloads</string>
+</resources>

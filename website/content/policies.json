@@ -1,14 +1,14 @@
 {
   "schemaVersion": 1,
-  "updated": "2026-11-24",
+  "updated": "2026-11-25",
   "privacy": {
     "en": {
       "title": "Privacy policy",
-      "description": "How Sirrak handles your data: everything stays on your device; the only network request is a model download you start. No telemetry, no accounts, no tracking.",
-      "updated": "Last updated: 24 November 2026 · Policy version 1 · Applies to 1.0.0-rc2",
+      "description": "How Sirrak handles your data: everything stays on your device. The network is touched only when you start a model download or a Hugging Face search. No telemetry or accounts.",
+      "updated": "Last updated: 25 November 2026 · Policy version 2 · Applies to 1.1.0",
       "summary": [
-        "Sirrak is an on-device assistant: chats, documents, models and settings stay in app-private storage.",
-        "The only network feature is a model download you explicitly start. There is no telemetry, no analytics, no crash reporting, no ads and no account.",
+        "Sirrak is an on-device assistant: chats, documents, media, models and settings stay in app-private storage.",
+        "Network features are three, each started by you: a model download, a search of the public Hugging Face index, and a capped header probe that estimates whether a model fits. There is no telemetry, no analytics, no crash reporting, no ads and no account.",
         "Offline-only mode is enforced before any socket opens and cancels a running download."
       ],
       "sections": [
@@ -17,7 +17,9 @@
           "bullets": [
             "Chats, prompts and answers are stored in app-private storage on your phone.",
             "Documents you add to the Library (PDF, DOCX, EPUB, Markdown and text) and their extracted text, chunks and embedding vectors stay in app-private storage.",
+            "Images, audio clips and their on-device transcripts that you add to the Library's Media segment stay in app-private storage. Audio is transcribed by Whisper on the phone; the recording is never uploaded.",
             "Model files you download or import are stored in app-private storage.",
+            "A Hugging Face token you type for a gated model is held in memory for the current session only; it is never written to disk, the network log or a report.",
             "Settings, including the offline-only switch, are stored on the device.",
             "The network log lists the calls this app actually made on this device. It is stored locally, bounded to the 50 newest entries, and is never uploaded.",
             "AI-output reports you create are stored locally, bounded to 50 reports; they leave the device only when you tap Share and choose an app in the Android chooser."
@@ -26,28 +28,31 @@
         {
           "heading": "What leaves your device",
           "paragraphs": [
-            "Sirrak has exactly one network feature today: downloading a model that you explicitly start."
+            "Sirrak has three network features, and each one starts with your tap: downloading a model, searching the public Hugging Face model index, and reading a capped byte range of a model file's header to estimate whether it fits this phone."
           ],
           "bullets": [
-            "The request goes to the host shown in Settings → Privacy & data → Network log (currently huggingface.co, the model's public resolver).",
-            "The request contains the model file path you chose, a standard user agent and — only if you typed a token for a gated model — that token. No chat text, prompt, document, report or device identifier is sent with it.",
+            "Every request goes to the host shown in Settings → Privacy & data → Network log (currently huggingface.co, the public model resolver).",
+            "A download request contains the model file path you chose, a standard user agent and — only if you typed a token for a gated model — that token. No chat text, prompt, document, media, report or device identifier is sent with it.",
+            "A search sends the words you typed to the public model index; opening a repository sends that repository's public name to read its file list.",
+            "A header probe asks for at most 12 MB of the header of the single GGUF file you inspect, not the whole model. Its token is dropped when the transfer moves to the download host.",
             "There are no analytics, no crash reporting, no ads, no tracking and no remote accounts.",
-            "When offline-only is on, the app refuses every new request and cancels a running download; chat, dictation, document search and reports keep working."
+            "When offline-only is on, the app refuses every new request and cancels a running download; chat, dictation, media transcription, document search and reports keep working."
           ]
         },
         {
           "heading": "Permissions",
           "bullets": [
-            "Internet and network state: model downloads and the Wi-Fi-only default.",
+            "Internet and network state: model downloads, Hugging Face search and the Wi-Fi-only default.",
             "Microphone: only while you start or hold dictation.",
             "Notifications: download progress for a download you started (optional; the download also runs without it where Android allows).",
-            "No location, contacts, phone or SMS permissions. Images and documents are only read through the Android system picker or camera intent after you choose them."
+            "No location, contacts, phone or SMS permissions. Images, audio and documents are only read through the Android system picker after you choose them."
           ]
         },
         {
           "heading": "Retention and deletion",
           "bullets": [
-            "Delete a chat, document or model from inside the app; deleting a model removes its file from app-private storage.",
+            "Delete a chat, document, media item or model from inside the app; deleting a model removes its file from app-private storage.",
+            "Media items have two retention choices: keep until you delete them, or use once and have them removed automatically (a one-time item is never indexed and is deleted when its session ends).",
             "The network log and AI-output reports each have a clear action and a bounded size.",
             "Uninstalling the app deletes all app-private data."
           ]
@@ -61,7 +66,7 @@
         {
           "heading": "Changes to this policy",
           "paragraphs": [
-            "This policy is versioned with the app (current version: 1, 24 November 2026, shipped with 1.0.0-rc2). Material changes will be shown in the app before they take effect, and this page will keep the same URL."
+            "This policy is versioned with the app (current version: 2, 25 November 2026, shipped with 1.1.0). Material changes will be shown in the app before they take effect, and this page will keep the same URL."
           ]
         },
         {
@@ -74,11 +79,11 @@
     },
     "ar": {
       "title": "سياسة الخصوصية",
-      "description": "كيف يتعامل سِرِّك مع بياناتك: كل شيء يبقى على جهازك، والطلب الشبكي الوحيد هو تنزيل نموذج تبدأه أنت. بلا تتبّع ولا حسابات ولا قياسات.",
-      "updated": "آخر تحديث: 24 نوفمبر 2026 · إصدار السياسة 1 · ينطبق على 1.0.0-rc2",
+      "description": "كيف يتعامل سِرِّك مع بياناتك: كل شيء يبقى على جهازك، ولا تُلمَس الشبكة إلا حين تبدأ تنزيل نموذج أو تبحث في Hugging Face، ولا شيء يجري في الخلفية. بلا تتبّع ولا حسابات ولا قياسات.",
+      "updated": "آخر تحديث: 25 نوفمبر 2026 · إصدار السياسة 2 · ينطبق على 1.1.0",
       "summary": [
-        "سِرِّك مساعد يعمل على الجهاز: المحادثات والمستندات والنماذج والإعدادات تبقى في تخزين التطبيق الخاص.",
-        "الميزة الشبكية الوحيدة هي تنزيل نموذج تبدأه أنت صراحةً. لا تتبّع ولا تحليلات ولا تقارير أعطال ولا إعلانات ولا حساب.",
+        "سِرِّك مساعد يعمل على الجهاز: المحادثات والمستندات والوسائط والنماذج والإعدادات تبقى في تخزين التطبيق الخاص.",
+        "الميزات الشبكية ثلاث، وكل واحدة تبدأها أنت: تنزيل نموذج، والبحث في فهرس Hugging Face العام، وفحص محدود لترويسة ملف تقديرًا لتوافقه مع الهاتف. لا تتبّع ولا تحليلات ولا تقارير أعطال ولا إعلانات ولا حساب.",
         "وضع «دون اتصال فقط» يُفرَض قبل فتح أي اتصال، ويلغي التنزيل الجاري."
       ],
       "sections": [
@@ -87,7 +92,9 @@
           "bullets": [
             "المحادثات والتعليمات والإجابات تُحفظ في تخزين التطبيق الخاص على هاتفك.",
             "المستندات التي تضيفها إلى المكتبة (PDF وDOCX وEPUB وMarkdown والنصوص) ونصوصها المستخرجة وقطعها ومتجهات تضمينها تبقى في تخزين التطبيق الخاص.",
+            "الصور والمقاطع الصوتية ونصوصها المكتوبة التي تضيفها إلى قسم الوسائط في المكتبة تبقى في تخزين التطبيق الخاص. الصوت يُفرَّغ نصيًا بـWhisper على الهاتف، ولا يُرفَع التسجيل أبدًا.",
             "ملفات النماذج التي تنزّلها أو تستوردها تُحفظ في تخزين التطبيق الخاص.",
+            "رمز Hugging Face الذي تكتبه لنموذج مقيّد يبقى في الذاكرة لهذه الجلسة فقط، ولا يُكتب على القرص ولا في سجل الشبكة ولا في بلاغ.",
             "الإعدادات، ومنها مفتاح «دون اتصال فقط»، تُحفظ على الجهاز.",
             "سجل الشبكة يعرض الطلبات التي أصدرها التطبيق فعلًا على هذا الجهاز. يُحفظ محليًا بحد أقصى 50 سجلًا، ولا يُرفع أبدًا.",
             "بلاغات مخرجات الذكاء الاصطناعي التي تُنشئها تُحفظ محليًا بحد 50 بلاغًا؛ ولا تغادر الجهاز إلا إذا ضغطت «مشاركة» واخترت تطبيقًا في منتقي أندرويد."
@@ -96,28 +103,31 @@
         {
           "heading": "ما يغادر جهازك",
           "paragraphs": [
-            "للتطبيق ميزة شبكية واحدة اليوم: تنزيل نموذج تبدأه أنت صراحةً."
+            "للتطبيق ثلاث ميزات شبكية، وكل واحدة تبدأ بلمستك: تنزيل نموذج، والبحث في فهرس نماذج Hugging Face العام، وقراءة مقطع محدود من ترويسة ملف نموذج تقديرًا لتوافقه مع هذا الهاتف."
           ],
           "bullets": [
-            "يذهب الطلب إلى المضيف الظاهر في الإعدادات ← الخصوصية والبيانات ← سجل الشبكة (حاليًا huggingface.co، وهو مصدر تنزيل النماذج العامة).",
-            "يحتوي الطلب على مسار ملف النموذج الذي اخترته، ووكيل مستخدم قياسي، ورمزك فقط إن كتبت رمزًا لنموذج مقيّد. ولا يُرسَل معه أي نص محادثة أو تعليمات أو مستند أو بلاغ أو معرّف جهاز.",
+            "كل طلب يذهب إلى المضيف الظاهر في الإعدادات ← الخصوصية والبيانات ← سجل الشبكة (حاليًا huggingface.co، مصدر النماذج العامة).",
+            "طلب التنزيل يحتوي مسار ملف النموذج الذي اخترته، ووكيل مستخدم قياسي، ورمزك فقط إن كتبت رمزًا لنموذج مقيّد. ولا يُرسَل معه أي نص محادثة أو تعليمات أو مستند أو وسيط أو بلاغ أو معرّف جهاز.",
+            "البحث يرسل الكلمات التي كتبتها إلى فهرس النماذج العام؛ وفتح مستودع يرسل اسمه العام لقراءة قائمة ملفاته.",
+            "فحص الترويسة يطلب 12 م.ب كحد أقصى من ترويسة ملف GGUF الذي تفحصه وحده، لا النموذج كله. ويُسقَط الرمز عند انتقال النقل إلى مضيف التنزيل.",
             "لا توجد تحليلات ولا تقارير أعطال ولا إعلانات ولا تتبّع ولا حسابات بعيدة.",
-            "عند تفعيل وضع عدم الاتصال، يرفض التطبيق كل طلب جديد ويلغي التنزيل الجاري؛ وتستمر المحادثة والإملاء والبحث في المستندات والبلاغات في العمل."
+            "عند تفعيل وضع عدم الاتصال، يرفض التطبيق كل طلب جديد ويلغي التنزيل الجاري؛ وتستمر المحادثة والإملاء والتفريغ النصي للوسائط والبحث في المستندات والبلاغات في العمل."
           ]
         },
         {
           "heading": "الأذونات",
           "bullets": [
-            "الإنترنت وحالة الشبكة: تنزيلات النماذج والافتراضي «عبر Wi-Fi فقط».",
+            "الإنترنت وحالة الشبكة: تنزيلات النماذج والبحث في Hugging Face والافتراضي «عبر Wi-Fi فقط».",
             "الميكروفون: فقط عند بدء الإملاء أو إمساكه.",
             "الإشعارات: تقدّم تنزيل بدأته أنت (اختيارية؛ ويعمل التنزيل بدونها حيث يسمح أندرويد).",
-            "لا أذونات للموقع أو جهات الاتصال أو الهاتف أو الرسائل. ولا تُقرأ الصور والمستندات إلا عبر منتقي النظام أو نية الكاميرا بعد اختيارك."
+            "لا أذونات للموقع أو جهات الاتصال أو الهاتف أو الرسائل. ولا تُقرأ الصور والصوت والمستندات إلا عبر منتقي النظام بعد اختيارك."
           ]
         },
         {
           "heading": "الاحتفاظ والحذف",
           "bullets": [
-            "احذف محادثة أو مستندًا أو نموذجًا من داخل التطبيق؛ وحذف النموذج يزيل ملفه من تخزين التطبيق الخاص.",
+            "احذف محادثة أو مستندًا أو عنصر وسائط أو نموذجًا من داخل التطبيق؛ وحذف النموذج يزيل ملفه من تخزين التطبيق الخاص.",
+            "لعناصر الوسائط خيارا احتفاظ: الإبقاء حتى تحذفها أنت، أو الاستخدام مرة واحدة فتُزال تلقائيًا (والعنصر المؤقت لا يُفهرَس أبدًا ويُحذف عند انتهاء جلسته).",
             "لسجل الشبكة وبلاغات المخرجات إجراء واضح وحجم محدود.",
             "إلغاء تثبيت التطبيق يحذف كل بيانات التطبيق الخاصة."
           ]
@@ -131,7 +141,7 @@
         {
           "heading": "التغييرات على هذه السياسة",
           "paragraphs": [
-            "تُصدَر هذه السياسة بإصدار مع التطبيق (الإصدار الحالي: 1، 24 نوفمبر 2026، مع 1.0.0-rc2). التغييرات الجوهرية تُعرض في التطبيق قبل سريانها، وتبقى هذه الصفحة على العنوان نفسه."
+            "تُصدَر هذه السياسة بإصدار مع التطبيق (الإصدار الحالي: 2، 25 نوفمبر 2026، مع 1.1.0). التغييرات الجوهرية تُعرض في التطبيق قبل سريانها، وتبقى هذه الصفحة على العنوان نفسه."
           ]
         },
         {
@@ -147,7 +157,7 @@
     "en": {
       "title": "Security policy",
       "description": "How to report a vulnerability in Sirrak, what is in scope, and the design commitments that reduce the attack surface to a phone with no server and no telemetry.",
-      "updated": "Last updated: 24 November 2026 · Applies to 1.0.0-rc2",
+      "updated": "Last updated: 25 November 2026 · Applies to 1.1.0",
       "summary": [
         "Report vulnerabilities privately through GitHub Security Advisories — never in a public issue.",
         "Sirrak has no server and no telemetry endpoint to attack; release builds are minified and store data in app-private storage.",
@@ -178,7 +188,7 @@
         {
           "heading": "Scope",
           "paragraphs": [
-            "In scope: the app itself (chat, library/RAG, dictation, model download/import, privacy surfaces) and the way it stores data on the device."
+            "In scope: the app itself (chat, the Library's models/downloads/media shelves and RAG, dictation, model download/import, Hugging Face browsing and the capped header probe, privacy surfaces) and the way it stores data on the device."
           ],
           "bullets": [
             "Out of scope: vulnerabilities in Android itself, in third-party model weights, and in the upstream llama.cpp / sherpa-onnx / LiteRT-LM code — report those upstream.",
@@ -192,7 +202,9 @@
             "Chats, documents, embeddings, models, network log and reports are stored in app-private storage.",
             "The network audit is the single place that records outbound calls; it is bounded and local.",
             "Release builds are minified with R8 and ship no debug-only cleartext permission (cleartext HTTP is debug-only, used by loopback device tests).",
-            "Model downloads are verified against the catalogue SHA-256 before installation."
+            "Model downloads are verified against the catalogue SHA-256 before installation.",
+            "The Hugging Face header probe is capped at 12 MB, accepts only ranged reads, and drops an authorization token when a redirect leaves huggingface.co.",
+            "A Hugging Face token is kept in memory only and never written to disk, the network log or a report."
           ]
         },
         {
@@ -206,7 +218,7 @@
     "ar": {
       "title": "سياسة الأمان",
       "description": "كيف تبلّغ عن ثغرة في سِرِّك، وما داخل النطاق، والالتزامات التصميمية التي تقلّص سطح الهجوم إلى هاتف بلا خادم وبلا تتبّع.",
-      "updated": "آخر تحديث: 24 نوفمبر 2026 · ينطبق على 1.0.0-rc2",
+      "updated": "آخر تحديث: 25 نوفمبر 2026 · ينطبق على 1.1.0",
       "summary": [
         "أبلغ عن الثغرات بخصوصية عبر نماذج أمان GitHub — لا تفتح مشكلة عامة.",
         "لا خادم لسِرِّك ولا نقطة تتبّع لمهاجمتها؛ ونسخ الإصدار مصغَّرة وتخزّن البيانات في تخزين التطبيق الخاص.",
@@ -237,7 +249,7 @@
         {
           "heading": "النطاق",
           "paragraphs": [
-            "داخل النطاق: التطبيق نفسه (المحادثة والمكتبة/الاسترجاع والإملاء وتنزيل/استيراد النماذج وأسطح الخصوصية) وطريقة تخزينه للبيانات على الجهاز."
+            "داخل النطاق: التطبيق نفسه (المحادثة وأقسام المكتبة الثلاثة: النماذج والتنزيلات والوسائط، والاسترجاع، والإملاء، وتنزيل/استيراد النماذج، والبحث في Hugging Face والفحص المحدود للترويسة، وأسطح الخصوصية) وطريقة تخزينه للبيانات على الجهاز."
           ],
           "bullets": [
             "خارج النطاق: الثغرات في أندرويد نفسه، وفي أوزان النماذج الخارجية، وفي شيفرة llama.cpp / sherpa-onnx / LiteRT-LM الأصلية — أبلغ عنها في مستودعاتها.",
@@ -251,7 +263,9 @@
             "المحادثات والمستندات والتضمينات والنماذج وسجل الشبكة والبلاغات في تخزين التطبيق الخاص.",
             "سجل الشبكة هو المكان الوحيد الذي يسجّل الطلبات الصادرة؛ وهو محدود ومحلي.",
             "نسخ الإصدار مصغَّرة بـR8 ولا تحمل إذن النص الصريح الخاص بالتنقيح (HTTP الصريح للتنقيح فقط في اختبارات الحلقة المحلية).",
-            "تنزيلات النماذج تُتحقَّق مقابل بصمة SHA-256 في الكتالوج قبل التثبيت."
+            "تنزيلات النماذج تُتحقَّق مقابل بصمة SHA-256 في الكتالوج قبل التثبيت.",
+            "فحص ترويسة Hugging Face محدود بـ12 م.ب، ويقبل القراءات المقطعية فقط، ويسقط رمز التفويض إذا خرج التحويل من huggingface.co.",
+            "رمز Hugging Face يبقى في الذاكرة فقط، ولا يُكتب على القرص ولا في سجل الشبكة ولا في بلاغ."
           ]
         },
         {

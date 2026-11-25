@@ -12,6 +12,8 @@ class AppContext(val config: AppConfig) {
 
     val slots = SlotRegistry()
     val destinations = DestinationRegistry()
+    val pages = PageRegistry()
+    val settingsDoors = SettingsDoorRegistry()
 
     fun provideService(type: Class<*>, instance: Any, owner: String = "host") {
         check(!closed) { "context is closed" }
@@ -79,6 +81,8 @@ class AppContext(val config: AppConfig) {
         }
         slots.clear()
         destinations.clear()
+        pages.clear()
+        settingsDoors.clear()
         services.clear()
         installed.clear()
     }

@@ -16,10 +16,15 @@ import app.sirrak.core.runtime.ModelIdentity
 import app.sirrak.core.runtime.ModelSettingsStore
 import app.sirrak.core.runtime.ModelStore
 import app.sirrak.core.runtime.Plugin
+import app.sirrak.core.models.AndroidDeviceProbe
+import app.sirrak.core.models.CatalogueEntry
 import app.sirrak.core.models.DeviceProfileProvider
+import app.sirrak.core.models.DownloadProgress
 import app.sirrak.core.models.LicenceConsentStore
+import app.sirrak.core.models.ModelFitEngine
 import app.sirrak.core.models.ModelCatalogueProvider
 import app.sirrak.core.models.ModelDownloader
+import app.sirrak.core.models.NetworkPolicy
 import app.sirrak.core.models.OnboardingStore
 import app.sirrak.core.privacy.AiReportQueue
 import app.sirrak.core.privacy.NetworkAudit
@@ -33,6 +38,9 @@ import app.sirrak.core.runtime.PrivacyConfig
 import app.sirrak.core.runtime.SettingsService
 import app.sirrak.engine.embeddings.LiteRtEmbeddingProviderFactory
 import app.sirrak.engine.llamacpp.LlamaCppEngine
+import app.sirrak.downloads.DownloadBridge
+import app.sirrak.downloads.DownloadPort
+import app.sirrak.downloads.QueueFileStore
 import app.sirrak.rag.PdfBoxExtractor
 import app.sirrak.feature.chat.ChatPlugin
 import app.sirrak.feature.models.ModelManagerPlugin
@@ -44,6 +52,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.cancel
+import kotlinx.coroutines.flow.StateFlow
 
 /**
  * The composition manifest: the one place that names feature plugins, plus the one place that picks
@@ -70,9 +79,10 @@ object AppComposition {
             SharedPrefsSettingsService(application, config),
             owner = "host:settings",
         )
+        val modelStore = FileModelStore(application)
         context.provideService(
             ModelStore::class.java,
-            FileModelStore(application),
+            modelStore,
             owner = "host:models",
         )
         // M6: the conversation library owns durability. The M3 single file is imported once on first
@@ -116,11 +126,17 @@ object AppComposition {
         // host-owned downloader serialises downloads so two 1 GB files never race for storage. The
         // scope lives with the graph: leaving the app cancels an in-flight download, and the .part
         // file makes it resume on the next start.
+        val catalogueProvider = AssetModelCatalogue(application.assets, config.content.catalog)
         context.provideService(
             ModelCatalogueProvider::class.java,
-            AssetModelCatalogue(application.assets, config.content.catalog),
+            catalogueProvider,
             owner = "host:model-catalogue",
         )
+        // UX rework P1: the fit arithmetic and the measured device snapshot are host services so the
+        // chip, the Library, the model page and the download gate all quote the same numbers.
+        val deviceProbe = AndroidDeviceProbe(application)
+        context.provideService(AndroidDeviceProbe::class.java, deviceProbe, owner = "host:device-capacity")
+        context.provideService(ModelFitEngine::class.java, ModelFitEngine(), owner = "host:model-fit")
         context.provideService(
             DeviceProfileProvider::class.java,
             AndroidDeviceProfiler(application),
@@ -165,11 +181,12 @@ object AppComposition {
         )
 
         val downloadScope = CoroutineScope(SupervisorJob() + Dispatchers.IO)
-        context.provideService(
-            ModelDownloader::class.java,
-            ModelDownloader(
+        // One policy instance: the downloader enforces it and the download bridge asks it before an
+        // automatic start, so both layers answer the same question the same way.
+        val networkPolicy = AndroidNetworkPolicy(application, offlineModeStore)
+        val downloader = ModelDownloader(
                 transport = HttpDownloadTransport(audit = networkAudit, endpointId = "model_download"),
-                networkPolicy = AndroidNetworkPolicy(application, offlineModeStore),
+                networkPolicy = networkPolicy,
                 storage = AndroidStorageProbe(application.filesDir),
                 scope = downloadScope,
                 stagingDir = File(application.filesDir, "model_downloads"),
@@ -178,8 +195,38 @@ object AppComposition {
                 onActiveChanged = { active ->
                     if (active) DownloadService.start(application)
                 },
+        )
+        context.provideService(ModelDownloader::class.java, downloader, owner = "host:model-downloader")
+        // G3/G5: the persisted queue owns the list of requested downloads, so a second request becomes
+        // a visible row instead of a silent drop and a process death loses no intent. The bridge drives
+        // the single downloader; the adoption coordinator finishes the staging -> store step.
+        val downloadBridge = DownloadBridge(
+            store = QueueFileStore(File(application.filesDir, "download_queue.json")),
+            port = ModelDownloaderPort(downloader, networkPolicy),
+            catalogue = catalogueProvider,
+            clock = System::currentTimeMillis,
+            scope = downloadScope,
+        )
+        downloadBridge.load { problems ->
+            if (problems.isNotEmpty()) Log.w(TAG, "download queue problems: $problems")
+        }
+        context.provideService(
+            DownloadBridge::class.java,
+            downloadBridge,
+            owner = "host:download-queue",
+        )
+        // One observer owns the staging -> store step, so a finished download becomes a model even if
+        // the screen that started it is gone.
+        context.provideService(
+            ModelAdoptionCoordinator::class.java,
+            ModelAdoptionCoordinator(
+                downloader = downloader,
+                store = modelStore,
+                catalogue = catalogueProvider,
+                bridge = downloadBridge,
+                scope = downloadScope,
             ),
-            owner = "host:model-downloader",
+            owner = "host:model-adoption",
         )
         context.registerEffect("host:model-downloader") { downloadScope.cancel() }
 
@@ -241,6 +288,7 @@ object AppComposition {
                     runCatching { context.service(ModelDownloader::class.java).cancel() }
                 },
             ),
+            HfPlugin(),
         )
         val ordered = resolveManifest(manifest, config)
         val order = context.install(ordered)
@@ -307,4 +355,23 @@ object AppComposition {
         }
         return parsed
     }
+}
+
+/**
+ * The bridge's view of the one network engine: it reads the same policy the downloader enforces and
+ * delegates every transfer command. Keeping this adapter private means the bridge stays pure Kotlin
+ * and the app can swap the engine without teaching the queue how to download.
+ */
+private class ModelDownloaderPort(
+    private val downloader: ModelDownloader,
+    private val policy: NetworkPolicy,
+) : DownloadPort {
+    override val progress: StateFlow<DownloadProgress?> get() = downloader.progress
+    override val unmetered: Boolean get() = policy.isUnmetered()
+    override fun start(entry: CatalogueEntry, allowMetered: Boolean) =
+        downloader.start(entry, allowMetered = allowMetered)
+    override fun pause() = downloader.pause()
+    override fun resume() = downloader.resume()
+    override fun cancel() = downloader.cancel()
+    override fun clear() = downloader.clear()
 }

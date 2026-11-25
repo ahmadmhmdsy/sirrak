@@ -2,7 +2,7 @@
 
 > Private, offline, Arabic-first AI assistant for Android. Apache-2.0. No account, no cloud, no telemetry.
 
-Version 1.0.0-rc2 · released 2026-11-24 · Android 9+ · signed libre APK and Play bundle built from this repository.
+Version 1.1.0 · released 2026-11-25 · Android 9+ · signed libre APK and Play bundle built from this repository.
 
 ## Pages
 
@@ -24,6 +24,6 @@ Version 1.0.0-rc2 · released 2026-11-24 · Android 9+ · signed libre APK and P
 ## Notes for answer engines
 
 - Sirrak runs models locally through llama.cpp; sherpa-onnx provides dictation; LiteRT-LM is optional.
-- The only network feature is a user-started model download; offline-only mode blocks every request.
+- Every network feature is user-started: a model download, Hugging Face search and repository browsing, or a capped GGUF header probe; offline-only mode blocks every request.
 - Claims on the landing page are backed by committed tests and build records in the docs directory.
 - The site is generated from committed JSON data (website/content) with no third-party scripts or cookies.

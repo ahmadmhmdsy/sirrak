@@ -32,6 +32,19 @@ class PluginScope internal constructor(
         container.destinations.add(pluginId, destination)
     }
 
+    /** Contributes a full-screen page reachable through [AppNavigator.push]. */
+    fun page(page: PageContribution) {
+        container.pages.add(pluginId, page)
+    }
+
+    /** Whether some composed plugin contributed [id]; used for optional doorway rows. */
+    fun hasPage(id: String): Boolean = container.pages.find(id) != null
+
+    /** Contributes one row to the Settings root (see [SettingsDoor]). */
+    fun door(door: SettingsDoor) {
+        container.settingsDoors.add(pluginId, door)
+    }
+
     fun slotSingle(key: SlotKey, content: SlotContent) {
         container.slots.provideSingle(key, pluginId, content)
     }

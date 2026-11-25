@@ -17,4 +17,7 @@
     <string name="font_scale_default">Default</string>
     <string name="font_scale_large">Large</string>
     <string name="font_scale_largest">Largest</string>
+
+    <!-- Pages (P1/P4): the back arrow's accessible name is owned here so every pushed page can use it. -->
+    <string name="page_back">Back</string>
 </resources>

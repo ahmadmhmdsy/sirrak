@@ -1,8 +1,8 @@
 # Sirrak docs — product and build records
 
-These are the public build records for Sirrak `1.0.0-rc2`: what was built, how it was verified, what was
-rejected and which limits are still open. They are shipped in the repository because a launch claim is only
-worth what its evidence is worth.
+These are the public build records for Sirrak `1.1.0` (the UX rework that followed the first hands-on
+review of `1.0.0-rc2`): what was built, how it was verified, what was rejected and which limits are still
+open. They are shipped in the repository because a launch claim is only worth what its evidence is worth.
 
 | Doc | Records |
 |---|---|
@@ -28,6 +28,8 @@ worth what its evidence is worth.
 | [28-public-launch-council.md](28-public-launch-council.md) | this repository/site/SEO launch council and decisions |
 | [29-small-models-council.md](29-small-models-council.md) | compact model tiers, supported formats, verified candidates, safetensors→GGUF conversion |
 | [30-arabic-terminology.md](30-arabic-terminology.md) | Arabic terminology council, dictionary evidence, and the glossary that governs model/prompt/projector copy |
+| [31-ux-rework-council.md](31-ux-rework-council.md) | first hands-on UX review: model chip, library (models/media), settings IA, Hugging Face search, download manager; Qiyas council decisions and phased plan |
+| [32-ux-rework-build-record.md](32-ux-rework-build-record.md) | P1–P6 build record of the rework: four-state model chip, three-segment Library with a durable queue, six-door Settings, in-app Hugging Face probe/acquisition, Media V1 and the gates |
 
 ## What is not published here
 

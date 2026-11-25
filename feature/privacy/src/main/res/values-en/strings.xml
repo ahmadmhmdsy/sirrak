@@ -2,6 +2,8 @@
 <resources>
     <!-- P3 privacy surfaces (PRV-2/PRV-5/PRV-6). English. -->
     <string name="privacy_section_title">Privacy &amp; data</string>
+    <string name="privacy_door_summary_online">Online on request · on-device log</string>
+    <string name="privacy_door_summary_offline">Fully offline</string>
     <string name="privacy_offline_label">Offline-only mode</string>
     <string name="privacy_offline_description">Blocks every new network request and stops a running download. The app works fully without internet.</string>
     <string name="privacy_network_audit">Network log</string>
@@ -12,7 +14,7 @@
     <string name="privacy_security">Security disclosure</string>
     <string name="privacy_not_published">Not published yet</string>
     <string name="privacy_open">Open</string>
-    <string name="privacy_note">No telemetry, analytics or ads. The app contacts the network only to download a model you chose, and everything on this page is logged on your device and can be cleared.</string>
+    <string name="privacy_note">No telemetry, analytics or ads. The app contacts the network only when you start something: downloading a model, searching Hugging Face and opening a repository, or probing a GGUF header. Everything on this page is logged on your device and can be cleared.</string>
 
     <string name="privacy_audit_title">Network</string>
     <string name="privacy_audit_declared">Declared endpoints</string>
@@ -26,7 +28,11 @@
     <string name="privacy_audit_completed">Completed</string>
     <string name="privacy_audit_failed">Failed</string>
     <string name="privacy_endpoint_model_download_purpose">Download the AI model you choose</string>
-    <string name="privacy_endpoint_model_download_when">Only when you start a download in Models</string>
+    <string name="privacy_endpoint_model_download_when">Only when you start a download in Library → Models</string>
+    <string name="privacy_endpoint_hf_search_purpose">Search the public Hugging Face model index and read the file list of a repository you choose</string>
+    <string name="privacy_endpoint_hf_search_when">Only when you open Hugging Face search, ask for more results, or open a repository you picked</string>
+    <string name="privacy_endpoint_hf_probe_purpose">Read a capped byte range (at most 12 MB) of the GGUF header of the model you inspect</string>
+    <string name="privacy_endpoint_hf_probe_when">Only when you tap probe on a model file before downloading it</string>
     <string name="privacy_endpoint_unknown_purpose">Undescribed purpose</string>
     <string name="privacy_endpoint_unknown_when">Unspecified usage time</string>
 

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- P3: page titles for the Hugging Face browser pages. The screens themselves live in
+         feature/models and own their own copy; these two exist only for PageContribution.labelRes. -->
+    <string name="hf_search_title">البحث في Hugging Face</string>
+    <string name="hf_repo_title">ملفات النموذج</string>
+</resources>

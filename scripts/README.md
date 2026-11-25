@@ -29,14 +29,17 @@ pwsh -File scripts/ui-regression.ps1 -UpdateBaseline  # accept the current scree
 pwsh -File scripts/ui-regression.ps1 -Serial emulator-5556
 ```
 
-Screens covered: `home`, `model-picker` (model sheet opened from the composer chip), `library-empty`
-(Library tab) and `settings-top` (Settings, appearance section). Current captures are written to
-`ui-current/` (git-ignored) so a failing run can be reviewed next to `ui-baseline/`.
+Screens covered: `home` (empty conversation), `model-picker` (the no-model doorway sheet opened from the
+header chip — the chip moved out of the composer when model management left Settings), `library-empty`
+(Library tab, models segment) and `settings-top` (Settings root, first doors). Current captures are written
+to `ui-current/` (git-ignored) so a failing run can be reviewed next to `ui-baseline/`. The chip tap is
+`Tap-Scaled 0.64 0.166` (418,212 on 720x1280); the old 0.10 y-fraction now misses the chip.
 
-Baseline provenance: captured on the API 36 `Nawa_Phone` AVD (720x1280) from the signed `libre`
-release build `1.0.0-rc2` (versionCode 13) on 24 Nov 2026, from a clean launch and with no model
-installed. Refresh the baseline only together with an intended UI change, and commit the new PNGs in
-the same change as the code.
+Baseline provenance: refreshed on the API 36 `Nawa_Phone` AVD (720x1280) on 25 Nov 2026 from
+`1.1.0` candidate debug build `3BDC4213…192E` (versionCode 14, universal APK 223,217,333 B), from a clean
+launch with no model installed; the final artifact `4CD65A60…539A` then re-ran the plain compare and all
+four screens still match at distance 0. The previous baseline was the signed `1.0.0-rc2` release. Refresh the baseline only together with an intended UI
+change, and commit the new PNGs in the same change as the code.
 
 ## `validate-store.ps1` — Play/F-Droid listing validator
 

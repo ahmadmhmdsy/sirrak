@@ -9,13 +9,15 @@ import app.sirrak.core.runtime.ModelStore
 import app.sirrak.core.runtime.Plugin
 import app.sirrak.core.runtime.PluginScope
 import app.sirrak.core.runtime.SettingsService
-import app.sirrak.core.runtime.Slots
 
 /**
- * M11 feature plugin: one Settings group (catalogue, downloader, consent, storage manager) and the
- * first-run onboarding screens rendered by the host before the shell exists. The plugin contributes
- * UI only - the host owns the catalogue asset, the device report and the single downloader, so this
- * module stays testable and the same components can be reused by a future standalone models screen.
+ * M11 feature plugin: it used to contribute the Settings model group. P4 moved model management into
+ * the Library (models segment, downloads segment, model page), so this plugin now only declares the
+ * services the composer and the host's onboarding renderer rely on — [ModelManagerSection] itself is
+ * still composed by the first-run onboarding flow and by tests, just not as a Settings group.
+ *
+ * The plugin contributes no UI of its own; removing it would change install order for the onboarding
+ * store, which is why it stays as an explicit dependency declaration.
  */
 class ModelManagerPlugin : Plugin {
 
@@ -32,19 +34,6 @@ class ModelManagerPlugin : Plugin {
     )
 
     override fun install(scope: PluginScope) {
-        val catalogueProvider = scope.service(ModelCatalogueProvider::class.java)
-        val profileProvider = scope.service(DeviceProfileProvider::class.java)
-        val downloader = scope.service(ModelDownloader::class.java)
-        val consentStore = scope.service(LicenceConsentStore::class.java)
-        val modelStore = scope.service(ModelStore::class.java)
-        scope.slotList(Slots.SettingsSections, order = 12) {
-            ModelManagerSection(
-                catalogueProvider = catalogueProvider,
-                profileProvider = profileProvider,
-                downloader = downloader,
-                consentStore = consentStore,
-                modelStore = modelStore,
-            )
-        }
+        // Intentionally empty: model surfaces live in the Library since P4.
     }
 }

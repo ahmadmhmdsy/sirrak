@@ -516,3 +516,22 @@ recaptured, the UI regression baseline was refreshed, the store listing and both
 bilingual site was regenerated (OG card included), and the SBOM/NOTICE version stamps were bumped. The gates
 were rerun on the rc2 tree with `scripts/release-check.ps1`; the release and CI evidence is recorded in
 [docs/27-sirrak-launch-checklist.md](27-sirrak-launch-checklist.md) §P3.9.
+
+---
+
+## 17. Amendment — 25 Nov 2026: `1.1.0` UX rework candidate
+
+Six product defects in the rc2 surface were taken through a recorded council ([docs/31](31-ux-rework-council.md))
+and rebuilt in a disciplined P1→P6 order: an honest four-state engine chip that routes to a model instead of
+grey text; a three-segment Library (models / downloads / media) replacing the Settings model manager; six
+Settings doors with live summaries replacing one long scroll; an in-app Hugging Face search with a bounded
+GGUF probe and RAM/disk fit verdicts; removal of the download-manager UI; and UX-first hints that keep the
+manual controls. The implementation record, with every accepted deviation from the design contract, is
+[docs/32](32-ux-rework-build-record.md).
+
+`1.1.0` (versionCode 14) is a **candidate**, not a signed release: this checkout has no release keystore, so the
+validated artifact is the debug-signed universal APK and the signed `1.0.0-rc2` release remains the last
+published build. The gates were rerun on the 1.1.0 tree (744 JVM tests, lint, store, site, screenshots) and the
+artifact, capture provenance and remaining gaps are recorded in
+[docs/27-sirrak-launch-checklist.md](27-sirrak-launch-checklist.md) §P3.10. F-Droid metadata stays pinned to
+the published rc2 tag until a `1.1.0` release is tagged.

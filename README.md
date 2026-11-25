@@ -14,7 +14,7 @@
   <a href="https://github.com/alshahia/sirrak/actions/workflows/pages.yml"><img src="https://github.com/alshahia/sirrak/actions/workflows/pages.yml/badge.svg" alt="Site deploy status"></a>
   <img src="https://img.shields.io/badge/license-Apache--2.0-blue.svg" alt="License: Apache-2.0">
   <img src="https://img.shields.io/badge/Android-9%2B%20(API%2028)-3ddc84.svg" alt="Android 9 or newer">
-  <img src="https://img.shields.io/badge/JVM%20tests-567%20green-brightgreen.svg" alt="567 green JVM tests">
+  <img src="https://img.shields.io/badge/JVM%20tests-744%20green-brightgreen.svg" alt="744 green JVM tests">
   <img src="https://img.shields.io/badge/telemetry-none-success.svg" alt="No telemetry">
 </p>
 
@@ -31,18 +31,23 @@
 ---
 
 Sirrak (Arabic for *your companion*) is a private assistant for Arabic and English that runs a real language
-model on your phone. Chat, dictation, document grounding and model management all work offline; the only
-network request the app can make is a model download you start yourself. No account, no cloud, no ads, no
-telemetry, no analytics. Apache-2.0 source.
+model on your phone. Chat, dictation, document grounding and model management all work offline. The only
+network requests the app can make are ones you start: a model download, a Hugging Face catalogue search or
+repository browse, or a bounded GGUF header probe — each is listed in the in-app network log. No account, no
+cloud, no ads, no telemetry, no analytics. Apache-2.0 source.
 
 It is built Arabic-first, not translated as an afterthought: a right-to-left layout designed from the start,
 Amiri and IBM Plex Sans Arabic typography, Arabic and English dictation, and five hand-written theme packs
 instead of a stock Material palette.
 
 **Status:** the [repository](https://github.com/alshahia/sirrak) and the bilingual site are public, the
-privacy and security policies are published in both languages, and the signed APK is served from
-[GitHub Releases](https://github.com/alshahia/sirrak/releases/latest). `1.0.0-rc2` is the current
-candidate; F-Droid and Play are prepared but have no store listing yet — see [Limits](#limits-honest).
+privacy and security policies are published in both languages, and the signed `1.0.0-rc2` APK is served from
+[GitHub Releases](https://github.com/alshahia/sirrak/releases/latest). `1.1.0` is the current candidate (the UX
+rework: three-segment Library, six-door Settings, an in-app Hugging Face doorway and a media shelf —
+[docs/32](docs/32-ux-rework-build-record.md)). No release keystore is present in this checkout, so the
+validated `1.1.0` artifact is the debug-signed universal APK recorded in [docs/27](docs/27-sirrak-launch-checklist.md)
+P3.10; a signed release has to be cut where the keystore lives. F-Droid and Play are prepared but have no store
+listing yet — see [Limits](#limits-honest).
 
 ## Why Sirrak
 
@@ -54,7 +59,7 @@ candidate; F-Droid and Play are prepared but have no store listing yet — see [
   24-case Arabic evaluation suite on every JVM test run.
 - **Consistent Arabic terminology.** A Qiyas-reviewed glossary fixes the shipped wording: an AI model is **نموذج**
   (not طراز), prompts are **تعليمات**, and the vision projector is **ملحق الرؤية** — [docs/30](docs/30-arabic-terminology.md).
-- **Honest licences.** A bundled licence and credits registry (23 components, full texts offline) feeds
+- **Honest licences.** A bundled licence and credits registry (23 entries, full texts offline) feeds
   Settings → About, [NOTICE](NOTICE) and a drift-tested [CycloneDX SBOM](sbom.cdx.json); every catalogue model
   shows its licence before download.
 - **Small and inspectable.** 15 Gradle modules, typed UI slots, a dependency-ordered plugin runtime — a feature
@@ -66,9 +71,12 @@ candidate; F-Droid and Play are prepared but have no store listing yet — see [
 | Surface | What you get |
 |---|---|
 | Chat | Streaming answers from a local GGUF model, multiple conversations with search/rename/delete, Markdown rendering, per-conversation system prompt and stop sequences, copy/regenerate/new-chat actions, token meter with measured tok/s |
-| Dictation | On-device sherpa-onnx Whisper for Arabic and English with a live level meter; the transcript is appended to the composer, never sent automatically; audio never leaves the device |
+| Dictation | On-device sherpa-onnx Whisper for Arabic and English; the recording strip shows a live timer with stop and cancel, and the transcript is appended to the composer, never sent automatically; audio never leaves the device |
 | Documents | Import PDF, DOCX, EPUB, Markdown or text, index locally (embeddings + Arabic BM25 fused by RRF) and ask questions answered from numbered, explicitly untrusted sources with citation chips and excerpt sheets |
-| Models | Curated catalogue with device-aware recommendations (including a compact 2 GB tier), resumable checksum-verified downloads, pause/cancel/retry, background progress notification, installed-model manager, storage manager, Hugging Face import |
+| Library | One device shelf with three segments: **models** (curated catalogue with device-aware fit verdicts — including a compact 2 GB tier —, GGUF import, per-model page), **downloads** (a persisted queue, one transfer at a time, resume/pause/cancel/retry after an app restart, background notification) and **media** |
+| Media | Documents stay indexed for cited answers; images and audio live as shelf items; audio is transcribed on the device by Whisper into a text item (the audio never leaves the phone), with a keep-or-once retention choice and per-item agent-access control |
+| Hugging Face | In-app search over the public GGUF repositories, a repo file list, and an 8–12 MB GGUF header probe that produces an honest device-fit verdict before any download starts; gated repos explain their gate instead of failing |
+| Settings | Six doors with live summaries — appearance & reading, language (inline), privacy & network, voice, advanced, about — instead of one long scroll |
 | Tuning | Temperature, top-p, top-k, repeat penalty, context size, streaming, chat-template choice, global and per-model prompts — all provable in one engine log line |
 | Themes | Five hand-written theme packs with a live preview and a WCAG contrast gate: Girih & Ink, Lapis Night, Turquoise Dawn, Madder Dusk, Paper |
 | Privacy | Per-call network log, offline-only switch, local AI-output reports you choose to export, and an honest state instead of a dead link where no store listing exists yet |
@@ -106,7 +114,7 @@ Play listing yet.
 ## Privacy by construction
 
 - **No telemetry, no analytics, no ads, no crash reporting service.** Nothing is sent anywhere unless you start
-  a model download.
+  a model download, a Hugging Face catalogue search/repository browse, or a GGUF header probe.
 - **Network audit that cannot be hidden.** The app declares every endpoint in configuration and logs the calls
   that actually happened on the device; the log never leaves the phone.
 - **Offline-only mode is enforced before a socket opens**, not as a UI hint.
@@ -121,7 +129,8 @@ Play listing yet.
 <div dir="rtl" lang="ar">
 
 سِرِّك مساعد خاص بالعربية والإنجليزية يعمل على جهازك: المحادثة والإملاء والإجابة من مستنداتك وإدارة النماذج كلها
-تعمل دون اتصال. الطلب الشبكي الوحيد الذي يمكن أن يصدره التطبيق هو تنزيل نموذج تبدأه أنت بنفسك. لا حسابات،
+تعمل دون اتصال. لا يصدر التطبيق إلا الطلبات التي تبدأها أنت: تنزيل نموذج، أو البحث في فهرس Hugging Face
+وفتح مستودع، أو فحص محدود (12 م.ب كحد أقصى) لترويسة GGUF — وكلها مسجّلة في سجل الشبكة داخل التطبيق. لا حسابات،
 ولا سحابة، ولا إعلانات، ولا تتبّع، ولا قياسات. المصدر مفتوح بترخيص Apache-2.0.
 
 **لماذا سِرِّك؟** المحرّك على الجهاز أولًا (llama.cpp على المعالج)، ووضع "دون اتصال فقط" يمنع كل طلب ويوقف أي
@@ -129,9 +138,12 @@ Play listing yet.
 مكتوبة يدويًا، وسجل تراخيص صادق لكل مكوّن، ولا خادم تُرسل إليه محادثاتك.
 
 **ما الذي يفعله؟** محادثة بثّية مع نموذج محلي مع سجل محادثات وبحث وإعادة تسمية وتصدير؛ إملاء عربي وإنجليزي عبر
-sherpa-onnx Whisper على الجهاز؛ الإجابة من مستنداتك (PDF وDOCX وEPUB ونصوص) مع مراجع واقتباسات؛ إدارة نماذج
-من كتالوج منسّق مع تنزيلات قابلة للاستئناف ومتحقَّقة من بصمتها؛ ضبط دقيق لمحرّك التوليد؛ وخصوصية بيدك: سجل
-شبكة لكل طلب، ومفتاح "دون اتصال فقط"، وبلاغات محلية لمخرجات الذكاء الاصطناعي تصدّرها أنت فقط إن أردت.
+sherpa-onnx Whisper على الجهاز؛ الإجابة من مستنداتك (PDF وDOCX وEPUB ونصوص) مع مراجع واقتباسات؛ ومكتبة واحدة
+بثلاثة أقسام: النماذج (كتالوج منسّق بحكم توافق صريح مع الجهاز، واستيراد GGUF، وصفحة لكل نموذج)، والتنزيلات
+(طابور محفوظ، تنزيل واحد في كل مرة، واستئناف بعد إغلاق التطبيق)، والوسائط (مستندات مفهرسة، وصور، وصوت يُفرَّغ
+نصيًا على الجهاز، مع اختيار الإبقاء أو الاستخدام مرة واحدة وتحكّمك في وصول الوكيل). البحث في Hugging Face من
+داخل التطبيق مع فحص ترويسة GGUF قبل التنزيل، والإعدادات ستة أبواب بملخصات حيّة بدل تمريرة واحدة طويلة، والخصوصية
+بيدك: سجل شبكة لكل طلب، ومفتاح "دون اتصال فقط"، وبلاغات محلية لمخرجات الذكاء الاصطناعي تصدّرها أنت فقط إن أردت.
 
 **التثبيت:** نزّل ملف APK الموقَّع من صفحة [الإصدارات](https://github.com/alshahia/sirrak/releases) على
 أندرويد 9 أو أحدث. لا يوجد نموذج مضمَّن في التطبيق؛ اختر نموذجًا من الكتالوج أو استورد ملف GGUF، ثم فعّل وضع
@@ -156,7 +168,7 @@ $env:ANDROID_SDK_ROOT = $env:ANDROID_HOME
 # libre debug APK (libre = F-Droid/self-hosted default; play is the Play flavour)
 .\gradlew :app:assembleLibreDebug
 
-# 567 JVM tests (the same selection CI runs)
+# 744 JVM tests across 10 modules (the same selection CI runs)
 .\gradlew :app:testLibreDebugUnitTest testDebugUnitTest
 
 # signed release APK + Play bundle (reads the git-ignored keystore.properties; unsigned without it)
@@ -182,7 +194,7 @@ More detail: [CONTRIBUTING.md](CONTRIBUTING.md), [docs/05-architecture.md](docs/
 | <code>core/rag/</code> <code>core/speech/</code> <code>core/models/</code> <code>core/privacy/</code> | pure-JVM policy cores: retrieval, speech, model management, privacy |
 | <code>feature/*</code> | chat, settings, voice, models, privacy plugins contributing through typed slots |
 | <code>engine/llamacpp/</code> <code>engine/whisper/</code> | native llama.cpp engine; sherpa-onnx Whisper adapter |
-| <code>docs/</code> | public product and build records (20 documents) |
+| <code>docs/</code> | public product and build records (24 documents + index) |
 | <code>store/</code> | Play/F-Droid listing copy, screenshots, generated graphics, store spec |
 | <code>scripts/</code> | build/release/test/store/site quality scripts |
 | <code>website/</code> | bilingual static site generated from data, deployed to GitHub Pages |
@@ -207,25 +219,30 @@ The rules are written down in [CONTRIBUTING.md](CONTRIBUTING.md) and [docs/17-cu
 
 ## Quality and evidence
 
-| Gate | Result on <code>1.0.0-rc2</code> |
+| Gate | Result on <code>1.1.0</code> |
 |---|---|
-| JVM unit tests | **567 tests, 0 failures** across 9 modules |
+| JVM unit tests | **744 tests, 0 failures** across 10 modules |
 | Arabic evaluation | **24/24** cases (normalisation, sentence splitting, BM25, negative controls) |
-| Android lint | **0 errors**, 36 reviewed warnings (dependency/AGP version pins plus 3 transitive TLS warnings) |
+| Android lint | **0 errors**, 39 reviewed warnings (dependency/AGP version pins plus 3 transitive TLS warnings) |
 | Screenshot regression | **4/4 screens, distance 0** against committed baselines |
 | Store validator | **79/79 checks** (copy limits, graphics hashes, launch docs) |
 | Release gate | [<code>scripts/release-check.ps1</code>](scripts/release-check.ps1) builds, verifies v2 signature + certificate, checks the AAB, validates store assets and runs the screenshot gate |
-| SBOM | CycloneDX 1.5, 22 components, generated from the licence registry, drift-tested |
+| SBOM | CycloneDX 1.5, 22 components + the app subject (23 licence-registry entries), drift-tested |
 | Accessibility | 48 dp targets, 200% text, RTL mirroring, TalkBack labels, WCAG contrast gate |
 
 ## Limits (honest)
 
 - **Performance** is measured on an emulator (API 36 x86_64), not a physical phone; arm64 builds are provided
   but not benchmarked here.
-- The APK is **universal** (arm64-v8a + x86_64, ~139 MiB) with no ABI splits yet, and signing is **v2 only**
-  (v3/v4 key rotation not configured).
+- The `1.1.0` candidate artifact is a universal **debug** APK (arm64-v8a + x86_64, ~213 MiB) because this
+  checkout has no release keystore; the signed `1.0.0-rc2` release on GitHub remains the ~139 MiB build. No ABI
+  splits yet, and release signing is **v2 only** (v3/v4 key rotation not configured).
 - **Model quality varies.** The catalogue ships no bilingual vision model; Arabic vision questions are a known
   limitation. Small models can ignore citations; a deterministic fallback covers that.
+- **Media and Hugging Face are V1.** Images are view-only; audio is transcribed on the device and the audio
+  itself is not played from chat; a one-time media item is deleted when the app closes because chat cannot yet
+  reference shelf media. Hugging Face rows show a repository's GGUF files, not per-file parameter counts or
+  quantisation; an unprobed file stays `UNKNOWN` until you run the 12 MB header probe.
 - **F-Droid is not published** — the prebuilt sherpa-onnx AAR needs a source build first. **Play is not
   published** — closed testing has not started.
 - The policy pages are published in both languages, but no store listing exists yet, so the app shows an

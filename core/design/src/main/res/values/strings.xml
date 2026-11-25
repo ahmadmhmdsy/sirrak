@@ -17,4 +17,7 @@
     <string name="font_scale_default">افتراضي</string>
     <string name="font_scale_large">كبير</string>
     <string name="font_scale_largest">الأكبر</string>
+
+    <!-- Pages (P1/P4): the back arrow's accessible name is owned here so every pushed page can use it. -->
+    <string name="page_back">رجوع</string>
 </resources>

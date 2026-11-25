@@ -46,6 +46,10 @@ and English short descriptions were 84/89 characters (limit 80) and the English 
 
 ## Artifacts (final `1.0.0-rc2` build, 24 Nov 2026)
 
+These remain the last **signed** artifacts; no `1.1.0` release has been cut because this checkout has no
+release keystore (`keystore.properties` / `keystore/` are absent). The validated `1.1.0` candidate is the
+debug-signed universal APK recorded under the next heading.
+
 | Artifact | Path | Size | SHA-256 |
 | --- | --- | --- | --- |
 | Signed release APK (libre, F-Droid/self-hosted) | `app/build/outputs/apk/libre/release/app-libre-release.apk` | 145,712,378 B (138.96 MiB) | `0B53BD7157CA9CC1A2D9DE42ADD44FE46F58D42C908ABB0E7E40E32B23693182` |
@@ -57,6 +61,19 @@ Signing certificate (local release key, not F-Droid's): certificate SHA-256
 without them builds an unsigned release, which is what F-Droid wants. **Every rebuild changes these
 hashes** — `scripts/release-check.ps1` prints and records fresh ones, re-record them here before
 attaching a release to a store or F-Droid MR.
+
+## Candidate `1.1.0` build (25 Nov 2026)
+
+| Artifact | Path | Size | SHA-256 |
+| --- | --- | --- | --- |
+| Debug-signed universal APK (validated candidate) | `app/build/outputs/apk/libre/debug/app-libre-debug.apk` | 223,217,333 B (212.9 MiB) | `4CD65A603A32E829032DBAB5FD390F73FA201FA15F97CEAA75F3E9F4568D539A` |
+
+The candidate is `versionName 1.1.0` / `versionCode 14`, built with
+`:app:assembleLibreDebug -PsirrakArm64Debug=true` so both `arm64-v8a` and `x86_64` carry all seven native
+libraries (including `libsirrak_llm.so`). It is signed with the standard Android **debug** key, not the
+project release certificate above, so it is suitable for device testing only — a store or F-Droid
+submission still needs the signed release rebuild. Screenshots in `screenshots/` and the UI baseline in
+`../scripts/ui-baseline/` were recaptured from this APK; provenance in `screenshots/README.md`.
 
 ## Still needed before publishing
 

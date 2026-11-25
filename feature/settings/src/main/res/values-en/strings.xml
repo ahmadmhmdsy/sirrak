@@ -15,4 +15,6 @@
     <string name="settings_language_note">Changing the language reloads the interface and remembers your choice.</string>
     <string name="settings_font_scale">Text size</string>
     <string name="settings_font_scale_note">Scales text only, not layout. Applies instantly and is remembered.</string>
+    <string name="settings_doors_section">Sections</string>
+    <string name="settings_door_appearance_value">%1$s · text size %2$d%%</string>
 </resources>

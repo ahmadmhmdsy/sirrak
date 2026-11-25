@@ -1,5 +1,7 @@
-1.0.0-rc2 — signed APK from GitHub Releases.
-- Arabic terms normalized: نموذج for AI model, تعليمات for prompts, ملحق الرؤية for vision projector.
-- New compact catalogue tier: LFM2.5 350M (219 MB) fits 2 GB phones; Qwen2.5 0.5B stays the 3 GB+ default.
-- On-device chat and dictation, document answers with sources, resumable checksum-verified downloads, offline-only switch and network log.
-- Five theme packs, RTL and large text. Apache-2.0, no account, no cloud, no telemetry. Android 9+.
+1.1.0 — signed APK on GitHub Releases.
+- Library: Models, Downloads, Media; model management moved here from Settings.
+- Downloads survive a restart: one transfer at a time, resume where it stopped.
+- In-app Hugging Face search: GGUF header check with an honest fit verdict.
+- Settings is six doors with live summaries.
+- Media: documents, images, audio transcripts on device; agent access you control.
+- On-device chat, dictation and document answers with sources. Apache-2.0, no telemetry.

@@ -1,8 +1,10 @@
 package app.sirrak
 
+import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.SideEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
@@ -40,6 +42,10 @@ fun SirrakApp(container: AppContext) {
     val onboardingStore = container.service(OnboardingStore::class.java)
     val onboarding by onboardingStore.state.collectAsStateWithLifecycle()
 
+    // One rule for every surface: a page pops before the system handles back. Android's predictive
+    // back still sees a disabled handler at the root, so the app closes instead of blinking away.
+    BackHandler(enabled = navigator.canGoBack) { navigator.back() }
+
     SirrakTheme(mode = themeMode, packId = themePackId) {
         // Text scale wraps the whole shell (not just Settings) but not the theme itself: dp geometry,
         // insets and touch targets stay put while sp text follows the preset immediately.
@@ -55,7 +61,20 @@ fun SirrakApp(container: AppContext) {
             }
             CompositionLocalProvider(LocalAppContext provides container) {
                 if (onboarding.completed) {
-                    SirrakShell(destinations = destinations, navigator = navigator)
+                    SirrakShell(
+                        destinations = destinations,
+                        navigator = navigator,
+                        pageContent = { route ->
+                            val page = remember(route.id) { container.pages.find(route.id) }
+                            if (page != null) {
+                                page.content(route.argument)
+                            } else {
+                                // A page id nobody contributed is a composition bug, not a user error:
+                                // close it instead of showing a blank screen.
+                                LaunchedEffect(route) { navigator.closePages() }
+                            }
+                        },
+                    )
                 } else {
                     OnboardingScreen(container)
                 }

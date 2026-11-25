@@ -32,6 +32,7 @@ import androidx.compose.ui.unit.dp
 import app.sirrak.core.runtime.AppNavigator
 import app.sirrak.core.runtime.Destination
 import app.sirrak.core.runtime.NavIcon
+import app.sirrak.core.runtime.PageRoute
 import androidx.compose.animation.core.tween
 
 private fun iconFor(icon: NavIcon) = when (icon) {
@@ -50,12 +51,19 @@ fun SirrakShell(
     destinations: List<Destination>,
     navigator: AppNavigator,
     modifier: Modifier = Modifier,
+    /**
+     * Renders a page the navigator pushed. The host resolves the page id through its registry, so the
+     * shell never names a page and a feature can add one without touching this file. When null, pages
+     * are not supported by this composition and only destinations render.
+     */
+    pageContent: (@Composable (PageRoute) -> Unit)? = null,
 ) {
     if (destinations.isEmpty()) {
         Box(modifier.fillMaxSize().background(MaterialTheme.colorScheme.background))
         return
     }
     val current = destinations.firstOrNull { it.id == navigator.currentId } ?: destinations.first()
+    val page = navigator.currentPage
     val motion = LocalSirrakTokens.current.motion
     Scaffold(
         modifier = modifier.fillMaxSize(),
@@ -65,7 +73,9 @@ fun SirrakShell(
         // reserves its height above the keyboard and leaves a blank band under the composer.
         // Hiding it gives the transcript that height back exactly when the user is typing.
         bottomBar = {
-            if (!WindowInsets.isImeVisible) {
+            // A page is a focused surface: it covers the whole window and takes the bottom bar with
+            // it, so a half-visible tab bar can never be mistaken for a way out.
+            if (!WindowInsets.isImeVisible && page == null) {
                 Column {
                     Hairline()
                     NavigationBar(
@@ -100,6 +110,9 @@ fun SirrakShell(
         },
     ) { innerPadding ->
         Box(Modifier.fillMaxSize().padding(bottom = innerPadding.calculateBottomPadding())) {
+            if (page != null && pageContent != null) {
+                Box(Modifier.fillMaxSize()) { pageContent.invoke(page) }
+            } else {
             AnimatedContent(
                 targetState = current,
                 transitionSpec = {
@@ -110,6 +123,7 @@ fun SirrakShell(
                 label = "destination",
             ) { destination ->
                 Box(Modifier.fillMaxSize()) { destination.content() }
+            }
             }
         }
     }

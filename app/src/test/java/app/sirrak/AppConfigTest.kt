@@ -27,12 +27,15 @@ class AppConfigTest {
         assertEquals("llamacpp", config.engine.provider)
         assertEquals(2048, config.engine.contextTokens)
         assertEquals("girih_ink", config.theme.defaultPack)
-        // P3: the shipped build declares exactly the endpoint the downloader uses, by data.
+        // P3: the shipped build declares every network endpoint it can reach, by data.
         assertFalse(config.privacy.offlineByDefault)
-        assertEquals(1, config.privacy.endpoints.size)
-        assertEquals("model_download", config.privacy.endpoints.single().id)
-        assertEquals("huggingface.co", config.privacy.endpoints.single().host)
-        assertEquals("model_download", config.privacy.endpoints.single().purposeKey)
+        assertEquals(3, config.privacy.endpoints.size)
+        val byId = config.privacy.endpoints.associateBy { it.id }
+        assertEquals(setOf("model_download", "hf_search", "hf_probe"), byId.keys)
+        byId.values.forEach { endpoint ->
+            assertEquals("huggingface.co", endpoint.host)
+            assertEquals(endpoint.id, endpoint.purposeKey)
+        }
         assertTrue(AppConfigLoader.validate(config).isEmpty())
     }
 

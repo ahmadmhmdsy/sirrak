@@ -16,6 +16,7 @@ import app.sirrak.core.models.DownloadPhase
 import app.sirrak.core.models.DownloadProgress
 import app.sirrak.core.models.ModelCatalogueProvider
 import app.sirrak.core.models.ModelDownloader
+import app.sirrak.downloads.DownloadBridge
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
@@ -44,7 +45,14 @@ class DownloadService : Service() {
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
         if (intent?.action == ACTION_CANCEL) {
-            runCatching { downloader()?.cancel() }
+            // Cancel through the bridge, not the raw downloader: only the bridge knows which durable
+            // row owns this transfer, and a direct cancel would leave that row ACTIVE for ever.
+            runCatching {
+                val bridge = (application as SirrakApplication)
+                    .container
+                    .service(DownloadBridge::class.java)
+                bridge.active()?.let { bridge.cancel(it.id) }
+            }
             stopForegroundCompat()
             stopSelf()
             return START_NOT_STICKY
