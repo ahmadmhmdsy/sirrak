@@ -235,6 +235,19 @@ in its README). Besides the pictures, the capture pass checked the behaviours th
 18. Gradle's build cache can serve a stale result for tests that read repository files at runtime:
     `WebsiteContentTest` reported success from cache after `website/content` changed. Delete the test
     outputs and pass `--no-build-cache` when a test's inputs are files Gradle does not track.
+19. Screenshot provenance must be proven, not inferred: pull the installed APK (`pm path` + `adb pull`) and
+    hash it before attributing a capture to a build. The Arabic chat shot was taken on the emulator's
+    installed artifact only after that hash matched the shipped candidate, which turned "probably the
+    candidate" into a checkable fact.
+20. The input method is part of the capture rig: the API 36 AOSP image ships no Arabic keyboard and
+    `adb shell input text` is ASCII-only, so a third-party test IME was needed to type the prompt. A test
+    IME is acceptable evidence only when disclosed, hidden before the capture, and never shipped in the app.
+21. Small-model quality is prompt-dependent, not fixed: the same Qwen2.5 1.5B model produced clean Arabic for
+    a writing prompt and mixed Arabic/Chinese for self-identification prompts. Choose a screenshot prompt the
+    model actually answers, verify it in a fresh process, and never retry until a flattering sample appears.
+22. Old-owner references live outside the website: docs, templates, store specs, `app.json` and the built
+    `dist` all carried the previous account. Migrate from one list, grep the whole tree and the generated
+    output, and treat old hosts as dead ends (the old Pages URL 404s; GitHub URLs only 301).
 
 ## Founder feedback — what the review did not ask for
 

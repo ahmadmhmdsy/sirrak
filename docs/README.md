@@ -31,6 +31,7 @@ open. They are shipped in the repository because a launch claim is only worth wh
 | [31-ux-rework-council.md](31-ux-rework-council.md) | first hands-on UX review: model chip, library (models/media), settings IA, Hugging Face search, download manager; Qiyas council decisions and phased plan |
 | [32-ux-rework-build-record.md](32-ux-rework-build-record.md) | P1–P6 build record of the rework: four-state model chip, three-segment Library with a durable queue, six-door Settings, in-app Hugging Face probe/acquisition, Media V1 and the gates |
 | [33-ux-audit-1.1.0.md](33-ux-audit-1.1.0.md) | round-2 UX audit of 1.1.0: state of the app, 31 deduplicated P0/P1 defects (8 P0) ranked, the council's ten fixes in order, and the evidence pack — with the eight area reports and the adversarial verdict in [audit-1.1.0/](audit-1.1.0/README.md) |
+| [34-sirrak-oversize-model-offload.md](34-sirrak-oversize-model-offload.md) | the founder's "run a model bigger than the phone" question: what Android permits (unified RAM, mmap page cache, LMK/thermal/UFS), the offload literature and projects, a qiyas-council ruling, and a default-off experimental MVP proposal — research only, nothing shipped |
 
 ## What is not published here
 

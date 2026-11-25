@@ -259,18 +259,24 @@ is recovered, share it only as a clearly marked debug build.
       third-party `ADBKeyboard` test IME was used to type the prompt; it was hidden before the capture, it is
       emulator-only, and it is not in any shipping build (the APK is unchanged by this pass).
 - [x] Emulator findings for the release record (no catalogue change, no feature claimed): Qwen2.5-1.5B-Instruct
-      Q4_K_M (~1.12 GB) runs at ≈0.3–1.4 tok/s on the x86_64 API 36 emulator; Qwen2.5-3B-Instruct Q4_K_M
-      (2.10 GB, SHA-256 verified against the Hugging Face LFS oid) loads and answers after a fresh start but
-      produces corrupted mixed-language output after in-app model switching, at ≈0.1–0.4 tok/s. The switching
-      instability is logged as an engine defect to fix, not as a product capability.
+      Q4_K_M (~1.12 GB) answers at ≈0.3–1.4 tok/s on the x86_64 API 36 emulator. Qwen2.5-3B-Instruct Q4_K_M
+      (2.10 GB, SHA-256 verified against the Hugging Face LFS oid) loads and answers correctly at ≈0.1–0.4 tok/s
+      but showed two prompt-sensitive failures in a row (one English word inside an Arabic sentence, one
+      repeated-character degeneration) — logged as a small-model quality observation, not a proven engine
+      defect and not a product capability. Qwen2.5-1.5B also produced mixed Arabic/Chinese on two
+      self-identification prompts and a weak, off-topic sentence on a creative prompt; the shipped Arabic
+      screenshot therefore uses a writing prompt it answers cleanly and was captured in a fresh process.
 - [x] Bigger-than-RAM research: [docs/34](34-sirrak-oversize-model-offload.md) records the owner's
       "run a model the phone cannot normally hold" idea, what Android actually allows (unified RAM, mmap page
       cache, LMK/thermal/UFS limits), the literature, a qiyas-council ruling and a default-off MVP proposal.
       Nothing is implemented and no marketing claim is made anywhere.
-- [ ] Debug pre-release for testers: the candidate debug APK is published as a GitHub **pre-release** marked
-      DEBUG / not latest (signed rc2 stays the latest release) so testers can reproduce issues without anyone
-      mistaking it for the signed product. The signed 1.1.0 store description/size update stays blocked on the
-      keystore.
+- [x] Debug pre-release for testers: `debug-1.1.0-20261125`
+      (https://github.com/ahmadmhmdsy/sirrak/releases/tag/debug-1.1.0-20261125) carries the candidate debug APK
+      as `app-libre-debug.apk`, 223,217,333 B, GitHub-computed `sha256:4CD65A60…539A` — identical to the
+      local artifact. It is marked **Pre-release** and not Latest (verified in `gh release list`), its notes
+      say DEBUG / not signed / not the 1.1.0 release / cannot install over signed rc2 / does not contain the
+      offload feature, and signed `v1.0.0-rc2` remains the Latest release. The signed 1.1.0 store
+      description/size update stays blocked on the keystore.
 - [ ] Signing: still `pending` the owner's recovery attempt of the rc2 keystore. If it fails, a new key is a
       key rotation: the new build cannot install over the rc2 build, so the release note must tell users to
       export/backup conversations and uninstall the old build instead of implying an in-place update.
@@ -281,7 +287,8 @@ is recovered, share it only as a clearly marked debug build.
    or device claim to a build; it turns "probably the candidate" into provenance.
 2. Budget for input method, not just app state: an AOSP emulator image has no Arabic keyboard and adb text
    injection is ASCII-only, so a real Arabic capture needs a test IME (and disclosure of that fact).
-3. Treat model switching inside one app process as a defect surface until proven otherwise: capture evidence
-   from a fresh process when the model is the subject of the claim.
+3. Separate model quality from app state: a small model can answer a prompt badly (mixed script, degenerate
+   repetition) with the engine healthy, so reproduce in a fresh process before filing an engine defect — and
+   pick a screenshot prompt the model actually answers well rather than one that flatters it.
 4. When web search/fetch are unavailable, say "desk research" and mark uncertain claims `[unverified]`; never
    present remembered citations as verified links.
