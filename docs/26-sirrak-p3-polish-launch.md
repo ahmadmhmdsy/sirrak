@@ -683,8 +683,8 @@ evidence stands.
 | Repo + release facts | `pwsh -File scripts/validate-repo.ps1` | **36/36 checks**: repo metadata, Pages, security features, branch protection (4 required checks), release assets with digests matching the spec, 11/11 live URLs 200 |
 | CI | GitHub Actions run `45159519429` | green: JVM tests, Arabic eval, lint, public-site |
 | Pages | GitHub Actions run `45159519451` | green: build → validate → deploy |
-| Live site | <https://alshahia.github.io/sirrak/> | 200 for all six pages, sitemap, robots, llms.txt, manifest, OG image; EN/AR `lang`+`dir`, canonical, hreflang, JSON-LD, bilingual 404 verified |
-| Release | <https://github.com/alshahia/sirrak/releases/tag/v1.0.0-rc1> | signed APK 145,711,750 B (`FD94EA31…`), AAB 64,938,455 B (`9326F505…`), `SHA256SUMS`; certificate `4537ECEB…6806` |
+| Live site | <https://ahmadmhmdsy.github.io/sirrak/> | 200 for all six pages, sitemap, robots, llms.txt, manifest, OG image; EN/AR `lang`+`dir`, canonical, hreflang, JSON-LD, bilingual 404 verified |
+| Release | <https://github.com/ahmadmhmdsy/sirrak/releases/tag/v1.0.0-rc1> | signed APK 145,711,750 B (`FD94EA31…`), AAB 64,938,455 B (`9326F505…`), `SHA256SUMS`; certificate `4537ECEB…6806` |
 
 ### Honest limits
 

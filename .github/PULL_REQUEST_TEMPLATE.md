@@ -1,7 +1,7 @@
 <!--
   Thanks for the pull request. Keep the sections that apply and delete the rest; an empty heading is
   noise. Rules and the environment table are in CONTRIBUTING.md:
-  https://github.com/alshahia/sirrak/blob/main/CONTRIBUTING.md
+  https://github.com/ahmadmhmdsy/sirrak/blob/main/CONTRIBUTING.md
 -->
 
 ## What changed

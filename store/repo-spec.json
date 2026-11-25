@@ -1,9 +1,9 @@
 {
   "schemaVersion": 1,
-  "repository": "alshahia/sirrak",
+  "repository": "ahmadmhmdsy/sirrak",
   "defaultBranch": "main",
   "license": "Apache-2.0",
-  "homepage": "https://alshahia.github.io/sirrak/",
+  "homepage": "https://ahmadmhmdsy.github.io/sirrak/",
   "descriptionKeywords": [
     "offline-first",
     "Arabic",

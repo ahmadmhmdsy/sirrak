@@ -491,10 +491,10 @@ into `app.json` with the signed artifacts rebuilt (APK 145,711,750 B / AAB 64,93
 | Target API 36, 64-bit | done (P3.4: targetSdk 36; arm64-v8a + x86_64) | — |
 | Closed testing completed per Play rules | not started | create closed track, recruit ≥12 testers |
 | Store listing AR + EN, honest screenshots | copy + 8 screenshots + generated icon/feature graphic ready (`store/`, `store/graphics/`) | upload them in Play Console; closed testing remains |
-| GitHub release: signed APK, checksums, source tag | live: <https://github.com/alshahia/sirrak/releases/tag/v1.0.0-rc1> — signed APK + AAB + `SHA256SUMS`, tag `v1.0.0-rc1`; SHA-256 recorded in `store/README.md` and the release notes | — |
+| GitHub release: signed APK, checksums, source tag | live: <https://github.com/ahmadmhmdsy/sirrak/releases/tag/v1.0.0-rc1> — signed APK + AAB + `SHA256SUMS`, tag `v1.0.0-rc1`; SHA-256 recorded in `store/README.md` and the release notes | — |
 | F-Droid: libre builds, metadata MR | repository + tag published; metadata completed (source/commit/changelog URLs, NDK/CMake recipe) with the prebuilt sherpa-onnx AAR caveat | open the `fdroiddata` MR — blocked on a source-buildable sherpa-onnx |
 | Support channel | live: GitHub issue chooser (`reportIssueUrl`), security advisories for private reports, `SUPPORT.md`; no email is offered (`reportEmail` empty by design) | — |
-| Public repository + bilingual site on Pages (P3.8) | live: <https://github.com/alshahia/sirrak>, <https://alshahia.github.io/sirrak/> (EN/AR, policy pages, sitemap/robots/llms.txt, bilingual 404); CI and Pages green; branch protection with required checks | — |
+| Public repository + bilingual site on Pages (P3.8) | live: <https://github.com/ahmadmhmdsy/sirrak>, <https://ahmadmhmdsy.github.io/sirrak/> (EN/AR, policy pages, sitemap/robots/llms.txt, bilingual 404); CI and Pages green; branch protection with required checks | — |
 | Backups: keystore offline, Play App Signing, CI secrets | keystore created locally and git-ignored | back up offline, register Play upload key |
 
 Ordered execution: `docs/27-sirrak-launch-checklist.md`. The launch gate in §5 still applies unchanged;

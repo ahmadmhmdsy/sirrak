@@ -10,8 +10,8 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/alshahia/sirrak/actions/workflows/ci.yml"><img src="https://github.com/alshahia/sirrak/actions/workflows/ci.yml/badge.svg" alt="CI status"></a>
-  <a href="https://github.com/alshahia/sirrak/actions/workflows/pages.yml"><img src="https://github.com/alshahia/sirrak/actions/workflows/pages.yml/badge.svg" alt="Site deploy status"></a>
+  <a href="https://github.com/ahmadmhmdsy/sirrak/actions/workflows/ci.yml"><img src="https://github.com/ahmadmhmdsy/sirrak/actions/workflows/ci.yml/badge.svg" alt="CI status"></a>
+  <a href="https://github.com/ahmadmhmdsy/sirrak/actions/workflows/pages.yml"><img src="https://github.com/ahmadmhmdsy/sirrak/actions/workflows/pages.yml/badge.svg" alt="Site deploy status"></a>
   <img src="https://img.shields.io/badge/license-Apache--2.0-blue.svg" alt="License: Apache-2.0">
   <img src="https://img.shields.io/badge/Android-9%2B%20(API%2028)-3ddc84.svg" alt="Android 9 or newer">
   <img src="https://img.shields.io/badge/JVM%20tests-744%20green-brightgreen.svg" alt="744 green JVM tests">
@@ -21,10 +21,10 @@
 <p align="center">
   <b>English</b> ·
   <a href="README.ar.md">العربية</a> ·
-  <a href="https://alshahia.github.io/sirrak/">Website</a> ·
-  <a href="https://alshahia.github.io/sirrak/privacy/">Privacy</a> ·
-  <a href="https://alshahia.github.io/sirrak/security/">Security</a> ·
-  <a href="https://github.com/alshahia/sirrak/releases/latest">Download</a> ·
+  <a href="https://ahmadmhmdsy.github.io/sirrak/">Website</a> ·
+  <a href="https://ahmadmhmdsy.github.io/sirrak/privacy/">Privacy</a> ·
+  <a href="https://ahmadmhmdsy.github.io/sirrak/security/">Security</a> ·
+  <a href="https://github.com/ahmadmhmdsy/sirrak/releases/latest">Download</a> ·
   <a href="docs/README.md">Docs</a>
 </p>
 
@@ -40,9 +40,9 @@ It is built Arabic-first, not translated as an afterthought: a right-to-left lay
 Amiri and IBM Plex Sans Arabic typography, Arabic and English dictation, and five hand-written theme packs
 instead of a stock Material palette.
 
-**Status:** the [repository](https://github.com/alshahia/sirrak) and the bilingual site are public, the
+**Status:** the [repository](https://github.com/ahmadmhmdsy/sirrak) and the bilingual site are public, the
 privacy and security policies are published in both languages, and the signed `1.0.0-rc2` APK is served from
-[GitHub Releases](https://github.com/alshahia/sirrak/releases/latest). `1.1.0` is the current candidate (the UX
+[GitHub Releases](https://github.com/ahmadmhmdsy/sirrak/releases/latest). `1.1.0` is the current candidate (the UX
 rework: three-segment Library, six-door Settings, an in-app Hugging Face doorway and a media shelf —
 [docs/32](docs/32-ux-rework-build-record.md)). No release keystore is present in this checkout, so the
 validated `1.1.0` artifact is the debug-signed universal APK recorded in [docs/27](docs/27-sirrak-launch-checklist.md)
@@ -83,7 +83,7 @@ listing yet — see [Limits](#limits-honest).
 
 ## Install
 
-1. Open [Releases](https://github.com/alshahia/sirrak/releases/latest) and download the signed **libre** APK
+1. Open [Releases](https://github.com/ahmadmhmdsy/sirrak/releases/latest) and download the signed **libre** APK
    (~139 MiB, universal arm64-v8a + x86_64). GitHub Releases is the only download path; the Play build is a
    separate signed bundle whose closed testing has not started.
 2. Install it on **Android 9+ (API 28)**. Android may ask you to allow installing from this source; the APK is
@@ -120,8 +120,8 @@ Play listing yet.
 - **Offline-only mode is enforced before a socket opens**, not as a UI hint.
 - **Documents, chats, models and settings stay in app-private storage.** Share exports happen only through the
   Android chooser you invoke.
-- **Policies (published, bilingual):** [privacy](https://alshahia.github.io/sirrak/privacy/) and
-  [security](https://alshahia.github.io/sirrak/security/), also in the repository as [PRIVACY.md](PRIVACY.md)
+- **Policies (published, bilingual):** [privacy](https://ahmadmhmdsy.github.io/sirrak/privacy/) and
+  [security](https://ahmadmhmdsy.github.io/sirrak/security/), also in the repository as [PRIVACY.md](PRIVACY.md)
   and [SECURITY.md](SECURITY.md).
 
 ## العربية
@@ -145,7 +145,7 @@ sherpa-onnx Whisper على الجهاز؛ الإجابة من مستنداتك (
 داخل التطبيق مع فحص ترويسة GGUF قبل التنزيل، والإعدادات ستة أبواب بملخصات حيّة بدل تمريرة واحدة طويلة، والخصوصية
 بيدك: سجل شبكة لكل طلب، ومفتاح "دون اتصال فقط"، وبلاغات محلية لمخرجات الذكاء الاصطناعي تصدّرها أنت فقط إن أردت.
 
-**التثبيت:** نزّل ملف APK الموقَّع من صفحة [الإصدارات](https://github.com/alshahia/sirrak/releases) على
+**التثبيت:** نزّل ملف APK الموقَّع من صفحة [الإصدارات](https://github.com/ahmadmhmdsy/sirrak/releases) على
 أندرويد 9 أو أحدث. لا يوجد نموذج مضمَّن في التطبيق؛ اختر نموذجًا من الكتالوج أو استورد ملف GGUF، ثم فعّل وضع
 عدم الاتصال. F-Droid قيد الإعداد وليس منشورًا بعد، وGoogle Play قيد الاختبار المغلق.
 
@@ -265,9 +265,9 @@ Sirrak is licensed under the [Apache License 2.0](LICENSE). Third-party componen
 in [NOTICE](NOTICE); the full licence texts ship inside the app. Model weights are not bundled: each model is
 downloaded or imported by you under its own licence.
 
-Security issues: please use the [private advisory form](https://github.com/alshahia/sirrak/security/advisories/new),
+Security issues: please use the [private advisory form](https://github.com/ahmadmhmdsy/sirrak/security/advisories/new),
 never a public issue. See [SECURITY.md](SECURITY.md). Bugs and feature requests go to
-[Issues](https://github.com/alshahia/sirrak/issues); contributing rules are in [CONTRIBUTING.md](CONTRIBUTING.md).
+[Issues](https://github.com/ahmadmhmdsy/sirrak/issues); contributing rules are in [CONTRIBUTING.md](CONTRIBUTING.md).
 
 Sirrak is not affiliated with, endorsed by, or sponsored by any model provider. "llama.cpp", "Whisper",
 "Qwen", "Llama", "Gemma" and other names are trademarks of their respective owners.

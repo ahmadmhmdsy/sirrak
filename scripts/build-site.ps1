@@ -270,7 +270,7 @@ function New-Footer($page) {
     $lines.Add('</div>')
     $lines.Add('<div class="footer-legal">')
     $lines.Add(('<span>{0}</span>' -f (Esc-Html ([string]$c.footer.legal))))
-    $lines.Add(('<span>© 2026 Sirrak contributors · <a href="{0}">Apache-2.0</a></span>' -f 'https://github.com/alshahia/sirrak/blob/main/LICENSE'))
+    $lines.Add(('<span>© 2026 Sirrak contributors · <a href="{0}">Apache-2.0</a></span>' -f 'https://github.com/ahmadmhmdsy/sirrak/blob/main/LICENSE'))
     $lines.Add('</div>')
     $lines.Add('</div>')
     $lines.Add('</footer>')

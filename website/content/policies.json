@@ -72,7 +72,7 @@
         {
           "heading": "Contact",
           "paragraphs": [
-            "Privacy questions: open an issue at github.com/alshahia/sirrak/issues labelled privacy. Security problems: use the private advisory form on the security page — never a public issue."
+            "Privacy questions: open an issue at github.com/ahmadmhmdsy/sirrak/issues labelled privacy. Security problems: use the private advisory form on the security page — never a public issue."
           ]
         }
       ]
@@ -147,7 +147,7 @@
         {
           "heading": "التواصل",
           "paragraphs": [
-            "أسئلة الخصوصية: افتح مشكلة على github.com/alshahia/sirrak/issues موسومة privacy. المشكلات الأمنية: استخدم نموذج الإبلاغ الخاص في صفحة الأمان — لا تفتح مشكلة عامة."
+            "أسئلة الخصوصية: افتح مشكلة على github.com/ahmadmhmdsy/sirrak/issues موسومة privacy. المشكلات الأمنية: استخدم نموذج الإبلاغ الخاص في صفحة الأمان — لا تفتح مشكلة عامة."
           ]
         }
       ]
@@ -173,7 +173,7 @@
         {
           "heading": "Reporting a vulnerability",
           "paragraphs": [
-            "Please do not open a public issue for a security problem. Use the private advisory form at github.com/alshahia/sirrak/security/advisories/new and include:"
+            "Please do not open a public issue for a security problem. Use the private advisory form at github.com/ahmadmhmdsy/sirrak/security/advisories/new and include:"
           ],
           "bullets": [
             "the app version (Settings → About) and Android version,",
@@ -234,7 +234,7 @@
         {
           "heading": "الإبلاغ عن ثغرة",
           "paragraphs": [
-            "لا تفتح مشكلة عامة لمشكلة أمنية. استخدم نموذج الإبلاغ الخاص على github.com/alshahia/sirrak/security/advisories/new وأدرج:"
+            "لا تفتح مشكلة عامة لمشكلة أمنية. استخدم نموذج الإبلاغ الخاص على github.com/ahmadmhmdsy/sirrak/security/advisories/new وأدرج:"
           ],
           "bullets": [
             "إصدار التطبيق (الإعدادات ← حول) وإصدار أندرويد،",

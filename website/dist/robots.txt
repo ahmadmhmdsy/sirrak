@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://alshahia.github.io/sirrak/sitemap.xml
+Sitemap: https://ahmadmhmdsy.github.io/sirrak/sitemap.xml

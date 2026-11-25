@@ -5,12 +5,12 @@ abstract: "Sirrak is a private, Arabic-first AI assistant for Android that runs 
 version: "1.0.0-rc2"
 date-released: "2026-11-23"
 license: Apache-2.0
-repository-code: "https://github.com/alshahia/sirrak"
-url: "https://alshahia.github.io/sirrak/"
+repository-code: "https://github.com/ahmadmhmdsy/sirrak"
+url: "https://ahmadmhmdsy.github.io/sirrak/"
 type: software
 authors:
   - name: "Sirrak contributors"
-    website: "https://github.com/alshahia/sirrak"
+    website: "https://github.com/ahmadmhmdsy/sirrak"
 keywords:
   - arabic
   - android

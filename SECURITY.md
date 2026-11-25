@@ -2,8 +2,8 @@
 
 Last updated: 2026-11-25 · Applies to 1.1.0 (versionCode 14, released 2026-11-25).
 
-Published at <https://alshahia.github.io/sirrak/security/> — Arabic:
-<https://alshahia.github.io/sirrak/ar/security/>. The app opens this page from
+Published at <https://ahmadmhmdsy.github.io/sirrak/security/> — Arabic:
+<https://ahmadmhmdsy.github.io/sirrak/ar/security/>. The app opens this page from
 **Settings → Privacy & data → Security disclosure**.
 
 Sirrak runs a language model on the phone. There is no server, no account and no telemetry endpoint, so the
@@ -26,7 +26,7 @@ are not on 1.1.0, reproduce the issue there before reporting it.
 Please do not open a public issue for a security problem. Use GitHub's private vulnerability reporting on
 this repository:
 
-**<https://github.com/alshahia/sirrak/security/advisories/new>**
+**<https://github.com/ahmadmhmdsy/sirrak/security/advisories/new>**
 
 The report stays private between you and the maintainer until an advisory is published.
 
@@ -147,8 +147,8 @@ for loopback device tests, and is absent from release builds; app data stays in 
 
 ## References
 
-- Hosted policy: <https://alshahia.github.io/sirrak/security/> (Arabic:
-  <https://alshahia.github.io/sirrak/ar/security/>)
+- Hosted policy: <https://ahmadmhmdsy.github.io/sirrak/security/> (Arabic:
+  <https://ahmadmhmdsy.github.io/sirrak/ar/security/>)
 - [PRIVACY.md](PRIVACY.md) — what is stored and what leaves the device.
 - [docs/27-sirrak-launch-checklist.md](docs/27-sirrak-launch-checklist.md) — release gates and the open
   F-Droid item.

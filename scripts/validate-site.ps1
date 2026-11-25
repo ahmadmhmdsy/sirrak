@@ -234,8 +234,8 @@ $appVersionCode = Get-FirstGroup $appGradle 'versionCode\s*=\s*(\d+)'
 if ($null -ne $site) {
     Check 'site.json version matches app/build.gradle.kts' ($site.product.version -eq $appVersion) ('site ' + $site.product.version + ' vs gradle ' + $appVersion)
     Check 'site.json release date is an ISO date' ([string]$site.product.releaseDate -match '^\d{4}-\d{2}-\d{2}$')
-    Check 'siteUrl is the project GitHub Pages URL' ($site.siteUrl -eq 'https://alshahia.github.io/sirrak/') ([string]$site.siteUrl)
-    Check 'repository/issue/release URLs point at the same GitHub repository' (($site.repoUrl -eq 'https://github.com/alshahia/sirrak') -and ($site.issuesUrl -eq 'https://github.com/alshahia/sirrak/issues') -and ($site.releasesUrl -eq 'https://github.com/alshahia/sirrak/releases'))
+    Check 'siteUrl is the project GitHub Pages URL' ($site.siteUrl -eq 'https://ahmadmhmdsy.github.io/sirrak/') ([string]$site.siteUrl)
+    Check 'repository/issue/release URLs point at the same GitHub repository' (($site.repoUrl -eq 'https://github.com/ahmadmhmdsy/sirrak') -and ($site.issuesUrl -eq 'https://github.com/ahmadmhmdsy/sirrak/issues') -and ($site.releasesUrl -eq 'https://github.com/ahmadmhmdsy/sirrak/releases'))
     Check 'certificate SHA-256 is 64 uppercase hex characters' ([string]$site.certificateSha256 -match '^[0-9A-F]{64}$')
     Check 'site.json declares both languages (en, ar)' ((@($site.languages | ForEach-Object { [string]$_.code }) -join ',') -eq 'en,ar')
     Check 'every page file exists in site.json' ((@($site.pages.landing.file, $site.pages.privacy.file, $site.pages.security.file)).Count -eq 3)

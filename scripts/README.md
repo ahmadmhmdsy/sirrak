@@ -108,7 +108,7 @@ pwsh -File scripts/build-site.ps1
 pwsh -File scripts/validate-site.ps1
 ```
 
-Live address: <https://alshahia.github.io/sirrak/>. The `WebsiteContentTest` JVM suite independently
+Live address: <https://ahmadmhmdsy.github.io/sirrak/>. The `WebsiteContentTest` JVM suite independently
 checks the same contract app-side (data sources, EN/AR parity, brand tokens, URLs, no local paths), so a
 drift fails both the Gradle suite and the PowerShell gate. Raster assets are rendered once by
 `site-assets.ps1` from the brand data and committed.

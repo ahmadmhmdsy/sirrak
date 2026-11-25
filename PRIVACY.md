@@ -2,8 +2,8 @@
 
 Last updated: 2026-11-25 · Policy version 2 · Applies to 1.1.0 (versionCode 14).
 
-Published at <https://alshahia.github.io/sirrak/privacy/> — Arabic:
-<https://alshahia.github.io/sirrak/ar/privacy/>. The app opens this page from
+Published at <https://ahmadmhmdsy.github.io/sirrak/privacy/> — Arabic:
+<https://ahmadmhmdsy.github.io/sirrak/ar/privacy/>. The app opens this page from
 **Settings → Privacy & data → Privacy policy**.
 
 Sirrak (سِرِّك) is a private AI assistant for Android that runs its language model on your phone. There is
@@ -118,7 +118,7 @@ Face's policies.
 
 ## The website
 
-The project site at <https://alshahia.github.io/sirrak/> is static: generated HTML, CSS, fonts and
+The project site at <https://ahmadmhmdsy.github.io/sirrak/> is static: generated HTML, CSS, fonts and
 screenshots from committed data. It sets no cookies, runs no analytics, loads no third-party scripts, has no
 forms and does not fingerprint visitors. It is hosted on GitHub Pages, so GitHub's infrastructure may log
 requests (IP address, user agent, time) under GitHub's own privacy statement; that logging happens outside
@@ -135,11 +135,11 @@ a network feature or stores something new, this document will say so before that
 
 ## Contact
 
-- **Privacy questions** — open an issue through <https://github.com/alshahia/sirrak/issues/new/choose> with
+- **Privacy questions** — open an issue through <https://github.com/ahmadmhmdsy/sirrak/issues/new/choose> with
   a subject beginning `privacy:`; the hosted page also suggests the `privacy` label. Please do not include
   personal data.
 - **Security vulnerabilities** — never a public issue. Use the private advisory form at
-  <https://github.com/alshahia/sirrak/security/advisories/new>; see [SECURITY.md](SECURITY.md).
+  <https://github.com/ahmadmhmdsy/sirrak/security/advisories/new>; see [SECURITY.md](SECURITY.md).
 
 ## Related documents
 

@@ -22,10 +22,10 @@ Categories:
   - Productivity
 License: Apache-2.0
 AuthorName: Sirrak contributors
-SourceCode: https://github.com/alshahia/sirrak
-IssueTracker: https://github.com/alshahia/sirrak/issues
-Changelog: https://github.com/alshahia/sirrak/blob/main/CHANGELOG.md
-WebSite: https://alshahia.github.io/sirrak/
+SourceCode: https://github.com/ahmadmhmdsy/sirrak
+IssueTracker: https://github.com/ahmadmhmdsy/sirrak/issues
+Changelog: https://github.com/ahmadmhmdsy/sirrak/blob/main/CHANGELOG.md
+WebSite: https://ahmadmhmdsy.github.io/sirrak/
 AntiFeatures:
   - NonFreeNet
 
@@ -72,7 +72,7 @@ Description:ar: |-
   لا حسابات ولا إعلانات ولا تتبّع. الترخيص Apache-2.0.
 
 RepoType: git
-Repo: https://github.com/alshahia/sirrak.git
+Repo: https://github.com/ahmadmhmdsy/sirrak.git
 
 Builds:
   - versionName: 1.0.0-rc2

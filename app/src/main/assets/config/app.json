@@ -37,10 +37,10 @@
   },
   "privacy": {
     "offlineByDefault": false,
-    "policyUrl": "https://alshahia.github.io/sirrak/privacy/",
-    "securityUrl": "https://alshahia.github.io/sirrak/security/",
+    "policyUrl": "https://ahmadmhmdsy.github.io/sirrak/privacy/",
+    "securityUrl": "https://ahmadmhmdsy.github.io/sirrak/security/",
     "reportEmail": "",
-    "reportIssueUrl": "https://github.com/alshahia/sirrak/issues/new/choose",
+    "reportIssueUrl": "https://github.com/ahmadmhmdsy/sirrak/issues/new/choose",
     "endpoints": [
       {
         "id": "model_download",

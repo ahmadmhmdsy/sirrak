@@ -47,7 +47,7 @@
     "lead": "Sirrak runs a real language model, Arabic dictation and document search on your Android phone. No account, no cloud, no telemetry — every network request is one you start: a model download, a Hugging Face search, or a capped file-header check.",
     "primary": {
       "label": "Download the signed APK",
-      "href": "https://github.com/alshahia/sirrak/releases/latest"
+      "href": "https://github.com/ahmadmhmdsy/sirrak/releases/latest"
     },
     "secondary": {
       "label": "See the network log",
@@ -246,11 +246,11 @@
     ],
     "primary": {
       "label": "Open GitHub Releases",
-      "href": "https://github.com/alshahia/sirrak/releases/latest"
+      "href": "https://github.com/ahmadmhmdsy/sirrak/releases/latest"
     },
     "secondary": {
       "label": "Build from source",
-      "href": "https://github.com/alshahia/sirrak/blob/main/README.md#build-from-source"
+      "href": "https://github.com/ahmadmhmdsy/sirrak/blob/main/README.md#build-from-source"
     },
     "checks": [
       {
@@ -326,22 +326,22 @@
     "items": [
       {
         "label": "Build records",
-        "href": "https://github.com/alshahia/sirrak/tree/main/docs",
+        "href": "https://github.com/ahmadmhmdsy/sirrak/tree/main/docs",
         "note": "20 documents, from the M1 shell to the launch checklist"
       },
       {
         "label": "Architecture",
-        "href": "https://github.com/alshahia/sirrak/blob/main/docs/05-architecture.md",
+        "href": "https://github.com/ahmadmhmdsy/sirrak/blob/main/docs/05-architecture.md",
         "note": "modules, the plugin runtime and typed slots"
       },
       {
         "label": "Launch checklist",
-        "href": "https://github.com/alshahia/sirrak/blob/main/docs/27-sirrak-launch-checklist.md",
+        "href": "https://github.com/ahmadmhmdsy/sirrak/blob/main/docs/27-sirrak-launch-checklist.md",
         "note": "what is done and what is blocked on accounts"
       },
       {
         "label": "Design system",
-        "href": "https://github.com/alshahia/sirrak/blob/main/DESIGN.md",
+        "href": "https://github.com/ahmadmhmdsy/sirrak/blob/main/DESIGN.md",
         "note": "Girih & Ink: palette, type, RTL and motion"
       }
     ]
@@ -354,19 +354,19 @@
         "links": [
           {
             "label": "Download",
-            "href": "https://github.com/alshahia/sirrak/releases/latest"
+            "href": "https://github.com/ahmadmhmdsy/sirrak/releases/latest"
           },
           {
             "label": "Docs",
-            "href": "https://github.com/alshahia/sirrak/tree/main/docs"
+            "href": "https://github.com/ahmadmhmdsy/sirrak/tree/main/docs"
           },
           {
             "label": "Design",
-            "href": "https://github.com/alshahia/sirrak/blob/main/DESIGN.md"
+            "href": "https://github.com/ahmadmhmdsy/sirrak/blob/main/DESIGN.md"
           },
           {
             "label": "Product scope",
-            "href": "https://github.com/alshahia/sirrak/blob/main/PRODUCT.md"
+            "href": "https://github.com/ahmadmhmdsy/sirrak/blob/main/PRODUCT.md"
           }
         ]
       },
@@ -375,19 +375,19 @@
         "links": [
           {
             "label": "GitHub",
-            "href": "https://github.com/alshahia/sirrak"
+            "href": "https://github.com/ahmadmhmdsy/sirrak"
           },
           {
             "label": "Releases",
-            "href": "https://github.com/alshahia/sirrak/releases"
+            "href": "https://github.com/ahmadmhmdsy/sirrak/releases"
           },
           {
             "label": "Issues",
-            "href": "https://github.com/alshahia/sirrak/issues"
+            "href": "https://github.com/ahmadmhmdsy/sirrak/issues"
           },
           {
             "label": "Contributing",
-            "href": "https://github.com/alshahia/sirrak/blob/main/CONTRIBUTING.md"
+            "href": "https://github.com/ahmadmhmdsy/sirrak/blob/main/CONTRIBUTING.md"
           }
         ]
       },
@@ -404,11 +404,11 @@
           },
           {
             "label": "Licence",
-            "href": "https://github.com/alshahia/sirrak/blob/main/LICENSE"
+            "href": "https://github.com/ahmadmhmdsy/sirrak/blob/main/LICENSE"
           },
           {
             "label": "Credits (NOTICE)",
-            "href": "https://github.com/alshahia/sirrak/blob/main/NOTICE"
+            "href": "https://github.com/ahmadmhmdsy/sirrak/blob/main/NOTICE"
           }
         ]
       }

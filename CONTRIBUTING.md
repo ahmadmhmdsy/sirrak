@@ -223,7 +223,7 @@ no-hardcode rules, licences, Arabic/RTL, and screenshots for UI changes.
 ## Security
 
 Report vulnerabilities privately through the
-[advisory form](https://github.com/alshahia/sirrak/security/advisories/new) — never a public issue, never a
+[advisory form](https://github.com/ahmadmhmdsy/sirrak/security/advisories/new) — never a public issue, never a
 pull request that describes the flaw. [SECURITY.md](SECURITY.md) lists what is in scope and the response
 times. A dependency with a known critical vulnerability is worth an issue even before a fix exists.
 

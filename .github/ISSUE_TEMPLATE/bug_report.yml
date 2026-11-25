@@ -7,7 +7,7 @@ body:
     attributes:
       value: |
         Thanks for taking the time to report a bug. A security problem does not belong here: use the
-        private advisory form linked in the issue chooser instead (see [SECURITY.md](https://github.com/alshahia/sirrak/blob/main/SECURITY.md)).
+        private advisory form linked in the issue chooser instead (see [SECURITY.md](https://github.com/ahmadmhmdsy/sirrak/blob/main/SECURITY.md)).
 
         Please do not paste keystore material, download tokens, private documents or personal data.
 

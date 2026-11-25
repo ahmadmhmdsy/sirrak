@@ -24,8 +24,8 @@ Hard constraints:
 - Apache-2.0, no telemetry, no accounts, no third-party scripts on the site (privacy consistency).
 - Arabic-first product; English is the secondary but equal-parity public surface.
 - Emulator-only test device (F8); do not break M1–M11/P3; approve-all autonomy, no waiting.
-- The GitHub account `alshahia` exists with `repo` + `workflow` scopes; `alshahia/sirrak` is available **[verified locally]**.
-- No custom domain yet, so the canonical host is `https://alshahia.github.io/sirrak/`.
+- The GitHub account `ahmadmhmdsy` exists with `repo` + `workflow` scopes; `ahmadmhmdsy/sirrak` is available **[verified locally]**.
+- No custom domain yet, so the canonical host is `https://ahmadmhmdsy.github.io/sirrak/`.
 - `.` is not yet a git repository and has never been pushed anywhere.
 
 ## 2. Grounded state (facts read from the tree this session)
@@ -201,7 +201,7 @@ Before claiming the launch surface done, all of these must be observed, not assu
 5. The rebuilt signed artifacts embed the live policy URLs; release-check passes again and the recorded
    hashes in `store/README.md` match the files on disk.
 6. If Pages is blocked by account settings, fallback: policy URLs may temporarily point at the GitHub file
-   view (`github.com/alshahia/sirrak/blob/main/PRIVACY.md`) and the site deployment is suspended-on-test —
+   view (`github.com/ahmadmhmdsy/sirrak/blob/main/PRIVACY.md`) and the site deployment is suspended-on-test —
    the app must never ship a dead policy link.
 
 ## 6. Items the user asked about that were missing from the first draft

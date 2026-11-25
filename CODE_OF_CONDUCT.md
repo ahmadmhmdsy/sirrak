@@ -51,9 +51,9 @@ media account, or acting as an appointed representative at an online or offline 
 ## Enforcement
 
 Instances of abusive, harassing or otherwise unacceptable behaviour may be reported privately to the
-maintainer, @alshahia, through GitHub's private channels:
+maintainer, @ahmadmhmdsy, through GitHub's private channels:
 
-1. Open a [security advisory](https://github.com/alshahia/sirrak/security/advisories/new) and start its
+1. Open a [security advisory](https://github.com/ahmadmhmdsy/sirrak/security/advisories/new) and start its
    title with `conduct:`. An advisory is visible only to you and the maintainer.
 2. If the report concerns the maintainer, or you would rather not use this repository, use GitHub's own
    **Report abuse** flow on the offending content instead.

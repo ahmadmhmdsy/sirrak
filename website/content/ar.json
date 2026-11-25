@@ -46,7 +46,7 @@
     "lead": "سِرِّك يُشغّل نموذجًا لغويًا حقيقيًا وإملاءً عربيًا وبحثًا في مستنداتك على هاتفك. بلا حساب، بلا سحابة، بلا تتبّع؛ وكل طلب شبكة تبدأه أنت: تنزيل نموذج، أو بحث في Hugging Face، أو فحص محدود لترويسة ملف.",
     "primary": {
       "label": "نزّل APK الموقَّع",
-      "href": "https://github.com/alshahia/sirrak/releases/latest"
+      "href": "https://github.com/ahmadmhmdsy/sirrak/releases/latest"
     },
     "secondary": {
       "label": "شاهد سجل الشبكة",
@@ -245,11 +245,11 @@
     ],
     "primary": {
       "label": "افتح إصدارات GitHub",
-      "href": "https://github.com/alshahia/sirrak/releases/latest"
+      "href": "https://github.com/ahmadmhmdsy/sirrak/releases/latest"
     },
     "secondary": {
       "label": "ابنِ من المصدر",
-      "href": "https://github.com/alshahia/sirrak/blob/main/README.ar.md#البناء-من-المصدر"
+      "href": "https://github.com/ahmadmhmdsy/sirrak/blob/main/README.ar.md#البناء-من-المصدر"
     },
     "checks": [
       {
@@ -325,22 +325,22 @@
     "items": [
       {
         "label": "سجلات البناء",
-        "href": "https://github.com/alshahia/sirrak/tree/main/docs",
+        "href": "https://github.com/ahmadmhmdsy/sirrak/tree/main/docs",
         "note": "20 وثيقة، من هيكل M1 إلى قائمة الإطلاق"
       },
       {
         "label": "البنية",
-        "href": "https://github.com/alshahia/sirrak/blob/main/docs/05-architecture.md",
+        "href": "https://github.com/ahmadmhmdsy/sirrak/blob/main/docs/05-architecture.md",
         "note": "الوحدات ونظام الإضافات والخانات المُنمّطة"
       },
       {
         "label": "قائمة الإطلاق",
-        "href": "https://github.com/alshahia/sirrak/blob/main/docs/27-sirrak-launch-checklist.md",
+        "href": "https://github.com/ahmadmhmdsy/sirrak/blob/main/docs/27-sirrak-launch-checklist.md",
         "note": "ما أُنجز وما ينتظر الحسابات"
       },
       {
         "label": "نظام التصميم",
-        "href": "https://github.com/alshahia/sirrak/blob/main/DESIGN.md",
+        "href": "https://github.com/ahmadmhmdsy/sirrak/blob/main/DESIGN.md",
         "note": "گِريه والحبر: الألوان والخطوط وRTL والحركة"
       }
     ]
@@ -353,19 +353,19 @@
         "links": [
           {
             "label": "التنزيل",
-            "href": "https://github.com/alshahia/sirrak/releases/latest"
+            "href": "https://github.com/ahmadmhmdsy/sirrak/releases/latest"
           },
           {
             "label": "الوثائق",
-            "href": "https://github.com/alshahia/sirrak/tree/main/docs"
+            "href": "https://github.com/ahmadmhmdsy/sirrak/tree/main/docs"
           },
           {
             "label": "التصميم",
-            "href": "https://github.com/alshahia/sirrak/blob/main/DESIGN.md"
+            "href": "https://github.com/ahmadmhmdsy/sirrak/blob/main/DESIGN.md"
           },
           {
             "label": "نطاق المنتج",
-            "href": "https://github.com/alshahia/sirrak/blob/main/PRODUCT.md"
+            "href": "https://github.com/ahmadmhmdsy/sirrak/blob/main/PRODUCT.md"
           }
         ]
       },
@@ -374,19 +374,19 @@
         "links": [
           {
             "label": "GitHub",
-            "href": "https://github.com/alshahia/sirrak"
+            "href": "https://github.com/ahmadmhmdsy/sirrak"
           },
           {
             "label": "الإصدارات",
-            "href": "https://github.com/alshahia/sirrak/releases"
+            "href": "https://github.com/ahmadmhmdsy/sirrak/releases"
           },
           {
             "label": "المشكلات",
-            "href": "https://github.com/alshahia/sirrak/issues"
+            "href": "https://github.com/ahmadmhmdsy/sirrak/issues"
           },
           {
             "label": "المساهمة",
-            "href": "https://github.com/alshahia/sirrak/blob/main/CONTRIBUTING.md"
+            "href": "https://github.com/ahmadmhmdsy/sirrak/blob/main/CONTRIBUTING.md"
           }
         ]
       },
@@ -403,11 +403,11 @@
           },
           {
             "label": "الترخيص",
-            "href": "https://github.com/alshahia/sirrak/blob/main/LICENSE"
+            "href": "https://github.com/ahmadmhmdsy/sirrak/blob/main/LICENSE"
           },
           {
             "label": "الاعتمادات (NOTICE)",
-            "href": "https://github.com/alshahia/sirrak/blob/main/NOTICE"
+            "href": "https://github.com/ahmadmhmdsy/sirrak/blob/main/NOTICE"
           }
         ]
       }

@@ -455,8 +455,8 @@ string is hardcoded in Kotlin. Timestamps are disabled in M1 (config ui.showTime
 The design system ships in three forms — the app, the hosted site and the store graphics — and all three
 read the same palette and the same mark.
 
-- **Hosted site:** <https://alshahia.github.io/sirrak/> is the English page and
-  <https://alshahia.github.io/sirrak/ar/> its Arabic mirror; the published policies are `/privacy/` and
+- **Hosted site:** <https://ahmadmhmdsy.github.io/sirrak/> is the English page and
+  <https://ahmadmhmdsy.github.io/sirrak/ar/> its Arabic mirror; the published policies are `/privacy/` and
   `/security/`, with `/ar/privacy/` and `/ar/security/` in Arabic. The site reuses the app's ivory, ink,
   lapis and brass roles, Amiri display type and IBM Plex Sans Arabic UI type, so the page a visitor lands on
   is the product's own visual world rather than a marketing skin.

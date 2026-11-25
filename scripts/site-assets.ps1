@@ -159,7 +159,7 @@ body::before {
     <div class="device"><img src="phone-render.png" alt=""></div>
   </div>
   <div class="bottom">
-    <span class="meta">{{MINANDROID}} · Apache-2.0 · github.com/alshahia/sirrak · libre APK</span>
+    <span class="meta">{{MINANDROID}} · Apache-2.0 · github.com/ahmadmhmdsy/sirrak · libre APK</span>
     <span class="privacy">{{PRIVACYLINE}}</span>
   </div>
 </body>

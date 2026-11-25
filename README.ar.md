@@ -10,8 +10,8 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/alshahia/sirrak/actions/workflows/ci.yml"><img src="https://github.com/alshahia/sirrak/actions/workflows/ci.yml/badge.svg" alt="حالة التكامل المستمر"></a>
-  <a href="https://github.com/alshahia/sirrak/actions/workflows/pages.yml"><img src="https://github.com/alshahia/sirrak/actions/workflows/pages.yml/badge.svg" alt="حالة نشر الموقع"></a>
+  <a href="https://github.com/ahmadmhmdsy/sirrak/actions/workflows/ci.yml"><img src="https://github.com/ahmadmhmdsy/sirrak/actions/workflows/ci.yml/badge.svg" alt="حالة التكامل المستمر"></a>
+  <a href="https://github.com/ahmadmhmdsy/sirrak/actions/workflows/pages.yml"><img src="https://github.com/ahmadmhmdsy/sirrak/actions/workflows/pages.yml/badge.svg" alt="حالة نشر الموقع"></a>
   <img src="https://img.shields.io/badge/license-Apache--2.0-blue.svg" alt="الترخيص Apache-2.0">
   <img src="https://img.shields.io/badge/Android-9%2B%20(API%2028)-3ddc84.svg" alt="أندرويد 9 أو أحدث">
   <img src="https://img.shields.io/badge/JVM%20tests-744%20green-brightgreen.svg" alt="744 اختبار JVM ناجح">
@@ -21,10 +21,10 @@
 <p align="center">
   <a href="README.md">English</a> ·
   <b>العربية</b> ·
-  <a href="https://alshahia.github.io/sirrak/ar/">الموقع</a> ·
-  <a href="https://alshahia.github.io/sirrak/ar/privacy/">الخصوصية</a> ·
-  <a href="https://alshahia.github.io/sirrak/ar/security/">الأمان</a> ·
-  <a href="https://github.com/alshahia/sirrak/releases/latest">التنزيل</a> ·
+  <a href="https://ahmadmhmdsy.github.io/sirrak/ar/">الموقع</a> ·
+  <a href="https://ahmadmhmdsy.github.io/sirrak/ar/privacy/">الخصوصية</a> ·
+  <a href="https://ahmadmhmdsy.github.io/sirrak/ar/security/">الأمان</a> ·
+  <a href="https://github.com/ahmadmhmdsy/sirrak/releases/latest">التنزيل</a> ·
   <a href="docs/README.md">الوثائق</a>
 </p>
 
@@ -40,9 +40,9 @@
 بُني سِرِّك عربيًا أولًا، لا مترجمًا لاحقًا: واجهة من اليمين إلى اليسار مصمَّمة من البداية، وخطّا أميري
 وIBM Plex Sans Arabic، وإملاء عربي وإنجليزي، وخمس حزم ألوان مكتوبة يدويًا بدل لوحة Material الجاهزة.
 
-**الحالة:** [المستودع](https://github.com/alshahia/sirrak) والموقع ثنائي اللغة عامّان، وسياسة الخصوصية
+**الحالة:** [المستودع](https://github.com/ahmadmhmdsy/sirrak) والموقع ثنائي اللغة عامّان، وسياسة الخصوصية
 وسياسة الأمان منشورتان بالعربية والإنجليزية، وملف APK الموقَّع للإصدار `1.0.0-rc2` يُنزَّل من
-[صفحة الإصدارات](https://github.com/alshahia/sirrak/releases/latest). الإصدار الحالي مرشّح **`1.1.0`** (إعادة
+[صفحة الإصدارات](https://github.com/ahmadmhmdsy/sirrak/releases/latest). الإصدار الحالي مرشّح **`1.1.0`** (إعادة
 تصميم تجربة الاستخدام: مكتبة بثلاثة أقسام، وإعدادات بستة أبواب، وبوابة Hugging Face داخل التطبيق، ورفّ للوسائط —
 [docs/32](docs/32-ux-rework-build-record.md)). لا يوجد مفتاح توقيع للإصدار في هذه النسخة من المستودع، لذلك
 الأثر المتحقَّق منه لـ`1.1.0` هو ملف APK شامل موقَّع تصحيحًا (debug) ومسجَّل في
@@ -82,7 +82,7 @@
 
 ## التثبيت
 
-1. افتح صفحة [الإصدارات](https://github.com/alshahia/sirrak/releases/latest) ونزّل ملف APK الموقَّع من
+1. افتح صفحة [الإصدارات](https://github.com/ahmadmhmdsy/sirrak/releases/latest) ونزّل ملف APK الموقَّع من
    نسخة **libre** (نحو 139 MiB، شامل arm64-v8a وx86_64). صفحة الإصدارات هذه هي مسار التنزيل الوحيد؛
    أما نسخة Play فهي حزمة موقَّعة منفصلة لم يبدأ اختبارها المغلق بعد.
 2. ثبّته على **أندرويد 9 أو أحدث (API 28)**. قد يطلب أندرويد السماح بالتثبيت من هذا المصدر؛ الملف موقَّع
@@ -115,8 +115,8 @@
 - **وضع "دون اتصال فقط" يُفرَض قبل فتح أي مقبس**، وليس تلميحًا في الواجهة.
 - **المستندات والمحادثات والنماذج والإعدادات تبقى في تخزين التطبيق الخاص.** ولا يحدث تصدير إلا عبر منتقي
   أندرويد الذي تستدعيه بنفسك.
-- **السياسات (منشورة، بالعربية والإنجليزية):** [الخصوصية](https://alshahia.github.io/sirrak/ar/privacy/)
-  و[الأمان](https://alshahia.github.io/sirrak/ar/security/)، وموجودتان في المستودع أيضًا في
+- **السياسات (منشورة، بالعربية والإنجليزية):** [الخصوصية](https://ahmadmhmdsy.github.io/sirrak/ar/privacy/)
+  و[الأمان](https://ahmadmhmdsy.github.io/sirrak/ar/security/)، وموجودتان في المستودع أيضًا في
   [PRIVACY.md](PRIVACY.md) و[SECURITY.md](SECURITY.md).
 
 ## البناء من المصدر
@@ -212,9 +212,9 @@ pwsh -File scripts/release-check.ps1     # بناء + توقيع + أصول ال
 [NOTICE](NOTICE)، ونصوص التراخيص الكاملة مضمَّنة داخل التطبيق. أوزان النماذج غير مضمَّنة: كل نموذج ينزّله
 المستخدم أو يستورده تحت رخصته الخاصة.
 
-المشكلات الأمنية: يُرجى استخدام [نموذج الإبلاغ الخاص](https://github.com/alshahia/sirrak/security/advisories/new)
+المشكلات الأمنية: يُرجى استخدام [نموذج الإبلاغ الخاص](https://github.com/ahmadmhmdsy/sirrak/security/advisories/new)
 ولا تفتح مشكلة عامة. انظر [SECURITY.md](SECURITY.md). الأخطاء والاقتراحات عبر
-[Issues](https://github.com/alshahia/sirrak/issues)، وقواعد المساهمة في [CONTRIBUTING.md](CONTRIBUTING.md).
+[Issues](https://github.com/ahmadmhmdsy/sirrak/issues)، وقواعد المساهمة في [CONTRIBUTING.md](CONTRIBUTING.md).
 
 سِرِّك غير تابع ولا معتمد ولا مدعوم من أي مزوّد نماذج. وأسماء "llama.cpp" و"Whisper" و"Qwen" و"Llama"
 و"Gemma" وغيرها علامات تجارية لأصحابها.
