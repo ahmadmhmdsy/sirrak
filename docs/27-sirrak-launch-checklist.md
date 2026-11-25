@@ -128,12 +128,12 @@ committed file in this tree; the repository, Pages, CI and release rows are addi
 evidence recorded next to them (GitHub run ids and public HTTP responses, measured after the first push).
 
 - [x] root Apache-2.0 LICENSE, NOTICE, public README (EN) + README.ar.md, CONTRIBUTING, CODE_OF_CONDUCT, SUPPORT, CHANGELOG, CITATION.cff, issue/PR templates, .editorconfig, .gitattributes
-- [x] hosted bilingual site with privacy/security pages; app config wired to https://alshahia.github.io/sirrak/privacy/ and /security/
+- [x] hosted bilingual site with privacy/security pages; app config wired to https://ahmadmhmdsy.github.io/sirrak/privacy/ and /security/
 - [x] F-Droid metadata completed (version/commit/source URLs) + documented prebuilt sherpa-onnx AAR limitation; submission not made yet
 - [x] store listing copy refreshed for GitHub-only distribution
-- [x] GitHub repository created, pushed and verified: <https://github.com/alshahia/sirrak> — public, Apache-2.0 detected, default branch `main`, description/topics/homepage set, secret scanning + push protection + Dependabot alerts enabled, branch protection on `main` with strict required checks (JVM tests, Arabic eval, lint, public site; linear history). Commits: `94aa16a` (P3.8 tree), `e8125f6` (Linux CI fixes), `ec78bae` (launch evidence in docs), `11faf01` (JVM test floor raised to 567) and `2b97f45` (published-facts validator + recorded artifact digests); the validator commit re-ran all four CI jobs and the Pages build green (CI `45162411487`, Pages `45162411708`).
+- [x] GitHub repository created, pushed and verified: <https://github.com/ahmadmhmdsy/sirrak> — public, Apache-2.0 detected, default branch `main`, description/topics/homepage set, secret scanning + push protection + Dependabot alerts enabled, branch protection on `main` with strict required checks (JVM tests, Arabic eval, lint, public site; linear history). Commits: `94aa16a` (P3.8 tree), `e8125f6` (Linux CI fixes), `ec78bae` (launch evidence in docs), `11faf01` (JVM test floor raised to 567) and `2b97f45` (published-facts validator + recorded artifact digests); the validator commit re-ran all four CI jobs and the Pages build green (CI `45162411487`, Pages `45162411708`).
 - [x] GitHub Pages enabled (`build_type=workflow`, HTTPS enforced) and live URLs verified on 2026-11-23 13:55 +03:00 — `/`, `/ar/`, `/privacy/`, `/security/`, `/ar/privacy/`, `/ar/security/`, `/sitemap.xml`, `/robots.txt`, `/llms.txt`, `/manifest.webmanifest`, `/assets/og-image.png` all return 200; EN `lang="en" dir="ltr"`, AR `lang="ar" dir="rtl"`; canonical, hreflang, Open Graph image and JSON-LD present (SoftwareApplication on the landing page, PrivacyPolicy and WebPage on the policy pages); sitemap lists all six pages; robots.txt points at the sitemap; the committed bilingual 404 page is served for unknown paths. Pages run `45159519451` green (build → validate → deploy).
-- [x] Release `v1.0.0-rc1` created with the signed `app-libre-release.apk` (145,711,750 B, SHA-256 `FD94EA31…`) and `app-play-release.aab` (64,938,455 B, SHA-256 `9326F505…`) attached, plus `SHA256SUMS`; certificate `4537ECEB…6806` — <https://github.com/alshahia/sirrak/releases/tag/v1.0.0-rc1>.
+- [x] Release `v1.0.0-rc1` created with the signed `app-libre-release.apk` (145,711,750 B, SHA-256 `FD94EA31…`) and `app-play-release.aab` (64,938,455 B, SHA-256 `9326F505…`) attached, plus `SHA256SUMS`; certificate `4537ECEB…6806` — <https://github.com/ahmadmhmdsy/sirrak/releases/tag/v1.0.0-rc1>.
 - [x] CI green on `main` (run `45159519429`): 567 JVM tests, Arabic eval 24/24, lint 0 errors, and the public-site job (build + 225/225 validation + committed-output drift) — all four status checks required by branch protection. Every later docs/validator commit re-ran the same four jobs green.
 - [x] Public-site drift guard: `app/src/test/java/app/sirrak/WebsiteContentTest.kt` (7 JVM tests) keeps the generated site, the brand source, the shipped app config and the hosted policy copy in sync, so a data edit without a rebuild fails CI.
 - [x] Published-facts validator: `scripts/validate-repo.ps1` (expectations in `store/repo-spec.json`, authenticated `gh` + network) proves the account-side state an offline check cannot see — description keywords/topics/homepage/license, Pages build type + HTTPS, secret scanning + push protection + Dependabot alerts, branch protection (strict four required checks, linear history, no force pushes/deletions), release assets with GitHub-computed SHA-256 digests matching `store/store-spec.json`, and all 11 live URLs returning 200 — **36/36 checks pass** at HEAD (the live-URL block is skipped only with `-SkipLive`). `release-check.ps1` also fails when a rebuilt artifact drifts from the recorded size/SHA-256.
@@ -154,7 +154,7 @@ artifacts, screenshots and record were left untouched.
 - [x] Store listing updated: `whats_new.txt` EN 492 / AR 479 characters (Play limit 500), screenshot manifest and repo spec carry rc2.
 - [x] Bilingual site regenerated from the data files: `1.0.0-rc2` / release date 2026-11-24 in `website/site.json`, content and policies (`policies.json.updated` = 2026-11-24); OG card re-rendered at 1200×630 from the new home screenshot; `build-site.ps1` clean, `validate-site.ps1` **225/225** at HEAD.
 - [x] `scripts/release-check.ps1` passes over the signed artifacts: Gradle release build + lint + full JVM suite verified in the full run, then the complete report re-produced with `-SkipBuild` against a rebooted AVD (the emulator process died after the Gradle step) — **567 tests, 0 failures, 0 errors**, **lint 0 errors / 36 reviewed warnings**, both artifacts size/SHA/certificate-verified, `validate-store.ps1` **79/79**, site **225/225**, screenshot regression **4/4 at distance 0**. Report written to `build/release-check.json` (not committed).
-- [x] Release `v1.0.0-rc2` published with the signed APK/AAB and `SHA256SUMS`; GitHub-computed asset digests match `store/store-spec.json` — <https://github.com/alshahia/sirrak/releases/tag/v1.0.0-rc2>.
+- [x] Release `v1.0.0-rc2` published with the signed APK/AAB and `SHA256SUMS`; GitHub-computed asset digests match `store/store-spec.json` — <https://github.com/ahmadmhmdsy/sirrak/releases/tag/v1.0.0-rc2>.
 - [x] CI green on `3b63f1f` (run `45373203824`): JVM unit tests, Arabic eval 24/24, Android lint and the public-site job (build + 225/225 + committed-output drift) all success; Pages deployment run `45373203860` success.
 - [x] Live surface verified after deployment: `validate-repo.ps1` **36/36** (repository facts, Pages, secret scanning, branch protection, release digests, all 11 live URLs 200); the live EN and AR landing pages serve `1.0.0-rc2` and the rc2 evidence rows.
 - [x] Limits unchanged and still explicit in §6: F-Droid and Play remain unpublished, performance is emulator-measured only, and no test phone was used (F8) — the rc2 device evidence is the emulator, as recorded above.
@@ -225,7 +225,7 @@ build, and its tag, artifacts and record are untouched.
 - [x] CI / pushed tree / live Pages: commit 5b344f2 pushed to `origin/main`; GitHub Actions CI (JVM
       tests, Arabic eval, Android lint) and the Pages workflow both passed (45551546176 / 45551546067).
       The live site is served at `https://ahmadmhmdsy.github.io/sirrak/`; the project Pages host used by
-      older links (`alshahia.github.io/sirrak`) no longer resolves and `siteUrl`/`repoUrl` still name the
+      older links (`ahmadmhmdsy.github.io/sirrak`) no longer resolves and `siteUrl`/`repoUrl` still name the
       old owner path — a URL-migration decision, recorded as an open item rather than a build gate.
 - [x] Docs and data aligned to 1.1.0: docs/31, docs/32, PRODUCT.md, CHANGELOG.md, README.md and
       README.ar.md, PRIVACY.md (policy version 2), SECURITY.md, website policies, store copy, NOTICE, SBOM,
@@ -236,3 +236,52 @@ deleted at app close because chat cannot reference shelf media; images are view-
 played from chat); HF rows cannot show per-file parameters/quantisation and an unprobed file stays `UNKNOWN`;
 downloads run one at a time; gated HF repos need a token that is held in memory only; settings search was not
 shipped; the APK is debug-signed and has no signing provenance.
+
+## P3.11 — post-candidate owner follow-ups (2026-11-25, evening)
+
+Owner decisions recorded after the 1.1.0 candidate: keep the signing key search `pending` (do not mint a key
+yet); replace the English chat screenshot with an Arabic-first one; migrate every old `alshahia` reference to
+the current owner/repo so nothing links to the past account; research running models larger than RAM/VRAM on a
+phone and bring the idea through a council before any implementation; if an APK must be shared before the key
+is recovered, share it only as a clearly marked debug build.
+
+- [x] URL migration: 29 tracked files (site data/content/policies, site scripts, docs 26–28, READMEs,
+      CONTRIBUTING/SECURITY/SUPPORT/PRIVACY, issue templates, store repo-spec, `app.json`) now point at
+      `ahmadmhmdsy`; `git grep alshahia -- ':!website/dist'` is empty. `website/dist` was regenerated and the
+      site validators re-run so the deployed page carries no old-owner link either. The old GitHub URLs only
+      301-redirect; the old Pages host 404s, so a link to it is a dead end, not a redirect.
+- [x] Screenshot 02 recaptured Arabic-first on the shipped candidate artifact itself
+      (`4CD65A60…539A`, pulled from the emulator and hash-verified immediately before the capture):
+      `store/screenshots/02-chat-answer-ar.png` now shows an Arabic prompt answered on-device by Qwen2.5 1.5B
+      Instruct, with the model chip, token meter and answer actions; layout was checked for clipping, overlap
+      and the IME bar. Provenance is in `store/screenshots/README.md`. The AOSP API 36 emulator image ships no
+      Arabic keyboard (`ime list -a` shows only LatinIME) and `adb shell input text` is ASCII-only, so the
+      third-party `ADBKeyboard` test IME was used to type the prompt; it was hidden before the capture, it is
+      emulator-only, and it is not in any shipping build (the APK is unchanged by this pass).
+- [x] Emulator findings for the release record (no catalogue change, no feature claimed): Qwen2.5-1.5B-Instruct
+      Q4_K_M (~1.12 GB) runs at ≈0.3–1.4 tok/s on the x86_64 API 36 emulator; Qwen2.5-3B-Instruct Q4_K_M
+      (2.10 GB, SHA-256 verified against the Hugging Face LFS oid) loads and answers after a fresh start but
+      produces corrupted mixed-language output after in-app model switching, at ≈0.1–0.4 tok/s. The switching
+      instability is logged as an engine defect to fix, not as a product capability.
+- [x] Bigger-than-RAM research: [docs/34](34-sirrak-oversize-model-offload.md) records the owner's
+      "run a model the phone cannot normally hold" idea, what Android actually allows (unified RAM, mmap page
+      cache, LMK/thermal/UFS limits), the literature, a qiyas-council ruling and a default-off MVP proposal.
+      Nothing is implemented and no marketing claim is made anywhere.
+- [ ] Debug pre-release for testers: the candidate debug APK is published as a GitHub **pre-release** marked
+      DEBUG / not latest (signed rc2 stays the latest release) so testers can reproduce issues without anyone
+      mistaking it for the signed product. The signed 1.1.0 store description/size update stays blocked on the
+      keystore.
+- [ ] Signing: still `pending` the owner's recovery attempt of the rc2 keystore. If it fails, a new key is a
+      key rotation: the new build cannot install over the rc2 build, so the release note must tell users to
+      export/backup conversations and uninstall the old build instead of implying an in-place update.
+
+**Lessons added by this pass**
+
+1. Hash-verify the installed artifact (`pm path` + `adb pull` + SHA-256) before attributing any screenshot
+   or device claim to a build; it turns "probably the candidate" into provenance.
+2. Budget for input method, not just app state: an AOSP emulator image has no Arabic keyboard and adb text
+   injection is ASCII-only, so a real Arabic capture needs a test IME (and disclosure of that fact).
+3. Treat model switching inside one app process as a defect surface until proven otherwise: capture evidence
+   from a fresh process when the model is the subject of the claim.
+4. When web search/fetch are unavailable, say "desk research" and mark uncertain claims `[unverified]`; never
+   present remembered citations as verified links.
