@@ -44,7 +44,7 @@
     "wordmark": "سِرِّك",
     "latin": "SIRRAK",
     "headline": "Your own assistant.\nIt never leaves your phone.",
-    "lead": "Sirrak runs a real language model, Arabic dictation and document search on your Android phone. No account, no cloud, no telemetry — the only request it can make is a model download you start yourself.",
+    "lead": "Sirrak runs a real language model, Arabic dictation and document search on your Android phone. No account, no cloud, no telemetry — every network request is one you start: a model download, a Hugging Face search, or a capped file-header check.",
     "primary": {
       "label": "Download the signed APK",
       "href": "https://github.com/alshahia/sirrak/releases/latest"
@@ -54,8 +54,8 @@
       "href": "#privacy"
     },
     "meta": [
-      "Version 1.0.0-rc2",
-      "139 MiB · Android 9+",
+      "Version 1.1.0 (candidate)",
+      "Signed download: 1.0.0-rc2 · 139 MiB · Android 9+",
       "libre flavour · SHA-256 in release notes"
     ],
     "screenshot": {
@@ -226,12 +226,12 @@
   },
   "download": {
     "title": "Download and verify",
-    "lead": "The libre APK is signed with the project certificate and built from the tagged release. You can verify both before installing.",
+    "lead": "The published libre APK is signed with the project certificate and built from the 1.0.0-rc2 tag. The 1.1.0 features described on this page are not in that build yet: its signed release is still pending. You can verify the published build before installing.",
     "steps": [
       {
         "n": "01",
         "title": "Get the signed APK",
-        "body": "Open the latest release on GitHub and download the libre APK (~139 MiB, universal arm64-v8a + x86_64)."
+        "body": "Open the latest release on GitHub and download the signed 1.0.0-rc2 libre APK (~139 MiB, universal arm64-v8a + x86_64)."
       },
       {
         "n": "02",
@@ -259,7 +259,7 @@
         "ltr": true
       },
       {
-        "label": "Release tag",
+        "label": "Published signed build",
         "value": "v1.0.0-rc2 · versionCode 13",
         "ltr": true
       },
@@ -277,7 +277,7 @@
       {
         "label": "GitHub Releases",
         "state": "available",
-        "note": "signed libre APK for sideloading, built from this repository"
+        "note": "signed 1.0.0-rc2 libre APK for sideloading; the signed 1.1.0 release is pending"
       },
       {
         "label": "F-Droid",

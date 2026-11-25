@@ -187,7 +187,10 @@ build, and its tag, artifacts and record are untouched.
       What's new (EN 491 / AR 494 characters, Play limit 500).
 - [x] Bilingual site: `website/site.json` version 1.1.0 / release date 2026-11-25, policies updated to
       policy version 2; `build-site.ps1` clean and `validate-site.ps1` **225/225**; `WebsiteContentTest`
-      keeps the app-side facts in sync. Nothing is pushed: the live Pages site still describes rc2.
+      (7 tests, forced past the build cache) keeps the app-side facts in sync. The published page labels
+      1.1.0 as a **candidate**, names signed `1.0.0-rc2` as the downloadable build and states that the
+      signed 1.1.0 release is pending; the hero names all three user-started network features. The first
+      rework push (5b344f2) deployed it to Pages; CI and Pages were green (runs 45551546176 / 45551546067).
 - [x] Candidate artifact: `app-libre-debug.apk`, **223,217,333 B (212.9 MiB)**, SHA-256
       `4CD65A603A32E829032DBAB5FD390F73FA201FA15F97CEAA75F3E9F4568D539A`, versionCode 14, minSdk 28,
       universal `arm64-v8a` + `x86_64` with all seven native libraries per ABI (including
@@ -218,8 +221,11 @@ build, and its tag, artifacts and record are untouched.
       install this APK and run the small-model path: Qwen2.5-0.5B-Instruct Q4_K_M (~794 MB, fits the phone's
       ~3.7 GB RAM) — download or adb-push it, load, ask one Arabic and one English question, dictate once,
       import one PDF, and confirm offline-only blocks the network.
-- [ ] CI / pushed tree / live Pages: not applicable yet — the rework is uncommitted in the working tree and
-      nothing was pushed; the 567-test and rc2 rows above remain the last CI-proven state.
+- [x] CI / pushed tree / live Pages: commit 5b344f2 pushed to `origin/main`; GitHub Actions CI (JVM
+      tests, Arabic eval, Android lint) and the Pages workflow both passed (45551546176 / 45551546067).
+      The live site is served at `https://ahmadmhmdsy.github.io/sirrak/`; the project Pages host used by
+      older links (`alshahia.github.io/sirrak`) no longer resolves and `siteUrl`/`repoUrl` still name the
+      old owner path — a URL-migration decision, recorded as an open item rather than a build gate.
 - [x] Docs and data aligned to 1.1.0: docs/31, docs/32, PRODUCT.md, CHANGELOG.md, README.md and
       README.ar.md, PRIVACY.md (policy version 2), SECURITY.md, website policies, store copy, NOTICE, SBOM,
       store/README candidate-artifact table and the docs index.

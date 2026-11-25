@@ -1,7 +1,7 @@
 # UX rework build record (P1–P6)
 
-Status: **candidate complete** — P1–P5 implemented, P6 gates green except the items that need a keystore, a
-test phone or a push (signed release, physical-phone smoke, CI). Version **1.1.0** / versionCode 14; the
+Status: **candidate complete and pushed** — P1–P5 implemented, P6 gates green except the items that need
+a keystore or a test phone (signed release, physical-phone smoke). Version **1.1.0** / versionCode 14; the
 complete gate and artifact record is [docs/27](27-sirrak-launch-checklist.md) §P3.10.
 Provenance: [docs/31](31-ux-rework-council.md) (review, council transcript, verdict and the six founder decisions)
 and [docs/mockups/31-ux-rework.html](mockups/31-ux-rework.html). Target release **1.1.0** (versionCode 14).
@@ -172,8 +172,9 @@ in its README). Besides the pictures, the capture pass checked the behaviours th
   only device evidence. The arm64 artifact is ready for that run (Qwen2.5-0.5B ≈ 794 MB is the intended
   model), and docs/27 P3.10 spells out the walk.
 - **Signed release**: no keystore here, so no signed 1.1.0 artifact, no `release-check.ps1` pass and no
-  release tag. The store/site surfaces are ready but still describe rc2 until that build exists.
-- **Push/CI**: the tree is uncommitted; no claim in this record depends on a remote run.
+  release tag. Store listing copy still describes the published rc2; the site labels 1.1.0 as a candidate
+  and points downloads at the signed 1.0.0-rc2 build until a signed 1.1.0 exists.
+- **Push/CI**: pushed to `origin/main` as 5b344f2; CI and Pages are green (runs 45551546176 / 45551546067).
 
 ## Implementation lessons
 
@@ -226,6 +227,14 @@ in its README). Besides the pictures, the capture pass checked the behaviours th
 16. Product copy in README/store/site can overstate the UI the code actually ships ("live level meter" for a
     recording strip that only shows a timer). Validate marketing sentences against the composables, not
     against earlier product intent: overclaiming is the same honesty defect as stale privacy copy.
+17. A site version is a claim spread over many strings, not one field: `site.json` said 1.1.0 while the hero
+    and the download facts still said `1.0.0-rc2`, and the first Pages deploy made that mismatch public.
+    The site validator checks structure, not coherence — grep the generated `dist` for the old version and
+    make the candidate state explicit before pushing. Odd signed/unsigned facts must be labelled, not
+    smoothed over.
+18. Gradle's build cache can serve a stale result for tests that read repository files at runtime:
+    `WebsiteContentTest` reported success from cache after `website/content` changed. Delete the test
+    outputs and pass `--no-build-cache` when a test's inputs are files Gradle does not track.
 
 ## Founder feedback — what the review did not ask for
 
