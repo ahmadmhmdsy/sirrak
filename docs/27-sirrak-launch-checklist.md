@@ -184,7 +184,8 @@ build, and its tag, artifacts and record are untouched.
 - [x] Configuration test: `privacy.endpoints` declares the three real network features — `model_download`,
       `hf_search`, `hf_probe` — and `AppConfigTest` asserts exactly that set.
 - [x] Store assets: `pwsh -File scripts/validate-store.ps1` → **79/79 checks**, version 1.1.0 present in
-      What's new (EN 491 / AR 494 characters, Play limit 500).
+      What's new (EN 491 / AR 483 characters, Play limit 500; the first line names 1.1.0 as a UX rework
+      rather than claiming a signed APK already exists, because the signed 1.1.0 release is still pending).
 - [x] Bilingual site: `website/site.json` version 1.1.0 / release date 2026-11-25, policies updated to
       policy version 2; `build-site.ps1` clean and `validate-site.ps1` **225/225**; `WebsiteContentTest`
       (7 tests, forced past the build cache) keeps the app-side facts in sync. The published page labels

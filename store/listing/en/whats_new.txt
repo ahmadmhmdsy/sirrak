@@ -1,4 +1,4 @@
-1.1.0 — signed APK on GitHub Releases.
+1.1.0 — a focused on-device UX rework.
 - Library: Models, Downloads, Media; model management moved here from Settings.
 - Downloads survive a restart: one transfer at a time, resume where it stopped.
 - In-app Hugging Face search: GGUF header check with an honest fit verdict.
