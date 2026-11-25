@@ -269,7 +269,13 @@ is recovered, share it only as a clearly marked debug build.
 - [x] Bigger-than-RAM research: [docs/34](34-sirrak-oversize-model-offload.md) records the owner's
       "run a model the phone cannot normally hold" idea, what Android actually allows (unified RAM, mmap page
       cache, LMK/thermal/UFS limits), the literature, a qiyas-council ruling and a default-off MVP proposal.
-      Nothing is implemented and no marketing claim is made anywhere.
+      Nothing is implemented and no marketing claim is made anywhere. Council verdict in five lines: it is a
+      permission problem, not a capability problem (the pinned engine already maps every GGUF, and even
+      prefetches the whole file at load); a dense 1.5B+ on the 4 GB phone becomes flash-bound (≈0.1–0.6 tok/s
+      estimated, 3B ≈0.02–0.1, no phone measurement exists); real layer/expert streaming needs sparse models and
+      a custom engine, dense streaming was dropped and cloud was dropped outright; at most a default-off,
+      double-confirmed Advanced/debug experiment for the 1.5B class after two cheap measurements; the mainline
+      answer is bigger-RAM phones, the quantization ladder and honestly measured speed.
 - [x] Debug pre-release for testers: `debug-1.1.0-20261125`
       (https://github.com/ahmadmhmdsy/sirrak/releases/tag/debug-1.1.0-20261125) carries the candidate debug APK
       as `app-libre-debug.apk`, 223,217,333 B, GitHub-computed `sha256:4CD65A60…539A` — identical to the
@@ -292,3 +298,6 @@ is recovered, share it only as a clearly marked debug build.
    pick a screenshot prompt the model actually answers well rather than one that flatters it.
 4. When web search/fetch are unavailable, say "desk research" and mark uncertain claims `[unverified]`; never
    present remembered citations as verified links.
+5. Read the engine's actual load path before proposing a capability: llama.cpp already memory-maps every GGUF
+   and prefetches the whole file at load, so "load only what a token needs" was a permission-and-cost question,
+   not missing machinery — the useful output is a measured cost law and a cheap kill test, not a feature.
